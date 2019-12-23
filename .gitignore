@@ -1,2 +1,27 @@
 *.class
 *.log
+.g8
+.idea/*
+build
+logs
+target
+tempdata
+/.idea
+/.idea_modules
+/RUNNING_PID
+/logs
+/sbt-dist
+/public
+.DS_Store
+conf/server
+
+#### for eclipse ####
+.classpath
+.settings
+.project
+.gitignore
+.cache-main
+pom.xml
+
+
+node_modules/
