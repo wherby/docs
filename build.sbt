@@ -1,7 +1,7 @@
 
 val SomeConfig = config("doradilla")
 
-lazy val docs = (project in file("doradilla")).
+lazy val docs = (project in file("docs")).
   enablePlugins(ParadoxPlugin).
   settings(
     name := "document for doradilla",
