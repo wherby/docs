@@ -11,7 +11,6 @@ tempdata
 /RUNNING_PID
 /logs
 /sbt-dist
-/public
 .DS_Store
 conf/server
 
