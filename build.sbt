@@ -5,11 +5,11 @@ lazy val docs = (project in file("docs")).
   enablePlugins(ParadoxPlugin).
   settings(
     name := "document for doradilla",
-    version := "1.7.3.1",
+    version := "0.1.0",
     paradoxTheme := Some(builtinParadoxTheme("generic")),
     paradoxIllegalLinkPath := raw".*\\.md".r,
     paradoxProperties in Compile ++=Map("project.description" -> "Description for doradilla library.",
-      "github.base_url" -> s"https://github.com/wherby/doradilla/tree/v${version.value}")
+      "github.base_url" -> s"https://github.com/wherby/docs/tree/v${version.value}")
   )
 
 lazy val root = (project in file("."))
