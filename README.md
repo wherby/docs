@@ -50,7 +50,6 @@ sbt docs /paradox
 sbt copyDocs
 
 
-### Publish to github
+### After push to github,  publish to github
 
-
-git push 
+git subtree push --prefix=public/docs origin gh-pages
