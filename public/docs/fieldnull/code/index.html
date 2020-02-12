@@ -40,7 +40,7 @@
   <ul>
     <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
-  <li><a href="../../fieldnull/index.html" class="page">database null field error</a>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
   <ul>
     <li><a href="../../fieldnull/code/index.html" class="active page">Database define</a></li>
   </ul></li>
@@ -85,7 +85,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
   <ul>
     <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
-  <li><a href="../../fieldnull/index.html" class="page">database null field error</a>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
   <ul>
     <li><a href="../../fieldnull/code/index.html" class="active page">Database define</a></li>
   </ul></li>
@@ -105,7 +105,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="nav-breadcrumbs">
 <ul>
   <li><a href="../../index.html">Doradilla</a></li>
-  <li><a href="../../fieldnull/index.html">database null field error</a></li>
+  <li><a href="../../fieldnull/index.html">Database null field error</a></li>
   <li>Database define</li>
 </ul>
 </div>
@@ -116,12 +116,233 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="small-12 large-9 column" id="docs">
 <h2><a href="#database-define" name="database-define" class="anchor"><span class="anchor-link"></span></a>Database define</h2>
 <p>The database define as below:</p>
+<dl>
+  <dt>Fund</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `funds`(
+   `id` varchar(128) NOT NULL,
+   `name` VARCHAR(128) not null,
+    fund_admin_id varchar(128) null,
+   `fund_type` VARCHAR(128) not null,
+   `legal_structure` VARCHAR(128) not null,
+   `base_currency` VARCHAR(128) not null,
+   `audit_period_begin` TIMESTAMP not null,
+   `audit_period_end` TIMESTAMP not null,
+   `fund_admin` VARCHAR(128) not null,
+   `admin_code` VARCHAR(128) NULL,
+   `createby` VARCHAR(128) NULL,
+   `createdatetime`  TIMESTAMP DEFAULT CURRENT_TIMESTAMP NULL,
+   `modifyby` VARCHAR(128) NULL,
+   `modifydatetime`  TIMESTAMP  NULL,
+   PRIMARY KEY (`id`)
+)</code></pre></dd>
+  <dt>FundAdmin</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/fundadmin.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_admin`(
+    `id` varchar(128) NOT NULL,
+    `name` varchar(128) NOT NULL,
+    PRIMARY KEY (`id`)
+)</code></pre></dd>
+</dl>
+<h2><a href="#code-check" name="code-check" class="anchor"><span class="anchor-link"></span></a>Code check</h2>
+<p>The field fund_admin_id in fund table is queried from fund admin table.</p>
+<dl>
+  <dt>Create fund</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/create.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def create(fund: Fund, engagementId:String): Future[Int] = {
+  engagementDAO.lookup(engagementId).flatMap(maybeEngagement =&gt; {
+    maybeEngagement match {
+      case engagement =&gt; {
+        fundAdminDAO.queryByFundAdmin(fund.fundAdmin).flatMap(optionFundAdmin =&gt; {
+          optionFundAdmin match {
+            case Some(fundAdmin) =&gt; {
+              fund.fundAdminId = Some(fundAdmin.id)
+              fundsDAO.create(fund, engagementId)
+            }
+            case _ =&gt;{
+              throw new Exception(s&quot;fund admin doesn&#39;t exist&quot;)
+            }
+          }
+        }).flatMap(resFund =&gt; {
+          var fundEngagement = new FundEngagementData(randomUUID().toString, engagementId, resFund.id, None, resFund.createby, Some(new Timestamp(DateTime.now.getMillis)))
+          fundEngagementDAO.create(fundEngagement)
+        })
+      }
+      case _ =&gt; {
+        throw new Exception(s&quot;engagement with this Id doesn&#39;t exist&quot;)
+      }
+    }
+  })
+}
+</code></pre></dd>
+  <dt>Update fund</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  fundsDAO.lookup(fund.id).flatMap(maybeFund =&gt; {
+    maybeFund match {
+
+      //if fundAdmin changed, should update fund admin id and remove fund selection types
+      case Some(existingFund) if(existingFund.fundAdmin != fund.fundAdmin) =&gt; {
+        fundAdminDAO.queryByFundAdmin(fund.fundAdmin).flatMap(optionFundAdmin =&gt; {
+          optionFundAdmin match {
+            case Some(fundAdmin) =&gt; {
+              fund.fundAdminId = Some(fundAdmin.id)
+              fundsDAO.update(fund).flatMap(updateResult =&gt; {
+                fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt; {
+                  fundEngagementReportTypeSelectionDAO.deleteByEngagementIds(engagements.map(_.id))
+                })
+              })
+            }
+            case _ =&gt;{
+              throw new Exception(s&quot;fund admin doesn&#39;t exist&quot;)
+            }
+          }
+        })
+      }
+      //if fund audit period or accurency changed, should clear uploaded reports and ega.
+      case Some(exisitingFund) if(!exisitingFund.auditPeriodBegin.equals(fund.auditPeriodBegin) || !exisitingFund.auditPeriodEnd.equals(fund.auditPeriodEnd) || !exisitingFund.baseCurrency.equals(fund.baseCurrency)) =&gt; {
+        fundsDAO.update(fund).flatMap(res =&gt;fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt;{
+          fundEngagementReportTypeSelectionWrite.clearUploadedReports(engagements.map(_.id)).flatMap(result =&gt;{
+            egaWrite.cleanEGAByFundEngagementId(engagements.map(_.id))
+          })
+        }))
+      }
+      case Some(existingFund) =&gt; {
+        fundsDAO.update(fund)
+      }
+      case _ =&gt; {
+        throw new Exception(s&quot;fund  ${fund.name} doesn&#39;t exist&quot;)
+      }
+    }
+  })
+}</code></pre></dd>
+</dl>
+<p>Then we find in update fund, the second branch doesn&rsquo;t retrieve fund_admin_id, so this may lead the null field</p>
+<p>So we need to fix the issue by add query:</p>
+<dl>
+  <dt>Fix one: by add query for second branch
+  </dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/updatefix1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  fundsDAO.lookup(fund.id).flatMap(maybeFund =&gt; {
+    maybeFund match {
+
+      //if fundAdmin changed, should update fund admin id and remove fund selection types
+      case Some(existingFund) if(existingFund.fundAdmin != fund.fundAdmin) =&gt; {
+        fundAdminDAO.queryByFundAdmin(fund.fundAdmin).flatMap(optionFundAdmin =&gt; {
+          optionFundAdmin match {
+            case Some(fundAdmin) =&gt; {
+              fund.fundAdminId = Some(fundAdmin.id)
+              fundsDAO.update(fund).flatMap(updateResult =&gt; {
+                fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt; {
+                  fundEngagementReportTypeSelectionDAO.deleteByEngagementIds(engagements.map(_.id))
+                })
+              })
+            }
+            case _ =&gt;{
+              throw new Exception(s&quot;fund admin doesn&#39;t exist&quot;)
+            }
+          }
+        })
+      }
+      //if fund audit period or accurency changed, should clear uploaded reports and ega.
+      case Some(exisitingFund) if(!exisitingFund.auditPeriodBegin.equals(fund.auditPeriodBegin) || !exisitingFund.auditPeriodEnd.equals(fund.auditPeriodEnd) || !exisitingFund.baseCurrency.equals(fund.baseCurrency)) =&gt; {
+        fundAdminDAO.queryByFundAdmin(fund.fundAdmin).flatMap(optionFundAdmin =&gt; {
+          optionFundAdmin match {
+            case Some(fundAdmin) =&gt; {
+              fundsDAO.update(fund).flatMap(res =&gt; fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt; {
+                fundEngagementReportTypeSelectionWrite.clearUploadedReports(engagements.map(_.id)).flatMap(result =&gt; {
+                  egaWrite.cleanEGAByFundEngagementId(engagements.map(_.id))
+                })
+              }))
+            }
+            case _ =&gt; {
+              throw new Exception(s&quot;fund admin doesn&#39;t exist&quot;)
+            }
+          }
+        })
+      }
+      case Some(existingFund) =&gt; {
+        fundsDAO.update(fund)
+      }
+      case _ =&gt; {
+        throw new Exception(s&quot;fund  ${fund.name} doesn&#39;t exist&quot;)
+      }
+    }
+  })
+}</code></pre></dd>
+  <dt>Fix two: by add shared query
+  </dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/updatefix2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  val newFundFuture =  fundAdminDAO.queryByFundAdmin(fund.fundAdmin).map{
+    tmpOpt =&gt;tmpOpt match{
+      case Some(fundAdmin)=&gt;fund.copy(fundAdminId = Some(fundAdmin.id))
+      case _=&gt;fund
+    }
+  }
+  val newFund = Await.result(newFundFuture, 1 second)
+
+  fundsDAO.lookup(fund.id).flatMap(maybeFund =&gt; {
+    maybeFund match {
+
+      //if fundAdmin changed, should update fund admin id and remove fund selection types
+      case Some(existingFund) if(existingFund.fundAdmin != fund.fundAdmin) =&gt; {
+        fundsDAO.update(newFund).flatMap(updateResult =&gt; {
+          fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt; {
+            fundEngagementReportTypeSelectionDAO.deleteByEngagementIds(engagements.map(_.id))
+          })
+        })
+      }
+      //if fund audit period or accurency changed, should clear uploaded reports and ega.
+      case Some(exisitingFund) if(!exisitingFund.auditPeriodBegin.equals(fund.auditPeriodBegin) || !exisitingFund.auditPeriodEnd.equals(fund.auditPeriodEnd) || !exisitingFund.baseCurrency.equals(fund.baseCurrency)) =&gt; {
+        fundsDAO.update(newFund).flatMap(res =&gt; fundEngagementDAO.queryByFundId(fund.id).flatMap(engagements =&gt; {
+          fundEngagementReportTypeSelectionWrite.clearUploadedReports(engagements.map(_.id)).flatMap(result =&gt; {
+            egaWrite.cleanEGAByFundEngagementId(engagements.map(_.id))
+          })
+        }))
+      }
+      case Some(existingFund) =&gt; {
+        fundsDAO.update(newFund)
+      }
+      case _ =&gt; {
+        throw new Exception(s&quot;fund  ${fund.name} doesn&#39;t exist&quot;)
+      }
+    }
+  })
+}</code></pre></dd>
+</dl>
+<h2><a href="#after-fix" name="after-fix" class="anchor"><span class="anchor-link"></span></a>After fix</h2>
+<p>Question 1, what&rsquo;s the root cause of the issue?</p>
+<ol>
+  <li>
+  <p>The Fund table contains redundant information of FundAdmin table</p></li>
+  <li>
+  <p>The update function has multiple paths, and don&rsquo;t use shared function</p></li>
+  <li>
+  <p>The shared function should in out of update scope.</p></li>
+</ol>
+<p>Question 2, how to use the single truth principle to resolve issues above? </p>
 <div class="source-github">
 The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/fieldnull/code/index.md">here</a>.
 </div>
 
 </div>
 <div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../../fieldnull/code/index.html#database-define" class="header">Database define</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html#code-check" class="header">Code check</a></li>
+    <li><a href="../../fieldnull/code/index.html#after-fix" class="header">After fix</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
 </div>
 </div>
 

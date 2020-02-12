@@ -27,7 +27,6 @@
 
 
 
-
 5:38:27 PM: mysql> SELECT id,fund_admin_id,fund_admin FROM awm.funds; 
 +--------------------------------------+---------------+-----------------+
 | id                                   | fund_admin_id | fund_admin      |
