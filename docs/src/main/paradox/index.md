@@ -14,5 +14,7 @@ This is the introduction for doradilla library.
 * [Database null field](fieldnull/index.md)
 
 * [Engagement add](engagement/index.md)
+
+* [Query overflow](slickqueryfailed/index.md)
  
 @@@

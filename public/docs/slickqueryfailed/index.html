@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Slick query overflow · Doradilla</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Description for doradilla library.'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../js/page.js"></script>
+<script type="text/javascript" src="../js/warnOldVersion.js"></script>
+<script type="text/javascript" src="../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Doradilla
+</a>
+<div class="version-number">
+0.1.0
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../slickqueryfailed/index.html" class="active page">Slick query overflow</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../index.html">Doradilla</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../index.html" >
+<span class="home-icon">⌂</span>Doradilla
+</a>
+<div class="version-number">
+0.1.0
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../slickqueryfailed/index.html" class="active page">Slick query overflow</a></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<span id="version-warning"></span>
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../index.html">Doradilla</a></li>
+  <li>Slick query overflow</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h1><a href="#slick-query-overflow" name="slick-query-overflow" class="anchor"><span class="anchor-link"></span></a>Slick query overflow</h1>
+<h2><a href="#query-overflow" name="query-overflow" class="anchor"><span class="anchor-link"></span></a>Query overflow</h2>
+<p>User report a bug for table can&rsquo;t be displayed:</p>
+<p><img src="./pic/web.png" alt="Web failed" /></p>
+<p>There is something wrong with the get api</p>
+<dl>
+  <dt>Console</dt>
+  <dd><img src="./pic/console.png" alt="Console faile" /></dd>
+  <dt>Console log</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/consolelog.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[info] application - GET /api/engagements?page=1&amp;pageSize=2147483647 took 117ms by admin@cn.pwc.com and returned 200
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+
+....
+
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[error] c.p.d.a.s.c.CustomErrorHandler - Error occurrred
+java.util.concurrent.RejectedExecutionException: Task slick.basic.BasicBackend$DatabaseDef$$anon$2@6e97c67a rejected from slick.util.AsyncExecutor$$anon$2$$anon$1@7efc5b8f[Running, pool size = 20, active threads = 3, queued tasks = 50, completed tasks = 338]
+        at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(Unknown Source)
+        at java.util.concurrent.ThreadPoolExecutor.reject(Unknown Source)
+        at java.util.concurrent.ThreadPoolExecutor.execute(Unknown Source)
+        at slick.util.AsyncExecutor$$anon$2$$anon$3.execute(AsyncExecutor.scala:161)
+        at slick.basic.BasicBackend$DatabaseDef.runSynchronousDatabaseAction(BasicBackend.scala:264)
+        at slick.basic.BasicBackend$DatabaseDef.runSynchronousDatabaseAction$(BasicBackend.scala:262)
+        at slick.jdbc.JdbcBackend$DatabaseDef.runSynchronousDatabaseAction(JdbcBackend.scala:37)
+        at slick.basic.BasicBackend$DatabaseDef.slick$basic$BasicBackend$DatabaseDef$$runInContextInline(BasicBackend.scala:241)
+        at slick.basic.BasicBackend$DatabaseDef.runInContextSafe(BasicBackend.scala:147)
+        at slick.basic.BasicBackend$DatabaseDef.runInContext(BasicBackend.scala:141)</code></pre></dd>
+</dl>
+<p>So it&rsquo;s seems the query triggered too many query to database, more than the database configuration.</p>
+<h2><a href="#code-implement" name="code-implement" class="anchor"><span class="anchor-link"></span></a>Code implement</h2>
+<p>let see how is the query implemented? </p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
+  deadbolt.Pattern()() {implicit authRequest =&gt;
+    var filterMap = Map[String, String]()
+        ....
+    engageuserRead.listPage(page, pageSize, filterMap).flatMap(page =&gt; {
+      Future.sequence(page.items.map {
+        user1 =&gt;
+          engagementRead.lookup(user1.engagementid).map {
+            engagementOpt =&gt;
+              EngageuserWithName(user1, engagementOpt.get)
+          }
+      }).map {
+        engageWithName =&gt;
+          Ok(Json.obj(&quot;engageuserWithName&quot; -&gt; Json.toJson(engageWithName), &quot;total&quot; -&gt; page.total))
+      }
+    })
+  }</code></pre>
+<p>With database configuration:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
+  database = {
+      ...
+    numThreads = 20
+
+    queueSize = 50
+
+    maxConnections = 20
+        ...
+  }
+}</code></pre>
+<p>So we could easily know the inner query has triggered 50 query in queue of database setting, then the query failed</p>
+<p>Let&rsquo;s see more clear about the get query:</p>
+<dl>
+  <dt>Request</dt>
+  <dd><img src="./pic/request.png" alt="Request" /></dd>
+  <dt>Requet test</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/request.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">Request URL: http://localhost:9000/api/engageuserswithname?page=1&amp;pageSize=2147483647&amp;roleOpt=File%20Owner
+Request Method: GET
+Status Code: 500 Internal Server Error
+Remote Address: [::1]:9000
+Referrer Policy: no-referrer-when-downgrade</code></pre></dd>
+</dl>
+<p>In this get query, set the page size to 2147483647.</p>
+<h2><a href="#how-to-fix-" name="how-to-fix-" class="anchor"><span class="anchor-link"></span></a>How to fix?</h2>
+<h3><a href="#fix-it-by-reduce-inner-query-" name="fix-it-by-reduce-inner-query-" class="anchor"><span class="anchor-link"></span></a>Fix it by reduce inner query:</h3>
+<dl>
+  <dt>Add new query</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/dbquery.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def listPageWithEngagement(pageNum: Int, pageSize: Int, filterMap: Map[String, String]): Future[Page[(Engageuser,Engagement)]] = {
+  val offset = pageSize * (pageNum - 1)
+  val engageUsersWithNotDeleted = for{
+    (engageusers, engagements) &lt;- Engageusers join Engagements on ((left, right) =&gt; left.engagementid === right.id &amp;&amp; right.deleted === &quot;false&quot; )
+  } yield (engageusers, engagements)
+
+  val defaultFilter = engageUsersWithNotDeleted.filter{ userEngagement =&gt;
+    filterMap.get(&quot;engagementid&quot;).map(someId=&gt;userEngagement._1.engagementid.asColumnOf[String] === someId).getOrElse(true: Rep[Boolean])}
+    .filter{userEngagement =&gt;
+      filterMap.get(&quot;userid&quot;).map(someId=&gt;userEngagement._1.userid.asColumnOf[String] like s&quot;%$someId%&quot;).getOrElse(true: Rep[Boolean])}
+    .filter{userEngagement =&gt;
+      filterMap.get(&quot;role&quot;).map(role =&gt; userEngagement._1.role ===role).getOrElse(true: Rep[Boolean])
+    }
+    .filter(_._1.deleted === &quot;false&quot;)
+
+  val query = defaultFilter.sortBy(_._1.createdatetime.desc).drop(offset).take(pageSize)
+  for {
+    totalRows &lt;- db.run(defaultFilter.length.result)
+    result &lt;- db.run(query.result).map(rows =&gt; rows.collect { case userEngagement =&gt; (engageuserRowToEngageuser(userEngagement._1), toEntity(userEngagement._2))})
+  } yield Page(result, pageNum, offset, totalRows)
+}</code></pre></dd>
+  <dt>Query Refined</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/queryRefined.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
+  deadbolt.Pattern()() {implicit authRequest =&gt;
+    var filterMap = Map[String, String]()
+      ...
+    engageuserRead.listPageWithEngagement(page,pageSize,filterMap).map{
+      page=&gt;val engageWithName= page.items.map{
+        item=&gt; EngageuserWithName(item._1,item._2)
+      }
+        Ok(Json.obj(&quot;engageuserWithName&quot; -&gt; Json.toJson(engageWithName), &quot;total&quot; -&gt; page.total))
+    }
+  }</code></pre></dd>
+  <dt>Console result</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/code/queryRefinedResult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`userid`, x2.`username`, x2.`engagementid`, x2.`role`, x2.`active`, x2.`deleted`, x2.`createdatetime`, x2.`lastactivetime`, x2.`disabledtime`, x2.`meta`, x3.`id`, x3.`engagementcode`, x3.`name`, x3.`periodstart`, x3.`periodend`, x3.`auralink`, x3.`active`, x3.`deleted`, x3.`createdatetime`, x3.`meta` from `engageusers` x2, `engagements` x3 where ((x2.`role` = &#39;File Owner&#39;) and (x2.`deleted` = &#39;false&#39;)) and ((x2.`engagementid` = x3.`id`) and (x3.`deleted` = &#39;false&#39;)) order by x2.`createdatetime` desc limit 0,2147483647
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where `deleted` = &#39;false&#39; order by `createdatetime` desc limit 0,2147483647
+[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`userid`, x2.`username`, x2.`engagementid`, x2.`role`, x2.`active`, x2.`deleted`, x2.`createdatetime`, x2.`lastactivetime`, x2.`disabledtime`, x2.`meta`, x3.`id`, x3.`engagementcode`, x3.`name`, x3.`periodstart`, x3.`periodend`, x3.`auralink`, x3.`active`, x3.`deleted`, x3.`createdatetime`, x3.`meta` from `engageusers` x2, `engagements` x3 where ((x2.`role` = &#39;File Owner&#39;) and (x2.`deleted` = &#39;false&#39;)) and ((x2.`engagementid` = x3.`id`) and (x3.`deleted` = &#39;false&#39;)) order by x2.`createdatetime` desc limit 0,10
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where `deleted` = &#39;false&#39; order by `createdatetime` desc limit 0,2147483647
+[info] application - GET /api/engageuserswithname?page=1&amp;pageSize=10&amp;roleOpt=File%20Owner took 81ms by admin@cn.pwc.com and returned 200
+[info] application - GET /api/engagements?page=1&amp;pageSize=2147483647 took 85ms by admin@cn.pwc.com and returned 200
+[info] application - GET /api/engagements?page=1&amp;pageSize=2147483647 took 98ms by admin@cn.pwc.com and returned 200
+[info] application - GET /api/engageuserswithname?page=1&amp;pageSize=2147483647&amp;roleOpt=File%20Owner took 103ms by admin@cn.pwc.com and returned 200</code></pre></dd>
+</dl>
+<h3><a href="#fix-by-reduce-the-inner-number-query-by-pagenumber" name="fix-by-reduce-the-inner-number-query-by-pagenumber" class="anchor"><span class="anchor-link"></span></a>Fix by reduce the inner number query by pageNumber</h3>
+<p>The inner query is triggered by the outer pageNumber, in practical way of page query, there should not set the number to the number [pageSize=214748364]. And also increase the database queue size.</p>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/slickqueryfailed/index.md">here</a>.
+</div>
+
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../slickqueryfailed/index.html#slick-query-overflow" class="header">Slick query overflow</a>
+  <ul>
+    <li><a href="../slickqueryfailed/index.html#query-overflow" class="header">Query overflow</a></li>
+    <li><a href="../slickqueryfailed/index.html#code-implement" class="header">Code implement</a></li>
+    <li><a href="../slickqueryfailed/index.html#how-to-fix-" class="header">How to fix?</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2020</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../js/magellan.js"></script>
+
+<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0', '')});</script>
+
+
+</html>
