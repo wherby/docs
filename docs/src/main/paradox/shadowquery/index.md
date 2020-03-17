@@ -21,7 +21,7 @@ We could find in the network, all update are executed before the query, but the 
 
 But when we refresh the page, everything goes fine.
 
-![AfterRefresh](./pic/afterrefresh.png)
+![AfterRefresh](./pic/after_refresh.png)
 
 
 
@@ -37,14 +37,14 @@ Let see the db config file:
 We could see the db connection numThreads is 10. When change the 
 number to 1.
 
-![AfterDBConfig](./pic/afterdbconfig.png)
+![AfterDBConfig](./pic/after_db_config.png)
 
 Seems the issue is fixed.
 
 
 ### Add some delay to the query
 
-![AddDelay](./pic/adddelay.png)
+![AddDelay](./pic/add_delay.png)
 
 
 ## Why the issue happens:
