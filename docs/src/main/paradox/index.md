@@ -16,5 +16,7 @@ This is the introduction for doradilla library.
 * [Engagement add](engagement/index.md)
 
 * [Query overflow](slickqueryfailed/index.md)
- 
+
+* [Slick shadow query](shadowquery/index.md)
+
 @@@
