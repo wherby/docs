@@ -37,14 +37,14 @@ Let see the db config file:
 We could see the db connection numThreads is 10. When change the 
 number to 1.
 
-![AfterDBConfig](./pic/afterDBConfig.png)
+![AfterDBConfig](./pic/afterdbconfig.png)
 
 Seems the issue is fixed.
 
 
 ### Add some delay to the query
 
-![AddDelay](./pic/addDelay.png)
+![AddDelay](./pic/adddelay.png)
 
 
 ## Why the issue happens:
