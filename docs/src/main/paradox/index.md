@@ -19,4 +19,6 @@ This is the introduction for doradilla library.
 
 * [Slick shadow query](shadowquery/index.md)
 
+* [Inconsistent data](inconsistent/index.md)
+
 @@@

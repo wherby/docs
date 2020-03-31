@@ -1,0 +1,33 @@
+[{"id":"9b58f780-fbd2-4557-9522-5cdcfa62cf6b","createDateTime":1585621636000,"content":"{\"statisticsSeq\":
+[{\"name\":\"Number of users logged daily\",\"number\":\"1\"},
+{\"name\":\"Number of users that uploaded daily\",\"number\":\"1\"},
+{\"name\":\"Number of users with Single EGA downloaded daily\",\"number\":\"2\"},
+{\"name\":\"Number of Single EGAs created daily\",\"number\":\"2\"},
+{\"name\":\"Number of reports uploaded daily\",\"number\":\"15\"},
+{\"name\":\"Number of engagements created daily\",\"number\":\"0\"},
+{\"name\":\"Number of fund profiles created daily\",\"number\":\"0\"},
+\"name\":\"Number of fund processed daily\",\"number\":\"1\"},
+{\"name\":\"Number of users logged\",\"number\":\"20\"},
+{\"name\":\"Number of users that uploaded\",\"number\":\"1\"},
+{\"name\":\"Number of users with Single EGA downloaded\",\"number\":\"2\"},
+{\"name\":\"Number of Single EGAs created\",\"number\":\"11\"},
+{\"name\":\"Number of reports uploaded\",\"number\":\"80\"},
+{\"name\":\"Number of engagements created\",\"number\":\"4\"},
+{\"name\":\"Number of fund profiles created\",\"number\":\"15\"},
+{\"name\":\"Number of fund processed\",\"number\":\"11\"},
+{\"name\":\"Average number of funds per engagement\",\"number\":\"3.75\"},
+{\"name\":\"Average number of users per engagement\",\"number\":\"5.00\"}]}"},
+
+....
+
+{"id":"493788c6-58f5-40b5-a411-6e532d58da07","createDateTime":1577675915000,"content":"{\"statisticsSeq\":
+[{\"name\":\"Number of users logged\",\"number\":\"17\"},
+{\"name\":\"Number of users that uploaded\",\"number\":\"7\"},
+{\"name\":\"Number of users with Single EGA downloaded\",\"number\":\"2\"},
+{\"name\":\"Number of Single EGAs created\",\"number\":\"21\"},
+{\"name\":\"Number of reports uploaded\",\"number\":\"223\"},
+{\"name\":\"Number of engagements created\",\"number\":\"4\"},
+{\"name\":\"Number of fund profiles created\",\"number\":\"10\"},
+{\"name\":\"Number of fund processed\",\"number\":\"12\"},
+{\"name\":\"Average number of funds per engagement\",\"number\":\"2.50\"},
+{\"name\":\"Average number of users per engagement\",\"number\":\"4.25\"}]}"}]
