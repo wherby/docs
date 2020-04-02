@@ -21,4 +21,6 @@ This is the introduction for doradilla library.
 
 * [Inconsistent data](inconsistent/index.md)
 
+* [Daily job](dailyjob/index.md)
+
 @@@
