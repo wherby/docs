@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-<title>Database Single truth principle · Doradilla</title>
+<title>Oauth2 client for Pac4j · Doradilla</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content='Description for doradilla library.'/>
@@ -36,7 +36,7 @@
 <div class="nav-toc">
 <ul>
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
-  <li><a href="../database/index.html" class="active page">Database Single truth principle</a>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
   <ul>
     <li><a href="../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
@@ -49,7 +49,7 @@
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
-  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../pac4j/index.html" class="active page">Oauth2 client for Pac4j</a></li>
 </ul>
 </div>
 
@@ -87,7 +87,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="nav-toc">
 <ul>
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
-  <li><a href="../database/index.html" class="active page">Database Single truth principle</a>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
   <ul>
     <li><a href="../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
@@ -100,7 +100,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
-  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../pac4j/index.html" class="active page">Oauth2 client for Pac4j</a></li>
 </ul>
 </div>
 
@@ -117,7 +117,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="nav-breadcrumbs">
 <ul>
   <li><a href="../index.html">Doradilla</a></li>
-  <li>Database Single truth principle</li>
+  <li>Oauth2 client for Pac4j</li>
 </ul>
 </div>
 </div>
@@ -125,21 +125,54 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 
 <div class="page-content row">
 <div class="small-12 large-9 column" id="docs">
-<h1><a href="#database-single-truth-principle" name="database-single-truth-principle" class="anchor"><span class="anchor-link"></span></a>Database Single truth principle</h1>
-<div class="toc ">
-<ul>
-  <li><a href="../database/dbservice.html" class="page">DB service</a></li>
-</ul>
-</div>
+<h1><a href="#oauth2-client-for-pac4j" name="oauth2-client-for-pac4j" class="anchor"><span class="anchor-link"></span></a>Oauth2 client for Pac4j</h1>
+<h2><a href="#whats-pac4j-do-" name="whats-pac4j-do-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s pac4j do?</h2>
+<p>Pac4j will maintain a &ldquo;profile&rdquo; for authenticated user:</p>
+<h3><a href="#1-user-will-specify-the-client-used-for-application-" name="1-user-will-specify-the-client-used-for-application-" class="anchor"><span class="anchor-link"></span></a>1. User will specify the client used for application:</h3>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/pac4j/code/clientselection.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
+...
+}</code></pre>
+<h3><a href="#2-pac4j-will-first-query-profile" name="2-pac4j-will-first-query-profile" class="anchor"><span class="anchor-link"></span></a>2. Pac4j will first query profile</h3>
+<p><img src="./pic/queryprofile.png" alt="query profile" /></p>
+<p>and there is no profile exist yet:</p>
+<p><img src="./pic/firstquery.png" alt="first query" /></p>
+<h3><a href="#3-client-will-start-oauth2-authentication-" name="3-client-will-start-oauth2-authentication-" class="anchor"><span class="anchor-link"></span></a>3. Client will start Oauth2 authentication:</h3>
+<h4><a href="#get-authorize" name="get-authorize" class="anchor"><span class="anchor-link"></span></a>Get authorize</h4>
+<p>User will redirect to authorization portal</p>
+<p><img src="./pic/redirect.png" alt="authorize" /></p>
+<p>After user authorized, then the authorization portal will post back with token for user:</p>
+<p><img src="./pic/callback.png" alt="call back" /></p>
+<h4><a href="#get-access-token" name="get-access-token" class="anchor"><span class="anchor-link"></span></a>Get access token</h4>
+<p>Then use the authorized token to change the access token:</p>
+<p><img src="./pic/accesstoken.png" alt="Access token" /></p>
+<h4><a href="#get-user-information" name="get-user-information" class="anchor"><span class="anchor-link"></span></a>Get user information</h4>
+<p>User the access token to get user information </p>
+<p><img src="./pic/userinfo.png" alt="User info" /></p>
+<h3><a href="#4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" name="4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" class="anchor"><span class="anchor-link"></span></a>4. Then the pac4j will use the user information to create a profile for user:</h3>
+<p><img src="./pic/createprofile.png" alt="Create user profile" /></p>
+<h3><a href="#5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" name="5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" class="anchor"><span class="anchor-link"></span></a>5. When profile is stored in session, user profile could be get when user visit restricted resources:</h3>
+<p><img src="./pic/queryprofile.png" alt="Get profile" /></p>
+<p>and redirect to the resources:</p>
+<p><img src="./pic/getprofileredirect.png" alt="Redirect" /></p>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/database/index.md">here</a>.
+The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/pac4j/index.md">here</a>.
 </div>
 
-<div class="nav-next">
-<p><strong>Next:</strong> <a href="../database/dbservice.html">DB service</a></p>
-</div>
 </div>
 <div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <ul>
+    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
 </div>
 </div>
 

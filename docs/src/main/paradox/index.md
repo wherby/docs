@@ -23,4 +23,6 @@ This is the introduction for doradilla library.
 
 * [Daily job](dailyjob/index.md)
 
+* [Oauth2 client for Pac4j](pac4j/index.md)
+
 @@@
