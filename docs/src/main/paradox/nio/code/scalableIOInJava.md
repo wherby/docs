@@ -1,6 +1,6 @@
 ## Scalable IO in Java
 
-The original reference is from @link:[Scalable IO in Java](http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf)  { open=new }
+The original reference is from [Scalable IO in Java](http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf)  { open=new }
 
 #### Classic way of handle one requst pre thread
 ![Class way](pic/classic.png)

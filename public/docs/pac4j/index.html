@@ -1,95 +1,139 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-
+<html lang="en" class="no-js">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../assets/images/favicon.png">
 <title>Oauth2 client for Pac4j · Doradilla</title>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content='Description for doradilla library.'/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../js/page.js"></script>
-<script type="text/javascript" src="../js/warnOldVersion.js"></script>
-<script type="text/javascript" src="../js/groups.js"></script>
-<link rel="stylesheet" type="text/css" href="../lib/foundation/dist/foundation.min.css"/>
-<link rel="stylesheet" type="text/css" href="../css/page.css"/>
-
-<!--
-<link rel="shortcut icon" href="../images/favicon.ico" />
--->
+<link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../lib/prettify/prettify.css">
+<script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../assets/stylesheets/paradox-material-theme.css">
 </head>
-
-<body>
-<div class="off-canvas-wrapper">
-<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
-<nav class="off-canvas-nav">
-<div class="nav-home">
-<a href="../index.html" >
-<span class="home-icon">⌂</span>Doradilla
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
 </a>
-<div class="version-number">
-0.1.0
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Doradilla
+</span>
+<span class="md-header-nav__topic">
+Oauth2 client for Pac4j
+</span>
 </div>
 </div>
-<div class="nav-toc">
-<ul>
-  <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
-  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
-  <ul>
-    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
-  </ul></li>
-  <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
-  <ul>
-    <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
-  </ul></li>
-  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
-  <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
-  <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
-  <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
-  <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
-  <li><a href="../pac4j/index.html" class="active page">Oauth2 client for Pac4j</a></li>
-  <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
-  <ul>
-    <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
-    <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
-  </ul></li>
-</ul>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
 </div>
 
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
 </nav>
-</div>
-
-<div class="off-canvas-content" data-off-canvas-content>
-
-<header class="site-header expanded row">
-<div class="small-12 column">
-<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
-H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
-C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
-</a>
-<div class="title"><a href="../index.html">Doradilla</a></div>
-
-<!--
-<a href="https://www.example.com" class="logo show-for-medium">logo</a>
--->
-</div>
 </header>
 
-<div class="expanded row">
-
-<div class="medium-3 large-2 show-for-medium column">
-<nav class="site-nav">
-<div class="nav-home">
-<a href="../index.html" >
-<span class="home-icon">⌂</span>Doradilla
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
 </a>
-<div class="version-number">
-0.1.0
+<a href="../index.html" title="Doradilla">
+Doradilla
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
 </div>
+<div class="md-source__repository">
+wherby/docs
 </div>
-<div class="nav-toc">
+</a>
+
+</div>
 <ul>
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
   <li><a href="../database/index.html" class="page">Database Single truth principle</a>
@@ -112,34 +156,51 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
 </ul>
-</div>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <ul>
+    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+  </ul></li>
+</ul>
+</nav>
 
 </nav>
-</div>
-
-<div class="small-12 medium-9 large-10 column">
-<section class="site-content">
-
-<span id="version-warning"></span>
-
-<div class="page-header row">
-<div class="medium-12 show-for-medium column">
-<div class="nav-breadcrumbs">
-<ul>
-  <li><a href="../index.html">Doradilla</a></li>
-  <li>Oauth2 client for Pac4j</li>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
 </ul>
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <ul>
+    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+  </ul></li>
+</ul>
+</nav>
 
-<div class="page-content row">
-<div class="small-12 large-9 column" id="docs">
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
 <h1><a href="#oauth2-client-for-pac4j" name="oauth2-client-for-pac4j" class="anchor"><span class="anchor-link"></span></a>Oauth2 client for Pac4j</h1>
 <h2><a href="#whats-pac4j-do-" name="whats-pac4j-do-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s pac4j do?</h2>
 <p>Pac4j will maintain a &ldquo;profile&rdquo; for authenticated user:</p>
 <h3><a href="#1-user-will-specify-the-client-used-for-application-" name="1-user-will-specify-the-client-used-for-application-" class="anchor"><span class="anchor-link"></span></a>1. User will specify the client used for application:</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/pac4j/code/clientselection.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/pac4j/code/clientselection.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
 ...
 }</code></pre>
 <h3><a href="#2-pac4j-will-first-query-profile" name="2-pac4j-will-first-query-profile" class="anchor"><span class="anchor-link"></span></a>2. Pac4j will first query profile</h3>
@@ -164,91 +225,77 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <p><img src="./pic/queryprofile.png" alt="Get profile" /></p>
 <p>and redirect to the resources:</p>
 <p><img src="./pic/getprofileredirect.png" alt="Redirect" /></p>
-<div class="source-github">
-The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/pac4j/index.md">here</a>.
 </div>
-
-<div class="nav-next">
-<p><strong>Next:</strong> <a href="../nio/index.html">NIO and Akka-Http</a></p>
+<div>
+<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/pac4j/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
 </div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
 </div>
-<div class="large-3 show-for-large column" data-sticky-container>
-<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
-<div class="page-nav">
-<div class="nav-title">On this page:</div>
-<div class="nav-toc">
-<ul>
-  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
-  <ul>
-    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
-  </ul></li>
-</ul>
+</article>
 </div>
 </div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../dailyjob/index.html" title="Daily schedule job" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Daily schedule job
+</span>
+</div>
+</a>
+<a href="../nio/index.html" title="NIO and Akka-Http" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+NIO and Akka-Http
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
 </nav>
 </div>
-</div>
-
-</section>
-</div>
-
-</div>
-
-<footer class="site-footer">
-
-<section class="site-footer-nav">
-<div class="expanded row">
-<div class="small-12 large-offset-2 large-10 column">
-<div class="row site-footer-content">
-
-<div class="small-12 medium-4 large-3 text-center column">
-<div class="nav-links">
-<ul>
-<!-- <li><a href="https://www.example.com/products/">Products</a> -->
-</ul>
-</div>
-</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 </div>
 </div>
-</section>
-
-<section class="site-footer-base">
-<div class="expanded row">
-<div class="small-12 large-offset-2 large-10 column">
-<div class="row site-footer-content">
-
-<div class="small-12 text-center large-9 column">
-
-<!--
-<div class="copyright">
-<span class="text">&copy; 2020</span>
-<a href="https://www.example.com" class="logo">logo</a>
-</div>
--->
-</div>
-
-</div>
-</div>
-</div>
-</section>
 </footer>
 
 </div>
-</div>
-</div>
-</body>
-
-<script type="text/javascript" src="../lib/foundation/dist/foundation.min.js"></script>
-<script type="text/javascript">jQuery(document).foundation();</script>
-<script type="text/javascript" src="../js/magellan.js"></script>
-
-<style type="text/css">@import "../lib/prettify/prettify.css";</style>
+<script src="../assets/javascripts/application.583bbe55.js"></script>
+<script src="../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../."}})</script>
 <script type="text/javascript" src="../lib/prettify/prettify.js"></script>
 <script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
-<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
-<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0', '')});</script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-43080126-2"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});if(document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
 
-
+</body>
 </html>

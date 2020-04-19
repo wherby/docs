@@ -1,16 +1,29 @@
 
-val SomeConfig = config("doradilla")
+//val SomeConfig = config("doradilla")
+
 
 lazy val docs = (project in file("docs")).
-  enablePlugins(ParadoxPlugin).
+  //enablePlugins(ParadoxPlugin).
+  enablePlugins(ParadoxMaterialThemePlugin).
   settings(
-    name := "document for doradilla",
-    version := "0.1.0",
-    paradoxTheme := Some(builtinParadoxTheme("generic")),
-    paradoxIllegalLinkPath := raw".*\\.md".r,
-    paradoxProperties in Compile ++=Map("project.description" -> "Description for doradilla library.",
-      "github.base_url" -> s"https://github.com/wherby/docs/tree/v${version.value}")
-  )
+  name in(Compile, paradox) := "document for doradilla",
+  //version := "0.1.0",
+  //paradoxTheme := Some(builtinParadoxTheme("generic")),
+  paradoxIllegalLinkPath := raw".*\\.md".r,
+ Compile / paradoxMaterialTheme ~= {
+   _.withGoogleAnalytics("UA-43080126-2") // Remember to change this!
+ },
+ Compile / paradoxMaterialTheme ~= {
+   ParadoxMaterialTheme()
+     .withColor("teal", "indigo")
+   _.withRepository(uri("https://github.com/wherby/docs"))
+
+ },
+  paradoxProperties in Compile ++= Map("project.description" -> "Description for doradilla library.",
+    "github.base_url" -> s"https://github.com/wherby/docs/")
+)
+
+
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
