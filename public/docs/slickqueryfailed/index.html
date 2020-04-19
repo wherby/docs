@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Slick query overflow · Doradilla</title>
+<title>Slick query overflow · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Slick query overflow
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -210,7 +210,7 @@ wherby/docs
   <dd><img src="./pic/console.png" alt="Console faile" /></dd>
   <dt>Console log</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/consolelog.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[info] application - GET /api/engagements?page=1&amp;pageSize=2147483647 took 117ms by admin@cn.pwc.com and returned 200
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/consolelog.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[info] application - GET /api/engagements?page=1&amp;pageSize=2147483647 took 117ms by admin@cn.pwc.com and returned 200
 [debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
 [debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
 [debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
@@ -270,7 +270,7 @@ java.util.concurrent.RejectedExecutionException: Task slick.basic.BasicBackend$D
 <p>So it&rsquo;s seems the query triggered too many query to database, more than the database configuration.</p>
 <h2><a href="#code-implement" name="code-implement" class="anchor"><span class="anchor-link"></span></a>Code implement</h2>
 <p>let see how is the query implemented? </p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
   deadbolt.Pattern()() {implicit authRequest =&gt;
     var filterMap = Map[String, String]()
         ....
@@ -288,7 +288,7 @@ java.util.concurrent.RejectedExecutionException: Task slick.basic.BasicBackend$D
     })
   }</code></pre>
 <p>With database configuration:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
   database = {
       ...
     numThreads = 20
@@ -306,7 +306,7 @@ java.util.concurrent.RejectedExecutionException: Task slick.basic.BasicBackend$D
   <dd><img src="./pic/request.png" alt="Request" /></dd>
   <dt>Requet test</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/request.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">Request URL: http://localhost:9000/api/engageuserswithname?page=1&amp;pageSize=2147483647&amp;roleOpt=File%20Owner
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/request.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">Request URL: http://localhost:9000/api/engageuserswithname?page=1&amp;pageSize=2147483647&amp;roleOpt=File%20Owner
 Request Method: GET
 Status Code: 500 Internal Server Error
 Remote Address: [::1]:9000
@@ -318,7 +318,7 @@ Referrer Policy: no-referrer-when-downgrade</code></pre></dd>
 <dl>
   <dt>Add new query</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/dbquery.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def listPageWithEngagement(pageNum: Int, pageSize: Int, filterMap: Map[String, String]): Future[Page[(Engageuser,Engagement)]] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/dbquery.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def listPageWithEngagement(pageNum: Int, pageSize: Int, filterMap: Map[String, String]): Future[Page[(Engageuser,Engagement)]] = {
   val offset = pageSize * (pageNum - 1)
   val engageUsersWithNotDeleted = for{
     (engageusers, engagements) &lt;- Engageusers join Engagements on ((left, right) =&gt; left.engagementid === right.id &amp;&amp; right.deleted === &quot;false&quot; )
@@ -341,7 +341,7 @@ Referrer Policy: no-referrer-when-downgrade</code></pre></dd>
 }</code></pre></dd>
   <dt>Query Refined</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/queryRefined.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/queryRefined.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryPageWithName(page: Int, pageSize: Int, useridOpt: Option[String], engagementidOpt: Option[String], roleOpt: Option[String]) =
   deadbolt.Pattern()() {implicit authRequest =&gt;
     var filterMap = Map[String, String]()
       ...
@@ -354,7 +354,7 @@ Referrer Policy: no-referrer-when-downgrade</code></pre></dd>
   }</code></pre></dd>
   <dt>Console result</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/code/queryRefinedResult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`userid`, x2.`username`, x2.`engagementid`, x2.`role`, x2.`active`, x2.`deleted`, x2.`createdatetime`, x2.`lastactivetime`, x2.`disabledtime`, x2.`meta`, x3.`id`, x3.`engagementcode`, x3.`name`, x3.`periodstart`, x3.`periodend`, x3.`auralink`, x3.`active`, x3.`deleted`, x3.`createdatetime`, x3.`meta` from `engageusers` x2, `engagements` x3 where ((x2.`role` = &#39;File Owner&#39;) and (x2.`deleted` = &#39;false&#39;)) and ((x2.`engagementid` = x3.`id`) and (x3.`deleted` = &#39;false&#39;)) order by x2.`createdatetime` desc limit 0,2147483647
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/code/queryRefinedResult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`userid`, x2.`username`, x2.`engagementid`, x2.`role`, x2.`active`, x2.`deleted`, x2.`createdatetime`, x2.`lastactivetime`, x2.`disabledtime`, x2.`meta`, x3.`id`, x3.`engagementcode`, x3.`name`, x3.`periodstart`, x3.`periodend`, x3.`auralink`, x3.`active`, x3.`deleted`, x3.`createdatetime`, x3.`meta` from `engageusers` x2, `engagements` x3 where ((x2.`role` = &#39;File Owner&#39;) and (x2.`deleted` = &#39;false&#39;)) and ((x2.`engagementid` = x3.`id`) and (x3.`deleted` = &#39;false&#39;)) order by x2.`createdatetime` desc limit 0,2147483647
 [debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where `deleted` = &#39;false&#39; order by `createdatetime` desc limit 0,2147483647
 [debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`userid`, x2.`username`, x2.`engagementid`, x2.`role`, x2.`active`, x2.`deleted`, x2.`createdatetime`, x2.`lastactivetime`, x2.`disabledtime`, x2.`meta`, x3.`id`, x3.`engagementcode`, x3.`name`, x3.`periodstart`, x3.`periodend`, x3.`auralink`, x3.`active`, x3.`deleted`, x3.`createdatetime`, x3.`meta` from `engageusers` x2, `engagements` x3 where ((x2.`role` = &#39;File Owner&#39;) and (x2.`deleted` = &#39;false&#39;)) and ((x2.`engagementid` = x3.`id`) and (x3.`deleted` = &#39;false&#39;)) order by x2.`createdatetime` desc limit 0,10
 [debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where `deleted` = &#39;false&#39; order by `createdatetime` desc limit 0,2147483647
@@ -367,7 +367,7 @@ Referrer Policy: no-referrer-when-downgrade</code></pre></dd>
 <p>The inner query is triggered by the outer pageNumber, in practical way of page query, there should not set the number to the number [pageSize=214748364]. And also increase the database queue size.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/slickqueryfailed/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/slickqueryfailed/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -420,6 +420,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

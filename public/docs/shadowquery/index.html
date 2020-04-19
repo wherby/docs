@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Shadow query · Doradilla</title>
+<title>Shadow query · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Shadow query
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -215,7 +215,7 @@ wherby/docs
 <h2><a href="#how-to-fix" name="how-to-fix" class="anchor"><span class="anchor-link"></span></a>How to fix</h2>
 <h3><a href="#db-config-file" name="db-config-file" class="anchor"><span class="anchor-link"></span></a>Db config file</h3>
 <p>Let see the db config file:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/shadowquery/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
   database = {
     ...
     // The number of threads determines how many things you can *run* in parallel
@@ -236,7 +236,7 @@ wherby/docs
 <dl>
   <dt>UpdateCode</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/shadowquery/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">private def cleanSelectionType(oldFund:Fund, newFund: Fund, fundenegagementId:String ):Future[Any]={
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">private def cleanSelectionType(oldFund:Fund, newFund: Fund, fundenegagementId:String ):Future[Any]={
    if(oldFund.fundAdmin != newFund.fundAdmin){
      fundEngagementReportTypeSelectionDAO.deleteByEngagementId(fundenegagementId)
    }
@@ -286,7 +286,7 @@ wherby/docs
  }</code></pre></dd>
   <dt>QueryStatus</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/shadowquery/code/querystatus.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def queryFundReportStatus(engagementId: String): Future[Seq[FundEngagementWithStatus]] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/querystatus.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def queryFundReportStatus(engagementId: String): Future[Seq[FundEngagementWithStatus]] = {
   val sql = for ((((fundEnagements, funds), selections), ega)
                    &lt;- FundEngagement join Funds on ((left, right) =&gt; left.fundid === right.id &amp;&amp; left.engagementid === engagementId)
                                      joinLeft  FundEngagementReportTypeSelection on ((left, right) =&gt; left._1.id === right.fundEngagementId &amp;&amp; right.selected === true)
@@ -330,7 +330,7 @@ wherby/docs
 </dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/shadowquery/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -383,6 +383,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

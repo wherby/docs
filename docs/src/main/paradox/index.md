@@ -1,4 +1,4 @@
-# Doradilla
+# Docs
 
 This is the introduction for doradilla library.
 

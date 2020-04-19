@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Apache MPM event · Doradilla</title>
+<title>Apache MPM event · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Apache MPM event
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../../index.html" title="Doradilla">
-Doradilla
+<a href="../../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -222,7 +222,7 @@ wherby/docs
 <p>Sometimes the MPM needs to perform a lingering close, namely sending back an early error to the client while it is still transmitting data to httpd. Sending the response and then closing the connection immediately is not the correct thing to do since the client (still trying to send the rest of the request) would get a connection reset and could not read the httpd&rsquo;s response. The lingering close is time-bounded, but it can take a relatively long time, so it&rsquo;s offloaded to a worker thread (including the shutdown hooks and real socket close). From 2.4.28 onward, this is also the case when connections finally timeout (the listener thread never handles connections besides waiting for and dispatching their events). These improvements are valid for both HTTP/HTTPS connections.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/nio/code/appacheMPMEvent.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/code/appacheMPMEvent.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -275,6 +275,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

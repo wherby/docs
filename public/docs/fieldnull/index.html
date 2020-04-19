@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Database null field error · Doradilla</title>
+<title>Database null field error · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Database null field error
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -217,7 +217,7 @@ wherby/docs
 <p>Check the database:</p>
 <p><img src="./databasequery.png" alt="Database query" /></p>
 <p>It seems the fund_admin_id field is null, we fix this issue, then user could define report types now. But we check the production database, we will find the field will be set to null by application:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/sql.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>4:20:13 PM: mysql&gt; SELECT id,fund_admin_id,fund_admin FROM awm.funds;
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/sql.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>4:20:13 PM: mysql&gt; SELECT id,fund_admin_id,fund_admin FROM awm.funds;
 +--------------------------------------+---------------+-----------------+
 | id                                   | fund_admin_id | fund_admin      |
 +--------------------------------------+---------------+-----------------+
@@ -275,7 +275,7 @@ wherby/docs
 <dl>
   <dt>Fund</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `funds`(
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `funds`(
    `id` varchar(128) NOT NULL,
    `name` VARCHAR(128) not null,
     fund_admin_id varchar(128) null,
@@ -294,7 +294,7 @@ wherby/docs
 )</code></pre></dd>
   <dt>FundAdmin</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/fundadmin.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_admin`(
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/fundadmin.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_admin`(
     `id` varchar(128) NOT NULL,
     `name` varchar(128) NOT NULL,
     PRIMARY KEY (`id`)
@@ -305,7 +305,7 @@ wherby/docs
 <dl>
   <dt>Create fund</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/create.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def create(fund: Fund, engagementId:String): Future[Int] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/create.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def create(fund: Fund, engagementId:String): Future[Int] = {
   engagementDAO.lookup(engagementId).flatMap(maybeEngagement =&gt; {
     maybeEngagement match {
       case engagement =&gt; {
@@ -333,7 +333,7 @@ wherby/docs
 </code></pre></dd>
   <dt>Update fund</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
   fundsDAO.lookup(fund.id).flatMap(maybeFund =&gt; {
     maybeFund match {
 
@@ -379,7 +379,7 @@ wherby/docs
   <dt>Fix one: by add query for second branch
   </dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/updatefix1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/updatefix1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
   fundsDAO.lookup(fund.id).flatMap(maybeFund =&gt; {
     maybeFund match {
 
@@ -430,7 +430,7 @@ wherby/docs
   <dt>Fix two: by add shared query
   </dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/code/updatefix2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/code/updatefix2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def update(fund: Fund): Future[Int] = {
   val newFundFuture =  fundAdminDAO.queryByFundAdmin(fund.fundAdmin).map{
     tmpOpt =&gt;tmpOpt match{
       case Some(fundAdmin)=&gt;fund.copy(fundAdminId = Some(fundAdmin.id))
@@ -481,7 +481,7 @@ wherby/docs
 <p>Question 2, how to use the single truth principle to resolve issues above? </p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/fieldnull/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fieldnull/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -534,6 +534,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

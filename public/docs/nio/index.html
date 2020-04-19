@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>NIO and Akka-Http · Doradilla</title>
+<title>NIO and Akka-Http · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 NIO and Akka-Http
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -222,11 +222,23 @@ import java.nio.channels.SelectionKey._
 <h2><a href="#go-through-the-article" name="go-through-the-article" class="anchor"><span class="anchor-link"></span></a>Go through the article</h2>
 <p>We will quickly go throught this article:</p>
 <ol>
-  <li>The classical Java BIO can&rsquo;t fit the requirement ``` Most web servers used to use thread per connection model to handle http requests. In this model, the servers also used to use blocking IO libraries to read requests from connections and write responses.This works well when connections are short lived. Traditionally, most http requests used to be short lived. A client opened a connection, sent request, read the response and closed the connection. This allowed servers to have a fixed thread pool to serve the requests and use blocking IO to read and write to connections. Using blocking IO, also allowed having synchronous APIs, which is a simple programming model to work with.</li>
+  <li>The classical Java BIO can&rsquo;t fit the requirement</li>
 </ol>
-<p>This model created a big problem with changing patterns of web requests though.</p>
-<p>To support Keep-Alive connections, http pipelining, servers could no longer rely on blocking IO and  threads only. Apache, as of version 2.4 uses evented IO to handle connections</p>
-<p>(<a href="https://httpd.apache.org/docs/2.4/mod/event.html">https://httpd.apache.org/docs/2.4/mod/event.html</a>) ``` You may want to see the <a href="https://httpd.apache.org/docs/2.4/mod/event.html">Appache MPM Event</a></p>
+<pre><code>Most web servers used to use thread per connection model to handle http requests. In this model, the
+servers also used to use blocking IO libraries to read requests from connections and write responses.This works well when connections are short lived. Traditionally, most http requests used to be short
+lived. A client opened a connection, sent request, read the response and closed the connection. This
+allowed servers to have a fixed thread pool to serve the requests and use blocking IO to read and
+write to connections. Using blocking IO, also allowed having synchronous APIs, which is a simple
+programming model to work with.
+
+This model created a big problem with changing patterns of web requests though.
+
+To support Keep-Alive connections, http pipelining, servers could no longer rely on blocking IO and
+ threads only. Apache, as of version 2.4 uses evented IO to handle connections
+
+(https://httpd.apache.org/docs/2.4/mod/event.html)
+</code></pre>
+<p>You may want to see the <a href="https://httpd.apache.org/docs/2.4/mod/event.html">Appache MPM Event</a></p>
 <ol>
   <li>
   <p>Then there will intruce some Java NIO design pattern throw :<a href="http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf">Scalable IO in Java</a> { open=new }. The short version from: <a href="code/scalableIOInJava.html">Scalable IO in Java</a></p></li>
@@ -237,7 +249,7 @@ import java.nio.channels.SelectionKey._
 </ol>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/nio/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -290,6 +302,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

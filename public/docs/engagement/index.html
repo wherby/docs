@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Engagement entity add to database · Doradilla</title>
+<title>Engagement entity add to database · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Engagement entity add to database
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -214,7 +214,7 @@ wherby/docs
 <dl>
   <dt>User</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/user.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `users`(
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/user.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `users`(
    `id` varchar(128) NOT NULL,
    `email` VARCHAR(128) NOT NULL,
    `role` VARCHAR(128) NOT NULL,
@@ -224,7 +224,7 @@ wherby/docs
 )</code></pre></dd>
   <dt>Engagement</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/engagement.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `engagements`(
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagement.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `engagements`(
    `id` varchar(128) NOT NULL,
    `name` VARCHAR(128) NOT NULL,
    `funds` TEXT NOT NULL,
@@ -233,7 +233,7 @@ wherby/docs
   <dt>Fund-company
   </dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/fund_company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">CREATE TABLE fund_company_investments (
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund_company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">CREATE TABLE fund_company_investments (
     id varchar(128) NOT NULL, 
     fund_id varchar(255) NOT NULL,
     company_id varchar(128) NOT NULL, 
@@ -242,14 +242,14 @@ wherby/docs
 );</code></pre></dd>
   <dt>Fund</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund` (
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund` (
    `id` varchar(128) NOT NULL,
    `name` VARCHAR(128) NOT NULL,
     PRIMARY KEY (id)
 )</code></pre></dd>
   <dt>Company</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `company` (
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `company` (
    `id` varchar(128) NOT NULL,
    `name` VARCHAR(128) NOT NULL,
     PRIMARY KEY (id)
@@ -257,7 +257,7 @@ wherby/docs
 </dl>
 <h3><a href="#question" name="question" class="anchor"><span class="anchor-link"></span></a>Question</h3>
 <p>How could we check the user&rsquo;s privilege on company and fund?</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/code/engagementimpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class EngagementInfo(id: String, name: String, funds: Seq[String])
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagementimpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class EngagementInfo(id: String, name: String, funds: Seq[String])
 
 case class UserEngagementInfo(userRole: String, engagements: Seq[EngagementInfo],funds: Seq[String])
 
@@ -303,7 +303,7 @@ override def verifyForComapany(email: String, companyId: String, year: Int): Fut
 <h3><a href="#2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" name="2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" class="anchor"><span class="anchor-link"></span></a>2. What will happen when user binding to engagement table not engagement binging to user table?</h3>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/engagement/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -356,6 +356,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>

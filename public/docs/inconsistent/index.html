@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Inconsistent status · Doradilla</title>
+<title>Inconsistent status · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -43,7 +43,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <nav class="md-header-nav md-grid">
 <div class="md-flex">
 <div class="md-flex__cell md-flex__cell--shrink">
-<a href="../index.html" title="Doradilla" class="md-header-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
 </div>
@@ -53,7 +53,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 <div class="md-flex__cell md-flex__cell--stretch">
 <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
 <span class="md-header-nav__topic">
-Doradilla
+Docs
 </span>
 <span class="md-header-nav__topic">
 Inconsistent status
@@ -112,12 +112,12 @@ wherby/docs
 <div class="md-sidebar__inner">
 <nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
 <label class="md-nav__title md-nav__title--site" for="drawer">
-<a href="../index.html" title="Doradilla" class="md-nav__button md-logo">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
 <span class="md-nav__button md-logo">
 <i class="md-icon">local_library</i>
 </a>
-<a href="../index.html" title="Doradilla">
-Doradilla
+<a href="../index.html" title="Docs">
+Docs
 </a>
 </label>
 <div class="md-nav__source">
@@ -177,7 +177,7 @@ wherby/docs
 <p>Statistics query goes different for &ldquo;downloaders&rdquo; in User Information section and &ldquo;Single EGA Download&rdquo; in Fund Information section </p>
 <p><img src="./pic/statistics.png" alt="Statistics Image" /></p>
 <p>But the two information comes from same api:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/inconsistent/code/api.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class StatisticsReadImpl @Inject()(...
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/api.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class StatisticsReadImpl @Inject()(...
                                    slickUserlogDAO: SlickUserlogDAO)(implicit ec: ExecutionContext) extends StatisticsRead {
   override def getAWMStatistics(): Future[AWMStatistics] = {
       ....
@@ -199,7 +199,7 @@ wherby/docs
   }
 }</code></pre>
 <p>And we could see from UI, the query goes like:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/inconsistent/code/ui.tsx" target="_blank" title="Go to snippet source"></a><code class="language-tsx">fetchData = () =&gt; {
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/ui.tsx" target="_blank" title="Go to snippet source"></a><code class="language-tsx">fetchData = () =&gt; {
     this.props.getPureAdminUsers().then((res) =&gt; {
      ....
             for(var i = 0; i &lt; data.length; i++){
@@ -221,7 +221,7 @@ wherby/docs
           }
 </code></pre>
 <p>but check the response body of the api:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/inconsistent/code/responsebody.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[{&quot;id&quot;:&quot;9b58f780-fbd2-4557-9522-5cdcfa62cf6b&quot;,&quot;createDateTime&quot;:1585621636000,&quot;content&quot;:&quot;{\&quot;statisticsSeq\&quot;:
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/responsebody.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[{&quot;id&quot;:&quot;9b58f780-fbd2-4557-9522-5cdcfa62cf6b&quot;,&quot;createDateTime&quot;:1585621636000,&quot;content&quot;:&quot;{\&quot;statisticsSeq\&quot;:
 [{\&quot;name\&quot;:\&quot;Number of users logged daily\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
 {\&quot;name\&quot;:\&quot;Number of users that uploaded daily\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
 {\&quot;name\&quot;:\&quot;Number of users with Single EGA downloaded daily\&quot;,\&quot;number\&quot;:\&quot;2\&quot;},
@@ -256,7 +256,7 @@ wherby/docs
 {\&quot;name\&quot;:\&quot;Average number of users per engagement\&quot;,\&quot;number\&quot;:\&quot;4.25\&quot;}]}&quot;}]</code></pre>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/v0.1.0-SNAPSHOT/docs/src/main/paradox/inconsistent/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -309,6 +309,10 @@ and
 <a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
 </div>
 </div>
 </footer>
