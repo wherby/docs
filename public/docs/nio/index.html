@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-<title>DB service · Doradilla</title>
+<title>NIO and Akka-Http · Doradilla</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content='Description for doradilla library.'/>
@@ -38,7 +38,7 @@
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
   <li><a href="../database/index.html" class="page">Database Single truth principle</a>
   <ul>
-    <li><a href="../database/dbservice.html" class="active page">DB service</a></li>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
   <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
   <ul>
@@ -50,7 +50,7 @@
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
   <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
-  <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
+  <li><a href="../nio/index.html" class="active page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
@@ -94,7 +94,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
   <li><a href="../database/index.html" class="page">Database Single truth principle</a>
   <ul>
-    <li><a href="../database/dbservice.html" class="active page">DB service</a></li>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
   <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
   <ul>
@@ -106,7 +106,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
   <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
-  <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
+  <li><a href="../nio/index.html" class="active page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
@@ -127,8 +127,7 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 <div class="nav-breadcrumbs">
 <ul>
   <li><a href="../index.html">Doradilla</a></li>
-  <li><a href="../database/index.html">Database Single truth principle</a></li>
-  <li>DB service</li>
+  <li>NIO and Akka-Http</li>
 </ul>
 </div>
 </div>
@@ -136,124 +135,66 @@ C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.
 
 <div class="page-content row">
 <div class="small-12 large-9 column" id="docs">
-<h1><a href="#db-service" name="db-service" class="anchor"><span class="anchor-link"></span></a>DB service</h1>
-<p>In traditional way, the database service will be implemented in this way:</p>
-<dl>
-  <dt>Controller</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/controller/UserController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.ExecutionContext
+<h1><a href="#nio-and-akka-http" name="nio-and-akka-http" class="anchor"><span class="anchor-link"></span></a>NIO and Akka-Http</h1>
+<h2><a href="#whats-java-nio-" name="whats-java-nio-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s Java NIO?</h2>
+<p>See the : <a href="https://tech.meituan.com/2016/11/04/nio.html" title="Java NIO浅析">Java NIO浅析</a></p>
+<h2><a href="#whats-relationship-about-java-nio-and-akka-http-" name="whats-relationship-about-java-nio-and-akka-http-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s relationship about Java NIO and Akka-Http:</h2>
+<p>Akka IO is based on Java NIO library:</p>
+<pre class="prettyprint"><code class="language-scala  ">package akka.io
 
-@Singleton
-class UserController @Inject()(userServiceRead: UserRead,
-                               userServiceWrite: UserWrite,
-                                ...)
-                              (implicit ec: ExecutionContext) extends AbstractController(cc) {
-    ...
+import java.util.{ Iterator ⇒ JIterator }
+import java.util.concurrent.atomic.AtomicBoolean
+import java.nio.channels.{ SelectableChannel, SelectionKey, CancelledKeyException }
+import java.nio.channels.SelectionKey._
 
-}</code></pre></dd>
-  <dt>Database</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/db/UserDAO.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package db
-
-import scala.concurrent.Future
-
-
-trait UserDAO {
-  def lookup(id: String): Future[Option[User]]
-
-  def create(user: User): Future[Int]
-    ...
-
-}
-
-
-case class User(id: String, email: String)
-
-
-</code></pre></dd>
-  <dt>Database impl</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/db/impl/SlickUserDAO.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package db.impl
-
-class SlickUserDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extends UserDAO with DbTables {
-
-  import profile.api._
-
-  override def lookup(id: String): Future[Option[User]] = {
-    val f: Future[Option[UsersRow]] = db.run(queryById(id).result.headOption)
-    f.map { maybeRow =&gt; maybeRow.map(usersRowToUser) }
-  }
-
-  override def create(user: User): Future[Int] = {
-    db.run(
-      Users += userToUsersRow(user)
-    )
-  }
-
-  ...
-}
-</code></pre></dd>
-  <dt>Read</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/service/UserRead.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package service
-
-  ...
-
-trait UserRead {
-  def lookup(id: String): Future[Option[User]]
-}</code></pre></dd>
-  <dt>Read Impl</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/service/impl/UserReadImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package service.impl
-
-import scala.concurrent.ExecutionContext
-
-class UserReadImpl @Inject()(userDAO: UserDAO)(implicit ec: ExecutionContext) extends UserRead {
-  override def lookup(id: String): Future[Option[User]] = {
-    userDAO.lookup(id)
-  }
-}</code></pre></dd>
-  <dt>Write</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/service/UserWrite.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package service
-
-trait UserWrite {
-  def create(user: User): Future[Int]
-}</code></pre></dd>
-  <dt>Write Impl</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/service/impl/UserWriteImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package service.impl
-
-
-@Singleton
-class UserWriteImpl @Inject()(userDAO: UserDAO)(implicit ec: ExecutionContext) extends UserWrite {
-  override def create(user: User): Future[Int] = {
-    userDAO.create(user)
-  }
-}</code></pre></dd>
-  <dt>Module</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/scala/Module.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class Module(environment: Environment,
-             configuration: Configuration) extends AbstractModule {
-  override def configure(): Unit = {
-      ...
-    bind(classOf[UserDAO]).to(classOf[SlickUserDAO])
-    bind(classOf[UserRead]).to(classOf[UserReadImpl])
-    bind(classOf[UserWrite]).to(classOf[UserWriteImpl])
-      ...
-  }
-}
-</code></pre></dd>
-</dl>
+</code></pre>
+<p>But is Akka-Http is same as Jetty or Netty?</p>
+<p>No, you could find the answer from <a href="https://medium.com/@unmeshvjoshi/understanding-reactive-io-and-back-pressure-with-your-own-akka-http-server-d4b64921059a" title="Understanding Reactive IO and Back-Pressure with (your own) Akka Http Server" target="_blank" rel="noopener noreferrer">Understanding Reactive IO and Back-Pressure with (your own) Akka Http Server</a></p>
+<h2><a href="#why-akka-http-is-introduced-" name="why-akka-http-is-introduced-" class="anchor"><span class="anchor-link"></span></a>Why Akka-http is introduced?</h2>
+<p>Well, the main answer is in the same <a href="https://medium.com/@unmeshvjoshi/understanding-reactive-io-and-back-pressure-with-your-own-akka-http-server-d4b64921059a" title="Understanding Reactive IO and Back-Pressure with (your own) Akka Http Server" target="_blank" rel="noopener noreferrer">Understanding Reactive IO and Back-Pressure with (your own) Akka Http Server</a>. </p>
+<h2><a href="#go-through-the-article" name="go-through-the-article" class="anchor"><span class="anchor-link"></span></a>Go through the article</h2>
+<p>We will quickly go throught this article:</p>
+<ol>
+  <li>
+  <p>
+  <p>The classical Java BIO can&rsquo;t fit the requirement</p>
+  <pre><code>Most web servers used to use thread per connection model to handle http requests. In this model, the servers also used to use blocking IO libraries to read requests from connections and write responses. This works well when connections are short lived. Traditionally, most http requests used to be short lived. A client opened a connection, sent request, read the response and closed the connection. This allowed servers to have a fixed thread pool to serve the requests and use blocking IO to read and write to connections. Using blocking IO, also allowed having synchronous APIs, which is a simple programming model to work with.
+This model created a big problem with changing patterns of web requests though.
+To support Keep-Alive connections, http pipelining, servers could no longer rely on blocking IO and threads only. Apache, as of version 2.4 uses evented IO to handle connections
+(https://httpd.apache.org/docs/2.4/mod/event.html)
+</code></pre>You may want to see the <a href="https://httpd.apache.org/docs/2.4/mod/event.html">Appache MPM Event</a></p></li>
+  <li>
+  <p>Then there will intruce some Java NIO design pattern throw <a href="http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf" title="Scalable IO in Java" target="_blank" rel="noopener noreferrer">Scalable IO in Java</a>. The short version from: <a href="code/scalableIOInJava.html">Scalable IO in Java</a></p></li>
+  <li>
+  <p>Because the actor is lightweight, so we could use create an Actor per connection. Actor could also resolve the state management difficult comparing use Java framework. (This solution is just use Actor to hold working thread.)</p></li>
+  <li>
+  <p>For the back pressure issue, then introduce with Streaming method, which is the Akka-Http.</p></li>
+</ol>
 <div class="source-github">
-The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/database/dbservice.md">here</a>.
+The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/nio/index.md">here</a>.
 </div>
 
 <div class="nav-next">
-<p><strong>Next:</strong> <a href="../fieldnull/index.html">Database null field error</a></p>
+<p><strong>Next:</strong> <a href="../nio/code/appacheMPMEvent.html">Apache MPM event</a></p>
 </div>
 </div>
 <div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../nio/index.html#nio-and-akka-http" class="header">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../nio/index.html#whats-java-nio-" class="header">What&rsquo;s Java NIO?</a></li>
+    <li><a href="../nio/index.html#whats-relationship-about-java-nio-and-akka-http-" class="header">What&rsquo;s relationship about Java NIO and Akka-Http:</a></li>
+    <li><a href="../nio/index.html#why-akka-http-is-introduced-" class="header">Why Akka-http is introduced?</a></li>
+    <li><a href="../nio/index.html#go-through-the-article" class="header">Go through the article</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
 </div>
 </div>
 

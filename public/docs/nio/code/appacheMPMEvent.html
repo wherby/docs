@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+<title>Apache MPM event · Doradilla</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content='Description for doradilla library.'/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100normal,100italic,300normal,300italic,400normal,400italic,500normal,500italic,700normal,700italic,900normal,900italicc" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/page.js"></script>
+<script type="text/javascript" src="../../js/warnOldVersion.js"></script>
+<script type="text/javascript" src="../../js/groups.js"></script>
+<link rel="stylesheet" type="text/css" href="../../lib/foundation/dist/foundation.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/page.css"/>
+
+<!--
+<link rel="shortcut icon" href="../../images/favicon.ico" />
+-->
+</head>
+
+<body>
+<div class="off-canvas-wrapper">
+<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+<div class="off-canvas position-left" id="off-canvas-menu" data-off-canvas>
+<nav class="off-canvas-nav">
+<div class="nav-home">
+<a href="../../index.html" >
+<span class="home-icon">⌂</span>Doradilla
+</a>
+<div class="version-number">
+0.1.0
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="active page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="off-canvas-content" data-off-canvas-content>
+
+<header class="site-header expanded row">
+<div class="small-12 column">
+<a href="#" class="off-canvas-toggle hide-for-medium" data-toggle="off-canvas-menu"><svg class="svg-icon svg-icon-menu" version="1.1" id="Menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"> <path class="svg-icon-menu-path" fill="#53CDEC" d="M16.4,9H3.6C3.048,9,3,9.447,3,10c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,9.447,16.952,9,16.4,9z M16.4,13
+H3.6C3.048,13,3,13.447,3,14c0,0.553,0.048,1,0.6,1H16.4c0.552,0,0.6-0.447,0.6-1C17,13.447,16.952,13,16.4,13z M3.6,7H16.4
+C16.952,7,17,6.553,17,6c0-0.553-0.048-1-0.6-1H3.6C3.048,5,3,5.447,3,6C3,6.553,3.048,7,3.6,7z"/></svg>
+</a>
+<div class="title"><a href="../../index.html">Doradilla</a></div>
+
+<!--
+<a href="https://www.example.com" class="logo show-for-medium">logo</a>
+-->
+</div>
+</header>
+
+<div class="expanded row">
+
+<div class="medium-3 large-2 show-for-medium column">
+<nav class="site-nav">
+<div class="nav-home">
+<a href="../../index.html" >
+<span class="home-icon">⌂</span>Doradilla
+</a>
+<div class="version-number">
+0.1.0
+</div>
+</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="active page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+</ul>
+</div>
+
+</nav>
+</div>
+
+<div class="small-12 medium-9 large-10 column">
+<section class="site-content">
+
+<span id="version-warning"></span>
+
+<div class="page-header row">
+<div class="medium-12 show-for-medium column">
+<div class="nav-breadcrumbs">
+<ul>
+  <li><a href="../../index.html">Doradilla</a></li>
+  <li><a href="../../nio/index.html">NIO and Akka-Http</a></li>
+  <li>Apache MPM event</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-content row">
+<div class="small-12 large-9 column" id="docs">
+<h2><a href="#apache-mpm-event" name="apache-mpm-event" class="anchor"><span class="anchor-link"></span></a>Apache MPM event</h2>
+<p>The original artical from <a href="https://httpd.apache.org/docs/2.4/mod/event.html" title="Apache MPM event" target="_blank" rel="noopener noreferrer">Apache MPM event</a></p>
+<h3><a href="#summary" name="summary" class="anchor"><span class="anchor-link"></span></a>Summary</h3>
+<p>The event Multi-Processing Module (MPM) is designed to allow more requests to be served simultaneously by passing off some processing work to the listeners threads, freeing up the worker threads to serve new requests.</p>
+<p>To use the event MPM, add &ndash;with-mpm=event to the configure script&rsquo;s arguments when building the httpd.</p>
+<h3><a href="#relationship-with-the-worker-mpm" name="relationship-with-the-worker-mpm" class="anchor"><span class="anchor-link"></span></a>Relationship with the Worker MPM</h3>
+<p>event is based on the worker MPM, which implements a hybrid multi-process multi-threaded server. A single control process (the parent) is responsible for launching child processes. Each child process creates a fixed number of server threads as specified in the ThreadsPerChild directive, as well as a listener thread which listens for connections and passes them to a worker thread for processing when they arrive.</p>
+<p>Run-time configuration directives are identical to those provided by worker, with the only addition of the AsyncRequestWorkerFactor.</p>
+<h3><a href="#how-it-works" name="how-it-works" class="anchor"><span class="anchor-link"></span></a>How it Works</h3>
+<p>This MPM tries to fix the &lsquo;keep alive problem&rsquo; in HTTP. After a client completes the first request, it can keep the connection open, sending further requests using the same socket and saving significant overhead in creating TCP connections. However, Apache HTTP Server traditionally keeps an entire child process/thread waiting for data from the client, which brings its own disadvantages. To solve this problem, this MPM uses a dedicated listener thread for each process to handle both the Listening sockets, all sockets that are in a Keep Alive state, sockets where the handler and protocol filters have done their work and the ones where the only remaining thing to do is send the data to the client.</p>
+<p>This new architecture, leveraging non-blocking sockets and modern kernel features exposed by APR (like Linux&rsquo;s epoll), no longer requires the mpm-accept Mutex configured to avoid the thundering herd problem.</p>
+<p>The total amount of connections that a single process/threads block can handle is regulated by the AsyncRequestWorkerFactor directive.</p>
+<h4><a href="#async-connections" name="async-connections" class="anchor"><span class="anchor-link"></span></a>Async connections</h4>
+<p>Async connections would need a fixed dedicated worker thread with the previous MPMs but not with event. The status page of mod_status shows new columns under the Async connections section:</p>
+<h4><a href="#writing" name="writing" class="anchor"><span class="anchor-link"></span></a>Writing</h4>
+<p>While sending the response to the client, it might happen that the TCP write buffer fills up because the connection is too slow. Usually in this case, a write() to the socket returns EWOULDBLOCK or EAGAIN to become writable again after an idle time. The worker holding the socket might be able to offload the waiting task to the listener thread, that in turn will re-assign it to the first idle worker thread available once an event will be raised for the socket (for example, &ldquo;the socket is now writable&rdquo;). Please check the Limitations section for more information.</p>
+<h4><a href="#keep-alive" name="keep-alive" class="anchor"><span class="anchor-link"></span></a>Keep-alive</h4>
+<p>Keep Alive handling is the most basic improvement from the worker MPM. Once a worker thread finishes to flush the response to the client, it can offload the socket handling to the listener thread, that in turn will wait for any event from the OS, like &ldquo;the socket is readable&rdquo;. If any new request comes from the client, then the listener will forward it to the first worker thread available. Conversely, if the KeepAliveTimeout occurs then the socket will be closed by the listener. In this way, the worker threads are not responsible for idle sockets, and they can be re-used to serve other requests.</p>
+<h4><a href="#closing" name="closing" class="anchor"><span class="anchor-link"></span></a>Closing</h4>
+<p>Sometimes the MPM needs to perform a lingering close, namely sending back an early error to the client while it is still transmitting data to httpd. Sending the response and then closing the connection immediately is not the correct thing to do since the client (still trying to send the rest of the request) would get a connection reset and could not read the httpd&rsquo;s response. The lingering close is time-bounded, but it can take a relatively long time, so it&rsquo;s offloaded to a worker thread (including the shutdown hooks and real socket close). From 2.4.28 onward, this is also the case when connections finally timeout (the listener thread never handles connections besides waiting for and dispatching their events). These improvements are valid for both HTTP/HTTPS connections.</p>
+<div class="source-github">
+The source code for this page can be found <a href="https://github.com/wherby/docs/tree/v0.1.0/docs/src/main/paradox/nio/code/appacheMPMEvent.md">here</a>.
+</div>
+
+<div class="nav-next">
+<p><strong>Next:</strong> <a href="../../nio/code/scalableIOInJava.html">Scalable IO in Java</a></p>
+</div>
+</div>
+<div class="large-3 show-for-large column" data-sticky-container>
+<nav class="sidebar sticky" data-sticky data-anchor="docs" data-sticky-on="large">
+<div class="page-nav">
+<div class="nav-title">On this page:</div>
+<div class="nav-toc">
+<ul>
+  <li><a href="../../nio/code/appacheMPMEvent.html#apache-mpm-event" class="header">Apache MPM event</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html#summary" class="header">Summary</a></li>
+    <li><a href="../../nio/code/appacheMPMEvent.html#relationship-with-the-worker-mpm" class="header">Relationship with the Worker MPM</a></li>
+    <li><a href="../../nio/code/appacheMPMEvent.html#how-it-works" class="header">How it Works</a></li>
+  </ul></li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+</section>
+</div>
+
+</div>
+
+<footer class="site-footer">
+
+<section class="site-footer-nav">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 medium-4 large-3 text-center column">
+<div class="nav-links">
+<ul>
+<!-- <li><a href="https://www.example.com/products/">Products</a> -->
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="site-footer-base">
+<div class="expanded row">
+<div class="small-12 large-offset-2 large-10 column">
+<div class="row site-footer-content">
+
+<div class="small-12 text-center large-9 column">
+
+<!--
+<div class="copyright">
+<span class="text">&copy; 2020</span>
+<a href="https://www.example.com" class="logo">logo</a>
+</div>
+-->
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</footer>
+
+</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../../lib/foundation/dist/foundation.min.js"></script>
+<script type="text/javascript">jQuery(document).foundation();</script>
+<script type="text/javascript" src="../../js/magellan.js"></script>
+
+<style type="text/css">@import "../../lib/prettify/prettify.css";</style>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">jQuery(function(){window.prettyPrint && prettyPrint()});</script>
+<script type="text/javascript">jQuery(function(jq){initOldVersionWarnings(jq, '0.1.0', '')});</script>
+
+
+</html>

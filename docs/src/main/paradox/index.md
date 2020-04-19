@@ -25,4 +25,6 @@ This is the introduction for doradilla library.
 
 * [Oauth2 client for Pac4j](pac4j/index.md)
 
+* [NIO and Akka-Http](nio/index.md)
+
 @@@
