@@ -27,4 +27,6 @@ This is the introduction for doradilla library.
 
 * [NIO and Akka-Http](nio/index.md)
 
+* [Store file in database](databasewithfile/index.md)
+
 @@@

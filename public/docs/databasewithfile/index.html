@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Shadow query · Docs</title>
+<title>Store file in database · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Shadow query
+Store file in database
 </span>
 </div>
 </div>
@@ -146,7 +146,7 @@ wherby/docs
   </ul></li>
   <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
   <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
-  <li><a href="../shadowquery/index.html" class="active page">Shadow query</a></li>
+  <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
   <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
@@ -155,16 +155,17 @@ wherby/docs
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
-  <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../databasewithfile/index.html" class="active page">Store file in database</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../shadowquery/index.html#shadow-query" class="header">Shadow query</a>
+  <li><a href="../databasewithfile/index.html#store-file-in-database" class="header">Store file in database</a>
   <ul>
-    <li><a href="../shadowquery/index.html#shadow-query-issue" class="header">Shadow query issue</a></li>
-    <li><a href="../shadowquery/index.html#how-to-fix" class="header">How to fix</a></li>
-    <li><a href="../shadowquery/index.html#why-the-issue-happens-" class="header">Why the issue happens:</a></li>
+    <li><a href="../databasewithfile/index.html#store-file-in-database-" class="header">Store file in database:</a></li>
+    <li><a href="../databasewithfile/index.html#issue-" class="header">Issue:</a></li>
+    <li><a href="../databasewithfile/index.html#whats-happend-" class="header">What&rsquo;s happend:</a></li>
+    <li><a href="../databasewithfile/index.html#how-to-resolve-" class="header">How to resolve:</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -186,11 +187,12 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../shadowquery/index.html#shadow-query" class="header">Shadow query</a>
+  <li><a href="../databasewithfile/index.html#store-file-in-database" class="header">Store file in database</a>
   <ul>
-    <li><a href="../shadowquery/index.html#shadow-query-issue" class="header">Shadow query issue</a></li>
-    <li><a href="../shadowquery/index.html#how-to-fix" class="header">How to fix</a></li>
-    <li><a href="../shadowquery/index.html#why-the-issue-happens-" class="header">Why the issue happens:</a></li>
+    <li><a href="../databasewithfile/index.html#store-file-in-database-" class="header">Store file in database:</a></li>
+    <li><a href="../databasewithfile/index.html#issue-" class="header">Issue:</a></li>
+    <li><a href="../databasewithfile/index.html#whats-happend-" class="header">What&rsquo;s happend:</a></li>
+    <li><a href="../databasewithfile/index.html#how-to-resolve-" class="header">How to resolve:</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -201,137 +203,77 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#shadow-query" name="shadow-query" class="anchor"><span class="anchor-link"></span></a>Shadow query</h1>
-<h2><a href="#shadow-query-issue" name="shadow-query-issue" class="anchor"><span class="anchor-link"></span></a>Shadow query issue</h2>
-<p>For AWM project, when user change audit period, then updated file will be removed. The UI should be refeshed, and the &ldquo;uplpaded audit files&rdquo; should be &ldquo;Not Started&rdquo;.</p>
-<p>But in our project when a fund has updated file as below:</p>
-<p><img src="./pic/first.png" alt="FundWithUploadFile" /></p>
-<p>When we change audit period:</p>
-<p><img src="./pic/edit.png" alt="ChangePeriod" /></p>
-<p>But the &ldquo;uploaded audit files&rdquo; status is not changed:</p>
-<p><img src="./pic/after_edit.png" alt="AfterEdit" /></p>
-<p>We could find in the network, all update are executed before the query, but the query return the wrong result.</p>
-<p>But when we refresh the page, everything goes fine.</p>
-<p><img src="./pic/after_refresh.png" alt="AfterRefresh" /></p>
-<h2><a href="#how-to-fix" name="how-to-fix" class="anchor"><span class="anchor-link"></span></a>How to fix</h2>
-<h3><a href="#db-config-file" name="db-config-file" class="anchor"><span class="anchor-link"></span></a>Db config file</h3>
-<p>Let see the db config file:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
-  database = {
-    ...
-    // The number of threads determines how many things you can *run* in parallel
-    // the number of connections determines you many things you can *keep in memory* at the same time
-    // on the database server.
-    // numThreads = (core_count (hyperthreading included))
-    numThreads = 10
-
-    ...
+<h1><a href="#store-file-in-database" name="store-file-in-database" class="anchor"><span class="anchor-link"></span></a>Store file in database</h1>
+<h2><a href="#store-file-in-database-" name="store-file-in-database-" class="anchor"><span class="anchor-link"></span></a>Store file in database:</h2>
+<p>It&rsquo;s quiet common that applicaiton will use database blob to store long contents input or files.</p>
+<p>For our AWM project do the same way, but when we query the file extaction status in home page:</p>
+<p><img src="pic/query.png" alt="Query home" /></p>
+<p>We just want a simple answer that if the user upload files are processed:</p>
+<p><img src="pic/network.png" alt="Net work" /></p>
+<p>with query result from backend:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/queryresult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[
+    {
+        &quot;fundEngagementId&quot;: &quot;3ed111d1-5f9a-4afd-bc6a-99286e2de59a&quot;,
+        &quot;engagementId&quot;: &quot;asfsaf2&quot;,
+        &quot;fundId&quot;: &quot;70e59b84-9721-4e22-8f9e-01e04b0a768a&quot;,
+        &quot;fundName&quot;: &quot;FI&quot;,
+        &quot;definedReportTypeNumber&quot;: 15,
+        &quot;reportUploadedNumber&quot;: 15,
+        &quot;hasEgaDownloaded&quot;: true
+    }
+]</code></pre>
+<p>so everything looks as expected.</p>
+<h2><a href="#issue-" name="issue-" class="anchor"><span class="anchor-link"></span></a>Issue:</h2>
+<p>But as we look the database query log in backend, we will find:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/logs.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`fund_engagement_id`, x2.`extraction_status`,
+ x2.`upload_file_status`, x2.`upload_file_content`, x2.`selected`, x3.`display`, x4.`display`, x2.`createby`,
+  x2.`createdatetime`, x2.`modifyby`, x2.`modifydatetime` from `fund_engagement_report_type_selection` x2,
+  `fund_engagement` x5, `funds` x6, `fund_admin` x7, `sheettypes_reporttypes_map` x8, `sheet_types` x3, `report_types`
+  x4 where ((((((x2.`fund_engagement_id` = x5.`id`) and (x2.`fund_engagement_id` = &#39;3ed111d1-5f9a-4afd-bc6a-99286e2de59a&#39;))
+  and (x5.`fundid` = x6.`id`)) and (x6.`fund_admin_id` = x7.`id`)) and (x2.`sheettypes_reporttypes_map_id` = x8.`id`))
+  and (x8.`sheettypeid` = x3.`id`)) and (x8.`reporttypeid` = x4.`id`)</code></pre>
+<p>The log shows there will have query for &ldquo;upload_file_content&rdquo;. This field is a blob file:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/report.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_engagement_report_type_selection`(
+	`id` varchar(128) NOT NULL,
+    `sheettypes_reporttypes_map_id` varchar(128) NOT NULL,
+...
+    `modifyby` VARCHAR(128) NULL,
+    `modifydatetime`  TIMESTAMP  NULL,
+    `selected` boolean NOT NULL DEFAULT FALSE,
+    `upload_file_content` MEDIUMBLOB NULL,
+    `extraction_file_content` MEDIUMBLOB NULL,
+...
+);</code></pre>
+<p>In this table, we store the file content in field &ldquo;upload_file_content&rdquo;.</p>
+<h2><a href="#whats-happend-" name="whats-happend-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happend:</h2>
+<p>There is an existed api to query user&rsquo;s input:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def lookupSelectionWithDisplay(fundEngagementId: String): Future[Seq[FundEngagementReportTypeSelectionWithName]] = {
+  val sql = for (((((((selection, fundEngagement), funds), fundAdmin), sheetReportMap), sheetTypes), reportTypes)
+                   &lt;- FundEngagementReportTypeSelection join FundEngagement on ((left, right) =&gt; left.fundEngagementId === right.id &amp;&amp; left.fundEngagementId === fundEngagementId)
+    join Funds on ((left, right) =&gt; left._2.fundid === right.id)
+    join FundAdmin on ((left, right) =&gt; left._2.fundAdminId === right.id)
+    join SheettypesReporttypesMap on (_._1._1._1.sheettypesReporttypesMapId === _.id)
+    join SheetTypes on ((left, right) =&gt; left._2.sheettypeid === right.id)
+    join ReportTypes on ((left, right) =&gt; left._1._2.reporttypeid === right.id))
+    yield (selection.id, selection.fundEngagementId, selection.extractionStatus, selection.uploadFileStatus ,selection.uploadFileContent, selection.selected, sheetTypes.display, reportTypes.display,
+      selection.createby, selection.createdatetime, selection.modifyby, selection.modifydatetime)
+  db.run(sql.result).map(res =&gt; res.map(tup =&gt; FundEngagementReportTypeSelectionWithName(tup._1, tup._2, tup._3, tup._4, tup._5 match {
+    case Some(value) =&gt; Some(new String(value.toString))
+    case None =&gt; None
+  }, tup._6, tup._7,tup._8, tup._9, tup._10, tup._11, tup._12)))
 }</code></pre>
-<p>We could see the db connection numThreads is 10. When change the number to 1.</p>
-<p><img src="./pic/after_db_config.png" alt="AfterDBConfig" /></p>
-<p>Seems the issue is fixed.</p>
-<h3><a href="#add-some-delay-to-the-query" name="add-some-delay-to-the-query" class="anchor"><span class="anchor-link"></span></a>Add some delay to the query</h3>
-<p><img src="./pic/add_delay.png" alt="AddDelay" /></p>
-<h2><a href="#why-the-issue-happens-" name="why-the-issue-happens-" class="anchor"><span class="anchor-link"></span></a>Why the issue happens:</h2>
-<p>Let see what&rsquo;s the update and query code does:</p>
-<dl>
-  <dt>UpdateCode</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/update.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">private def cleanSelectionType(oldFund:Fund, newFund: Fund, fundenegagementId:String ):Future[Any]={
-   if(oldFund.fundAdmin != newFund.fundAdmin){
-     fundEngagementReportTypeSelectionDAO.deleteByEngagementId(fundenegagementId)
-   }
-   else if(!oldFund.auditPeriodBegin.equals(newFund.auditPeriodBegin) ||
-     !oldFund.auditPeriodEnd.equals(newFund.auditPeriodEnd) ||
-    !oldFund.baseCurrency.equals(newFund.baseCurrency)){
-     fundEngagementReportTypeSelectionWrite.clearUploadedReports(fundenegagementId)
-     egaWrite.cleanEGAByFundEngagementId(fundenegagementId)
-   }else {
-     Future(1)
-   }
- }
-
- override def update(fundEngagement: FundEngagementData): Future[Int] = {
-   val newFundOpt = fundEngagement.fundRecord.map{
-     record=&gt;Json.parse(record).as[Fund]
-   }
-   val oldFunFutureOpt = fundEngagementDAO.lookup(fundEngagement.id).map{
-     fundEngagementOpt =&gt; fundEngagementOpt.flatMap{
-       fundengagementTemp=&gt;fundengagementTemp.fundRecord.map{
-         record=&gt;Json.parse(record).as[Fund]
-       }
-     }
-   }
-   val cleanUpTask= oldFunFutureOpt.flatMap{
-     oldFunOpt=&gt; oldFunOpt.flatMap{
-       oldFun=&gt; newFundOpt.map{
-         newFund =&gt; cleanSelectionType(oldFun, newFund,fundEngagement.id)
-       }
-     }match {
-       case Some(futureThing)=&gt; futureThing
-       case _=&gt;Future(1)
-     }
-   }
-   cleanUpTask.flatMap { result =&gt;
-     val newFundTemp = newFundOpt.get
-     val newFundFuture =  fundAdminDAO.queryByFundAdmin(newFundTemp.fundAdmin).map{
-       tmpOpt =&gt;tmpOpt match{
-         case Some(fundAdmin)=&gt;newFundTemp.copy(fundAdminId = Some(fundAdmin.id))
-         case _=&gt;newFundTemp
-       }
-     }
-     val newFund = Await.result(newFundFuture, 1 second)
-     val newFundEngagement = fundEngagement.copy(fundRecord = Some(Json.toJson(newFund).toString()))
-     fundEngagementDAO.update(newFundEngagement)
-   }
- }</code></pre></dd>
-  <dt>QueryStatus</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/code/querystatus.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def queryFundReportStatus(engagementId: String): Future[Seq[FundEngagementWithStatus]] = {
-  val sql = for ((((fundEnagements, funds), selections), ega)
-                   &lt;- FundEngagement join Funds on ((left, right) =&gt; left.fundid === right.id &amp;&amp; left.engagementid === engagementId)
-                                     joinLeft  FundEngagementReportTypeSelection on ((left, right) =&gt; left._1.id === right.fundEngagementId &amp;&amp; right.selected === true)
-                                     joinLeft Ega on ((left, right) =&gt; left._1._1.id === right.fundEngagementId))
-    yield {
-      var isReportTypeDefined: Rep[Boolean]  = selections.isDefined
-      var hasReportUploadedContent = selections.map(_.uploadFileStatus === UploadFileStatus.success.toString)
-      var hasEgaDownloaded: Rep[Boolean] = ega.map(_.generateStatus === GenerateStatus.success.toString).getOrElse(false)
-      (fundEnagements.id, fundEnagements.engagementid, fundEnagements.fundid, funds.name, isReportTypeDefined, hasReportUploadedContent, hasEgaDownloaded)
-    }
-
-  for {
-    result &lt;- db.run(sql.result).map(rows =&gt; rows.collect { case dataRow =&gt; (FundEngagementWithStatusBoolean.apply _).tupled(dataRow) })
-  } yield {
-    var sqlResult = result.map(item =&gt; {
-      var definedReportTypeNumber = if(item.isReportTypeDefined) 1 else 0
-      var reportUploadedNumber = if(item.hasReportUploadedPath == Some(true)) 1 else 0
-      FundEngagementWithStatus(item.fundEngagementId,item.engagementId, item.fundId, item.fundName, definedReportTypeNumber, reportUploadedNumber, item.hasEgaDownloaded)
-    })
-
-    var combineStatus = Seq[FundEngagementWithStatus]()
-    for(status &lt;- sqlResult){
-      if(combineStatus.find(_.fundEngagementId == status.fundEngagementId).isEmpty){ // has put into combineStatus sequence
-
-        var statusWithSameFundEngagementId: Seq[FundEngagementWithStatus] = sqlResult.filter(_.fundEngagementId == status.fundEngagementId)
-
-        var definedReportNumbers:Int = 0
-        var uploadedReportNumbers:Int = 0
-        var hasEgaDownloaded:Boolean = true
-        for(fundStatus &lt;- statusWithSameFundEngagementId){
-          definedReportNumbers = definedReportNumbers + fundStatus.definedReportTypeNumber
-          uploadedReportNumbers = uploadedReportNumbers + fundStatus.reportUploadedNumber
-          hasEgaDownloaded = hasEgaDownloaded &amp;&amp; fundStatus.hasEgaDownloaded
-        }
-        combineStatus = combineStatus :+ FundEngagementWithStatus(status.fundEngagementId, status.engagementId, status.fundId, status.fundName, definedReportNumbers, uploadedReportNumbers, hasEgaDownloaded)
-      }
-    }
-    combineStatus
-  }
-}</code></pre></dd>
-</dl>
+<p>The api is as expected.</p>
+<p>But when another person implements another api to query the extraction result of user input files, the person &ldquo;reuse&rdquo; the api. Then the issue happens.</p>
+<h2><a href="#how-to-resolve-" name="how-to-resolve-" class="anchor"><span class="anchor-link"></span></a>How to resolve:</h2>
+<ol>
+  <li>
+  <p>Change the query.</p></li>
+  <li>
+  <p>Change the database definition.</p></li>
+</ol>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/shadowquery/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -347,7 +289,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../slickqueryfailed/index.html" title="Slick query overflow" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../nio/code/scalableIOInJava.html" title="Scalable IO in Java" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -356,21 +298,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Slick query overflow
+Scalable IO in Java
 </span>
-</div>
-</a>
-<a href="../inconsistent/index.html" title="Inconsistent status" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Inconsistent status
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
