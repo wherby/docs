@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Inconsistent status · Docs</title>
+<title>Flyway clean failed on mysql8 · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Inconsistent status
+Flyway clean failed on mysql8
 </span>
 </div>
 </div>
@@ -147,7 +147,7 @@ wherby/docs
   <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
   <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
-  <li><a href="../inconsistent/index.html" class="active page">Inconsistent status</a></li>
+  <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
   <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
   <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
@@ -156,9 +156,17 @@ wherby/docs
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
   <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
-  <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../flywayonmysql/index.html" class="active page">Flyway clean failed on mysql8</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../flywayonmysql/index.html#flyway-clean-failed-on-mysql8" class="header">Flyway clean failed on mysql8</a>
+  <ul>
+    <li><a href="../flywayonmysql/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../flywayonmysql/index.html#how-the-issue-happens-" class="header">How the issue happens?</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -172,93 +180,68 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../flywayonmysql/index.html#flyway-clean-failed-on-mysql8" class="header">Flyway clean failed on mysql8</a>
+  <ul>
+    <li><a href="../flywayonmysql/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../flywayonmysql/index.html#how-the-issue-happens-" class="header">How the issue happens?</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#inconsistent-status" name="inconsistent-status" class="anchor"><span class="anchor-link"></span></a>Inconsistent status</h1>
-<p>Statistics query goes different for &ldquo;downloaders&rdquo; in User Information section and &ldquo;Single EGA Download&rdquo; in Fund Information section </p>
-<p><img src="./pic/statistics.png" alt="Statistics Image" /></p>
-<p>But the two information comes from same api:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/api.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class StatisticsReadImpl @Inject()(...
-                                   slickUserlogDAO: SlickUserlogDAO)(implicit ec: ExecutionContext) extends StatisticsRead {
-  override def getAWMStatistics(): Future[AWMStatistics] = {
-      ....
-    val from = Await.result(fromFuture,Duration(1,TimeUnit.SECONDS))
+<h1><a href="#flyway-clean-failed-on-mysql8" name="flyway-clean-failed-on-mysql8" class="anchor"><span class="anchor-link"></span></a>Flyway clean failed on mysql8</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>The command as belpw is used for clean database schema:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/command.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">val cmds = Seq(
+  &quot;sbt flyway/flywayClean&quot;,
+  &quot;sbt flyway/flywayBaseline&quot;,
+  &quot;sbt flyway/flywayMigrate&quot;
+)</code></pre>
+<p>but this command will failed on mysql 8.0 for &ldquo;sbt flyway/flywayClean&rdquo; as below:</p>
+<p><img src="./pic/cleanfailed.png" alt="clean failed" /></p>
+<p>When the database is drop by user and use the same sequence commands, the commands will success (there is no cleanup operation because the database is not existed yet). But the commands sequence will still failed on next round on cleanup operation.</p>
+<p>While this issue will not occur with mysql 5.7.</p>
+<h2><a href="#how-the-issue-happens-" name="how-the-issue-happens-" class="anchor"><span class="anchor-link"></span></a>How the issue happens?</h2>
+<p>Because there is one database migration file defined as below:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/procedure.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">DELIMITER $$
+DROP PROCEDURE IF EXISTS `createUserFundForFund` $$
+CREATE PROCEDURE `createUserFundForFund` (fiId VARCHAR(256))
+BEGIN
+  drop temporary table if exists invResult;
+ ...
+  insert into userfunds (id, userid, fundid, active, deleted, createdatetime, meta) select * from newUserfunds;
 
-    val to = new Timestamp(DateTime.now.getMillis)
-    for(userNum &lt;- statisticsDAO.getUserCount();
-      ...
-        userEgaNumDaily &lt;-slickStatisticsDailyDAO.getEgaCountDaily(from);
-        egaNumDaily &lt;-slickStatisticsDailyDAO.getEgaCountDaily(from);
-      ...
-    )yield AWMStatistics(Seq(
-        ....
-      StatisticRecord(&quot;Number of users with Single EGA downloaded daily&quot;,userEgaNumDaily.toString),
-      StatisticRecord(&quot;Number of Single EGAs created daily&quot;,egaNumDaily.toString),
-      ...
-    )
-    )
-  }
-}</code></pre>
-<p>And we could see from UI, the query goes like:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/ui.tsx" target="_blank" title="Go to snippet source"></a><code class="language-tsx">fetchData = () =&gt; {
-    this.props.getPureAdminUsers().then((res) =&gt; {
-     ....
-            for(var i = 0; i &lt; data.length; i++){
+END $$
+DELIMITER ；
 
-              downloaders += parseInt(JSON.parse(data[i].content).statisticsSeq[2].number)     [1]
-            }
+DELIMITER $$
 
+DROP PROCEDURE IF EXISTS `createUserFundForAllFunds` $$
+CREATE PROCEDURE `createUserFundForAllFunds`()
+BEGIN
 
-        ...
+...
 
+END $$
 
+DELIMITER ;
 
-  fetchData = () =&gt; {
-    if(this.state.selectDateType[0] &gt; 0) {
-        ...
-          for(var i = 0; i &lt; data.length; i++){
-            uploadedReports += parseInt(JSON.parse(data[i].content).statisticsSeq[4].number)    [2]
-        ...
-          }
-</code></pre>
-<p>but check the response body of the api:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/code/responsebody.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[{&quot;id&quot;:&quot;9b58f780-fbd2-4557-9522-5cdcfa62cf6b&quot;,&quot;createDateTime&quot;:1585621636000,&quot;content&quot;:&quot;{\&quot;statisticsSeq\&quot;:
-[{\&quot;name\&quot;:\&quot;Number of users logged daily\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users that uploaded daily\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users with Single EGA downloaded daily\&quot;,\&quot;number\&quot;:\&quot;2\&quot;},
-{\&quot;name\&quot;:\&quot;Number of Single EGAs created daily\&quot;,\&quot;number\&quot;:\&quot;2\&quot;},
-{\&quot;name\&quot;:\&quot;Number of reports uploaded daily\&quot;,\&quot;number\&quot;:\&quot;15\&quot;},
-{\&quot;name\&quot;:\&quot;Number of engagements created daily\&quot;,\&quot;number\&quot;:\&quot;0\&quot;},
-{\&quot;name\&quot;:\&quot;Number of fund profiles created daily\&quot;,\&quot;number\&quot;:\&quot;0\&quot;},
-\&quot;name\&quot;:\&quot;Number of fund processed daily\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users logged\&quot;,\&quot;number\&quot;:\&quot;20\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users that uploaded\&quot;,\&quot;number\&quot;:\&quot;1\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users with Single EGA downloaded\&quot;,\&quot;number\&quot;:\&quot;2\&quot;},
-{\&quot;name\&quot;:\&quot;Number of Single EGAs created\&quot;,\&quot;number\&quot;:\&quot;11\&quot;},
-{\&quot;name\&quot;:\&quot;Number of reports uploaded\&quot;,\&quot;number\&quot;:\&quot;80\&quot;},
-{\&quot;name\&quot;:\&quot;Number of engagements created\&quot;,\&quot;number\&quot;:\&quot;4\&quot;},
-{\&quot;name\&quot;:\&quot;Number of fund profiles created\&quot;,\&quot;number\&quot;:\&quot;15\&quot;},
-{\&quot;name\&quot;:\&quot;Number of fund processed\&quot;,\&quot;number\&quot;:\&quot;11\&quot;},
-{\&quot;name\&quot;:\&quot;Average number of funds per engagement\&quot;,\&quot;number\&quot;:\&quot;3.75\&quot;},
-{\&quot;name\&quot;:\&quot;Average number of users per engagement\&quot;,\&quot;number\&quot;:\&quot;5.00\&quot;}]}&quot;},
-
-....
-
-{&quot;id&quot;:&quot;493788c6-58f5-40b5-a411-6e532d58da07&quot;,&quot;createDateTime&quot;:1577675915000,&quot;content&quot;:&quot;{\&quot;statisticsSeq\&quot;:
-[{\&quot;name\&quot;:\&quot;Number of users logged\&quot;,\&quot;number\&quot;:\&quot;17\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users that uploaded\&quot;,\&quot;number\&quot;:\&quot;7\&quot;},
-{\&quot;name\&quot;:\&quot;Number of users with Single EGA downloaded\&quot;,\&quot;number\&quot;:\&quot;2\&quot;},
-{\&quot;name\&quot;:\&quot;Number of Single EGAs created\&quot;,\&quot;number\&quot;:\&quot;21\&quot;},
-{\&quot;name\&quot;:\&quot;Number of reports uploaded\&quot;,\&quot;number\&quot;:\&quot;223\&quot;},
-{\&quot;name\&quot;:\&quot;Number of engagements created\&quot;,\&quot;number\&quot;:\&quot;4\&quot;},
-{\&quot;name\&quot;:\&quot;Number of fund profiles created\&quot;,\&quot;number\&quot;:\&quot;10\&quot;},
-{\&quot;name\&quot;:\&quot;Number of fund processed\&quot;,\&quot;number\&quot;:\&quot;12\&quot;},
-{\&quot;name\&quot;:\&quot;Average number of funds per engagement\&quot;,\&quot;number\&quot;:\&quot;2.50\&quot;},
-{\&quot;name\&quot;:\&quot;Average number of users per engagement\&quot;,\&quot;number\&quot;:\&quot;4.25\&quot;}]}&quot;}]</code></pre>
+CALL createUserFundForAllFunds();</code></pre>
+<p>The migration will create two procedures in database but not removed. The procedure will only affect mysql 8.0. </p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/inconsistent/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -274,7 +257,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../shadowquery/index.html" title="Shadow query" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../databasewithfile/index.html" title="Store file in database" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -283,21 +266,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Shadow query
+Store file in database
 </span>
-</div>
-</a>
-<a href="../dailyjob/index.html" title="Daily schedule job" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Daily schedule job
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>

@@ -29,4 +29,6 @@ This is the introduction for doradilla library.
 
 * [Store file in database](databasewithfile/index.md)
 
+* [Flyway failed on mysql 8.0](flywayonmysql/index.md)
+
 @@@
