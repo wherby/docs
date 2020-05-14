@@ -31,4 +31,6 @@ This is the introduction for doradilla library.
 
 * [Flyway failed on mysql 8.0](flywayonmysql/index.md)
 
+* [Javascript issue in IE](iefrontend/index.md)
+
 @@@

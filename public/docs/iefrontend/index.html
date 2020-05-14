@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Oauth2 client for Pac4j · Docs</title>
+<title>IE issues for javascript · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Oauth2 client for Pac4j
+IE issues for javascript
 </span>
 </div>
 </div>
@@ -149,7 +149,7 @@ wherby/docs
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
-  <li><a href="../pac4j/index.html" class="active page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
   <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
@@ -157,14 +157,15 @@ wherby/docs
   </ul></li>
   <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
   <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
-  <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../iefrontend/index.html" class="active page">IE issues for javascript</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <li><a href="../iefrontend/index.html#ie-issues-for-javascript" class="header">IE issues for javascript</a>
   <ul>
-    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+    <li><a href="../iefrontend/index.html#download-failed" class="header">Download failed</a></li>
+    <li><a href="../iefrontend/index.html#sidebar-missing-in-ie" class="header">Sidebar missing in IE</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -186,9 +187,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <li><a href="../iefrontend/index.html#ie-issues-for-javascript" class="header">IE issues for javascript</a>
   <ul>
-    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+    <li><a href="../iefrontend/index.html#download-failed" class="header">Download failed</a></li>
+    <li><a href="../iefrontend/index.html#sidebar-missing-in-ie" class="header">Sidebar missing in IE</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -199,38 +201,87 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#oauth2-client-for-pac4j" name="oauth2-client-for-pac4j" class="anchor"><span class="anchor-link"></span></a>Oauth2 client for Pac4j</h1>
-<h2><a href="#whats-pac4j-do-" name="whats-pac4j-do-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s pac4j do?</h2>
-<p>Pac4j will maintain a &ldquo;profile&rdquo; for authenticated user:</p>
-<h3><a href="#1-user-will-specify-the-client-used-for-application-" name="1-user-will-specify-the-client-used-for-application-" class="anchor"><span class="anchor-link"></span></a>1. User will specify the client used for application:</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/pac4j/code/clientselection.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
-...
+<h1><a href="#ie-issues-for-javascript" name="ie-issues-for-javascript" class="anchor"><span class="anchor-link"></span></a>IE issues for javascript</h1>
+<h2><a href="#download-failed" name="download-failed" class="anchor"><span class="anchor-link"></span></a>Download failed</h2>
+<p>In AWM there is a function to download table content as excel, but the download function failed on IE.</p>
+<p><img src="./pic/download.png" alt="Download in IE" /></p>
+<p>The code for download as blow:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/iefrontend/code/download.js" target="_blank" title="Go to snippet source"></a><code class="language-js">downloadCSV = (csv, filename) =&gt; {
+  var csvFile;
+  var downloadLink;
+
+  // CSV file
+  csvFile = new Blob([csv], {type: &quot;text/csv&quot;});
+
+  // Download link
+  downloadLink = document.createElement(&quot;a&quot;);
+
+  // File name
+  downloadLink.download = filename;
+
+  // Create a link to the file
+  downloadLink.href = window.URL.createObjectURL(csvFile);
+
+  // Hide download link
+  downloadLink.style.display = &quot;none&quot;;
+
+  // Add the link to DOM
+  document.body.appendChild(downloadLink);
+
+  // Click download link
+  downloadLink.click();
 }</code></pre>
-<h3><a href="#2-pac4j-will-first-query-profile" name="2-pac4j-will-first-query-profile" class="anchor"><span class="anchor-link"></span></a>2. Pac4j will first query profile</h3>
-<p><img src="./pic/queryprofile.png" alt="query profile" /></p>
-<p>and there is no profile exist yet:</p>
-<p><img src="./pic/firstquery.png" alt="first query" /></p>
-<h3><a href="#3-client-will-start-oauth2-authentication-" name="3-client-will-start-oauth2-authentication-" class="anchor"><span class="anchor-link"></span></a>3. Client will start Oauth2 authentication:</h3>
-<h4><a href="#get-authorize" name="get-authorize" class="anchor"><span class="anchor-link"></span></a>Get authorize</h4>
-<p>User will redirect to authorization portal</p>
-<p><img src="./pic/redirect.png" alt="authorize" /></p>
-<p>After user authorized, then the authorization portal will post back with token for user:</p>
-<p><img src="./pic/callback.png" alt="call back" /></p>
-<h4><a href="#get-access-token" name="get-access-token" class="anchor"><span class="anchor-link"></span></a>Get access token</h4>
-<p>Then use the authorized token to change the access token:</p>
-<p><img src="./pic/accesstoken.png" alt="Access token" /></p>
-<h4><a href="#get-user-information" name="get-user-information" class="anchor"><span class="anchor-link"></span></a>Get user information</h4>
-<p>User the access token to get user information </p>
-<p><img src="./pic/userinfo.png" alt="User info" /></p>
-<h3><a href="#4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" name="4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" class="anchor"><span class="anchor-link"></span></a>4. Then the pac4j will use the user information to create a profile for user:</h3>
-<p><img src="./pic/createprofile.png" alt="Create user profile" /></p>
-<h3><a href="#5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" name="5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" class="anchor"><span class="anchor-link"></span></a>5. When profile is stored in session, user profile could be get when user visit restricted resources:</h3>
-<p><img src="./pic/queryprofile.png" alt="Get profile" /></p>
-<p>and redirect to the resources:</p>
-<p><img src="./pic/getprofileredirect.png" alt="Redirect" /></p>
+<p>The javascript download a blob in frontend. But this operation will be &ldquo;access deny&rdquo; as below:</p>
+<p><img src="./pic/accessdeny.png" alt="Access deny" /></p>
+<p>The MS has its own function(msSaveBlob) to save blob, and IE only support this function <a href="https://github.com/mholt/PapaParse/issues/175">msSaveBlob</a>. </p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/iefrontend/code/fixdownload.js" target="_blank" title="Go to snippet source"></a><code class="language-js">downloadCSV = (csv, filename) =&gt; {
+  var csvFile;
+  var downloadLink;
+
+  // CSV file
+  csvFile = new Blob([csv], {type: &#39;text/csv;charset=utf-8;&#39;});
+
+
+
+  if (window.navigator.msSaveOrOpenBlob){
+    // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
+    window.navigator.msSaveBlob(csvFile, filename);
+  }
+  else
+  {
+  // Download link
+  downloadLink = document.createElement(&quot;a&quot;);
+
+  // File name
+  downloadLink.download = filename;
+
+  // Create a link to the file
+  downloadLink.href = window.URL.createObjectURL(csvFile);
+  console.log(downloadLink.href)
+
+  // Hide download link
+  downloadLink.style.display = &quot;none&quot;;
+
+  // Add the link to DOM
+  document.body.appendChild(downloadLink);
+
+  // Click download link
+  downloadLink.click();
+
+  //document.body.removeChild(downloadLink);
+}
+}</code></pre>
+<h2><a href="#sidebar-missing-in-ie" name="sidebar-missing-in-ie" class="anchor"><span class="anchor-link"></span></a>Sidebar missing in IE</h2>
+<p>Sidebar works well in chrome:</p>
+<p><img src="./pic/frontendchrome.png" alt="Sidebar in chrome" /></p>
+<p>In one page, the sidebar is missing in IE:</p>
+<p><img src="./pic/frontendie.png" alt="Sidebar in IE" /></p>
+<p>The width in IE is only 0.15px.</p>
+<p>To fix this issue is straightforward:</p>
+<p><img src="pic/codefix.png" alt="Fix code" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/pac4j/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/iefrontend/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -246,7 +297,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../dailyjob/index.html" title="Daily schedule job" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../flywayonmysql/index.html" title="Flyway clean failed on mysql8" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -255,21 +306,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Daily schedule job
+Flyway clean failed on mysql8
 </span>
-</div>
-</a>
-<a href="../nio/index.html" title="NIO and Akka-Http" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-NIO and Akka-Http
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
