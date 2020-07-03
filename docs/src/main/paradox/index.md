@@ -33,4 +33,6 @@ This is the introduction for doradilla library.
 
 * [Javascript issue in IE](iefrontend/index.md)
 
+* [Api failed](apicall/index.md)
+
 @@@
