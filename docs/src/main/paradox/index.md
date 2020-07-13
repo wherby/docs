@@ -35,4 +35,6 @@ This is the introduction for doradilla library.
 
 * [Api failed](apicall/index.md)
 
+* [System architecture](systemdesign/index.md)
+
 @@@

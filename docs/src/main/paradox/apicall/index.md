@@ -29,5 +29,5 @@ It's caused by api error :
 
 ## How to fix
 
-1. The robust of API call
+1. The robustness of API call
 2. How to wrap the state change for API call

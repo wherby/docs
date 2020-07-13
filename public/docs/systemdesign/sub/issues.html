@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Apache MPM event · Docs</title>
+<title>Whats issues for software development? · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Apache MPM event
+Whats issues for software development?
 </span>
 </div>
 </div>
@@ -152,7 +152,7 @@ wherby/docs
   <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
   <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html" class="active page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
   <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
@@ -161,17 +161,15 @@ wherby/docs
   <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
   <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
   <ul>
-    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;s issues for software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="active page">What&rsquo;s issues for software development?</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/appacheMPMEvent.html#apache-mpm-event" class="header">Apache MPM event</a>
+  <li><a href="../../systemdesign/sub/issues.html#whats-issues-for-software-development-" class="header">What&rsquo;s issues for software development?</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html#summary" class="header">Summary</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#relationship-with-the-worker-mpm" class="header">Relationship with the Worker MPM</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#how-it-works" class="header">How it Works</a></li>
+    <li><a href="../../systemdesign/sub/issues.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -193,11 +191,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/appacheMPMEvent.html#apache-mpm-event" class="header">Apache MPM event</a>
+  <li><a href="../../systemdesign/sub/issues.html#whats-issues-for-software-development-" class="header">What&rsquo;s issues for software development?</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html#summary" class="header">Summary</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#relationship-with-the-worker-mpm" class="header">Relationship with the Worker MPM</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#how-it-works" class="header">How it Works</a></li>
+    <li><a href="../../systemdesign/sub/issues.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -208,29 +204,91 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#apache-mpm-event" name="apache-mpm-event" class="anchor"><span class="anchor-link"></span></a>Apache MPM event</h2>
-<p>The original artical from <a href="https://httpd.apache.org/docs/2.4/mod/event.html" title="Apache MPM event" target="_blank" rel="noopener noreferrer">Apache MPM event</a></p>
-<h3><a href="#summary" name="summary" class="anchor"><span class="anchor-link"></span></a>Summary</h3>
-<p>The event Multi-Processing Module (MPM) is designed to allow more requests to be served simultaneously by passing off some processing work to the listeners threads, freeing up the worker threads to serve new requests.</p>
-<p>To use the event MPM, add &ndash;with-mpm=event to the configure script&rsquo;s arguments when building the httpd.</p>
-<h3><a href="#relationship-with-the-worker-mpm" name="relationship-with-the-worker-mpm" class="anchor"><span class="anchor-link"></span></a>Relationship with the Worker MPM</h3>
-<p>event is based on the worker MPM, which implements a hybrid multi-process multi-threaded server. A single control process (the parent) is responsible for launching child processes. Each child process creates a fixed number of server threads as specified in the ThreadsPerChild directive, as well as a listener thread which listens for connections and passes them to a worker thread for processing when they arrive.</p>
-<p>Run-time configuration directives are identical to those provided by worker, with the only addition of the AsyncRequestWorkerFactor.</p>
-<h3><a href="#how-it-works" name="how-it-works" class="anchor"><span class="anchor-link"></span></a>How it Works</h3>
-<p>This MPM tries to fix the &lsquo;keep alive problem&rsquo; in HTTP. After a client completes the first request, it can keep the connection open, sending further requests using the same socket and saving significant overhead in creating TCP connections. However, Apache HTTP Server traditionally keeps an entire child process/thread waiting for data from the client, which brings its own disadvantages. To solve this problem, this MPM uses a dedicated listener thread for each process to handle both the Listening sockets, all sockets that are in a Keep Alive state, sockets where the handler and protocol filters have done their work and the ones where the only remaining thing to do is send the data to the client.</p>
-<p>This new architecture, leveraging non-blocking sockets and modern kernel features exposed by APR (like Linux&rsquo;s epoll), no longer requires the mpm-accept Mutex configured to avoid the thundering herd problem.</p>
-<p>The total amount of connections that a single process/threads block can handle is regulated by the AsyncRequestWorkerFactor directive.</p>
-<h4><a href="#async-connections" name="async-connections" class="anchor"><span class="anchor-link"></span></a>Async connections</h4>
-<p>Async connections would need a fixed dedicated worker thread with the previous MPMs but not with event. The status page of mod_status shows new columns under the Async connections section:</p>
-<h4><a href="#writing" name="writing" class="anchor"><span class="anchor-link"></span></a>Writing</h4>
-<p>While sending the response to the client, it might happen that the TCP write buffer fills up because the connection is too slow. Usually in this case, a write() to the socket returns EWOULDBLOCK or EAGAIN to become writable again after an idle time. The worker holding the socket might be able to offload the waiting task to the listener thread, that in turn will re-assign it to the first idle worker thread available once an event will be raised for the socket (for example, &ldquo;the socket is now writable&rdquo;). Please check the Limitations section for more information.</p>
-<h4><a href="#keep-alive" name="keep-alive" class="anchor"><span class="anchor-link"></span></a>Keep-alive</h4>
-<p>Keep Alive handling is the most basic improvement from the worker MPM. Once a worker thread finishes to flush the response to the client, it can offload the socket handling to the listener thread, that in turn will wait for any event from the OS, like &ldquo;the socket is readable&rdquo;. If any new request comes from the client, then the listener will forward it to the first worker thread available. Conversely, if the KeepAliveTimeout occurs then the socket will be closed by the listener. In this way, the worker threads are not responsible for idle sockets, and they can be re-used to serve other requests.</p>
-<h4><a href="#closing" name="closing" class="anchor"><span class="anchor-link"></span></a>Closing</h4>
-<p>Sometimes the MPM needs to perform a lingering close, namely sending back an early error to the client while it is still transmitting data to httpd. Sending the response and then closing the connection immediately is not the correct thing to do since the client (still trying to send the rest of the request) would get a connection reset and could not read the httpd&rsquo;s response. The lingering close is time-bounded, but it can take a relatively long time, so it&rsquo;s offloaded to a worker thread (including the shutdown hooks and real socket close). From 2.4.28 onward, this is also the case when connections finally timeout (the listener thread never handles connections besides waiting for and dispatching their events). These improvements are valid for both HTTP/HTTPS connections.</p>
+<h2><a href="#whats-issues-for-software-development-" name="whats-issues-for-software-development-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s issues for software development?</h2>
+<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></h3>
+<p><img src="../pic/mudball.png" alt="Big ball" /></p>
+<p><img src="../pic/shantytown.png" alt="shanty town" /> <img src="../pic/spacestation.png" alt="spacestation" /></p>
+<p>Code for authentication:</p>
+<p>For application authentication, there are 3 types: by application, by SAML at first stage, and add by Oauth in later version. For authorization, there is not needed any change for different change.</p>
+<dl>
+  <dt>Code for frontend controller</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authentication.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val secureSource = config.getOptional[Boolean](&quot;useidam&quot;) match {
+   case Some(true) =&gt; config.getOptional[Boolean](&quot;pwcoauth.useoauth&quot;) match {
+     case Some(true) =&gt; index3
+     case _ =&gt; index2
+   }
+   case _ =&gt; index
+ }
+
+ def index2: Action[AnyContent] = {
+   secureAction(
+     assets.at(&quot;index.html&quot;)
+   )
+ }
+
+ def index3: Action[AnyContent] = {
+   secureActionOauth(
+     assets.at(&quot;index.html&quot;)
+   )
+ }
+
+ def index: Action[AnyContent] = assets.at(&quot;index.html&quot;)</code></pre></dd>
+  <dt>Saml</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/saml.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;SAML2Client&quot;).async(action.parser) { implicit request =&gt;
+  ...
+  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAttribute(emailAttrStr).toString.stripPrefix(&quot;[&quot;).stripSuffix(&quot;]&quot;))
+  ...
+  userTimeOpt match {
+    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
+      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
+        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
+    case _=&gt;    action(request).map {
+      result =&gt;
+        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
+          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
+          .+(&quot;userTime&quot;-&gt;nowTime.toString)
+          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+    }
+  }
+}</code></pre></dd>
+  <dt>Oauth</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/oauth.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureActionOauth[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
+  ...
+  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAuthenticationAttribute(&quot;email&quot;).toString)
+  updateUserLastActiveTime(userInfoMap.get(&quot;email&quot;))
+  ...
+  userTimeOpt match {
+    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
+      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
+        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
+    case _=&gt;    action(request).map {
+      result =&gt;
+        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
+          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
+          .+(&quot;userTime&quot;-&gt;nowTime.toString)
+          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+          .bakeCookies()
+    }
+  }
+}</code></pre></dd>
+  <dt>Authentication</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authorization.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def createEngageuser() =
+  deadbolt.Pattern(value = &quot;(v_admin)|(v_lead)&quot;, patternType = PatternType.REGEX)(trim(parse.json)) {implicit authRequest =&gt;
+    // Action.async(trim(parse.json)) { implicit authRequest =&gt;
+    try {
+        ...
+    } catch {
+      case ValidationException(msg) =&gt; Future(BadRequest(msg))
+    }
+  }</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/code/appacheMPMEvent.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/issues.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -246,7 +304,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../nio/index.html" title="NIO and Akka-Http" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../systemdesign/index.html" title="software architecture" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -255,21 +313,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-NIO and Akka-Http
+software architecture
 </span>
-</div>
-</a>
-<a href="../../nio/code/scalableIOInJava.html" title="Scalable IO in Java" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Scalable IO in Java
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
