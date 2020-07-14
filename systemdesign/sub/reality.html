@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Scalable IO in Java · Docs</title>
+<title>Whats reality of software development? · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Scalable IO in Java
+Whats reality of software development?
 </span>
 </div>
 </div>
@@ -153,7 +153,7 @@ wherby/docs
   <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html" class="active page">Scalable IO in Java</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
   <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
   <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
@@ -161,7 +161,7 @@ wherby/docs
   <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
   <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
   <ul>
-    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reality.html" class="active page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
     <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
     <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
@@ -171,12 +171,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/scalableIOInJava.html#scalable-io-in-java" class="header">Scalable IO in Java</a>
+  <li><a href="../../systemdesign/sub/reality.html#whats-reality-of-software-development-" class="header">What&rsquo;s reality of software development?</a>
   <ul>
-    <li><a href="../../nio/code/scalableIOInJava.html#classic-way-of-handle-one-requst-pre-thread" class="header">Classic way of handle one requst pre thread</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#single-threaded-version-" class="header">Single threaded version [Nodejs]</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#thread-pool-version" class="header">Thread Pool version</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#multiple-reactor" class="header">Multiple reactor</a></li>
+    <li><a href="../../systemdesign/sub/reality.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -198,12 +195,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/scalableIOInJava.html#scalable-io-in-java" class="header">Scalable IO in Java</a>
+  <li><a href="../../systemdesign/sub/reality.html#whats-reality-of-software-development-" class="header">What&rsquo;s reality of software development?</a>
   <ul>
-    <li><a href="../../nio/code/scalableIOInJava.html#classic-way-of-handle-one-requst-pre-thread" class="header">Classic way of handle one requst pre thread</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#single-threaded-version-" class="header">Single threaded version [Nodejs]</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#thread-pool-version" class="header">Thread Pool version</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#multiple-reactor" class="header">Multiple reactor</a></li>
+    <li><a href="../../systemdesign/sub/reality.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -214,20 +208,91 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#scalable-io-in-java" name="scalable-io-in-java" class="anchor"><span class="anchor-link"></span></a>Scalable IO in Java</h2>
-<p>The original reference is from <a href="http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf">Scalable IO in Java</a> { open=new }</p>
-<h4><a href="#classic-way-of-handle-one-requst-pre-thread" name="classic-way-of-handle-one-requst-pre-thread" class="anchor"><span class="anchor-link"></span></a>Classic way of handle one requst pre thread</h4>
-<p><img src="pic/classic.png" alt="Class way" /></p>
-<p>Add design multiple implementations of Event Driven design</p>
-<h4><a href="#single-threaded-version-" name="single-threaded-version-" class="anchor"><span class="anchor-link"></span></a>Single threaded version [Nodejs]</h4>
-<p><img src="pic/single.png" alt="Single threaded version" /></p>
-<h4><a href="#thread-pool-version" name="thread-pool-version" class="anchor"><span class="anchor-link"></span></a>Thread Pool version</h4>
-<p><img src="pic/threadPool.png" alt="Thread pool" /></p>
-<h4><a href="#multiple-reactor" name="multiple-reactor" class="anchor"><span class="anchor-link"></span></a>Multiple reactor</h4>
-<p><img src="pic/multiReactor.png" alt="Using Multiple Reactors" /></p>
+<h2><a href="#whats-reality-of-software-development-" name="whats-reality-of-software-development-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s reality of software development?</h2>
+<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></h3>
+<p><img src="../pic/mudball.png" alt="Big ball" /></p>
+<p><img src="../pic/shantytown.png" alt="shanty town" /> <img src="../pic/spacestation.png" alt="spacestation" /></p>
+<p>Code for authentication:</p>
+<p>For application authentication, there are 3 types: by application, by SAML at first stage, and add by Oauth in later version. For authorization, there is not needed any change for different change.</p>
+<dl>
+  <dt>Code for frontend controller</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authentication.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val secureSource = config.getOptional[Boolean](&quot;useidam&quot;) match {
+   case Some(true) =&gt; config.getOptional[Boolean](&quot;pwcoauth.useoauth&quot;) match {
+     case Some(true) =&gt; index3
+     case _ =&gt; index2
+   }
+   case _ =&gt; index
+ }
+
+ def index2: Action[AnyContent] = {
+   secureAction(
+     assets.at(&quot;index.html&quot;)
+   )
+ }
+
+ def index3: Action[AnyContent] = {
+   secureActionOauth(
+     assets.at(&quot;index.html&quot;)
+   )
+ }
+
+ def index: Action[AnyContent] = assets.at(&quot;index.html&quot;)</code></pre></dd>
+  <dt>Saml</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/saml.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;SAML2Client&quot;).async(action.parser) { implicit request =&gt;
+  ...
+  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAttribute(emailAttrStr).toString.stripPrefix(&quot;[&quot;).stripSuffix(&quot;]&quot;))
+  ...
+  userTimeOpt match {
+    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
+      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
+        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
+    case _=&gt;    action(request).map {
+      result =&gt;
+        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
+          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
+          .+(&quot;userTime&quot;-&gt;nowTime.toString)
+          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+    }
+  }
+}</code></pre></dd>
+  <dt>Oauth</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/oauth.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureActionOauth[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
+  ...
+  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAuthenticationAttribute(&quot;email&quot;).toString)
+  updateUserLastActiveTime(userInfoMap.get(&quot;email&quot;))
+  ...
+  userTimeOpt match {
+    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
+      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
+        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
+    case _=&gt;    action(request).map {
+      result =&gt;
+        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
+          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
+          .+(&quot;userTime&quot;-&gt;nowTime.toString)
+          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+          .bakeCookies()
+    }
+  }
+}</code></pre></dd>
+  <dt>Authentication</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authorization.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def createEngageuser() =
+  deadbolt.Pattern(value = &quot;(v_admin)|(v_lead)&quot;, patternType = PatternType.REGEX)(trim(parse.json)) {implicit authRequest =&gt;
+    // Action.async(trim(parse.json)) { implicit authRequest =&gt;
+    try {
+        ...
+    } catch {
+      case ValidationException(msg) =&gt; Future(BadRequest(msg))
+    }
+  }</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/code/scalableIOInJava.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/reality.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -243,7 +308,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../nio/code/appacheMPMEvent.html" title="Apache MPM event" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../systemdesign/index.html" title="software architecture" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -252,17 +317,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Apache MPM event
+software architecture
 </span>
 </div>
 </a>
-<a href="../../databasewithfile/index.html" title="Store file in database" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../systemdesign/sub/issues.html" title="Whatre challenges of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Store file in database
+Whatre challenges of software development?
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

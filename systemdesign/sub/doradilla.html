@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Scalable IO in Java · Docs</title>
+<title>Doradilla design · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Scalable IO in Java
+Doradilla design
 </span>
 </div>
 </div>
@@ -153,7 +153,7 @@ wherby/docs
   <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html" class="active page">Scalable IO in Java</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
   <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
   <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
@@ -164,19 +164,17 @@ wherby/docs
     <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
     <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
-    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="active page">Doradilla design</a></li>
     <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/scalableIOInJava.html#scalable-io-in-java" class="header">Scalable IO in Java</a>
+  <li><a href="../../systemdesign/sub/doradilla.html#doradilla-design" class="header">Doradilla design</a>
   <ul>
-    <li><a href="../../nio/code/scalableIOInJava.html#classic-way-of-handle-one-requst-pre-thread" class="header">Classic way of handle one requst pre thread</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#single-threaded-version-" class="header">Single threaded version [Nodejs]</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#thread-pool-version" class="header">Thread Pool version</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#multiple-reactor" class="header">Multiple reactor</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html#" class="header"><a href="https://wherby.github.io/doradilla/introduction/messageflow.html">Message flow</a></a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html#" class="header"><a href="https://wherby.github.io/doradilla/usage/index.html">JobApi design</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -198,12 +196,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/scalableIOInJava.html#scalable-io-in-java" class="header">Scalable IO in Java</a>
+  <li><a href="../../systemdesign/sub/doradilla.html#doradilla-design" class="header">Doradilla design</a>
   <ul>
-    <li><a href="../../nio/code/scalableIOInJava.html#classic-way-of-handle-one-requst-pre-thread" class="header">Classic way of handle one requst pre thread</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#single-threaded-version-" class="header">Single threaded version [Nodejs]</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#thread-pool-version" class="header">Thread Pool version</a></li>
-    <li><a href="../../nio/code/scalableIOInJava.html#multiple-reactor" class="header">Multiple reactor</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html#" class="header"><a href="https://wherby.github.io/doradilla/introduction/messageflow.html">Message flow</a></a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html#" class="header"><a href="https://wherby.github.io/doradilla/usage/index.html">JobApi design</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -214,20 +210,78 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#scalable-io-in-java" name="scalable-io-in-java" class="anchor"><span class="anchor-link"></span></a>Scalable IO in Java</h2>
-<p>The original reference is from <a href="http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf">Scalable IO in Java</a> { open=new }</p>
-<h4><a href="#classic-way-of-handle-one-requst-pre-thread" name="classic-way-of-handle-one-requst-pre-thread" class="anchor"><span class="anchor-link"></span></a>Classic way of handle one requst pre thread</h4>
-<p><img src="pic/classic.png" alt="Class way" /></p>
-<p>Add design multiple implementations of Event Driven design</p>
-<h4><a href="#single-threaded-version-" name="single-threaded-version-" class="anchor"><span class="anchor-link"></span></a>Single threaded version [Nodejs]</h4>
-<p><img src="pic/single.png" alt="Single threaded version" /></p>
-<h4><a href="#thread-pool-version" name="thread-pool-version" class="anchor"><span class="anchor-link"></span></a>Thread Pool version</h4>
-<p><img src="pic/threadPool.png" alt="Thread pool" /></p>
-<h4><a href="#multiple-reactor" name="multiple-reactor" class="anchor"><span class="anchor-link"></span></a>Multiple reactor</h4>
-<p><img src="pic/multiReactor.png" alt="Using Multiple Reactors" /></p>
+<h2><a href="#doradilla-design" name="doradilla-design" class="anchor"><span class="anchor-link"></span></a>Doradilla design</h2>
+<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://wherby.github.io/doradilla/introduction/messageflow.html">Message flow</a></h3>
+<p><img src="../pic/messageflow.png" alt="Message flow" /></p>
+<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://wherby.github.io/doradilla/usage/index.html">JobApi design</a></h3>
+<p><img src="../pic/namedjob.png" alt="Named job" /></p>
+<p>Code implementation for JobApi:  Named-job api is need after anonymous api is released.</p>
+<dl>
+  <dt>Anonymous processor call</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/PorcessApi.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait ProcessTranApi extends AskProcessResult{
+  this: SystemApi with DriverApi =&gt;
+  val processTranActor = actorSystem.actorOf(ProcessTranActor.processTranActorProps, CNaming.timebasedName( &quot;defaultProcessTranActor&quot;))
+
+  def runProcessCommand(processCallMsg: ProcessCallMsg, timeout: Timeout = longTimeout)(implicit ex: ExecutionContext): Future[JobResult] = {
+    val processJob = JobMsg(&quot;SimpleProcess&quot;, processCallMsg)
+    val receiveActor = actorSystem.actorOf(ReceiveActor.receiveActorProps, CNaming.timebasedName( &quot;Receive&quot;))
+    val processJobRequest = JobRequest(processJob, receiveActor, processTranActor)
+    getProcessCommandFutureResult(processJobRequest, defaultDriver, receiveActor,timeout)
+  }
+}</code></pre></dd>
+  <dt>Named job call</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/NamedJobApi.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait NamedJobRunner {
+  this: BackendServer.type =&gt;
+
+  def runNamedProcessCommand(processJob: JobMsg,
+                             jobName:String,
+                             timeout: Timeout = ConstVars.longTimeOut,
+                             priority: Option[Int] = None)(implicit ex: ExecutionContext): Future[JobResult] = {
+    val jobApi = getNamedJobApi(jobName)
+    val receiveActor = jobApi.actorSystem.actorOf(ReceiveActor.receiveActorProps, CNaming.timebasedName(&quot;Receive&quot;))
+    val processJobRequest = JobRequest(processJob, receiveActor, jobApi.processTranActor, priority)
+    getProcessCommandFutureResult(processJobRequest, jobApi.defaultDriver, receiveActor,timeout)
+  }
+}</code></pre></dd>
+  <dt>Use in AWM</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/AWMcall.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def runProcess(paras : List[Object], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
+  println(clazzName)
+  val msg = ProcessCallMsg(clazzName,methodName,paras.map{_.asInstanceOf[AnyRef]}.toArray)
+  val jobMsg = JobMsg(&quot;SimpleProcess&quot;,msg)
+  BackendServer.runProcessCommand(jobMsg,priority = prioritySet)
+}</code></pre></dd>
+  <dt>Use in CIDR</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/CIDRcall.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def runProcess(paras : List[AnyRef], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
+  val setTimeOut:Timeout = 6000 seconds
+  val msg = ProcessCallMsg(clazzName,methodName,paras.map{_.asInstanceOf[AnyRef]}.toArray)
+  val jobMsg = JobMsg(&quot;SimpleProcessFuture&quot;,msg)
+  val namedSevice = Seq(&quot;com.pwc.ds.cidr.project.creditreview.processors.OcrPlusProcessor&quot;)
+  if(namedSevice.contains(clazzName)){
+    BackendServer.runNamedProcessCommand(jobMsg,OCRJOBStr, priority = prioritySet,timeout = setTimeOut).map{
+      jobResult=&gt;
+        if((jobResult.result.asInstanceOf[ProcessResult]).jobStatus.toString == &quot;Failed&quot; ){
+          throw new RuntimeException(jobResult.result.asInstanceOf[ProcessResult].result.asInstanceOf[Exception].getMessage)
+        }
+        jobResult.result.asInstanceOf[ProcessResult].result.asInstanceOf[ProcessorResultValue]
+    }
+  }else{
+    BackendServer.runProcessCommand(jobMsg,priority = prioritySet,timeout = setTimeOut).map{
+      jobResult=&gt;
+        if((jobResult.result.asInstanceOf[ProcessResult]).jobStatus.toString == &quot;Failed&quot; ){
+          throw new RuntimeException(jobResult.result.asInstanceOf[ProcessResult].result.asInstanceOf[Exception].getMessage)
+        }
+        jobResult.result.asInstanceOf[ProcessResult].result.asInstanceOf[ProcessorResultValue]
+    }
+  }
+}</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/code/scalableIOInJava.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/doradilla.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -243,7 +297,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../nio/code/appacheMPMEvent.html" title="Apache MPM event" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../systemdesign/sub/reactive.html" title="The reactive manifesto" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -252,17 +306,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Apache MPM event
+The reactive manifesto
 </span>
 </div>
 </a>
-<a href="../../databasewithfile/index.html" title="Store file in database" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../systemdesign/sub/reference.html" title="References" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Store file in database
+References
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
