@@ -1,25 +1,54 @@
-## What's issues for software development?
+## What're challenges of software development?
 
-### [Big ball of mud](https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/)
+### About lock
 
-![Big ball](../pic/mudball.png)
+![Congestion from https://www.citymetric.com/transport/can-public-transport-investment-really-fix-traffic-congestion-1870](../pic/congestion.png)
 
-![shanty town](../pic/shantytown.png)  ![spacestation](../pic/spacestation.png)
+[Lock in Java](https://wherby.github.io/the-tao-in-program-language/)
 
-Code for authentication:
+[Implementation of lock](https://wherby.github.io/Pessimists-file-lock/)
 
-For application authentication, there are 3 types: by application, by SAML at first stage,
-and add by Oauth in later version. 
-For authorization, there is not needed any change for different change.
+### How to change wheels when driving?
 
-Code for frontend controller:
-: @@snip[Code for frontend controller](../code/authentication.scala)
+![Change wheels from https://www.businessinsider.com/two-wheel-change-drive-2014-4](../pic/changewheel.png)
 
-Saml
-: @@snip[Saml](../code/saml.scala)
+![Call stack](../pic/callstack.png)
 
-Oauth
-: @@snip[Oauth](../code/oauth.scala)
+What's function in the developer's view?
 
-Authentication
-: @@snip[Authentication](../code/authorization.scala)
+```scala
+ val fx = A => B
+```
+
+ or  
+
+```scala
+ def fx(par1:Any, par2:Any,...):Any ={
+   doA(par1)
+   if(par2){
+     doB(par2)
+   }
+ }
+```
+
+For example:
+
+We need to query price data with business logic which is not confirmed by LoS people:
+
+GetByEngagementName
+
+: @@snip[Query by engagementId](../code/GetEngagementSecurityPrice.scala)
+
+GetBySecuritypriceAndOrder
+
+: @@snip[Query By businessLogic](../code/Getsecuritypriceorder.scala)
+
+QeuryData
+
+: @@snip[Query data with different function](../code/QueryDate.scala)
+
+QueryInDatabase
+
+: @@snip[Query in database](../code/QueryInDatabase.scala)
+
+

@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Whats issues for software development? · Docs</title>
+<title>Whatre challenges of software development? · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Whats issues for software development?
+Whatre challenges of software development?
 </span>
 </div>
 </div>
@@ -161,15 +161,20 @@ wherby/docs
   <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
   <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
   <ul>
-    <li><a href="../../systemdesign/sub/issues.html" class="active page">What&rsquo;s issues for software development?</a></li>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="active page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../systemdesign/sub/issues.html#whats-issues-for-software-development-" class="header">What&rsquo;s issues for software development?</a>
+  <li><a href="../../systemdesign/sub/issues.html#whatre-challenges-of-software-development-" class="header">What&rsquo;re challenges of software development?</a>
   <ul>
-    <li><a href="../../systemdesign/sub/issues.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
+    <li><a href="../../systemdesign/sub/issues.html#about-lock" class="header">About lock</a></li>
+    <li><a href="../../systemdesign/sub/issues.html#how-to-change-wheels-when-driving-" class="header">How to change wheels when driving?</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -191,9 +196,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../systemdesign/sub/issues.html#whats-issues-for-software-development-" class="header">What&rsquo;s issues for software development?</a>
+  <li><a href="../../systemdesign/sub/issues.html#whatre-challenges-of-software-development-" class="header">What&rsquo;re challenges of software development?</a>
   <ul>
-    <li><a href="../../systemdesign/sub/issues.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
+    <li><a href="../../systemdesign/sub/issues.html#about-lock" class="header">About lock</a></li>
+    <li><a href="../../systemdesign/sub/issues.html#how-to-change-wheels-when-driving-" class="header">How to change wheels when driving?</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -204,87 +210,106 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#whats-issues-for-software-development-" name="whats-issues-for-software-development-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s issues for software development?</h2>
-<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></h3>
-<p><img src="../pic/mudball.png" alt="Big ball" /></p>
-<p><img src="../pic/shantytown.png" alt="shanty town" /> <img src="../pic/spacestation.png" alt="spacestation" /></p>
-<p>Code for authentication:</p>
-<p>For application authentication, there are 3 types: by application, by SAML at first stage, and add by Oauth in later version. For authorization, there is not needed any change for different change.</p>
-<dl>
-  <dt>Code for frontend controller</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authentication.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val secureSource = config.getOptional[Boolean](&quot;useidam&quot;) match {
-   case Some(true) =&gt; config.getOptional[Boolean](&quot;pwcoauth.useoauth&quot;) match {
-     case Some(true) =&gt; index3
-     case _ =&gt; index2
+<h2><a href="#whatre-challenges-of-software-development-" name="whatre-challenges-of-software-development-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;re challenges of software development?</h2>
+<h3><a href="#about-lock" name="about-lock" class="anchor"><span class="anchor-link"></span></a>About lock</h3>
+<p><img src="../pic/congestion.png" alt="Congestion from https://www.citymetric.com/transport/can-public-transport-investment-really-fix-traffic-congestion-1870" /></p>
+<p><a href="https://wherby.github.io/the-tao-in-program-language/">Lock in Java</a></p>
+<p><a href="https://wherby.github.io/Pessimists-file-lock/">Implementation of lock</a></p>
+<h3><a href="#how-to-change-wheels-when-driving-" name="how-to-change-wheels-when-driving-" class="anchor"><span class="anchor-link"></span></a>How to change wheels when driving?</h3>
+<p><img src="../pic/changewheel.png" alt="Change wheels from https://www.businessinsider.com/two-wheel-change-drive-2014-4" /></p>
+<p><img src="../pic/callstack.png" alt="Call stack" /></p>
+<p>What&rsquo;s function in the developer&rsquo;s view?</p>
+<pre class="prettyprint"><code class="language-scala"> val fx = A =&gt; B
+</code></pre>
+<p>or </p>
+<pre class="prettyprint"><code class="language-scala"> def fx(par1:Any, par2:Any,...):Any ={
+   doA(par1)
+   if(par2){
+     doB(par2)
    }
-   case _ =&gt; index
  }
-
- def index2: Action[AnyContent] = {
-   secureAction(
-     assets.at(&quot;index.html&quot;)
-   )
- }
-
- def index3: Action[AnyContent] = {
-   secureActionOauth(
-     assets.at(&quot;index.html&quot;)
-   )
- }
-
- def index: Action[AnyContent] = assets.at(&quot;index.html&quot;)</code></pre></dd>
-  <dt>Saml</dt>
+</code></pre>
+<p>For example:</p>
+<p>We need to query price data with business logic which is not confirmed by LoS people:</p>
+<dl>
+  <dt>GetByEngagementName</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/saml.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;SAML2Client&quot;).async(action.parser) { implicit request =&gt;
-  ...
-  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAttribute(emailAttrStr).toString.stripPrefix(&quot;[&quot;).stripSuffix(&quot;]&quot;))
-  ...
-  userTimeOpt match {
-    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
-      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
-        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
-    case _=&gt;    action(request).map {
-      result =&gt;
-        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
-          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
-          .+(&quot;userTime&quot;-&gt;nowTime.toString)
-          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/GetEngagementSecurityPrice.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def getEngagementSecurityPrice() = Action.async(trim(parse.json)) { implicit request =&gt; {
+    ...
+  egaRead.lookupByFundEngagementId(fundEngagementId).flatMap {
+    egaOpt =&gt;
+      egaOpt.flatMap(_.securityItems).map(str =&gt; Json.parse(str).as[EngagementSecurity]).map {
+        engageSecurity =&gt;
+          Future(engageSecurity.items.map {
+            securityItem =&gt;
+              getSecrurityPrivceOrderd(securityItem.isin,securityItem.currency.getOrElse(&quot;&quot;),  date, securityItem.catagory, priceAndSource)
+          }.flatten)
+      }.getOrElse(Future(Seq()))
+  }
+}
+}</code></pre></dd>
+  <dt>GetBySecuritypriceAndOrder</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/Getsecuritypriceorder.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>private def getSecrurityPrivceOrderd(isin: String,currency:String,  pricedate: String, securityType: String, priceAndSource: PriceAndSource): Seq[SecurityPrice] = {
+  var continueQuery = true
+  val sourceFrom = securityType match {
+    case &quot;Standard&quot; =&gt; priceAndSource.standard
+    case &quot;Future&quot; =&gt; priceAndSource.future
+    case &quot;Option&quot; =&gt; priceAndSource.option
+    case _ =&gt; priceAndSource.other
+  }
+  var result: Seq[SecurityPrice] = Seq()
+  val res2 = getByIsinAndDate(isin, currency, pricedate)
+  if(res2.map(_.exchange).toSet.toSeq.length ==1){
+    result =res2
+  }else
+  {
+    var priceType = &quot;&quot;
+    var source = &quot;&quot;
+    for (priceType &lt;- priceAndSource.priceOrder) {
+      for (source &lt;- sourceFrom) {
+        if (continueQuery &amp;&amp; priceType.length&gt;0  &amp;&amp; source.length &gt;0) {
+          val ret = getSecurityPriceByPriceAndOrder(isin, pricedate, priceType, currency,source)
+          if (ret.length &gt; 0) {
+            continueQuery = false
+            result = ret
+          }
+        }
+      }
     }
   }
+  result
 }</code></pre></dd>
-  <dt>Oauth</dt>
+  <dt>QeuryData</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/oauth.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureActionOauth[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
-  ...
-  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAuthenticationAttribute(&quot;email&quot;).toString)
-  updateUserLastActiveTime(userInfoMap.get(&quot;email&quot;))
-  ...
-  userTimeOpt match {
-    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
-      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
-        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
-    case _=&gt;    action(request).map {
-      result =&gt;
-        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
-          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
-          .+(&quot;userTime&quot;-&gt;nowTime.toString)
-          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
-          .bakeCookies()
-    }
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryDate.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">private def getByIsinAndDate(isin: String,currency:String,  pricedate: String) = {
+  val securityPriceQuery = SecurityPriceQuery(None, None, Some(isin), None, None, None, None,Some(currency), pricedate)
+  Await.result(securityPriceRead.query(securityPriceQuery), 1 second)
+}
+
+private def getSecurityPriceByPriceAndOrder(isin: String, pricedate: String, priceType: String, currency:String, source: String): Seq[SecurityPrice] = {
+  val securityPriceQuery = SecurityPriceQuery(None, None, Some(isin), None, Some(priceType), Some(source), None, Some(currency),  pricedate)
+  Await.result(securityPriceRead.query(securityPriceQuery), 1 second)
+}
+
+case class SecurityPriceQuery(cname: Option[String], gsp: Option[String], isin: Option[String], assetclass: Option[String],
+                              pricetype: Option[String], source: Option[String], exchange: Option[String], currency: Option[String],pricedate: String)</code></pre></dd>
+  <dt>QueryInDatabase</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryInDatabase.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def query(securityPriceQuery: SecurityPriceQuery): Future[Seq[SecurityPrice]] = {
+  val query = Securityprices.filter(securityPrice =&gt; securityPriceQuery.cname.map(cname =&gt; securityPrice.cname === cname).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.gsp.map(gsp =&gt; securityPrice.gsp === gsp).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.isin.map(isin =&gt; securityPrice.isin === isin).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.assetclass.map(assetclass =&gt; securityPrice.assetclass === assetclass).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.pricetype.map(priceType =&gt; securityPrice.pricetype like(s&quot;%$priceType%&quot;)).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.source.map(source =&gt; securityPrice.source === source).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.exchange.map(exchange =&gt; securityPrice.exchange === exchange).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPriceQuery.currency.map(currency =&gt; securityPrice.currency === currency).getOrElse(true: Rep[Boolean]))
+    .filter(securityPrice =&gt; securityPrice.pricedate === securityPriceQuery.pricedate)
+  db.run(query.result).map {
+    maybeRow =&gt; maybeRow.map(rowToEntity)
   }
 }</code></pre></dd>
-  <dt>Authentication</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authorization.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def createEngageuser() =
-  deadbolt.Pattern(value = &quot;(v_admin)|(v_lead)&quot;, patternType = PatternType.REGEX)(trim(parse.json)) {implicit authRequest =&gt;
-    // Action.async(trim(parse.json)) { implicit authRequest =&gt;
-    try {
-        ...
-    } catch {
-      case ValidationException(msg) =&gt; Future(BadRequest(msg))
-    }
-  }</code></pre></dd>
 </dl>
 </div>
 <div>
@@ -304,7 +329,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../systemdesign/index.html" title="software architecture" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../systemdesign/sub/reality.html" title="Whats reality of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -313,8 +338,21 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-software architecture
+Whats reality of software development?
 </span>
+</div>
+</a>
+<a href="../../systemdesign/sub/reactive.html" title="The reactive manifesto" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+The reactive manifesto
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
