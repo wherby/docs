@@ -37,4 +37,6 @@ This is the introduction for doradilla library.
 
 * [System architecture](systemdesign/index.md)
 
+* [Excel reader using POI](poiexcel/index.md)
+
 @@@
