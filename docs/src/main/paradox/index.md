@@ -39,4 +39,6 @@ This is the introduction for doradilla library.
 
 * [Excel reader using POI](poiexcel/index.md)
 
+* [Future with sequence](future/index.md)
+
 @@@
