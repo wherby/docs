@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Database Single truth principle · Docs</title>
+<title>Future with sequence · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Database Single truth principle
+Future with sequence
 </span>
 </div>
 </div>
@@ -136,7 +136,7 @@ wherby/docs
 </div>
 <ul>
   <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
-  <li><a href="../database/index.html" class="active page">Database Single truth principle</a>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
   <ul>
     <li><a href="../database/dbservice.html" class="page">DB service</a></li>
   </ul></li>
@@ -168,9 +168,16 @@ wherby/docs
     <li><a href="../systemdesign/sub/reference.html" class="page">References</a></li>
   </ul></li>
   <li><a href="../poiexcel/index.html" class="page">Excel reader using POI</a></li>
-  <li><a href="../future/index.html" class="page">Future with sequence</a></li>
+  <li><a href="../future/index.html" class="active page">Future with sequence</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../future/index.html#future-with-sequence" class="header">Future with sequence</a>
+  <ul>
+    <li><a href="../future/index.html#future-with-sequence" class="header">Future with sequence</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -184,18 +191,34 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../future/index.html#future-with-sequence" class="header">Future with sequence</a>
+  <ul>
+    <li><a href="../future/index.html#future-with-sequence" class="header">Future with sequence</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#database-single-truth-principle" name="database-single-truth-principle" class="anchor"><span class="anchor-link"></span></a>Database Single truth principle</h1>
-<div class="toc ">
-<ul>
-  <li><a href="../database/dbservice.html" class="page">DB service</a></li>
-</ul>
-</div>
+<h1><a href="#future-with-sequence" name="future-with-sequence" class="anchor"><span class="anchor-link"></span></a>Future with sequence</h1>
+<h2><a href="#future-with-sequence" name="future-with-sequence" class="anchor"><span class="anchor-link"></span></a>Future with sequence</h2>
+<p>There are two tasks for file upload record job: 1. extract excel fields to records 2. record to database</p>
+<p>When there is no asynchronous context in the job about 12 seconds: <img src="pic/withoufuture.png" alt="without future" /></p>
+<p>When use Future.sequence in the job costs about 15 seconds: <img src="pic/sequence.png" alt="with sequence" /></p>
+<p>When only use Future in the job only less than 4 seconds(for file upload and extract): <img src="pic/future.png" alt="only future" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/database/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/future/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -211,7 +234,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../singletruthprinciple.html" title="Single truth principle" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../poiexcel/index.html" title="Excel reader using POI" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -220,21 +243,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Single truth principle
+Excel reader using POI
 </span>
-</div>
-</a>
-<a href="../database/dbservice.html" title="DB service" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-DB service
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
