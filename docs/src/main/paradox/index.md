@@ -41,4 +41,5 @@ This is the introduction for doradilla library.
 
 * [Future with sequence](future/index.md)
 
+* [Use named job for lock](lockless/index.md)
 @@@
