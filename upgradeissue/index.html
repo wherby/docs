@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Oauth2 client for Pac4j · Docs</title>
+<title>Upgrade issue for authentication · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Oauth2 client for Pac4j
+Upgrade issue for authentication
 </span>
 </div>
 </div>
@@ -149,7 +149,7 @@ wherby/docs
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
   <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
-  <li><a href="../pac4j/index.html" class="active page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
   <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
@@ -170,14 +170,14 @@ wherby/docs
   <li><a href="../poiexcel/index.html" class="page">Excel reader using POI</a></li>
   <li><a href="../future/index.html" class="page">Future with sequence</a></li>
   <li><a href="../lockless/index.html" class="page">Lockless design</a></li>
-  <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../upgradeissue/index.html" class="active page">Upgrade issue for authentication</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <li><a href="../upgradeissue/index.html#upgrade-issue-for-authentication" class="header">Upgrade issue for authentication</a>
   <ul>
-    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+    <li><a href="../upgradeissue/index.html#health-check-setting-issue" class="header">Health check setting issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -199,9 +199,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../pac4j/index.html#oauth2-client-for-pac4j" class="header">Oauth2 client for Pac4j</a>
+  <li><a href="../upgradeissue/index.html#upgrade-issue-for-authentication" class="header">Upgrade issue for authentication</a>
   <ul>
-    <li><a href="../pac4j/index.html#whats-pac4j-do-" class="header">What&rsquo;s pac4j do?</a></li>
+    <li><a href="../upgradeissue/index.html#health-check-setting-issue" class="header">Health check setting issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -212,38 +212,33 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#oauth2-client-for-pac4j" name="oauth2-client-for-pac4j" class="anchor"><span class="anchor-link"></span></a>Oauth2 client for Pac4j</h1>
-<h2><a href="#whats-pac4j-do-" name="whats-pac4j-do-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s pac4j do?</h2>
-<p>Pac4j will maintain a &ldquo;profile&rdquo; for authenticated user:</p>
-<h3><a href="#1-user-will-specify-the-client-used-for-application-" name="1-user-will-specify-the-client-used-for-application-" class="anchor"><span class="anchor-link"></span></a>1. User will specify the client used for application:</h3>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/pac4j/code/clientselection.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
-...
-}</code></pre>
-<h3><a href="#2-pac4j-will-first-query-profile" name="2-pac4j-will-first-query-profile" class="anchor"><span class="anchor-link"></span></a>2. Pac4j will first query profile</h3>
-<p><img src="./pic/queryprofile.png" alt="query profile" /></p>
-<p>and there is no profile exist yet:</p>
-<p><img src="./pic/firstquery.png" alt="first query" /></p>
-<h3><a href="#3-client-will-start-oauth2-authentication-" name="3-client-will-start-oauth2-authentication-" class="anchor"><span class="anchor-link"></span></a>3. Client will start Oauth2 authentication:</h3>
-<h4><a href="#get-authorize" name="get-authorize" class="anchor"><span class="anchor-link"></span></a>Get authorize</h4>
-<p>User will redirect to authorization portal</p>
-<p><img src="./pic/redirect.png" alt="authorize" /></p>
-<p>After user authorized, then the authorization portal will post back with token for user:</p>
-<p><img src="./pic/callback.png" alt="call back" /></p>
-<h4><a href="#get-access-token" name="get-access-token" class="anchor"><span class="anchor-link"></span></a>Get access token</h4>
-<p>Then use the authorized token to change the access token:</p>
-<p><img src="./pic/accesstoken.png" alt="Access token" /></p>
-<h4><a href="#get-user-information" name="get-user-information" class="anchor"><span class="anchor-link"></span></a>Get user information</h4>
-<p>User the access token to get user information </p>
-<p><img src="./pic/userinfo.png" alt="User info" /></p>
-<h3><a href="#4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" name="4-then-the-pac4j-will-use-the-user-information-to-create-a-profile-for-user-" class="anchor"><span class="anchor-link"></span></a>4. Then the pac4j will use the user information to create a profile for user:</h3>
-<p><img src="./pic/createprofile.png" alt="Create user profile" /></p>
-<h3><a href="#5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" name="5-when-profile-is-stored-in-session-user-profile-could-be-get-when-user-visit-restricted-resources-" class="anchor"><span class="anchor-link"></span></a>5. When profile is stored in session, user profile could be get when user visit restricted resources:</h3>
-<p><img src="./pic/queryprofile.png" alt="Get profile" /></p>
-<p>and redirect to the resources:</p>
-<p><img src="./pic/getprofileredirect.png" alt="Redirect" /></p>
+<h1><a href="#upgrade-issue-for-authentication" name="upgrade-issue-for-authentication" class="anchor"><span class="anchor-link"></span></a>Upgrade issue for authentication</h1>
+<h2><a href="#health-check-setting-issue" name="health-check-setting-issue" class="anchor"><span class="anchor-link"></span></a>Health check setting issue</h2>
+<p>In AWM project, code upgrade with new authentication method from SAML2 to OpenID. The upgrade is successfully applied in QA environment; but in UAT environment, all API calls to application are lost.</p>
+<p>Api call success in QA: <img src="pic/apisuccess.png" alt="Api call success in QA" /></p>
+<p>But api call failed in UAT: <img src="pic/apifailedonUAT.png" alt="Api call failed in UAT" /></p>
+<p>What&rsquo;s different with QA and UAT in network architecture?</p>
+<p>In QA environment, there is only one standalone server for application, api call could go directly to the application.</p>
+<p>In UAT environment, there are two servers for application, and nginx server to proxy api calls to the application servers, and a network load balancer for nginx server.</p>
+<p>On network load balancer for nginx, there is health check for application setting to &ldquo;/&rdquo; which is the root path of the application.</p>
+<dl>
+  <dt>Route config</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/upgradeissue/code/route.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">GET     /api/summary             controllers.HomeController.appSummary
+
++ nocsrf
+GET     /                        controllers.FrontendController.secureSource()
+</code></pre></dd>
+</dl>
+<p>Because the root path is secured by authentication method, when user visit root path, user will redirect to authentication site for user login.</p>
+<p>When using SAML2, when health check hit root path, with return 200:</p>
+<p><img src="pic/idamreturn200.png" alt="SAML2 return 200" /></p>
+<p>When using OpenId, when health check hit root path, with return code 303:</p>
+<p><img src="pic/openidreturn303.png" alt="OpenId return 303" /></p>
+<p>So when upgrade from SAML2 to OpenId, the return code is change from 200 to 303, then the network load balancer will block all traffic to the application.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/pac4j/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/upgradeissue/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -259,7 +254,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../dailyjob/index.html" title="Daily schedule job" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../lockless/index.html" title="Lockless design" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -268,21 +263,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Daily schedule job
+Lockless design
 </span>
-</div>
-</a>
-<a href="../nio/index.html" title="NIO and Akka-Http" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-NIO and Akka-Http
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
