@@ -44,4 +44,6 @@ This is the introduction for doradilla library.
 * [Use named job for lock](lockless/index.md)
 
 * [Upgrade issue](upgradeissue/index.md)
+
+* [DB bulk insert](dbinsert/index.md)
 @@@
