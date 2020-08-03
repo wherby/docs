@@ -181,6 +181,7 @@ wherby/docs
     <li><a href="../dbinsert/index.html#db-multiple-insert-issue" class="header">DB multiple insert issue</a></li>
     <li><a href="../dbinsert/index.html#performance-issue" class="header">Performance issue</a></li>
     <li><a href="../dbinsert/index.html#md5-issue-for-compare" class="header">Md5 issue for compare</a></li>
+    <li><a href="../dbinsert/index.html#questions" class="header">Questions</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -207,6 +208,7 @@ wherby/docs
     <li><a href="../dbinsert/index.html#db-multiple-insert-issue" class="header">DB multiple insert issue</a></li>
     <li><a href="../dbinsert/index.html#performance-issue" class="header">Performance issue</a></li>
     <li><a href="../dbinsert/index.html#md5-issue-for-compare" class="header">Md5 issue for compare</a></li>
+    <li><a href="../dbinsert/index.html#questions" class="header">Questions</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -383,6 +385,33 @@ override def recordMultiple(securityPriceList:Seq[SecurityPrice])={
 <p>After refined, with same configuration, the inserting performance as below: <img src="pic/refined.png" alt="Refined performance" /></p>
 <h2><a href="#md5-issue-for-compare" name="md5-issue-for-compare" class="anchor"><span class="anchor-link"></span></a>Md5 issue for compare</h2>
 <p><img src="pic/md5string.png" alt="Md5 string" /></p>
+<h2><a href="#questions" name="questions" class="anchor"><span class="anchor-link"></span></a>Questions</h2>
+<p>1.Why only 8451 items record in the first scenarios:</p>
+<p>Because in first scenarios, all items for insert are running in separated DB request,  There is some setting for db connection:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/dbinsert/code/db.conf" target="_blank" title="Go to snippet source"></a><code class="language-conf">myapp = {
+  database = {
+    ***
+
+    // The number of threads determines how many things you can *run* in parallel
+    // the number of connections determines you many things you can *keep in memory* at the same time
+    // on the database server.
+    // numThreads = (core_count (hyperthreading included))
+    numThreads = 10
+
+    // queueSize = ((core_count * 2) + effective_spindle_count)
+    // on a MBP 13, this is 2 cores * 2 (hyperthreading not included) + 1 hard disk
+    queueSize = 500
+
+    // https://blog.knoldus.com/2016/01/01/best-practices-for-using-slick-on-production/
+    // make larger than numThreads + queueSize
+    maxConnections = 20
+
+    connectionTimeout = 30000
+    validationTimeout = 30000
+  }
+}</code></pre>
+<p>2.Why there is more than 20071 records in first scenarios when upload files multiple times:</p>
+<p>Because the inserting are in the different threads to query if same item existed in db, then the  insert operations will insert same record at same time in different threads.</p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/dbinsert/index.md" title="Edit this page" class="md-source-file md-edit">
