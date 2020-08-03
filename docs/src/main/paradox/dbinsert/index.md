@@ -69,3 +69,16 @@ After refined, with same configuration, the inserting performance as below:
 
 ![Md5 string](pic/md5string.png)
 
+## Questions
+
+1.Why only 8451 items record in the first scenarios:
+
+   Because in first scenarios, all items for insert are running in separated DB request,
+   There is some setting for db connection:
+
+@@snip[db config](code/db.conf)
+   
+2.Why there is more than 20071 records in first scenarios when upload files multiple times:
+
+   Because the inserting are in the different threads to query if same item existed in db, then the
+   insert operations will insert same record at same time in different threads.

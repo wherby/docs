@@ -7,7 +7,7 @@ The upgrade is successfully applied in QA environment; but in UAT environment, a
 are lost.
 
 Api call success in QA:
-![Api call success in QA](pic/apisuccess.png)
+![Api call success in QA](pic/apisuccessQA.png)
 
 But api call failed in UAT:
 ![Api call failed in UAT](pic/apifailedonUAT.png)
