@@ -46,4 +46,6 @@ This is the introduction for doradilla library.
 * [Upgrade issue](upgradeissue/index.md)
 
 * [DB bulk insert](dbinsert/index.md)
+
+* [Web render](react/index.md)
 @@@
