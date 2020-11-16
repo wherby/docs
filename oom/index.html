@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Store file in database · Docs</title>
+<title>Out of memory for batch job · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Store file in database
+Out of memory for batch job
 </span>
 </div>
 </div>
@@ -155,7 +155,7 @@ wherby/docs
     <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
-  <li><a href="../databasewithfile/index.html" class="active page">Store file in database</a></li>
+  <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
   <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
   <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
   <li><a href="../apicall/index.html" class="page">Api call failed</a></li>
@@ -173,17 +173,14 @@ wherby/docs
   <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
   <li><a href="../dbinsert/index.html" class="page">DB bulk insert</a></li>
   <li><a href="../react/index.html" class="page">React web render</a></li>
-  <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../oom/index.html" class="active page">Out of memory for batch job</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../databasewithfile/index.html#store-file-in-database" class="header">Store file in database</a>
+  <li><a href="../oom/index.html#out-of-memory-for-batch-job" class="header">Out of memory for batch job</a>
   <ul>
-    <li><a href="../databasewithfile/index.html#store-file-in-database-" class="header">Store file in database:</a></li>
-    <li><a href="../databasewithfile/index.html#issue-" class="header">Issue:</a></li>
-    <li><a href="../databasewithfile/index.html#whats-happend-" class="header">What&rsquo;s happend:</a></li>
-    <li><a href="../databasewithfile/index.html#how-to-resolve-" class="header">How to resolve:</a></li>
+    <li><a href="../oom/index.html#iusse" class="header">Iusse</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -205,12 +202,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../databasewithfile/index.html#store-file-in-database" class="header">Store file in database</a>
+  <li><a href="../oom/index.html#out-of-memory-for-batch-job" class="header">Out of memory for batch job</a>
   <ul>
-    <li><a href="../databasewithfile/index.html#store-file-in-database-" class="header">Store file in database:</a></li>
-    <li><a href="../databasewithfile/index.html#issue-" class="header">Issue:</a></li>
-    <li><a href="../databasewithfile/index.html#whats-happend-" class="header">What&rsquo;s happend:</a></li>
-    <li><a href="../databasewithfile/index.html#how-to-resolve-" class="header">How to resolve:</a></li>
+    <li><a href="../oom/index.html#iusse" class="header">Iusse</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -221,77 +215,66 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#store-file-in-database" name="store-file-in-database" class="anchor"><span class="anchor-link"></span></a>Store file in database</h1>
-<h2><a href="#store-file-in-database-" name="store-file-in-database-" class="anchor"><span class="anchor-link"></span></a>Store file in database:</h2>
-<p>It&rsquo;s quiet common that applicaiton will use database blob to store long contents input or files.</p>
-<p>For our AWM project do the same way, but when we query the file extaction status in home page:</p>
-<p><img src="pic/query.png" alt="Query home" /></p>
-<p>We just want a simple answer that if the user upload files are processed:</p>
-<p><img src="pic/network.png" alt="Net work" /></p>
-<p>with query result from backend:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/queryresult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[
-    {
-        &quot;fundEngagementId&quot;: &quot;3ed111d1-5f9a-4afd-bc6a-99286e2de59a&quot;,
-        &quot;engagementId&quot;: &quot;asfsaf2&quot;,
-        &quot;fundId&quot;: &quot;70e59b84-9721-4e22-8f9e-01e04b0a768a&quot;,
-        &quot;fundName&quot;: &quot;FI&quot;,
-        &quot;definedReportTypeNumber&quot;: 15,
-        &quot;reportUploadedNumber&quot;: 15,
-        &quot;hasEgaDownloaded&quot;: true
-    }
-]</code></pre>
-<p>so everything looks as expected.</p>
-<h2><a href="#issue-" name="issue-" class="anchor"><span class="anchor-link"></span></a>Issue:</h2>
-<p>But as we look the database query log in backend, we will find:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/logs.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`fund_engagement_id`, x2.`extraction_status`,
- x2.`upload_file_status`, x2.`upload_file_content`, x2.`selected`, x3.`display`, x4.`display`, x2.`createby`,
-  x2.`createdatetime`, x2.`modifyby`, x2.`modifydatetime` from `fund_engagement_report_type_selection` x2,
-  `fund_engagement` x5, `funds` x6, `fund_admin` x7, `sheettypes_reporttypes_map` x8, `sheet_types` x3, `report_types`
-  x4 where ((((((x2.`fund_engagement_id` = x5.`id`) and (x2.`fund_engagement_id` = &#39;3ed111d1-5f9a-4afd-bc6a-99286e2de59a&#39;))
-  and (x5.`fundid` = x6.`id`)) and (x6.`fund_admin_id` = x7.`id`)) and (x2.`sheettypes_reporttypes_map_id` = x8.`id`))
-  and (x8.`sheettypeid` = x3.`id`)) and (x8.`reporttypeid` = x4.`id`)</code></pre>
-<p>The log shows there will have query for &ldquo;upload_file_content&rdquo;. This field is a blob file:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/report.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_engagement_report_type_selection`(
-	`id` varchar(128) NOT NULL,
-    `sheettypes_reporttypes_map_id` varchar(128) NOT NULL,
-...
-    `modifyby` VARCHAR(128) NULL,
-    `modifydatetime`  TIMESTAMP  NULL,
-    `selected` boolean NOT NULL DEFAULT FALSE,
-    `upload_file_content` MEDIUMBLOB NULL,
-    `extraction_file_content` MEDIUMBLOB NULL,
-...
-);</code></pre>
-<p>In this table, we store the file content in field &ldquo;upload_file_content&rdquo;.</p>
-<h2><a href="#whats-happend-" name="whats-happend-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happend:</h2>
-<p>There is an existed api to query user&rsquo;s input:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def lookupSelectionWithDisplay(fundEngagementId: String): Future[Seq[FundEngagementReportTypeSelectionWithName]] = {
-  val sql = for (((((((selection, fundEngagement), funds), fundAdmin), sheetReportMap), sheetTypes), reportTypes)
-                   &lt;- FundEngagementReportTypeSelection join FundEngagement on ((left, right) =&gt; left.fundEngagementId === right.id &amp;&amp; left.fundEngagementId === fundEngagementId)
-    join Funds on ((left, right) =&gt; left._2.fundid === right.id)
-    join FundAdmin on ((left, right) =&gt; left._2.fundAdminId === right.id)
-    join SheettypesReporttypesMap on (_._1._1._1.sheettypesReporttypesMapId === _.id)
-    join SheetTypes on ((left, right) =&gt; left._2.sheettypeid === right.id)
-    join ReportTypes on ((left, right) =&gt; left._1._2.reporttypeid === right.id))
-    yield (selection.id, selection.fundEngagementId, selection.extractionStatus, selection.uploadFileStatus ,selection.uploadFileContent, selection.selected, sheetTypes.display, reportTypes.display,
-      selection.createby, selection.createdatetime, selection.modifyby, selection.modifydatetime)
-  db.run(sql.result).map(res =&gt; res.map(tup =&gt; FundEngagementReportTypeSelectionWithName(tup._1, tup._2, tup._3, tup._4, tup._5 match {
-    case Some(value) =&gt; Some(new String(value.toString))
-    case None =&gt; None
-  }, tup._6, tup._7,tup._8, tup._9, tup._10, tup._11, tup._12)))
-}</code></pre>
-<p>The api is as expected.</p>
-<p>But when another person implements another api to query the extraction result of user input files, the person &ldquo;reuse&rdquo; the api. Then the issue happens.</p>
-<h2><a href="#how-to-resolve-" name="how-to-resolve-" class="anchor"><span class="anchor-link"></span></a>How to resolve:</h2>
-<ol>
-  <li>
-  <p>Change the query.</p></li>
-  <li>
-  <p>Change the database definition.</p></li>
-</ol>
+<h1><a href="#out-of-memory-for-batch-job" name="out-of-memory-for-batch-job" class="anchor"><span class="anchor-link"></span></a>Out of memory for batch job</h1>
+<h2><a href="#iusse" name="iusse" class="anchor"><span class="anchor-link"></span></a>Iusse</h2>
+<p>When we want to process batch job in scala, there may trigger OOM issue if we process batch job in same thread like below:</p>
+<p><img src="./pic/oom.png" alt="OOM snap" /></p>
+<p>The code as below:</p>
+<dl>
+  <dt>Process excel files in folder</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/oom/code/code1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def verifyExcelFolder()=Action{
+  val folferPath =&quot;../temp/&quot;
+  val files = recursiveListFiles(new File(folferPath))
+  val excelFiles =files.filter(file =&gt;file.getName.toLowerCase.endsWith(&quot;.xls&quot;)||
+    file.getName.toLowerCase.endsWith(&quot;.xlsx&quot;))
+  val fileInfos = excelFiles.map{
+    file =&gt; new FileInfo(file.getName,file.getAbsolutePath)
+  }
+  val resultsFuture = fileInfos.toSeq.map{
+    fileInfo =&gt; verifyFileForNoMatchedFormula(fileInfo)
+  }
+  Ok(files.length.toString)
+}</code></pre></dd>
+  <dt>Actions on excel file</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/oom/code/verifyFile.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>private def verifyFileForNoMatchedFormula(fileInfo: FileInfo) = {
+  val resultForExcel = downloadService.downloadForFile(Seq(fileInfo))
+  val filePath = &quot;conf/Download.xlsx&quot;
+  val workbook = new XSSFWorkbook(new FileInputStream(new File(filePath)))
+  try{
+    downloadService.evaluateExtractedDataToExcel(resultForExcel._1, workbook)
+  } catch {
+    case ex=&gt;
+      println(ex)
+  }
+  val result = downloadService.evaluateExtractedDataToExcel(resultForExcel._1, workbook)
+  workbook.close()
+  result
+}</code></pre></dd>
+</dl>
+<p>In the code, all excel files in folder &ldquo;temp&rdquo; will be processed with &ldquo;verifyFileForNoMatchedFormula&rdquo; method which is memory consuming job. </p>
+<p>How to fix:</p>
+<dl>
+  <dt>Fix for process</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/oom/code/code2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def verifyExcelFolder()=Action{
+  val folferPath =&quot;../temp/&quot;
+  val files = recursiveListFiles(new File(folferPath))
+  val excelFiles =files.filter(file =&gt;file.getName.toLowerCase.endsWith(&quot;.xls&quot;)||
+    file.getName.toLowerCase.endsWith(&quot;.xlsx&quot;))
+  val fileInfos = excelFiles.map{
+    file =&gt; new FileInfo(file.getName,file.getAbsolutePath)
+  }
+  val resultsFuture = Future.sequence( fileInfos.toSeq.map{
+    fileInfo =&gt; Future( verifyFileForNoMatchedFormula(fileInfo))
+  })
+  Ok(files.length.toString)
+}</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/oom/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -307,7 +290,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../nio/code/scalableIOInJava.html" title="Scalable IO in Java" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../react/index.html" title="React web render" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -316,21 +299,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Scalable IO in Java
+React web render
 </span>
-</div>
-</a>
-<a href="../flywayonmysql/index.html" title="Flyway clean failed on mysql8" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Flyway clean failed on mysql8
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
