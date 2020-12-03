@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>React web render · Docs</title>
+<title>Pure function design · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-React web render
+Pure function design
 </span>
 </div>
 </div>
@@ -172,18 +172,18 @@ wherby/docs
   <li><a href="../lockless/index.html" class="page">Lockless design</a></li>
   <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
   <li><a href="../dbinsert/index.html" class="page">DB bulk insert</a></li>
-  <li><a href="../react/index.html" class="active page">React web render</a></li>
+  <li><a href="../react/index.html" class="page">React web render</a></li>
   <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
-  <li><a href="../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../purefunction/index.html" class="active page">Pure function design</a></li>
   <li><a href="../codeissue/index.html" class="page">Code issue</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../react/index.html#react-web-render" class="header">React web render</a>
+  <li><a href="../purefunction/index.html#pure-function-design" class="header">Pure function design</a>
   <ul>
-    <li><a href="../react/index.html#the-null-element-after-refresh" class="header">The null element after refresh</a></li>
-    <li><a href="../react/index.html#fix-" class="header">Fix:</a></li>
+    <li><a href="../purefunction/index.html#start-from-simple-example" class="header">Start from simple example</a></li>
+    <li><a href="../purefunction/index.html#for-awm-project" class="header">For AWM project</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -205,10 +205,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../react/index.html#react-web-render" class="header">React web render</a>
+  <li><a href="../purefunction/index.html#pure-function-design" class="header">Pure function design</a>
   <ul>
-    <li><a href="../react/index.html#the-null-element-after-refresh" class="header">The null element after refresh</a></li>
-    <li><a href="../react/index.html#fix-" class="header">Fix:</a></li>
+    <li><a href="../purefunction/index.html#start-from-simple-example" class="header">Start from simple example</a></li>
+    <li><a href="../purefunction/index.html#for-awm-project" class="header">For AWM project</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -219,87 +219,58 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#react-web-render" name="react-web-render" class="anchor"><span class="anchor-link"></span></a>React web render</h1>
-<h2><a href="#the-null-element-after-refresh" name="the-null-element-after-refresh" class="anchor"><span class="anchor-link"></span></a>The null element after refresh</h2>
-<p>In AWM the when click the fist tab and go to second tab, every thing goes well</p>
-<p>First Tab: <img src="./pic/fisttab.png" alt="First tab" /></p>
-<p>Second Tab: <img src="./pic/secondtab.png" alt="Second tab" /></p>
-<p>When refresh page on second tab, the &ldquo;Audit Period End&rdquo; field is missing&quot;</p>
-<p><img src="./pic/nullafterrefresh.png" alt="Missing field after refresh" /></p>
-<p>Let&rsquo;s see how the &ldquo;Audit Period End&rdquo; field is rendered:</p>
+<h1><a href="#pure-function-design" name="pure-function-design" class="anchor"><span class="anchor-link"></span></a>Pure function design</h1>
+<h2><a href="#start-from-simple-example" name="start-from-simple-example" class="anchor"><span class="anchor-link"></span></a>Start from simple example</h2>
+<p>The book <a href="https://www.manning.com/books/functional-programming-in-scala">Function Programming in Scala</a> start with how to create pure function methods with example of Cofe shop:</p>
 <dl>
-  <dt>In validation component</dt>
+  <dt>Starter</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/code/parent.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx">renderUploadGSP = () =&gt; {
-  if (this.state.operationType == &quot;uploadGSP&quot;) {
-    return &lt;UploadGSPOutputList id={this.props.id} engagementId={this.props.engagementId}
-    fundName={this.props.fundName} auditPeriodEnd={this.props.auditPeriodEnd} /&gt;
-  } else return null
-}
-render() {
-  return (
-    &lt;div className=&quot;valuations-container&quot;&gt;
-      {this.renderUploadGSP()}
-    &lt;/div&gt;
-  )
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/purefunction/code/cafe1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class Cafe{
+  def buyCoffee(cc: CreditCard):Coffee={
+    val cup = new Coffee()
+    cc.charge(cup.price)
+    cup
+  }
 }</code></pre></dd>
-  <dt>In GSP component</dt>
+  <dt>With payment interface</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/code/child.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx"> priceGroupColumn: EditableColumnProps&lt;SecurityPriceInfo&gt; = {
-   title: &lt;div style={{display: &quot;flex&quot;}}&gt;
-     &lt;p&gt;Audit Period End &lt;/p&gt;
-     &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-     ...
-   &lt;/div&gt;,
-   ...
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/purefunction/code/cafe2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class Cafe{
+  def buyCoffee(cc: CreditCard,p: Payment):Coffee={
+    val cup = new Coffee()
+    p.charge(cc, cup.price)
+    cup
+  }
+}</code></pre></dd>
+  <dt>Pure function</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/purefunction/code/cafe3.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class Cafe{
+  def buyCoffee(cc: CreditCard):(Coffee,Charge)={
+    val cup = new Coffee()
+    (cup,Charge(cc,cup.price))
+  }
+}
 
-render() {
-   let columns = []
-   columns=[...columns, this.statusColumn, this.securityCategoryColumn, this.securityNameFundAdminColumn, this.ISINColumn, this.currencyColumn, this.exchangeColumn, this.priceGroupColumn]
-   return (
-     &lt;div&gt;
-       ...
-       &lt;div id=&quot;securityEditableTable&quot; className=&quot;security-price-editable-table&quot;&gt;
-         &lt;EditableTable
-           columns={columns}
-           dataSource={this.state.data}
-           //dataSource={fakeData}
-           controlData={true}
-           loading={this.state.loading}
-           onModify={this.onModify}
-           enableAdd={false}
-           pagination={false}
-           rowKey=&quot;id&quot;
-           showControls={false}
-         /&gt;
-       &lt;/div&gt;
-       ..
-     &lt;/div&gt;
-   )
- }</code></pre></dd>
+case class Charge(cc: CreditCard,amount:Double){
+  def combine(other:Charge):Charge={
+    if(cc == other.cc)
+      Charge(cc, amount + other.amount)
+  }
+}</code></pre></dd>
 </dl>
-<p>And the field is controlled by {this.props.auditPeriodEnd} in validation component, if the page is refreshed,</p>
-<p>first the props value will be: <img src="./pic/props1strender.png" alt="First refresh" /></p>
-<p>and the props will be updated by its parent component: <img src="./pic/propslastrender.png" alt="Last status" /></p>
-<p>the updated props value is not applied to the GSP component.</p>
-<h2><a href="#fix-" name="fix-" class="anchor"><span class="anchor-link"></span></a>Fix:</h2>
-<p>Change the code from </p>
-<pre><code>    title: &lt;div style={{display: &quot;flex&quot;}}&gt;
-      &lt;p&gt;Audit Period End &lt;/p&gt;
-      &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-      ...
-    &lt;/div&gt;,
-</code></pre>
-<p>to</p>
-<pre><code>    title: ()=&gt; &lt;div style={{display: &quot;flex&quot;}}&gt;
-      &lt;p&gt;Audit Period End &lt;/p&gt;
-      &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-      ...
-    &lt;/div&gt;,
-</code></pre>
+<h2><a href="#for-awm-project" name="for-awm-project" class="anchor"><span class="anchor-link"></span></a>For AWM project</h2>
+<p>In AWM project, main data workflow is from input files to EGA(Excel file).</p>
+<p>input file =&gt; extract content =&gt; post extraction actions and write to excel</p>
+<p>At first time, &ldquo;post extraction action and write to excel&rdquo; are in same step. As time goes on, there are more requirement on post extraction actions. New post extraction actions are added to the system.</p>
+<p>If keep the same design, the &ldquo;post extraction action and write to excel&rdquo; will blow up and more spaghetti code shows up. </p>
+<p>input file =&gt; extract content =&gt; post extraction actions =&gt; write to excel</p>
+<p>Data type translation:</p>
+<p>extract content: [File] =&gt; [User Define Content] </p>
+<p>Post extraction action:[User Define Content] =&gt; [User Define Content] </p>
+<p>write to excel: [User Define Content] =&gt; [Excel File]</p>
+<p>There could show the &ldquo;Post extraction action&rdquo; which is idempotent operation, which means add  more &ldquo;Post extraction action&rdquo; may impact too much to existed code.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/purefunction/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -315,7 +286,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../dbinsert/index.html" title="DB bulk insert" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../oom/index.html" title="Out of memory for batch job" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -324,17 +295,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-DB bulk insert
+Out of memory for batch job
 </span>
 </div>
 </a>
-<a href="../oom/index.html" title="Out of memory for batch job" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../codeissue/index.html" title="Code issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Out of memory for batch job
+Code issue
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
