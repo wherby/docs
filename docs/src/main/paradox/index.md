@@ -50,4 +50,8 @@ This is the introduction for doradilla library.
 * [Web render](react/index.md)
 
 * [OOM in thread](oom/index.md)
+
+* [Pure function](purefunction/index.md)
+
+* [Code issue](codeissue/index.md)
 @@@
