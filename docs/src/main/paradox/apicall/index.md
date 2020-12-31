@@ -2,7 +2,7 @@
 
 ## Issue
 
-In the workflow, the account number page is laoding:
+In the workflow, the account number page is loading:
 
 ![Loading for](pic/loading.png)
 
