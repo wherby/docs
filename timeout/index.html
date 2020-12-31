@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>software architecture · Docs</title>
+<title>Timeout errors and crash · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-software architecture
+Timeout errors and crash
 </span>
 </div>
 </div>
@@ -159,7 +159,7 @@ wherby/docs
   <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
   <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
   <li><a href="../apicall/index.html" class="page">Api call failed</a></li>
-  <li><a href="../systemdesign/index.html" class="active page">software architecture</a>
+  <li><a href="../systemdesign/index.html" class="page">software architecture</a>
   <ul>
     <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
@@ -176,9 +176,17 @@ wherby/docs
   <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
   <li><a href="../purefunction/index.html" class="page">Pure function design</a></li>
   <li><a href="../codeissue/index.html" class="page">Code issue</a></li>
-  <li><a href="../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../timeout/index.html" class="active page">Timeout errors and crash</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../timeout/index.html#timeout-errors-and-crash" class="header">Timeout errors and crash</a>
+  <ul>
+    <li><a href="../timeout/index.html#error-in-dev" class="header">Error in dev</a></li>
+    <li><a href="../timeout/index.html#gateway-timeout" class="header">Gateway timeout</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -192,22 +200,61 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../timeout/index.html#timeout-errors-and-crash" class="header">Timeout errors and crash</a>
+  <ul>
+    <li><a href="../timeout/index.html#error-in-dev" class="header">Error in dev</a></li>
+    <li><a href="../timeout/index.html#gateway-timeout" class="header">Gateway timeout</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#software-architecture" name="software-architecture" class="anchor"><span class="anchor-link"></span></a>software architecture</h1>
-<div class="toc ">
-<ul>
-  <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
-  <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
-  <li><a href="../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
-  <li><a href="../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
-  <li><a href="../systemdesign/sub/reference.html" class="page">References</a></li>
-</ul>
-</div>
+<h1><a href="#timeout-errors-and-crash" name="timeout-errors-and-crash" class="anchor"><span class="anchor-link"></span></a>Timeout errors and crash</h1>
+<h2><a href="#error-in-dev" name="error-in-dev" class="anchor"><span class="anchor-link"></span></a>Error in dev</h2>
+<p>In project, when return value is :</p>
+<pre class="prettyprint"><code class="language-scala"> Ok(&quot;Extract Success&quot;)
+</code></pre>
+<p>The result will crush when return value changes to:</p>
+<pre class="prettyprint"><code class="language-scala">Ok(&quot;Extraction Success&quot;)
+</code></pre>
+<p>In dev environment, the UI will crash:</p>
+<p><img src="./pic/errorIn3000.png" alt="UI crash in 3000" /></p>
+<p>while in prod environment, the UI will not crash, but spin will not stop:</p>
+<p><img src="./pic/errorIn9000.png" alt="UI crash in 9000" /></p>
+<p>For the crash is different in dev and prod environment, let&rsquo;s see the cause code in front-end:</p>
+<p><img src="./pic/codeInFrontend.png" alt="code in frontend" /></p>
+<h2><a href="#gateway-timeout" name="gateway-timeout" class="anchor"><span class="anchor-link"></span></a>Gateway timeout</h2>
+<p>When running long job in rest api. there will throw 502 gateway timeout from nginx. There are two main causes:</p>
+<ol>
+  <li>nginx timeout setting<a href="https://serverfault.com/questions/777749/how-to-disable-timeout-for-nginx">default is 90s</a></li>
+</ol>
+<pre class="prettyprint"><code class="language-yaml">server{
+   ...
+   proxy_read_timeout 300;
+   proxy_connect_timeout 300;
+   proxy_send_timeout 300; 
+   ...
+}
+</code></pre>
+<ol>
+  <li>play server for idle timeout<a href="https://stackoverflow.com/questions/44873117/why-does-play-2-6-close-a-websocket-after-85-seconds-when-it-is-idle-while-play">default is 85s</a></li>
+</ol>
+<pre class="prettyprint"><code class="language-yaml">play.server.http.idleTimeout = 180s
+</code></pre>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/timeout/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -223,7 +270,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../apicall/index.html" title="Api call failed" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../codeissue/index.html" title="Code issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -232,21 +279,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Api call failed
+Code issue
 </span>
-</div>
-</a>
-<a href="../systemdesign/sub/reality.html" title="Whats reality of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Whats reality of software development?
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
