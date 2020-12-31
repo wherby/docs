@@ -54,4 +54,6 @@ This is the introduction for doradilla library.
 * [Pure function](purefunction/index.md)
 
 * [Code issue](codeissue/index.md)
+
+* [Timeout issue](timeout/index.md)
 @@@
