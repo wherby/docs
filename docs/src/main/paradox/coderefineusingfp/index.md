@@ -2,16 +2,16 @@
 
 ## Code to refine
 
-HSBC:
-: @@snip[HSBC Finder](./code/hsbc.scala)
+FundA:
+: @@snip[FundA](code/fundA.scala)
 
-NorthernTrust:
-： @@snip[NorthernTrust](./code/northernTrust.scala)
+FundB:
+: @@snip[FundB](code/fundB.scala)
 
 ## Refined 
 
 Generic Method:
 : @@snip[GenericFinder](./code/genericFinder.scala)
 
-BNY：
-: @@snip[BNY](./code/bny.scala)
+FundC：
+: @@snip[FundC](code/fundc.scala)

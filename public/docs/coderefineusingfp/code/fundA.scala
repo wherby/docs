@@ -1,6 +1,6 @@
-object GuessHSBC {
+object FundA {
 
-  val thisfund = hsbc
+  val thisfund = fundA
 
   def belongToThisFund(name:String) = {
     belongToSomeSelectedFunds(name,thisfund)

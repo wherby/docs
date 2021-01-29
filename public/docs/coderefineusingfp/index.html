@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../assets/images/favicon.png">
+<title>Refine code with function programming · Docs</title>
+<link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../lib/prettify/prettify.css">
+<script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+Refine code with function programming
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../future/index.html" class="page">Future value</a></li>
+  <li><a href="../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../react/index.html" class="page">React web render</a></li>
+  <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../coderefineusingfp/index.html" class="active page">Refine code with function programming</a></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../coderefineusingfp/index.html#refine-code-with-function-programming" class="header">Refine code with function programming</a>
+  <ul>
+    <li><a href="../coderefineusingfp/index.html#code-to-refine" class="header">Code to refine</a></li>
+    <li><a href="../coderefineusingfp/index.html#refined" class="header">Refined</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../coderefineusingfp/index.html#refine-code-with-function-programming" class="header">Refine code with function programming</a>
+  <ul>
+    <li><a href="../coderefineusingfp/index.html#code-to-refine" class="header">Code to refine</a></li>
+    <li><a href="../coderefineusingfp/index.html#refined" class="header">Refined</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#refine-code-with-function-programming" name="refine-code-with-function-programming" class="anchor"><span class="anchor-link"></span></a>Refine code with function programming</h1>
+<h2><a href="#code-to-refine" name="code-to-refine" class="anchor"><span class="anchor-link"></span></a>Code to refine</h2>
+<dl>
+  <dt>FundA</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/coderefineusingfp/code/fundA.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">object FundA {
+
+  val thisfund = fundA
+
+  def belongToThisFund(name:String) = {
+    belongToSomeSelectedFunds(name,thisfund)
+  }
+
+  def generate(cvg:ConfirmationValuationGSP,selections:Seq[FundEngagementReportTypeSelectionData]) = {
+    val afterGuess = cvg.copy(workCash = guessWorkCash(cvg.workCash,selections),workInv = guessWorkInv(cvg.workInv,selections))
+    afterGuess
+  }
+
+  def guessWorkCash(workCash:Seq[Map[String,String]],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+    workCash.map(workCashRow=&gt;{
+      var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse(&quot;&quot;)
+      if(belongToThisFund(glAccountName)){
+        val IandU = guessingWorkCashIAndU(workCashRow,selections)
+        workCashRow ++ Map(
+          WorkCashColumns.BANK_ACCOUNT_NUMBER -&gt; IandU._1,
+          WorkCashColumns.AMOUNT_PER_CONFIRMATION -&gt; IandU._2,
+          WorkCashColumns.QUESTIONARE_FILE -&gt; IandU._3
+        )
+      }else{
+        workCashRow
+      }
+
+    })
+  }
+
+  def guessWorkInv(workInv:Seq[Map[String,String]],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+    workInv.map(workInvRow=&gt;{
+      val custodian = workInvRow.get(WorkInvColumns.CUSTODIAN).getOrElse(&quot;&quot;)
+      if(belongToThisFund(custodian)){
+        val IandU = guessingWorkInvJandP(workInvRow,selections)
+        workInvRow ++ Map(
+          WorkInvColumns.INVESTMENT_VALUE_PER_CONFIRMATION -&gt; IandU._1,
+          WorkInvColumns.QUANTITY_PER_CONFIRMATION -&gt; IandU._2,
+          WorkInvColumns.QUESTIONARE_FILE -&gt; IandU._3
+        )
+      }else{
+        workInvRow
+      }
+    })
+  }
+
+  def getFirstMappingInConfirmationReport(reportID:String,filterFunc:(JSONObject)=&gt;Boolean,selections:Seq[FundEngagementReportTypeSelectionData]):Map[String,JSONObject] = {
+    val report = selections.filter(select=&gt;{select.sheettypesReporttypesMapId == reportID &amp;&amp; select.extractionFileContent.isDefined}).headOption
+    var result:Map[String,JSONObject] = Map()
+    if(report.isDefined &amp;&amp; result.isEmpty){
+      val a = new JSONArray(report.get.extractionFileContent.get)
+      for(i1 &lt;- a.length()-1 to 0 by -1){
+        val singleFileContent = a.get(i1).asInstanceOf[JSONObject]
+        val fileNames = singleFileContent.names()
+        for(i2 &lt;- 0 until fileNames.length()){
+          val fileName = fileNames.get(i2).toString()
+          val fileContents = new JSONArray(singleFileContent.getString(fileName))
+          for(i3 &lt;- 0 until fileContents.length){
+            val item = fileContents.get(i3).asInstanceOf[JSONObject]
+            if(filterFunc(item)){
+              result  = result + (fileName.split(&quot;\\|&quot;)(0) -&gt; item)
+            }
+          }
+        }
+      }
+    }
+    result
+  }
+
+  /**
+   *
+   * @param reportID
+   * @param filterFunc
+   * @param getFunc
+   * @return (column I, column U ,fileName)
+   */
+  def getWorkCashColumnsFromReport(reportID:String,filterFunc:(JSONObject)=&gt;Boolean,getFunc:(JSONObject)=&gt;(String,String),selections:Seq[FundEngagementReportTypeSelectionData]):Option[(String,String,String)] = {
+    val result = getFirstMappingInConfirmationReport(reportID,filterFunc,selections)
+    if(result.isEmpty){
+      None
+    }else{
+      var firstKey:Option[String] = None
+      var IandU = (&quot;&quot;,&quot;&quot;)
+      for(k &lt;- result.keys){
+        if(firstKey.isEmpty){
+          firstKey = Some(k)
+          IandU = getFunc(result.get(k).get)
+        }
+      }
+      Some(IandU._1,IandU._2,firstKey.get)
+    }
+  }
+
+
+  /**
+   *
+   * @param reportID
+   * @param filterFunc
+   * @param getFunc
+   * @return (column J, column P,fileName)
+   */
+  def getWorkInvColumnsFromReport(reportID:String,filterFunc:(JSONObject)=&gt;Boolean,getFunc:(JSONObject)=&gt;(String,String),selections:Seq[FundEngagementReportTypeSelectionData]):Option[(String,String,String)] = {
+    val result = getFirstMappingInConfirmationReport(reportID,filterFunc,selections)
+    if(result.isEmpty){
+      None
+    }else{
+      var firstKey:Option[String] = None
+      var JandP = (&quot;&quot;,&quot;&quot;)
+      for(k &lt;- result.keys){
+        if(firstKey.isEmpty){
+          firstKey = Some(k)
+          JandP = getFunc(result.get(k).get)
+        }
+      }
+      Some(JandP._1,JandP._2,firstKey.get)
+    }
+  }
+
+
+
+  /**
+   *
+   * @param workCashRow
+   * @param selections
+   * @return (ColumnI,ColumnU,fileName)
+   */
+  def guessingWorkCashIAndU(workCashRow:Map[String, String],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+
+    val workCashInfos = generateWorkCashInfos(workCashRow)
+    var columns:Option[(String,String,String)] =  None
+
+    var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse(&quot;&quot;)
+    workCashInfos.foreach(workCashInfo =&gt; {
+      if(columns.isEmpty){
+        columns = getWorkCashColumnsFromReport(workCashInfo.reportId,workCashInfo.filterFunc,workCashInfo.getFunc,selections)
+      }
+    })
+
+
+    columns match {
+      case Some(value) =&gt; value
+      case None =&gt; (missingStr(glAccountName),missingStr(glAccountName),EMPTY_STR)
+    }
+  }
+
+  def guessingWorkInvJandP(workInvRow:Map[String, String],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+
+    val workInvInfos = generateWorkInvInfos(workInvRow)
+
+
+    /**
+     * Lack of item17
+     */
+    var columns:Option[(String,String,String)] =  None
+
+    val custodian = workInvRow.get(WorkInvColumns.CUSTODIAN).getOrElse(&quot;&quot;)
+    workInvInfos.foreach(workInvInfo =&gt; {
+      if(columns.isEmpty){
+        columns = getWorkInvColumnsFromReport(workInvInfo.reportId,workInvInfo.filterFunc,workInvInfo.getFunc,selections)
+      }
+    })
+
+
+    columns match {
+      case Some(value) =&gt; value
+      case None =&gt; (missingStr(custodian),missingStr(custodian),EMPTY_STR)
+    }
+  }
+
+  def generateWorkCashInfos(workCashRow:Map[String, String]) = {
+    val egaQuantity = workCashRow.get(WorkCashColumns.ACCOUNT_BALANCE_IN_SOURCE_CURRENCY).getOrElse(&quot;&quot;)
+    val currency = workCashRow.getOrElse(WorkCashColumns.BANK_ACCOUNT_CURRENCY, &quot;&quot;)
+
+    val item235Id = &quot;3003&quot;
+    val item235Func = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;Currency&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Balance&quot;),egaQuantity)
+    }
+    val item235GetFunc = (ob:JSONObject)=&gt;{
+      (ob.getString(&quot;Account No.&quot;) , ob.getString(&quot;Balance&quot;))
+    }
+
+    /**
+     * issues for 3001: content not right.
+     */
+    val collateralPositionByAgreementId = &quot;3001&quot;
+    val collateralPositionByAgreementFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;Instrument Ccy&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Notional&quot;),egaQuantity)
+    }
+    val collateralPositionByAgreementGetFunc = (ob:JSONObject)=&gt;{
+      (NA_STR  , ob.getString(&quot;Notional&quot;))
+    }
+
+    val ibanId = &quot;3009&quot;
+    val ibanFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;ccy&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;balance&quot;),egaQuantity)
+    }
+    val ibanGetFunc = (ob:JSONObject)=&gt;{
+      (ob.getString(&quot;iban&quot;) , ob.getString(&quot;balance&quot;))
+    }
+
+    /**
+     * Lack of item17
+     */
+
+    val workCashInfos = Seq(
+      WorkCashInfo(item235Id,item235Func,item235GetFunc),
+      //WorkCashInfo(collateralPositionByAgreementId,collateralPositionByAgreementFunc,collateralPositionByAgreementGetFunc),
+      WorkCashInfo(ibanId,ibanFunc,ibanGetFunc)
+    )
+    workCashInfos
+  }
+
+  def generateWorkInvInfos(workInvRow:Map[String, String]) = {
+    val description = workInvRow.get(WorkInvColumns.DESCRIPTION).getOrElse(&quot;&quot;)
+    val currency = workInvRow.get(WorkInvColumns.ORI_CCY_RATE).getOrElse(&quot;&quot;)
+    val fairValue = workInvRow.get(WorkInvColumns.FAIR_VALUE_PER_POSITION_REPORT).getOrElse(&quot;&quot;)
+    val quantity = workInvRow.get(WorkInvColumns.QUANTITY).getOrElse(&quot;&quot;)
+
+    /**
+     * Issues for 3000: What is Quantity SD? and items are not qualified.
+     */
+    val creditDefaultSwapId = &quot;3000&quot;
+    val creditDefaultSwapFilterFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;Product Description&quot;).trim == description.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Currency&quot;),currency) &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;NOTIONAL&quot;),fairValue)
+    }
+    val creditDefaultSwapGetFunc = (ob:JSONObject)=&gt;{
+      (NA_STR , ob.getString(&quot;NOTIONAL&quot;))
+    }
+
+    /**
+     * Issue for 3002: desciption should be ~=.
+     */
+    val otcExposureId = &quot;3002&quot;
+    val otcExposureFilterFunc = (ob:JSONObject)=&gt;{
+      (ob.getString(&quot;Source Reference&quot;).trim == description.trim || ob.getString(&quot;Underlying Name&quot;).trim == description.trim) &amp;&amp; ob.getString(&quot;Agreement Ccy&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Exposure (Agree Ccy)&quot;),fairValue)
+    }
+    val otcExposureGetFunc = (ob:JSONObject)=&gt;{
+      (ob.getString(&quot;Exposure (Agree Ccy)&quot;) , NA_STR)
+    }
+
+
+    /**
+     * Issue for 3004: No 3004 example.
+     */
+    val item4Id = &quot;3004&quot;
+    val item4FilterFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;facility&quot;).trim == description.trim &amp;&amp; ob.getString(&quot;CCY&quot;) == currency &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Amount&quot;),quantity)
+    }
+    val item4GetFunc = (ob:JSONObject)=&gt;{
+      (NA_STR, NA_STR)
+    }
+
+    /**
+     * 3005 seems good.
+     */
+    val moneyMarketId = &quot;3005&quot;
+    val moneyMarketFilterFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;CCY&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Amount&quot;),quantity)
+    }
+    val moneyMarketGetFunc = (ob:JSONObject)=&gt;{
+      (ob.getString(&quot;Amount&quot;) , ob.getString(&quot;Amount&quot;))
+    }
+
+    /**
+     * Issues for 3006: Seems content is not consistent with doc.
+     */
+    val foreignExchangeId = &quot;3006&quot;
+    val foreignExchangeFilterFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;CCY&quot;).trim == currency.trim &amp;&amp; convertStringToNumbersAndEqual(ob.getString(&quot;Amount&quot;),quantity)
+    }
+    val foreignExchangeGetFunc = (ob:JSONObject)=&gt;{
+      (NA_STR, ob.getString(&quot;Amount&quot;))
+    }
+
+    /**
+     * Issues for 3007: TODO.
+     */
+    val item17Id = &quot;3007&quot;
+    val item17FilterFunc = (ob:JSONObject)=&gt;{
+      ob.getString(&quot;CCY&quot;).trim == currency.trim &amp;&amp; ob.getString(&quot;Amount&quot;) == quantity
+    }
+    val item17GetFunc = (ob:JSONObject)=&gt;{
+      (NA_STR, ob.getString(&quot;Amount&quot;))
+    }
+
+    val workInvInfos = Seq(
+      WorkInvInfo(creditDefaultSwapId,creditDefaultSwapFilterFunc,creditDefaultSwapGetFunc),
+      WorkInvInfo(otcExposureId,otcExposureFilterFunc,otcExposureGetFunc) ,
+      WorkInvInfo(item4Id,item4FilterFunc,item4GetFunc),
+      WorkInvInfo(foreignExchangeId,foreignExchangeFilterFunc,foreignExchangeGetFunc),
+      WorkInvInfo(moneyMarketId,moneyMarketFilterFunc,moneyMarketGetFunc),
+      WorkInvInfo(item17Id,item17FilterFunc,item17GetFunc),
+    )
+    workInvInfos
+  }
+
+  case class WorkInvInfo(reportId:String, filterFunc:(JSONObject)=&gt;Boolean, getFunc:(JSONObject)=&gt;(String,String))
+  case class WorkCashInfo(reportId:String, filterFunc:(JSONObject)=&gt;Boolean, getFunc:(JSONObject)=&gt;(String,String))
+}</code></pre></dd>
+  <dt>FundB</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/coderefineusingfp/code/fundB.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">object FundB {
+
+  val isFund = (name:String)=&gt;{
+    belongToSomeSelectedFunds(name,fundName)
+  }
+
+  def generate(cvg:ConfirmationValuationGSP,selections:Seq[FundEngagementReportTypeSelectionData]) = {
+    val afterGuess = cvg.copy(workCash = guessWorkCash(cvg.workCash,selections))
+    afterGuess
+  }
+
+  def guessWorkCash(workCash:Seq[Map[String,String]],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+    workCash.map(workCashRow=&gt;{
+      var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse(&quot;&quot;)
+      if(isFund(glAccountName)){
+        val IandU = guessingWorkCashIAndU(workCashRow,selections)
+        workCashRow ++ Map(
+          WorkCashColumns.BANK_ACCOUNT_NUMBER -&gt; IandU._1,
+          WorkCashColumns.AMOUNT_PER_CONFIRMATION -&gt; IandU._2,
+          WorkCashColumns.QUESTIONARE_FILE -&gt; IandU._3
+        )
+      }else{
+        workCashRow
+      }
+    })
+  }
+
+  /**
+   *
+   * @param workCashRow
+   * @param selections
+   * @return (ColumnI,ColumnU,fileName)
+   */
+  def guessingWorkCashIAndU(workCashRow:Map[String, String],selections:Seq[FundEngagementReportTypeSelectionData]) = {
+
+    val workCashInfos = generateWorkCashInfos(workCashRow)
+    var columns:Option[(String,String,String)] =  None
+
+    var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse(&quot;&quot;)
+    if (isFund(glAccountName)) {
+      workCashInfos.foreach(workCashInfo =&gt; {
+        if(columns.isEmpty){
+          columns = getWorkCashColumnsFromReport(workCashInfo.reportId,workCashInfo.filterFunc,workCashInfo.getFunc,selections)
+        }
+      })
+    }
+
+    columns match {
+      case Some(value) =&gt; value
+      case None =&gt; (missingStr(glAccountName),missingStr(glAccountName),EMPTY_STR)
+    }
+  }
+
+  def generateWorkCashInfos(workCashRow:Map[String, String]) = {
+    val currency = workCashRow.getOrElse(WorkCashColumns.BANK_ACCOUNT_CURRENCY, &quot;&quot;)
+
+    val reportId = &quot;5001&quot;
+    val filterFunc = (ob: JSONObject) =&gt; ob.getString(&quot;CURRENCY&quot;).trim == currency.trim
+    val getFunc = (ob: JSONObject) =&gt; (ob.getString(&quot;ACCOUNT NUMBER&quot;) , ob.getString(&quot;BALANCE&quot;))
+
+    Seq(WorkCashInfo(reportId, filterFunc, getFunc))
+  }
+
+  def getWorkCashColumnsFromReport(reportID:String, filterFunc: JSONObject =&gt;Boolean, getFunc: JSONObject =&gt;(String,String), selections:Seq[FundEngagementReportTypeSelectionData]):Option[(String,String,String)] = {
+    val report = selections.find(select =&gt; {
+      select.sheettypesReporttypesMapId == reportID &amp;&amp; select.extractionFileContent.isDefined
+    })
+    var result:Option[(String,String,String)] = None
+    if(report.isDefined &amp;&amp; result.isEmpty){
+      val a = new JSONArray(report.get.extractionFileContent.get)
+      for(i1 &lt;- 0 until a.length()){
+        var balance = &quot;&quot;
+        var accNum = &quot;&quot;
+        var keep = false
+        val singleFileContent = a.get(i1).asInstanceOf[JSONObject]
+        val fileNames = singleFileContent.names()
+        for(i2 &lt;- 0 until fileNames.length()){
+          val fileName = fileNames.get(i2).toString
+          val fileContents = singleFileContent.getJSONArray(fileName)
+          for(i3 &lt;- 0 until fileContents.length){
+            val item = fileContents.getJSONObject(i3)
+            item.names().get(0) match {
+              case &quot;ACCOUNT NUMBER&quot; =&gt;
+                accNum = item.getString(&quot;ACCOUNT NUMBER&quot;)
+              case &quot;BALANCE&quot; =&gt;
+                balance = item.getString(&quot;BALANCE&quot;)
+              case &quot;CURRENCY&quot; =&gt;
+                if(filterFunc(item)){
+                  keep = true
+                }
+              case _ =&gt;
+            }
+          }
+          if(keep)
+            return Some(accNum, balance, fileName.split(&quot;\\|&quot;)(0))
+        }
+      }
+    }
+    result
+  }
+
+  case class WorkCashInfo(reportId:String, filterFunc: JSONObject =&gt;Boolean, getFunc: JSONObject =&gt;(String,String))
+}</code></pre></dd>
+</dl>
+<h2><a href="#refined" name="refined" class="anchor"><span class="anchor-link"></span></a>Refined</h2>
+<dl>
+  <dt>Generic Method</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/coderefineusingfp/code/genericFinder.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">object GenericConfirmationFinder {
+  def getConfirmationRecord(reportId: String,
+                            filterFunc: (ConfirmationRecord) =&gt; Boolean,
+                            selections: Seq[FundEngagementReportTypeSelectionData]): Option[ConfirmationRecordWithFile] = {
+    val reportOpt = selections.filter(select =&gt; select.sheettypesReporttypesMapId == reportId &amp;&amp; select.extractionFileContent.isDefined).headOption
+    val allRecords = reportOpt.flatMap {
+      report =&gt;
+        report.extractionFileContent.map {
+          extractStr =&gt;
+            ConfirmationStorageHelper.stringToStorage(extractStr).files.flatMap {
+              file =&gt; file.records.map(record =&gt; ConfirmationRecordWithFile(record, file.fileName))
+            }
+        }
+    }.getOrElse(Seq())
+    allRecords.filter(record =&gt; filterFunc(record.record)).headOption
+  }
+
+  def queryInfo(reportId: String, filterFunc: (ConfirmationRecord) =&gt; Boolean, getFunc: ConfirmationRecordWithFile =&gt; Map[String, String], selections: Seq[FundEngagementReportTypeSelectionData]): Map[String, String] = {
+    getConfirmationRecord(reportId, filterFunc, selections).map {
+      record =&gt; getFunc(record)
+    }.getOrElse(Map())
+  }
+
+  def getWorkCash(workCash: Seq[Map[String, String]], selections: Seq[FundEngagementReportTypeSelectionData], fundFinderConfig: FundFinderConfig) = {
+    workCash.map {
+      workCashRow =&gt;
+        val glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse(&quot;&quot;)
+        if (fundFinderConfig.belongsToFund(glAccountName)) {
+          var queriedResult: Map[String, String] = Map()
+          fundFinderConfig.workCashConfs.map {
+            findConfig =&gt; queriedResult = queriedResult ++ queryInfo(findConfig.reportId, findConfig.filterFunc(workCashRow), findConfig.getFunc, selections)
+          }
+          workCashRow ++ queriedResult
+        } else {
+          workCashRow
+        }
+    }
+  }
+
+  def getWorkInv(workInv: Seq[Map[String, String]], selections: Seq[FundEngagementReportTypeSelectionData], fundFinderConfig: FundFinderConfig) = {
+    workInv.map {
+      workInvRow =&gt;
+        val glAccountName = workInvRow.get(WorkInvColumns.CUSTODIAN).getOrElse(&quot;&quot;)
+        if (fundFinderConfig.belongsToFund(glAccountName)) {
+          var queriedResult: Map[String, String] = Map()
+          fundFinderConfig.workInvConfs.map {
+            findConfig =&gt; queriedResult = queriedResult ++ queryInfo(findConfig.reportId, findConfig.filterFunc(workInvRow), findConfig.getFunc, selections)
+          }
+          workInvRow ++ queriedResult
+        } else {
+          workInvRow
+        }
+    }
+  }
+
+}
+
+case class FinderConfig(reportId: String, filterFunc: Map[String, String] =&gt; ConfirmationRecord =&gt; Boolean, getFunc: ConfirmationRecordWithFile =&gt; Map[String, String])
+
+case class FundFinderConfig(belongsToFund: (String) =&gt; Boolean, workCashConfs: Seq[FinderConfig], workInvConfs: Seq[FinderConfig])</code></pre></dd>
+  <dt>FundC：</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/coderefineusingfp/code/fundc.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">object FundC {
+  val thisfund =&quot;&quot;
+
+  def belongsToFund(name: String) = {
+    belongToSomeSelectedFunds(name, thisfund)
+  }
+
+  def cashFilter(accounts: Seq[AccountRecord])(row: Map[String, String])(record: ConfirmationRecord) = {
+    val accountNumber = accounts.filter(acc =&gt; acc.account == row.get(WorkCashColumns.GL_ACCOUNT_NUMBER)).headOption.map(_.accountNumber).getOrElse(&quot;&quot;)
+    row.getOrElse(WorkCashColumns.BANK_ACCOUNT_CURRENCY, &quot;&quot;) == record.currency &amp;&amp;
+      accountNumber == record.accountNumber
+  }
+
+  def cashGet(record: ConfirmationRecordWithFile): Map[String, String] = {
+    Map(WorkCashColumns.BANK_ACCOUNT_NUMBER -&gt; record.record.accountNumber.getOrElse(&quot;&quot;),
+      WorkCashColumns.AMOUNT_PER_CONFIRMATION -&gt; record.record.balance.getOrElse(&quot;&quot;),
+      WorkCashColumns.QUESTIONARE_FILE -&gt; record.fileName)
+  }
+
+  def invFilter(accounts: Seq[AccountRecord])(row: Map[String, String])(record: ConfirmationRecord) = {
+    val accountNumber = accounts.filter(acc =&gt; acc.account == row.get(WorkInvColumns.CUSTODIAN)).headOption.map(_.accountNumber).getOrElse(&quot;&quot;)
+    accountNumber == record.accountNumber &amp;&amp;
+      row.getOrElse(WorkInvColumns.INVEST_ID, &quot;&quot;) == record.descriptionOrISIN &amp;&amp;
+      row.getOrElse(WorkInvColumns.ORI_CCY_RATE, &quot;&quot;) == record.currency
+  }
+
+  def invGet(record: ConfirmationRecordWithFile): Map[String, String] = {
+    Map(WorkInvColumns.QUESTIONARE_FILE -&gt; record.fileName,
+      WorkInvColumns.QUANTITY_PER_CONFIRMATION -&gt; record.record.quantity.getOrElse(&quot;&quot;),
+      WorkInvColumns.INVESTMENT_VALUE_PER_CONFIRMATION -&gt; record.record.balance.getOrElse(&quot;&quot;))
+  }
+
+
+  def generate(cvg: ConfirmationValuationGSP, selections: Seq[FundEngagementReportTypeSelectionData], accountNameNumberMappingParam: Seq[AccountRecord]) = {
+    val cashConfig1 = FinderConfig(&quot;111&quot;, cashFilter(accountNameNumberMappingParam), cashGet)
+    val invConfig1 = FinderConfig(&quot;222&quot;, invFilter(accountNameNumberMappingParam), invGet)
+    val bnyFinderConf = FundFinderConfig(belongsToFund, Seq(cashConfig1), Seq(invConfig1))
+
+
+    cvg.copy(workCash = GenericConfirmationFinder.getWorkCash(cvg.workCash, selections, bnyFinderConf),
+      workInv = GenericConfirmationFinder.getWorkInv(cvg.workInv, selections, bnyFinderConf))
+  }
+}</code></pre></dd>
+</dl>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/coderefineusingfp/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../presentationlayer/index.html" title="Refactor code for Excel output" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Refactor code for Excel output
+</span>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../assets/javascripts/application.583bbe55.js"></script>
+<script src="../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../."}})</script>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-43080126-2"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});if(document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+
+</body>
+</html>

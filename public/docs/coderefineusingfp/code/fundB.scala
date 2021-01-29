@@ -1,7 +1,7 @@
-object GuessNorthernTrust {
+object FundB {
 
-  val isNorthernTrust = (name:String)=>{
-    belongToSomeSelectedFunds(name,northernTrust)
+  val isFund = (name:String)=>{
+    belongToSomeSelectedFunds(name,fundName)
   }
 
   def generate(cvg:ConfirmationValuationGSP,selections:Seq[FundEngagementReportTypeSelectionData]) = {
@@ -12,7 +12,7 @@ object GuessNorthernTrust {
   def guessWorkCash(workCash:Seq[Map[String,String]],selections:Seq[FundEngagementReportTypeSelectionData]) = {
     workCash.map(workCashRow=>{
       var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse("")
-      if(isNorthernTrust(glAccountName)){
+      if(isFund(glAccountName)){
         val IandU = guessingWorkCashIAndU(workCashRow,selections)
         workCashRow ++ Map(
           WorkCashColumns.BANK_ACCOUNT_NUMBER -> IandU._1,
@@ -37,7 +37,7 @@ object GuessNorthernTrust {
     var columns:Option[(String,String,String)] =  None
 
     var glAccountName = workCashRow.get(WorkCashColumns.GL_ACCOUNT_NAME).getOrElse("")
-    if (isNorthernTrust(glAccountName)) {
+    if (isFund(glAccountName)) {
       workCashInfos.foreach(workCashInfo => {
         if(columns.isEmpty){
           columns = getWorkCashColumnsFromReport(workCashInfo.reportId,workCashInfo.filterFunc,workCashInfo.getFunc,selections)

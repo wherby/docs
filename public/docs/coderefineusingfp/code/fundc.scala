@@ -1,8 +1,8 @@
-object BNYConfirmationFinder {
-  val bnyAccount =Questionare.bny
+object FundC {
+  val thisfund =""
 
   def belongsToFund(name: String) = {
-    belongToSomeSelectedFunds(name, bnyAccount)
+    belongToSomeSelectedFunds(name, thisfund)
   }
 
   def cashFilter(accounts: Seq[AccountRecord])(row: Map[String, String])(record: ConfirmationRecord) = {
