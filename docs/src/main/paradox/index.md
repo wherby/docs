@@ -58,4 +58,6 @@ This is the introduction for doradilla library.
 * [Timeout issue](timeout/index.md)
 
 * [Refactor code](presentationlayer/index.md)
+
+* [Refine code with function programming](coderefineusingfp/index.md)
 @@@
