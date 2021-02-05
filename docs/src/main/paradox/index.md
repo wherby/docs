@@ -60,4 +60,6 @@ This is the introduction for doradilla library.
 * [Refactor code](presentationlayer/index.md)
 
 * [Refine code with function programming](coderefineusingfp/index.md)
+
+* [Scala traps](traps/index.md)
 @@@
