@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Engagement entity add to database · Docs</title>
+<title>Traps in Scala · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Engagement entity add to database
+Traps in Scala
 </span>
 </div>
 </div>
@@ -144,7 +144,7 @@ wherby/docs
   <ul>
     <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
   </ul></li>
-  <li><a href="../engagement/index.html" class="active page">Engagement entity add to database</a></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
   <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
@@ -179,16 +179,14 @@ wherby/docs
   <li><a href="../timeout/index.html" class="page">Timeout errors and crash</a></li>
   <li><a href="../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
   <li><a href="../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
-  <li><a href="../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../traps/index.html" class="active page">Traps in Scala</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../engagement/index.html#engagement-entity-add-to-database" class="header">Engagement entity add to database</a>
+  <li><a href="../traps/index.html#traps-in-scala" class="header">Traps in Scala</a>
   <ul>
-    <li><a href="../engagement/index.html#user-story" class="header">User story</a></li>
-    <li><a href="../engagement/index.html#db-design" class="header">DB design</a></li>
-    <li><a href="../engagement/index.html#question-two" class="header">Question Two</a></li>
+    <li><a href="../traps/index.html#operator-will-bypass-type-checking" class="header">Operator will bypass type checking</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -210,11 +208,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../engagement/index.html#engagement-entity-add-to-database" class="header">Engagement entity add to database</a>
+  <li><a href="../traps/index.html#traps-in-scala" class="header">Traps in Scala</a>
   <ul>
-    <li><a href="../engagement/index.html#user-story" class="header">User story</a></li>
-    <li><a href="../engagement/index.html#db-design" class="header">DB design</a></li>
-    <li><a href="../engagement/index.html#question-two" class="header">Question Two</a></li>
+    <li><a href="../traps/index.html#operator-will-bypass-type-checking" class="header">Operator will bypass type checking</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -225,110 +221,56 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#engagement-entity-add-to-database" name="engagement-entity-add-to-database" class="anchor"><span class="anchor-link"></span></a>Engagement entity add to database</h1>
-<h2><a href="#user-story" name="user-story" class="anchor"><span class="anchor-link"></span></a>User story</h2>
-<p>In PFIC system, PwC internal user could visit all their business information without restriction at beginning.</p><div class="callout note "><div class="callout-title">Business information</div>
-<p>PFIC system has fund, company information. Fund will invest multiple companies. So the business information will includes information for funds and companies. </p></div>
-<p>But client want to introduce engagement concept to restrict PwC internal user to handle engagement&rsquo;s business information.</p><div class="callout note "><div class="callout-title">Engagement</div>
-<p>PwC internal user could be in one or more engagements; One engagement will have multiple funds; One funds will invest multiple companies. </p></div>
-<h3><a href="#question-about-privilege-in-different-engagement" name="question-about-privilege-in-different-engagement" class="anchor"><span class="anchor-link"></span></a>Question about privilege in different engagement</h3>
-<p>One user could be in one or more engagements, but does a same user in different engagements with different roles? </p>
-<p><img src="./code/email.png" alt="Email info" /></p>
-<h2><a href="#db-design" name="db-design" class="anchor"><span class="anchor-link"></span></a>DB design</h2>
-<p>Database as below:</p>
+<h1><a href="#traps-in-scala" name="traps-in-scala" class="anchor"><span class="anchor-link"></span></a>Traps in Scala</h1>
+<h2><a href="#operator-will-bypass-type-checking" name="operator-will-bypass-type-checking" class="anchor"><span class="anchor-link"></span></a>Operator will bypass type checking</h2>
 <dl>
-  <dt>User</dt>
+  <dt>Filter code</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/user.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `users`(
-   `id` varchar(128) NOT NULL,
-   `email` VARCHAR(128) NOT NULL,
-   `role` VARCHAR(128) NOT NULL,
-   `engagementid` TEXT NULL,
-   PRIMARY KEY (`id`),
-   CONSTRAINT `email` UNIQUE (`email`)
-)</code></pre></dd>
-  <dt>Engagement</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagement.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `engagements`(
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-   `funds` TEXT NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-  <dt>Fund-company
-  </dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund_company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">CREATE TABLE fund_company_investments (
-    id varchar(128) NOT NULL, 
-    fund_id varchar(255) NOT NULL,
-    company_id varchar(128) NOT NULL, 
-    year INT NOT NULL,
-    PRIMARY KEY (id)
-);</code></pre></dd>
-  <dt>Fund</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund` (
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-  <dt>Company</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/company.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `company` (
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-</dl>
-<h3><a href="#question" name="question" class="anchor"><span class="anchor-link"></span></a>Question</h3>
-<p>How could we check the user&rsquo;s privilege on company and fund?</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagementimpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class EngagementInfo(id: String, name: String, funds: Seq[String])
-
-case class UserEngagementInfo(userRole: String, engagements: Seq[EngagementInfo],funds: Seq[String])
-
-
-override def verifyForFund(email: String, fundId: String): Future[Boolean] = {
-  getUserEngagementInfoByEmail(email).map {
-    userEngagement =&gt;
-      userEngagement.userRole match {
-        case &quot;Admin&quot; =&gt; true
-        case other if userEngagement.funds.contains(fundId) =&gt; true
-        case _ =&gt; false
-      }
-  }
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/traps/code/filter1.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def invFilter(securityItems: Seq[SecurityItem])(accounts: Seq[AccountRecord])(row: Map[String, String])(record: ConfirmationRecord) = {
+  val accountNumber = accounts.filter(acc =&gt; acc.account == row.get(WorkInvColumns.CUSTODIAN)).headOption.map(_.accountNumber).getOrElse(&quot;&quot;)
+  val isinStr = securityItems.filter(item =&gt; item.cname == row.getOrElse(WorkInvColumns.DESCRIPTION, &quot;&quot;))
+    .headOption.map(_.cname).getOrElse(&quot;&quot;).trim
+  accountNumber == record.accountNumber &amp;&amp;
+    isinStr == record.descriptionOrISIN &amp;&amp;
+    row.getOrElse(WorkInvColumns.ORI_CCY_RATE, &quot;&quot;) == record.currency
 }
 
 
 
-override def verifyForComapany(email: String, companyId: String, year: Int): Future[Boolean] = {
-  getUserEngagementInfoByEmail(email).flatMap {
-    userEngagement=&gt;
-      userEngagement.userRole match{
-        case &quot;Admin&quot; =&gt; Future(true)
-        case other =&gt;
-          val fdIds= fiCompanyInvestmentsDAO.queryByCompanyIdAndYear(companyId,year).map{
-            investSeq=&gt;investSeq.map(_.fiId).toSet
-          }
-          val fdIdsInEng = getUserEngagementInfoByEmail(email).map{
-            engs=&gt;engs.funds.toSet
-          }
-          val comsetF= for(s1 &lt;- fdIds;
-                           s2 &lt;- fdIdsInEng)
-            yield {
-              s1 &amp;s2
-            }
-          comsetF.map{
-            comset=&gt; !comset.isEmpty
-          }
-      }
-  }
-}</code></pre>
-<h2><a href="#question-two" name="question-two" class="anchor"><span class="anchor-link"></span></a>Question Two</h2>
-<h3><a href="#1-if-one-user-has-different-privilege-in-different-engagement-how-to-design-the-database-" name="1-if-one-user-has-different-privilege-in-different-engagement-how-to-design-the-database-" class="anchor"><span class="anchor-link"></span></a>1. If one user has different privilege in different engagement, how to design the database?</h3>
-<h3><a href="#2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" name="2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" class="anchor"><span class="anchor-link"></span></a>2. What will happen when user binding to engagement table not engagement binging to user table?</h3>
+</code></pre></dd>
+  <dt>Storage definition</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/traps/code/storage.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class ConfirmationRecord(accountNumber:Option[String]=None,
+                              balance:Option[String]=None,
+                              currency:Option[String]=None,
+                              quantity:Option[String]=None,
+                              descriptionOrISIN:Option[String]=None,
+                              etc:Option[String]=None)
+case class ConfirmationRecordWithFile(record:ConfirmationRecord, fileName:String)
+case class ConfirmationFile(fileName:String,records:Seq[ConfirmationRecord],date:Option[String])
+case class ConfirmationStorage(files:Seq[ConfirmationFile])</code></pre></dd>
+</dl>
+<p>How to fix:</p>
+<p>Using function to check class type</p>
+<dl>
+  <dt>Fix type check</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/traps/code/filterFix.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def invFilter(securityItems:Seq[SecurityItem])(accounts: Seq[AccountRecord])(row: Map[String, String])(record: ConfirmationRecord) = {
+  val accountNumber = accounts.filter(acc =&gt; acc.account == row.get(WorkInvColumns.CUSTODIAN).getOrElse(&quot;&quot;)).headOption.map(_.accountNumber).getOrElse(&quot;&quot;)
+  val isinStr= securityItems.filter(item=&gt; item.cname == row.getOrElse(WorkInvColumns.DESCRIPTION, &quot;&quot;))
+    .headOption.map(_.isin).getOrElse(&quot;&quot;).trim
+  equalString(accountNumber,record.accountNumber.getOrElse(&quot;&quot;)) &amp;&amp;
+    equalString(isinStr,record.descriptionOrISIN.getOrElse(&quot;&quot;)) &amp;&amp;
+    equalString(row.getOrElse(WorkInvColumns.ORI_CCY_RATE, &quot;&quot;), record.currency.getOrElse(&quot;&quot;))
+}
+
+def equalString(a:String,b:String):Boolean={
+  a.trim==b.trim &amp;&amp; a.length&gt;0
+}</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/traps/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -344,7 +286,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../fieldnull/code/index.html" title="Database define" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../coderefineusingfp/index.html" title="Refine code with function programming" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -353,21 +295,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Database define
+Refine code with function programming
 </span>
-</div>
-</a>
-<a href="../slickqueryfailed/index.html" title="Slick query overflow" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Slick query overflow
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
