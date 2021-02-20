@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>software architecture · Docs</title>
+<title>JVM allocate memory failed in docker · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-software architecture
+JVM allocate memory failed in docker
 </span>
 </div>
 </div>
@@ -159,7 +159,7 @@ wherby/docs
   <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
   <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
   <li><a href="../apicall/index.html" class="page">Api call failed</a></li>
-  <li><a href="../systemdesign/index.html" class="active page">software architecture</a>
+  <li><a href="../systemdesign/index.html" class="page">software architecture</a>
   <ul>
     <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
@@ -180,9 +180,17 @@ wherby/docs
   <li><a href="../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
   <li><a href="../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
   <li><a href="../traps/index.html" class="page">Traps in Scala</a></li>
-  <li><a href="../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../alloctMemFail/index.html" class="active page">JVM allocate memory failed in docker</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../alloctMemFail/index.html#jvm-allocate-memory-failed-in-docker" class="header">JVM allocate memory failed in docker</a>
+  <ul>
+    <li><a href="../alloctMemFail/index.html#jvm-allocate-failed" class="header">JVM allocate failed</a></li>
+    <li><a href="../alloctMemFail/index.html#vm-setting" class="header">VM setting</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -196,22 +204,87 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../alloctMemFail/index.html#jvm-allocate-memory-failed-in-docker" class="header">JVM allocate memory failed in docker</a>
+  <ul>
+    <li><a href="../alloctMemFail/index.html#jvm-allocate-failed" class="header">JVM allocate failed</a></li>
+    <li><a href="../alloctMemFail/index.html#vm-setting" class="header">VM setting</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#software-architecture" name="software-architecture" class="anchor"><span class="anchor-link"></span></a>software architecture</h1>
-<div class="toc ">
-<ul>
-  <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
-  <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
-  <li><a href="../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
-  <li><a href="../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
-  <li><a href="../systemdesign/sub/reference.html" class="page">References</a></li>
-</ul>
-</div>
+<h1><a href="#jvm-allocate-memory-failed-in-docker" name="jvm-allocate-memory-failed-in-docker" class="anchor"><span class="anchor-link"></span></a>JVM allocate memory failed in docker</h1>
+<h2><a href="#jvm-allocate-failed" name="jvm-allocate-failed" class="anchor"><span class="anchor-link"></span></a>JVM allocate failed</h2>
+<p>In Azure, when set Docker container memory more than 8G, JVM will throw exception as blow:</p>
+<dl>
+  <dt>Allocate memory failed</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/alloctMemFail/log/log.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[info] d.c.d.DriverActor - {Some(JobMeta(53fb3460-734d-11eb-91da-b59ce673c8d4))} is handled by proxy Actor[akka://clustering-cluster/user/driverService/singleton/SimpleProcess53fb3461-734d-11eb-91da-b59ce673c8d4#-734442381]
+[info] d.c.f.FsmActor - {Some(JobMeta(53fb3460-734d-11eb-91da-b59ce673c8d4))} is started in fsm worker, and will be handled by {Actor[akka://clustering-cluster/user/processTranServiceProxy613f1e40-734b-11eb-91da-b59ce673c8d4#-1398123469]}
+[error] d.u.ProcessService$ - null
+Some(JobMeta(53fb3460-734d-11eb-91da-b59ce673c8d4))
+Some(JobMeta(53fb3460-734d-11eb-91da-b59ce673c8d4))
+[info] d.c.f.FsmActor - Some(JobMeta(53fb3460-734d-11eb-91da-b59ce673c8d4)) is end
+com.pwc.ds.awm.processor.morgan.MorganPositionProcessor
+[info] d.c.d.DriverActor - {Some(JobMeta(547ac4a0-734d-11eb-91da-b59ce673c8d4))} is handled by proxy Actor[akka://clustering-cluster/user/driverService/singleton/SimpleProcess547ac4a1-734d-11eb-91da-b59ce673c8d4#1147276305]
+[info] d.c.f.FsmActor - {Some(JobMeta(547ac4a0-734d-11eb-91da-b59ce673c8d4))} is started in fsm worker, and will be handled by {Actor[akka://clustering-cluster/user/processTranServiceProxy613f1e40-734b-11eb-91da-b59ce673c8d4#-1398123469]}
+[GC (Allocation Failure) 2996861K-&gt;175463K(12114944K), 0.1547646 secs]
+[GC (System.gc()) 261852K-&gt;180401K(12120064K), 0.0624754 secs]
+[Full GC (System.gc()) 180401K-&gt;152776K(12120064K), 0.7623755 secs]
+OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00007f8f015e0000, 12288, 0) failed; error=&#39;Cannot allocate memory&#39; (errno=12)
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 12288 bytes for committing reserved memory.
+# An error report file with more information is saved as:
+# /app/ds-awm-1.0-SNAPSHOT/hs_err_pid7.log
+
+[info] application - GET /api/fund?fundId=0798f8b9-ae7c-4af4-83f7-b0475ab757c0 took 26ms by elaine.yx.wei@cn.pwc.com and returned 200
+[debug] s.j.J.statement - Preparing statement: select `id`, `userid`, `username`, `engagementid`, `role`, `active`, `deleted`, `createdatetime`, `lastactivetime`, `disabledtime`, `meta` from `engageusers` where (`userid` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `email`, `role`, `deleted`, `firstname`, `lastname`, `createby`, `createdatetime`, `modifyby`, `modifydatetime`, `lastactivetime`, `acknowledge`, `disabledtime` from `users` where (`email` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `name`, `privilege`, `description` from `roles` where `name` = &#39;Admin&#39;
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementcode`, `name`, `periodstart`, `periodend`, `auralink`, `active`, `deleted`, `createdatetime`, `meta` from `engagements` where (`id` = ?) and (`deleted` = &#39;false&#39;)
+[debug] s.j.J.statement - Preparing statement: select `id`, `fund_engagement_id`, `generate_status`, `generatedatetime`, `generate_file_content`, `createby`, `createdatetime`, `modifyby`, `modifydatetime`, `accunts`, `securityitems`, `etc` from `ega` where `fund_engagement_id` = ?
+[debug] s.j.J.statement - Preparing statement: select `id`, `engagementid`, `fundid`, `auralink`, `createby`, `createdatetime`, `modifyby`, `modifydatetime`, `fundrecord` from `fund_engagement` where `id` = ?
+com.pwc.ds.awm.processor.pdfReport.MorganPDFReport.CashExposureReportProcessor
+[info] d.c.d.DriverActor - {Some(JobMeta(dbe0fe00-7352-11eb-ad2c-67a391f5eacf))} is handled by proxy Actor[akka://clustering-cluster/user/driverService/singleton/SimpleProcessdbe0fe01-7352-11eb-ad2c-67a391f5eacf#-341968932]
+[info] d.c.f.FsmActor - {Some(JobMeta(dbe0fe00-7352-11eb-ad2c-67a391f5eacf))} is started in fsm worker, and will be handled by {Actor[akka://clustering-cluster/user/processTranServiceProxy601adad0-7351-11eb-ad2c-67a391f5eacf#727263119]}
+[error] d.u.ProcessService$ - null
+Some(JobMeta(dbe0fe00-7352-11eb-ad2c-67a391f5eacf))
+Some(JobMeta(dbe0fe00-7352-11eb-ad2c-67a391f5eacf))
+[info] d.c.f.FsmActor - Some(JobMeta(dbe0fe00-7352-11eb-ad2c-67a391f5eacf)) is end
+com.pwc.ds.awm.processor.morgan.MorganPositionProcessor
+[info] d.c.d.DriverActor - {Some(JobMeta(dc305680-7352-11eb-ad2c-67a391f5eacf))} is handled by proxy Actor[akka://clustering-cluster/user/driverService/singleton/SimpleProcessdc305681-7352-11eb-ad2c-67a391f5eacf#134702494]
+[info] d.c.f.FsmActor - {Some(JobMeta(dc305680-7352-11eb-ad2c-67a391f5eacf))} is started in fsm worker, and will be handled by {Actor[akka://clustering-cluster/user/processTranServiceProxy601adad0-7351-11eb-ad2c-67a391f5eacf#727263119]}
+[GC (Allocation Failure) 1868409K-&gt;110147K(12231168K), 0.0416277 secs]
+[GC (System.gc()) OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x000000069cb00000, 61865984, 0) failed; error=&#39;Cannot allocate memory&#39; (errno=12)
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 61865984 bytes for committing reserved memory.
+# An error report file with more information is saved as:
+# /app/ds-awm-1.0-SNAPSHOT/hs_err_pid7.log</code></pre></dd>
+</dl>
+<h2><a href="#vm-setting" name="vm-setting" class="anchor"><span class="anchor-link"></span></a>VM setting</h2>
+<p>The crash happened in some docker container hosted in specified host.</p>
+<p>root cause:</p>
+<p>1 crashed host setting:</p>
+<p><img src="pic/image001.png" alt="Crash setting" /></p>
+<p>2 Not crashed host setting:</p>
+<p><img src="pic/image002.png" alt="Not crash setting" /></p>
+<p>Answer from <a href="https://forums.docker.com/t/odd-memory-problem-with-java-on-ubuntu-container/27617">link</a></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/alloctMemFail/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -227,7 +300,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../apicall/index.html" title="Api call failed" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../traps/index.html" title="Traps in Scala" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -236,21 +309,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Api call failed
+Traps in Scala
 </span>
-</div>
-</a>
-<a href="../systemdesign/sub/reality.html" title="Whats reality of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Whats reality of software development?
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>

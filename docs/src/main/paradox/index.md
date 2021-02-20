@@ -62,4 +62,6 @@ This is the introduction for doradilla library.
 * [Refine code with function programming](coderefineusingfp/index.md)
 
 * [Scala traps](traps/index.md)
+
+* [Allocate mem failed in docker](alloctMemFail/index.md)
 @@@
