@@ -64,4 +64,6 @@ This is the introduction for doradilla library.
 * [Scala traps](traps/index.md)
 
 * [Allocate mem failed in docker](alloctMemFail/index.md)
+
+* [Extractor design](extractorDesign/index.md)
 @@@
