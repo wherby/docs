@@ -191,6 +191,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#using-oo-design" class="header">Using OO design</a></li>
     <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
+    <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -217,6 +218,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#using-oo-design" class="header">Using OO design</a></li>
     <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
+    <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -1615,6 +1617,54 @@ object MorganExcelPSRReader {
 4. format the result value 
 </code></pre>
 <p>The another way combines the configuration of different functions.</p>
+<h2><a href="#pdf-different-type" name="pdf-different-type" class="anchor"><span class="anchor-link"></span></a>PDF different type</h2>
+<p>From beginning, we use pdf reader to read pdf contents to text lines:</p>
+<dl>
+  <dt>Read PDF for type1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readPdf.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>def readPDF(sourceFile:String)={
+  extractAllTextFromPdfFile(sourceFile,EmptyConfigForPDF.extractorConfig)
+}
+
+def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorConfig): String = {
+  try {
+    var content = &quot;&quot;
+    if (isPdfFileExtension(sourceFilePath)) {
+      var file = new File(sourceFilePath);
+      val document = PDDocument.load(file);
+      var stripper:LayoutPdfTextStripper = new LayoutPdfTextStripper;
+      stripper.setReportConfig(reportConfig)
+      stripper.setSortByPosition(true);
+      content = stripper.getText(document);
+      document.close()
+    }
+    content
+  } catch {
+    case e: IOException =&gt; throw new IOException(&quot;read source pdf file IO error&quot;)
+    case e: Exception =&gt; throw new Exception(JsError(&quot;read source pdf file IO error&quot;))
+  }
+}</code></pre></dd>
+</dl>
+<p>The pdf reader will return text content in formatted way:</p>
+<p><img src="./pic/type1.png" alt="Type1 format" /></p>
+<p>While there is another type of pdf which will return unformatted result:</p>
+<p><img src="./pic/type2.png" alt="Type2 format" /></p>
+<dl>
+  <dt>Then the reader need be change,</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readRaw.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def readRawPDF(sourceFile:String):String={
+  val document = PDDocument.load(new File(sourceFile))
+  val striper = new PDFTextStripper()
+  striper.setSortByPosition(true)
+  val content = striper.getText(document)
+  document.close()
+  content
+}</code></pre></dd>
+</dl>
+<p>The result will be:</p>
+<p><img src="./pic/type2AnotherReader.png" alt="Type2 reader result" /></p>
+<p>This way return result in line format, but lost formatted information(the space information is lost)</p>
+<p>So the configuration way has more complex configuration when deal with the different reader. While the combination way will have more flexibility to handle different type of input in different way.</p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/index.md" title="Edit this page" class="md-source-file md-edit">
