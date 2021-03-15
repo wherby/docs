@@ -66,4 +66,6 @@ This is the introduction for doradilla library.
 * [Allocate mem failed in docker](alloctMemFail/index.md)
 
 * [Extractor design](extractorDesign/index.md)
+
+* [Bugs](bugs/index.md)
 @@@
