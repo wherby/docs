@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Whats reality of software development? · Docs</title>
+<title>Notification desgin · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Whats reality of software development?
+Notification desgin
 </span>
 </div>
 </div>
@@ -161,7 +161,7 @@ wherby/docs
   <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
   <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
   <ul>
-    <li><a href="../../systemdesign/sub/reality.html" class="active page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
     <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
     <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
@@ -188,15 +188,16 @@ wherby/docs
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
-    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/notification/index.html" class="active page">Notification desgin</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../systemdesign/sub/reality.html#whats-reality-of-software-development-" class="header">What&rsquo;s reality of software development?</a>
+  <li><a href="../../codedesign/notification/index.html#notification-desgin" class="header">Notification desgin</a>
   <ul>
-    <li><a href="../../systemdesign/sub/reality.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
+    <li><a href="../../codedesign/notification/index.html#notification-workflow" class="header">Notification workflow</a></li>
+    <li><a href="../../codedesign/notification/index.html#design-code" class="header">Design code</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -218,9 +219,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../systemdesign/sub/reality.html#whats-reality-of-software-development-" class="header">What&rsquo;s reality of software development?</a>
+  <li><a href="../../codedesign/notification/index.html#notification-desgin" class="header">Notification desgin</a>
   <ul>
-    <li><a href="../../systemdesign/sub/reality.html#" class="header"><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></a></li>
+    <li><a href="../../codedesign/notification/index.html#notification-workflow" class="header">Notification workflow</a></li>
+    <li><a href="../../codedesign/notification/index.html#design-code" class="header">Design code</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -231,91 +233,144 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#whats-reality-of-software-development-" name="whats-reality-of-software-development-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s reality of software development?</h2>
-<h3><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://corecursive.com/22-big-ball-of-mud-architecture-and-services-with-wade-waldron/">Big ball of mud</a></h3>
-<p><img src="../pic/mudball.png" alt="Big ball" /></p>
-<p><img src="../pic/shantytown.png" alt="shanty town" /> <img src="../pic/spacestation.png" alt="spacestation" /></p>
-<p>Code for authentication:</p>
-<p>For application authentication, there are 3 types: by application, by SAML at first stage, and add by Oauth in later version. For authorization, there is not needed any change for different change.</p>
+<h1><a href="#notification-desgin" name="notification-desgin" class="anchor"><span class="anchor-link"></span></a>Notification desgin</h1>
+<h2><a href="#notification-workflow" name="notification-workflow" class="anchor"><span class="anchor-link"></span></a>Notification workflow</h2>
+<p>In PFIC ,external investment notifications will be generated and cleared when data reaches a specific state (as shown in following diagram)</p>
+<p><img src="pic/external-investment-notification-flow.png" alt="Notification" /></p>
+<p>It&rsquo;s very complex workflow and also not want this notification flow design will impact the business logic.</p>
+<h2><a href="#design-code" name="design-code" class="anchor"><span class="anchor-link"></span></a>Design code</h2>
 <dl>
-  <dt>Code for frontend controller</dt>
+  <dt>Controller</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authentication.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">lazy val secureSource = config.getOptional[Boolean](&quot;useidam&quot;) match {
-   case Some(true) =&gt; config.getOptional[Boolean](&quot;pwcoauth.useoauth&quot;) match {
-     case Some(true) =&gt; index3
-     case _ =&gt; index2
-   }
-   case _ =&gt; index
- }
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.{Await, Future}
 
- def index2: Action[AnyContent] = {
-   secureAction(
-     assets.at(&quot;index.html&quot;)
-   )
- }
-
- def index3: Action[AnyContent] = {
-   secureActionOauth(
-     assets.at(&quot;index.html&quot;)
-   )
- }
-
- def index: Action[AnyContent] = assets.at(&quot;index.html&quot;)</code></pre></dd>
-  <dt>Saml</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/saml.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureAction[A](action: Action[A]): Action[A] = Secure(&quot;SAML2Client&quot;).async(action.parser) { implicit request =&gt;
-  ...
-  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAttribute(emailAttrStr).toString.stripPrefix(&quot;[&quot;).stripSuffix(&quot;]&quot;))
-  ...
-  userTimeOpt match {
-    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
-      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
-        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
-    case _=&gt;    action(request).map {
-      result =&gt;
-        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
-          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
-          .+(&quot;userTime&quot;-&gt;nowTime.toString)
-          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
+def upload(companyId: String, year: Int, operationType: String) = deadbolt.Pattern(value = &quot;(v_pwc)|(v_mycompany)&quot;, patternType = PatternType.REGEX)(parse.multipartFormData(maxLength = 1024*1024))  { implicit request =&gt;
+  request.body.file(&quot;file&quot;).map { file =&gt;
+    try{
+      ...
+        companyfinancialdataServiceWrite.updateFinancialData(request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;), request.subject, financialData).map(res =&gt; {Ok(&quot;success&quot;)})
     }
-  }
 }</code></pre></dd>
-  <dt>Oauth</dt>
+  <dt>Service</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/oauth.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def secureActionOauth[A](action: Action[A]): Action[A] = Secure(&quot;PwCClient&quot;).async(action.parser) { implicit request =&gt;
-  ...
-  val userInfoMap = Map(&quot;email&quot;-&gt;profiles.head.getAuthenticationAttribute(&quot;email&quot;).toString)
-  updateUserLastActiveTime(userInfoMap.get(&quot;email&quot;))
-  ...
-  userTimeOpt match {
-    case Some(userTime) if nowTime - userTime.toInt &gt; maxTimeout =&gt;
-      Future( Redirect(&quot;/&quot;).flashing(&quot;success&quot; -&gt; &quot;Session timeout, you need to login.&quot;)
-        .discardingCookies(DiscardingCookie(&quot;PLAY_SESSION&quot;)).withNewSession.withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;))
-    case _=&gt;    action(request).map {
-      result =&gt;
-        result.withSession(request.session.+(&quot;email&quot;-&gt;userInfoMap(&quot;email&quot;))
-          .+(&quot;useidm&quot;-&gt;&quot;true&quot;)
-          .+(&quot;userTime&quot;-&gt;nowTime.toString)
-          .+(&quot;privilege&quot; -&gt; privilege)).withHeaders(&quot;Cache-Control&quot;-&gt; &quot;no-cache&quot;)
-          .bakeCookies()
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataServiceWriteImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/><br/>override def updateFinancialData(currentUserEmail: String,
+                                 subject: Option[Subject],
+                                 financialData: FinancialdataGetFromFrontend): Future[Unit] = {
+  validateUserUtil.validateExternalUserPermissionForCompany(subject, financialData.companyId, financialData.year).map(_ =&gt; {
+    ...
+    var newFinancedata = waitForUpdateFinancialDataAndGenerateNotification(currentUserEmail, subject, financialData, companyuser)
+    ...
+  })
+}
+
+private def waitForUpdateFinancialDataAndGenerateNotification(userEmail: String,
+                                                              subject: Option[Subject],
+                                                              financialData: FinancialdataGetFromFrontend,
+                                                              companyuser: Option[Companyuser]) = {
+  val currentUserPrivileges = subject.map(s =&gt; s.permissions.mkString(&quot;,&quot;)).getOrElse(&quot;&quot;)
+  val newFinancedataAndNotification = checkPermissionThenGetFiDataAndNotification(financialData, userEmail, currentUserPrivileges, companyuser)
+  val newFinancedata = newFinancedataAndNotification.financialData
+  val newNotifications = newFinancedataAndNotification.notification
+  val futureUpdateFinancialdata = update(newFinancedata)
+  var resultUpdateFinancialdata = &quot;failed&quot;
+  futureUpdateFinancialdata onComplete {
+    case util.Success(value) =&gt; {
+      resultUpdateFinancialdata = &quot;success&quot;
+      waitForClearNotifations(newFinancedata.companyId, newFinancedata.year, financialData.operationType)
+      notificationWrite.waitForCreateNotifications(newNotifications)
     }
+    case scala.util.Failure(exception) =&gt; throw new Exception(exception.toString)
   }
+  Await.result(futureUpdateFinancialdata, Duration.apply(10.toLong, duration.SECONDS))
+  newFinancedata
 }</code></pre></dd>
-  <dt>Authentication</dt>
+  <dt>WorkflowUtil</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/authorization.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def createEngageuser() =
-  deadbolt.Pattern(value = &quot;(v_admin)|(v_lead)&quot;, patternType = PatternType.REGEX)(trim(parse.json)) {implicit authRequest =&gt;
-    // Action.async(trim(parse.json)) { implicit authRequest =&gt;
-    try {
-        ...
-    } catch {
-      case ValidationException(msg) =&gt; Future(BadRequest(msg))
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/FinancialDataWorkflowUtil.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Timestamp
+
+override def checkPermissionThenGetFiDataAndNotification(dataFrontEnd: FinancialdataGetFromFrontend,
+                                                         email: String,
+                                                         privilege: String,
+                                                         companyuser: Option[Companyuser]) = {
+  val currentFinancialData: Financialdata = companyfinancialdataServiceRead.waitForLookupWithDefaultValues(dataFrontEnd.companyId, dataFrontEnd.year) match {
+    case Some(data) =&gt; data
+    case None =&gt; throw new Exception(&quot;Financial data doesn&#39;t exist&quot;)
+  }
+  FinancialDataWorkflowUtils.checkRolePermissionThenGetFiDataAndNotification(dataFrontEnd, currentFinancialData, email, privilege, companyuser)
+}
+
+def checkRolePermissionThenGetFiDataAndNotification(dataFrontEnd:FinancialdataGetFromFrontend,
+                                                    currentFinancialData:Financialdata,
+                                                    user:String,
+                                                    privilege:String,
+                                                    companyuser:Option[Companyuser]):NextFinancialDataAndNotification= {
+  val now = TimeService.currentTime
+  val companyuserName = companyuser.map(_.name).getOrElse(&quot;&quot;)
+  val workflowState = WorkflowState(currentFinancialData.internalState, currentFinancialData.externalState,currentFinancialData.modifiedByExternal, currentFinancialData.uploadFilesByExternal)
+  OperationTypes.withName(dataFrontEnd.operationType.toUpperCase) match {
+    case OperationTypes.external_data_save =&gt;      externalSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.external_file_save =&gt;      externalFileSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.external_data_finalize =&gt;  externalFinalize(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.external_data_approve =&gt;   externalApprove(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.file_save =&gt;               internalFileSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.data_save =&gt; {
+      if(currentFinancialData.modifiedByExternal.getOrElse(false) &amp;&amp; !StatusHelper.isInternalApproved(workflowState) &amp;&amp; !( workflowState.externalState.getOrElse(None) == ExternalState.ApprovedOnlyFiles))
+        sentBack(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+      else
+        internalSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
     }
-  }</code></pre></dd>
+    case OperationTypes.external_data_agree =&gt;               agree(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.external_data_disagree =&gt;         disagree(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.data_finalize =&gt;          internalFinalize(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.data_signOff =&gt;            internalSignOff(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case OperationTypes.data_approve =&gt;            internalApprove(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
+    case _ =&gt; throw UnAuthorizationException(&quot;Operation type doesn&#39;t exists&quot;)
+  }
+}
+
+def externalSave(dataFrontEnd:FinancialdataGetFromFrontend,
+                 currentFinancialData:
+                 Financialdata,
+                 user:String,
+                 privilege:String,
+                 now: Timestamp,
+                 companyuserName:String) = {
+  val workflowState = WorkflowState(currentFinancialData.internalState,currentFinancialData.externalState,currentFinancialData.modifiedByExternal, currentFinancialData.uploadFilesByExternal)
+  var modifiedByExternal = getModifiedByExternal(dataFrontEnd, currentFinancialData)
+
+  if(actionsValidator.validateExternalSave(privilege,workflowState))
+  {
+    val newfdata = currentFinancialData.copy(currencyId = dataFrontEnd.currencyId,assetdata = dataFrontEnd.assetdata,
+      liabilitydata = dataFrontEnd.liabilitydata, profitlossdata = dataFrontEnd.profitlossdata,
+      fmvdata = dataFrontEnd.fmvdata, ordinaryearningsandgain = dataFrontEnd.ordinaryearningsandgain,
+
+      modifiedByExternal = modifiedByExternal)
+    val noti = Nil
+    NextFinancialDataAndNotification(newfdata,noti)
+  }
+  else
+    throw UnAuthorizationException()
+}
+
+</code></pre></dd>
+  <dt>DataStructure</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/dataStructure.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class FinancialdataGetFromFrontend(id: Long, year: Int, companyId: String,currencyId: String, assetdata: Option[String] = None,
+                                        liabilitydata: Option[String] = None, profitlossdata: Option[String] = None, fmvdata: Option[String] = None, ordinaryearningsandgain: Option[String] = None,
+                                        operationType:String, //The operation type will find the
+                                        msg:Option[String], owAssetdata: Option[String] = None, owLiabilitydata: Option[String] = None,
+                                        owProfitlossdata: Option[String] = None,incorporationdate: Option[String] = None,  uploadFilesByExternal: Option[Boolean] = None)
+
+
+case class NextFinancialDataAndNotification(financialData:Financialdata,notification:Seq[Notification])
+
+case class Notification(var id: String, notificationType: NotificationType.NotificationType, notificationDataType: NotificationDataType.NotificationDataType,
+                        description: Option[NotificationDescription], status: Boolean, entityname: Option[String],
+                        link: String, year: Int, triggerAt: java.sql.Timestamp, triggerBy: Option[String])</code></pre></dd>
 </dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/reality.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -331,7 +386,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../systemdesign/index.html" title="software architecture" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -340,21 +395,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-software architecture
+Code design
 </span>
-</div>
-</a>
-<a href="../../systemdesign/sub/issues.html" title="Whatre challenges of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Whatre challenges of software development?
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>

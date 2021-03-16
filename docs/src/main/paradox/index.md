@@ -68,4 +68,6 @@ This is the introduction for doradilla library.
 * [Extractor design](extractorDesign/index.md)
 
 * [Bugs](bugs/index.md)
+
+* [Code design](codedesign/index.md)
 @@@
