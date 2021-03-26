@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>References · Docs</title>
+<title>Page cant retrieve · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-References
+Page cant retrieve
 </span>
 </div>
 </div>
@@ -165,7 +165,7 @@ wherby/docs
     <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
     <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
     <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
-    <li><a href="../../systemdesign/sub/reference.html" class="active page">References</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
   </ul></li>
   <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
   <li><a href="../../future/index.html" class="page">Future value</a></li>
@@ -185,7 +185,7 @@ wherby/docs
   <li><a href="../../bugs/index.html" class="page">Bugs</a>
   <ul>
     <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
-    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="active page">Page can&rsquo;t retrieve</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -193,6 +193,14 @@ wherby/docs
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/pagecantget/index.html#page-cant-retrieve" class="header">Page can&rsquo;t retrieve</a>
+  <ul>
+    <li><a href="../../bugs/pagecantget/index.html#page-cant-get-when-using-idam" class="header">Page can&rsquo;t get when using IdAM</a></li>
+    <li><a href="../../bugs/pagecantget/index.html#whats-happened-" class="header">What&rsquo;s happened?</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -206,17 +214,46 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/pagecantget/index.html#page-cant-retrieve" class="header">Page can&rsquo;t retrieve</a>
+  <ul>
+    <li><a href="../../bugs/pagecantget/index.html#page-cant-get-when-using-idam" class="header">Page can&rsquo;t get when using IdAM</a></li>
+    <li><a href="../../bugs/pagecantget/index.html#whats-happened-" class="header">What&rsquo;s happened?</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#references" name="references" class="anchor"><span class="anchor-link"></span></a>References</h2>
-<p><a href="http://www.laputan.org/mud/">Big ball of mud</a></p>
-<p><a href="https://www.reactivemanifesto.org/">The Reactive Manifesto</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/25336551">噢，你的代码像一坨翔。然后呢？</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/25192112">噢，你的代码像一坨翔。甩锅呗！</a></p>
+<h1><a href="#page-cant-retrieve" name="page-cant-retrieve" class="anchor"><span class="anchor-link"></span></a>Page can&rsquo;t retrieve</h1>
+<h2><a href="#page-cant-get-when-using-idam" name="page-cant-get-when-using-idam" class="anchor"><span class="anchor-link"></span></a>Page can&rsquo;t get when using IdAM</h2>
+<p>In PFIC system, in UAT environment, the page can&rsquo;t be retrieved:</p>
+<p><img src="pic/pagenotget.png" alt="Page not get" /></p>
+<p>But in another environment, the login function works well.</p>
+<p>And if disable IdAM service, the login function also works.</p>
+<p>The IdAM service works in local.</p>
+<p>Then the chrome log shows:</p>
+<p><img src="pic/log.png" alt="Chrome log" /></p>
+<h2><a href="#whats-happened-" name="whats-happened-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happened?</h2>
+<p>The UAT nginx server has configuration of a rule for security check:</p>
+<pre class="prettyprint"><code class="nocode">add_header Content-Security-Policy &quot;default-src &#39;self&#39; cdn.plyr.io; style-src &#39;self&#39; &#39;unsafe-inline&#39;; script-src &#39;self&#39; www.googletagmanager.com; img-src &#39;self&#39; data:&quot; always;
+</code></pre>
+<p>But for &ldquo;www.googletagmanager.com&rdquo; the sha value will change from time to time.</p>
+<p>So the integrity value is removed:</p>
+<p><img src="pic/shaRemove.png" alt="Remove Sha" /></p>
+<p>So the chrome will refuse to load the &ldquo;index.html&rdquo; home page.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/reference.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/pagecantget/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -232,7 +269,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../systemdesign/sub/doradilla.html" title="Doradilla design" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/unexpectedvalue/index.html" title="Unexpected value show up" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -241,17 +278,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Doradilla design
+Unexpected value show up
 </span>
 </div>
 </a>
-<a href="../../poiexcel/index.html" title="Excel reader using POI" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Excel reader using POI
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
