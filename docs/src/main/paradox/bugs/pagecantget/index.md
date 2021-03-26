@@ -30,6 +30,6 @@ So the integrity value is removed:
 
 ![Remove Sha](pic/shaRemove.png)
 
-So the chrome will refuse to load the "index.html" home page.
+So the nginx will block the page, and chrome will not load the page correctly.
 
 
