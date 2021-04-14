@@ -5,4 +5,6 @@
 * [Unexpected value](unexpectedvalue/index.md)
 
 * [Page can't retrieve](pagecantget/index.md)
+
+* [Add feature to create bug](addfeature/index.md)
 @@@
