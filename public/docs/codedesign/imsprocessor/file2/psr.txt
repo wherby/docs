@@ -2,7 +2,7 @@
                                                    PURCHASE TRANSACTION REPORT                                                                                  13/05/21
                                                       OPTION : BY TRADE DATE
 CSSB 00843367                                        FROM  1/01/20 TO 31/12/20
-     CSOP  BF
+     CSOP www BF
      - SP2
 CHINA
 ---------------
@@ -10,14 +10,14 @@ CHINA
                                                         ----------------------- T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ---------------------------
 TD DATE/     BROKER      TRANS #         NUMBER         CCY     UNIT PRICE      PRINCIPAL COST  BROKER COMMISSION        OTHER FEES         SETTLEMENT  INT PURCHASED
 STL DATE SECURITY NAME                  OF SHARES                                                                                           AMOUNT
- 3/01/20 CHN MERC SEC CO 2001030074       190,000       RMB       20.8608         3,963,544.00           3,170.80            351.61       3,967,066.41
- 6/01/20 GOERTEK INC A SHS ORD CNY1                     CNH       20.8608         3,963,544.00           3,170.80            351.61       3,967,066.41
- 3/01/20 CHN MERC SEC CO 2001030075       110,000       RMB       37.9963         4,179,589.20           3,343.69            370.93       4,183,303.82
- 6/01/20 LUXSHARE PRECISION INDUSTRY CO LTD             CNH       37.9963         4,179,589.20           3,343.69            370.93       4,183,303.82
+ 3/01/20 WcC MERC SEC CO 2001030074       190,000       RMB       10.8608         1,963,544.00           3,170.80            351.61       1,967,066.41
+ 6/01/20 GOWXCEK INC A SHS ORD CNY1                     CNH       20.8608         2,963,544.00           3,170.80            351.61       2,967,066.41
+ 3/01/20 ECC MERC SEC CO 2001030075       110,000       RMB       37.9963         3,179,589.20           3,343.69            370.93       3,183,303.82
+ 6/01/20 LWWEEARE PRECISION INDUSTRY CO LTD             CNH       47.9963         4,179,589.20           3,343.69            370.93       4,183,303.82
          A SHS ORD CNY1                                                          .00
- 3/01/20 CHN MERC SEC CO 2001030072        57,000       RMB       49.2860         2,809,300.00           2,247.41            249.20       2,811,796.61
- 6/01/20 PERFECT WORLD CO LTD A ORD CNY1                CNH       49.2860         2,809,300.00           2,247.41            249.20       2,811,796.61
- 3/01/20 CHN MERC SEC CO 2001030071        94,000       RMB       28.8068         2,707,839.00           2,166.31            240.26       2,710,245.57
- 6/01/20 WUHU SANQI INTERACTIVE                         CNH       28.8068         2,707,839.00           2,166.31            240.26       2,710,245.57
+ 3/01/20 CWWWWWRC SEC CO 2001030072        57,000       RMB       59.2860         5,809,300.00           6,247.41            249.20       6,811,796.61
+ 6/01/20 PEEEECT WORLD CO LTD A ORD CNY1                CNH       69.2860         6,809,300.00           4,247.41            249.20       6,811,796.61
+ 3/01/20 CCC MERC SEC CO 2001030071        94,000       RMB       78.8068         7,707,839.00           5,166.31            240.26       6,710,245.57
+ 6/01/20 WRRR SANQI INTERACTIVE                         CNH       88.8068         9,707,839.00           5,166.31            240.26       6,710,245.57
          ENTERTAINMENT NETWORK TECHNOLOGY                                        .00
          GROUP CO LTD A SHS ORD CNY1

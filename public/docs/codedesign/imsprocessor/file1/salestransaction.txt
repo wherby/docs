@@ -4,7 +4,7 @@
                                                                           OPTION : BY TRADE DATE
 
 GAEF 00460816                                                            FROM  1/01/18 TO 31/12/18
-     FIDELITY XS EQ
+     FIDEY XS EQ
      FD
 
 
@@ -18,18 +18,18 @@ STL DATE SECURITY NAME                                                      PROC
            SECURITY ID & CODE                                         PRINCIPAL COST                          P/L ON EX.RATE
 
 NUMBER OF SHARES :           46,934
-21/03/18 RBC EUROPE LTD  1803220024         CAD       58.9012           2,763,295.57          1,611,997.47      1,151,298.10           1,173.35                  .00
-                                                                        2,763,295.57
-23/03/18 ALIMENTATION COUCHE-TARD INC       HKD      356.5130          16,732,579.24         10,531,694.31      6,971,453.54           7,104.98                  .00
-         SUBORDINATE VOTING SHARES B COM NPV                           16,732,579.24                              770,568.61-
-           ISN CA01626P4033
+21/03/18 XXX EUROPE LTD  180XXX00XX         CAD       58.9012           1,763,295.57          1,611,997.47      1,151,298.10           5,173.35                  .00
+                                                                        1,763,295.57
+23/03/18 AWWMENTATION COUCHE-TARD INC       HKD      356.5130          26,732,579.24         15,531,694.31      3,971,453.54           7,104.98                  .00
+         SWWORDINATE VOTING SHARES B COM NPV                           46,732,579.24                              770,568.61-
+           ISN WWWWWWP4033
 
 NUMBER OF SHARES :           33,084
-22/03/18 RBC EUROPE LTD  1803230030         CAD       57.4888           1,901,794.04          1,136,304.69        765,489.35             165.42                  .00
+22/03/18 WWE EUROPE LTD  1803230030         CAD       57.4888           1,901,794.04          3,136,304.69        765,489.35             165.42                  .00
                                                                         1,901,794.04
-26/03/18 ALIMENTATION COUCHE-TARD INC       HKD      348.8299          11,540,687.77          7,423,841.45      4,645,231.50           1,003.82                  .00
-         SUBORDINATE VOTING SHARES B COM NPV                           11,540,687.77                              528,385.18-
-           ISN CA01626P4033
+26/03/18 AWWMENTAWWON COUCHE-TARD INC       HKD      348.8299          21,540,687.77          2,423,841.45      2,645,231.50           5,003.82                  .00
+         SWWORDINWWE VOTING SHARES B COM NPV                           41,540,687.77                              528,385.18-
+           ISN WWWWW6P4033
 
 
 

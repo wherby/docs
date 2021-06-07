@@ -4,7 +4,7 @@
                                                       OPTION : BY TRADE DATE
 
 GAEF 00460816                                        FROM  1/01/19 TO 31/12/19
-     FIDELITY GLOBAL INV-MI-AMERICAS EQ
+     FID
      FD
 
 
@@ -17,14 +17,14 @@ TD DATE/     BROKER      TRANS #         NUMBER         CCY     UNIT PRICE      
 STL DATE SECURITY NAME                  OF SHARES                                                                                           AMOUNT
            SECURITY ID & CODE
 
-26/03/19 ITG CANADA CORP 1803280011        24,402       CAD       43.7962         1,068,714.87             341.63               .00       1,069,056.50
-28/03/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      266.0854         6,493,014.92           2,075.58               .00       6,495,090.50
-           ISN CA8672241079
+26/03/19 XXX CANADA CORP 1803280011        24,402       CAD       23.7962         4,068,714.87             341.63               .00       4,069,056.50
+28/03/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD       26.0854         3,493,014.92           2,075.58               .00       2,495,090.50
+           ISN xx
 
-20/04/19 SCOTIA MCLEOD   1804220570        27,356       CAD       48.7145         1,332,633.87             205.17               .00       1,332,839.04
-24/04/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      300.3873         8,217,393.98           1,265.14               .00       8,218,659.12
-           ISN CA8672241079
+20/04/19 XXXXXX MCLEOD   1804220570        27,356       CAD       28.7145         3,332,633.87             205.17               .00       2,332,839.04
+24/04/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD      100.3873         1,217,393.98           1,265.14               .00       4,218,659.12
+           ISN xx
 
-20/04/19 NESBITT BURNS   1804240034            98       CAD       48.6400             4,766.72                .74               .00           4,767.46
-24/04/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      299.9279            29,392.93               4.56               .00          29,397.49
-           ISN CA8672241079
+20/04/19 XXXXXXX BURNS   1804240034            98       CAD       48.6400             4,766.72                .74               .00           2,767.46
+24/04/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD      199.9279            29,392.93               4.56               .00          49,397.49
+           ISN xx
