@@ -1,0 +1,30 @@
+
+                                                            FIDELITY LTD.                                                                      REF SR9020     PAGE     1
+                                                   PURCHASE TRANSACTION REPORT                                                                                  04/01/20
+                                                      OPTION : BY TRADE DATE
+
+GAEF 00460816                                        FROM  1/01/19 TO 31/12/19
+     FIDELITY GLOBAL INV-MI-AMERICAS EQ
+     FD
+
+
+CANADA
+---------------
+ EQUITIES
+
+                                                        ----------------------- T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ---------------------------
+TD DATE/     BROKER      TRANS #         NUMBER         CCY     UNIT PRICE      PRINCIPAL COST  BROKER COMMISSION        OTHER FEES         SETTLEMENT  INT PURCHASED
+STL DATE SECURITY NAME                  OF SHARES                                                                                           AMOUNT
+           SECURITY ID & CODE
+
+26/03/19 ITG CANADA CORP 1803280011        24,402       CAD       43.7962         1,068,714.87             341.63               .00       1,069,056.50
+28/03/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      266.0854         6,493,014.92           2,075.58               .00       6,495,090.50
+           ISN CA8672241079
+
+20/04/19 SCOTIA MCLEOD   1804220570        27,356       CAD       48.7145         1,332,633.87             205.17               .00       1,332,839.04
+24/04/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      300.3873         8,217,393.98           1,265.14               .00       8,218,659.12
+           ISN CA8672241079
+
+20/04/19 NESBITT BURNS   1804240034            98       CAD       48.6400             4,766.72                .74               .00           4,767.46
+24/04/19 SUNCOR ENERGY INC COM NPV (TOR)                HKD      299.9279            29,392.93               4.56               .00          29,397.49
+           ISN CA8672241079

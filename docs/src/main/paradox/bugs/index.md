@@ -9,4 +9,6 @@
 * [Add feature to create bug](addfeature/index.md)
 
 * [Wrong notification](wrongnotification/index.md)
+
+* [IE hosting](ieissue/index.md)
 @@@

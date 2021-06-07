@@ -1,0 +1,42 @@
+                                                     HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                                      REF SR9020     PAGE     1
+                                                                          SALES TRANSACTION REPORT                                                                                            13/05/21
+                                                                          OPTION : BY TRADE DATE
+CSFF 00843847                                                            FROM  1/01/20 TO 31/12/20
+     CSOP ACCESS
+     FUND OF FUNDS SP - SP6
+CAYMAN ISLANDS
+---------------
+ EQUITIES
+                                            ------------------------------------------ T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ----------------------------------------------------
+TD DATE/     BROKER      TRANS #            CCY     UNIT PRICE                NET         COST WRITTEN-OFF       REALISED                BROKER                OTHER       INT SOLD   DEFERRED INCOME
+STL DATE SECURITY NAME                                                      PROCEEDS/                         PROFIT/LOSS(-)         COMMISSION                 FEES
+                                                                      PRINCIPAL COST                          P/L ON EX.RATE
+NUMBER OF SHARES :           20,000
+29/12/20 CHINA INTL CAP  2012290318         HKD      222.0000           4,429,890.12          5,452,000.00      1,012,000.00-          5,328.00             4,781.88
+                                                                        4,440,000.00
+ 4/01/21 ALIBABA GROUP HOLDING LTD ORD      USD       28.6315             571,325.96            703,474.79        130,518.33-            687.16               616.72
+         USD.000003125                                                    572,629.84                                  326.62-
+                                    TRADED CCY TOTAL    HKD             4,429,890.12          5,452,000.00      1,012,000.00-          5,328.00             4,781.88
+                                                                        4,440,000.00
+                                    BASE   CCY TOTAL    USD               571,325.96            703,474.79        130,518.33-            687.16               616.72
+                                                                          572,629.84
+                                                                                                                      326.62-
+NUMBER OF SHARES :           30,000
+ 3/02/20 HSBC INSTI TST  2002100508         USD      110.5743           3,317,229.00          3,092,508.76        224,720.24                .00                  .00
+ 3/02/20 RONGTONG GLOBAL SPC - RONGTONG                                 3,317,229.00
+         ENHANCED INCOME SP CLASS A
+NUMBER OF SHARES :           18,866
+23/03/20 OTHER           2003260921         USD      109.8112           2,071,698.10          1,944,775.67        126,922.43                .00                  .00
+23/03/20 RONGTONG GLOBAL SPC - RONGTONG                                 2,071,698.10
+         ENHANCED INCOME SP CLASS A
+                                    TRADED CCY TOTAL    USD             5,388,927.10          5,037,284.43        351,642.67                .00                  .00
+                                                                        5,388,927.10
+                                    BASE   CCY TOTAL    USD             5,388,927.10          5,037,284.43        351,642.67                .00                  .00
+                                                                        5,388,927.10
+                                                                                                                         .00
+ EQUITIES
+NUMBER OF SHARES :           31,252.5102
+ 2/11/20 HSBC INSTI TST  2011130038         HKD    1,096.8720          34,279,989.38         30,000,000.00      4,279,989.38                .00                  .00
+                                                                       34,279,989.38
+26/11/20 INTAC FUND SPC INTAC ADVANTAGE     USD      141.4615           4,421,028.18          3,822,167.30        551,982.48                .00                  .00
+         INDUSTRY FUND SP CLASS B                                       4,421,028.18                               46,878.40
