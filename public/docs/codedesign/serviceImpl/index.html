@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>The reactive manifesto · Docs</title>
+<title>Service design without interface · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-The reactive manifesto
+Service design without interface
 </span>
 </div>
 </div>
@@ -163,7 +163,7 @@ wherby/docs
   <ul>
     <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
     <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
-    <li><a href="../../systemdesign/sub/reactive.html" class="active page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
     <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
     <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
   </ul></li>
@@ -194,10 +194,17 @@ wherby/docs
   <ul>
     <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
     <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
-    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="active page">Service design without interface</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../codedesign/serviceImpl/index.html#service-design-without-interface" class="header">Service design without interface</a>
+  <ul>
+    <li><a href="../../codedesign/serviceImpl/index.html#cache-implementation" class="header">Cache implementation</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -211,15 +218,62 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../codedesign/serviceImpl/index.html#service-design-without-interface" class="header">Service design without interface</a>
+  <ul>
+    <li><a href="../../codedesign/serviceImpl/index.html#cache-implementation" class="header">Cache implementation</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#the-reactive-manifesto" name="the-reactive-manifesto" class="anchor"><span class="anchor-link"></span></a>The reactive manifesto</h2>
-<p><img src="../pic/reactive.png" alt="Reactive pic" /></p>
-<p><a href="https://www.reactivemanifesto.org/">Reactive manifesto</a></p>
+<h1><a href="#service-design-without-interface" name="service-design-without-interface" class="anchor"><span class="anchor-link"></span></a>Service design without interface</h1>
+<h2><a href="#cache-implementation" name="cache-implementation" class="anchor"><span class="anchor-link"></span></a>Cache implementation</h2>
+<p>The EhCacheService implementation as below:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/serviceImpl/code/EhCaheService.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class EhCacheService @Inject()(
+                                cache: AsyncCacheApi,
+                                sheetTypeReportTypeMapDAO: SheetTypeReportTypeMapDAO,
+                              )(implicit ec: ExecutionContext) {
+  val OLD_TYPE_IDS = &quot;oldtypeids&quot;
+  val NEW_TYPE_IDS = &quot;newtypeids&quot;
+  val CONFIRMATION_TYPE_IDS = &quot;confirmationtypeids&quot;
+  val POSITION_CACHE_IDS = &quot;positioncacheids&quot;
+
+  def lookupPositionCashSheetTypeIds(): Future[Seq[String]] = {
+    ...
+  }
+}</code></pre>
+<p>The service will not need the binding function in module like:</p>
+<pre class="prettyprint"><code class="language-scala">  override def configure(): Unit = {
+    bind(classOf[Database]).toProvider(classOf[DatabaseProvider])
+    bind(classOf[CityDAO]).to(classOf[SlickCityDAO])
+      ....
+</code></pre>
+<p>But when using the service:</p>
+<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/serviceImpl/code/FundEngagementReportTypeSelectionReadImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.{ExecutionContext, Future}
+
+class FundEngagementReportTypeSelectionReadImpl @Inject() (
+                                                            fundEngagementReportTypeSelectionDAO: FundEngagementReportTypeSelectionDAO,
+                                                            sheetTypeReportTypeMapDAO: SheetTypeReportTypeMapDAO,
+                                                            ehCacheService: EhCacheService
+                                                          )(implicit ec: ExecutionContext)
+  extends FundEngagementReportTypeSelectionRead {
+  ...
+}</code></pre>
+<p>Then the service is using the instance of the service not the interface.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/sub/reactive.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/serviceImpl/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -235,7 +289,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../systemdesign/sub/issues.html" title="Whatre challenges of software development?" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../codedesign/imsprocessor/index.html" title="IMS processor" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -244,21 +298,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Whatre challenges of software development?
+IMS processor
 </span>
-</div>
-</a>
-<a href="../../systemdesign/sub/doradilla.html" title="Doradilla design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Doradilla design
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
