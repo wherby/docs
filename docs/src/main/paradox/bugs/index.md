@@ -11,4 +11,6 @@
 * [Wrong notification](wrongnotification/index.md)
 
 * [IE hosting](ieissue/index.md)
+
+* [Number add](numberAdd/index.md)
 @@@
