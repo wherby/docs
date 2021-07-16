@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Add features leads system fail · Docs</title>
+<title>Cache API design · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Add features leads system fail
+Cache API design
 </span>
 </div>
 </div>
@@ -186,7 +186,7 @@ wherby/docs
   <ul>
     <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
     <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
-    <li><a href="../../bugs/addfeature/index.html" class="active page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
     <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
     <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
@@ -196,16 +196,15 @@ wherby/docs
     <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
     <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
     <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
-    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="active page">Cache API design</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/addfeature/index.html#add-features-leads-system-fail" class="header">Add features leads system fail</a>
+  <li><a href="../../codedesign/cacheAPI/index.html#cache-api-design" class="header">Cache API design</a>
   <ul>
-    <li><a href="../../bugs/addfeature/index.html#investor-list-function-failed" class="header">Investor list function failed</a></li>
-    <li><a href="../../bugs/addfeature/index.html#upload-function-is-blocked" class="header">Upload function is blocked</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html#design-cache-api" class="header">Design cache api</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -227,10 +226,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/addfeature/index.html#add-features-leads-system-fail" class="header">Add features leads system fail</a>
+  <li><a href="../../codedesign/cacheAPI/index.html#cache-api-design" class="header">Cache API design</a>
   <ul>
-    <li><a href="../../bugs/addfeature/index.html#investor-list-function-failed" class="header">Investor list function failed</a></li>
-    <li><a href="../../bugs/addfeature/index.html#upload-function-is-blocked" class="header">Upload function is blocked</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html#design-cache-api" class="header">Design cache api</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -241,149 +239,159 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#add-features-leads-system-fail" name="add-features-leads-system-fail" class="anchor"><span class="anchor-link"></span></a>Add features leads system fail</h1>
-<h2><a href="#investor-list-function-failed" name="investor-list-function-failed" class="anchor"><span class="anchor-link"></span></a>Investor list function failed</h2>
-<p>User reports the list investor feature failed:</p>
-<p><img src="pic/investorNotList.png" alt="Investor not list" /></p>
-<p>The following change cause the bug:</p>
-<p><img src="pic/codeChange.png" alt="Code change for investor" /></p>
-<p>After the change the request url will be:</p>
-<p><img src="pic/requesturl.png" alt="Request url" /></p>
-<p>What&rsquo;s the code for the query:</p>
+<h1><a href="#cache-api-design" name="cache-api-design" class="anchor"><span class="anchor-link"></span></a>Cache API design</h1>
+<h2><a href="#design-cache-api" name="design-cache-api" class="anchor"><span class="anchor-link"></span></a>Design cache api</h2>
 <dl>
-  <dt>Controller</dt>
+  <dt>Cache Api</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/listInvestor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/cacheAPI/code/cache.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.util.concurrent.TimeUnit
 
-def queryPage(page: Int, pageSize: Int, name: Option[String], country: Option[String], city: Option[String], sorterfield: Option[String], sorterorder: Option[String], investorType: Option[String], includeInActive: Option[Boolean]) =
-  deadbolt.Pattern(value = &quot;(v_pwc)|(v_myfi)&quot;, patternType = PatternType.REGEX)() { implicit request =&gt; {
-  ParameterCheck.pageChecker(page,pageSize)
-  var filterMap = Map[String, String]()
-  name.map(someName =&gt; filterMap += (&quot;name&quot; -&gt; someName))
-  country.map(someCountry =&gt; filterMap += (&quot;country&quot; -&gt; someCountry))
-  city.map(someCity =&gt; filterMap += (&quot;city&quot; -&gt; someCity))
-  investorType.map(someType =&gt; filterMap += (&quot;investorType&quot; -&gt; someType))
-  includeInActive.map(include =&gt; filterMap += (&quot;includeInActive&quot; -&gt; include.toString))
-  investorServiceRead.listPage(page, pageSize, filterMap, sorterfield, sorterorder).map(page =&gt; {
-    Ok(Json.obj(&quot;investors&quot; -&gt; Json.toJson(page.items), &quot;total&quot; -&gt; page.total))
-  })
-}
-}</code></pre></dd>
-  <dt>InvestorUserDao</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/InvestorUserDao.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+object AppCache {
 
-def listPage(pageNum: Int = 0, pageSize: Int = 10, filterMap: Map[String, String], sortField: Option[String], sortOrder: Option[String]): Future[Page[Investoruser]] = {
+  //http://cloudtu.github.io/blog/2018/08/guava-cache-memo.html
+  lazy val resultCache = Caffeine.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES).build[String, AnyRef]
 
-  val offset = pageSize * (pageNum - 1)
 
-  var filteredQuery = Investorusers.filter { user =&gt; filterMap.get(&quot;city&quot;).map(someCity =&gt; user.city.asColumnOf[String] like s&quot;%$someCity%&quot;).getOrElse(true: Rep[Boolean]) }
-    .filter { user =&gt; filterMap.get(&quot;name&quot;).map(f = someName =&gt; user.name like s&quot;%$someName%&quot;).getOrElse(true: Rep[Boolean]) }
-    .filter { user =&gt; filterMap.get(&quot;includeInActive&quot;).map(includes =&gt; {
-      if(includes == &quot;true&quot;){
-        true: Rep[Boolean]
+
+  def putValue(key:String,value:AnyRef)={
+    resultCache.put(key,value)
+  }
+
+  def getValue(key:String) ={
+    resultCache.getIfPresent(key)
+  }
+
+  private def getTabValueListFromCache(key:String)={
+    try{
+      val res = getValue(key)
+      if(res == null){
+        None
       }else{
-        user.activestatus === true
+        Some(res.asInstanceOf[Seq[Seq[Seq[ExcelField]]]])
       }
-    }).getOrElse(user.activestatus === true)} // not include inactive investor user by default
-
-  if(filterMap.get(&quot;investorType&quot;).nonEmpty){
-    var investorType = InvestorType.getIntInvestorType(filterMap.get(&quot;investorType&quot;))
-    filteredQuery = filteredQuery.filter(_.investorType === investorType)
-  }
-
-  var oder = sortOrder.map({
-    _ match {
-      case &quot;ascend&quot; =&gt; Ordering(Ordering.Asc)
-      case _ =&gt; Ordering(Ordering.Desc)
+    }catch {
+      case _:Throwable =&gt;None
     }
-  })
-  var columnOrder = ColumnOrdered[String](_: Rep[String], Ordering(Ordering.Asc));
-  val sortQuery = sortField match {
-    case Some(&quot;name&quot;) =&gt; filteredQuery.sortBy(_.name)(columnOrder)
-    case Some(&quot;city&quot;) =&gt; filteredQuery.sortBy(_.city.asColumnOf[String])(columnOrder)
-    case _ =&gt; filteredQuery.sortBy(_.createdAt.desc)
   }
 
-  var query = sortQuery.drop(offset).take(pageSize)
-  for {
-    totalRows &lt;- db.run(filteredQuery.length.result)
-    result &lt;- db.run(query.result).map(rows =&gt; rows.collect { case userRow =&gt; convertUseRowToUser(userRow) })
-  } yield Page(result, pageNum, offset, totalRows)
+  private def getTabValueFromCache(key:String)={
+    try{
+      val res = getValue(key)
+      if(res == null){
+        None
+      }else{
+        Some(res.asInstanceOf[Seq[Seq[ExcelField]]])
+      }
+    }catch {
+      case _:Throwable =&gt; None
+    }
+  }
+
+  def getTabValue(key:String,fx:()=&gt;AnyRef)={
+    val cacheValue = getTabValueFromCache(key)
+    val resOpt= cacheValue match {
+      case Some(value) =&gt; cacheValue
+      case _=&gt;
+        try{
+          val res = fx()
+          val resV= res.asInstanceOf[Seq[Seq[ExcelField]]]
+          putValue(key,resV)
+          Some(resV)
+        }catch {
+          case _:Throwable =&gt; None
+        }
+    }
+    resOpt.getOrElse(Seq[Seq[ExcelField]]())
+  }
+
+  def getTabValueList(key:String,fx:()=&gt;AnyRef)={
+    val cacheValue = getTabValueListFromCache(key)
+    val resOpt= cacheValue match {
+      case Some(value) =&gt; cacheValue
+      case _=&gt;
+        try{
+          val res = fx()
+          val resV= res.asInstanceOf[Seq[Seq[Seq[ExcelField]]]]
+          putValue(key,resV)
+          Some(resV)
+        }catch {
+          case _:Throwable =&gt;
+            None
+        }
+    }
+    resOpt.getOrElse(Seq[Seq[Seq[ExcelField]]]())
+  }
+}</code></pre></dd>
+  <dt>Use cache</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/cacheAPI/code/useCache.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">object ExcelToArray {
+  def multiSheetToArray(
+                         filePath: String,
+                         dataFormatOpt: Option[SimpleDateFormat] = None
+                       ): Seq[Seq[Seq[ExcelField]]] = {
+    AppCache.getTabValueList(filePath, () =&gt; {
+      val workbook = AppFileIO.fileToWorkBook(filePath)
+      try {
+        val num = workbook.getNumberOfSheets
+        var res = Seq[Seq[Seq[ExcelField]]]()
+        for (i &lt;- 0 until (num)) {
+          val t1 = getArryFromSheet(workbook, i, dataFormatOpt)
+          res = res :+ t1
+        }
+        AppCache.putValue(filePath, res)
+        res
+      } finally {
+        workbook.close()
+      }
+    })
+  }
+
+  def excelToArray(
+                    filePath: String,
+                    dataFormatOpt: Option[SimpleDateFormat] = None,
+                    sheetIndex: Option[Int] = None
+                  ): Seq[Seq[ExcelField]] = {
+    AppCache.getTabValue(filePath + sheetIndex.getOrElse(&quot;&quot;),()=&gt;{
+      if (filePath.endsWith(&quot;.csv&quot;)) {
+        ExcelReaderHelper.readCSV(filePath)
+      } else {
+        val workbook = AppFileIO.fileToWorkBook(filePath)
+        try {
+          val index = sheetIndex.getOrElse(0)
+          val res2 = getArryFromSheet(workbook, index, dataFormatOpt)
+          removeEmptyEnd(res2)
+        } finally {
+          workbook.close()
+        }
+      }
+    })
+  }
+
+  def excelToArray_tab(
+                        filePath: String,
+                        dataFormatOpt: Option[SimpleDateFormat] = None,
+                        sheetIndex: Option[Int] = None
+                      ): Seq[Seq[ExcelField]] = {
+    AppCache.getTabValue(filePath + sheetIndex.getOrElse(&quot;&quot;),()=&gt;{
+      if (filePath.endsWith(&quot;.csv&quot;)) {
+        ExcelReaderHelper.readCSV_tab(filePath)
+      } else {
+        val workbook = AppFileIO.fileToWorkBook(filePath)
+        try {
+          val index = sheetIndex.getOrElse(0)
+          val res2 = getArryFromSheet(workbook, index, dataFormatOpt)
+          removeEmptyEnd(res2)
+        } finally {
+          workbook.close()
+        }
+      }
+    })
+  }
 }</code></pre></dd>
 </dl>
-<p>What&rsquo;s the value in passed in the search is:</p>
-<p><img src="pic/valueInDBQuery.png" alt="Value in db" /></p>
-<p>Actually, there are some tricky value generated:</p>
-<pre><code>sortField,sortOrder is Some() , while in DAO, these fields are handled correctly.
-
-While in filterMap, the &quot;investorType&quot; value is &quot;&quot;, which is not handle correctly.
-</code></pre>
-<p>The bug is very obviously, the skipNull option in stringify function will remove null query parameters. After removed this option, the query url contains some empty parameters, the DB query can&rsquo;t handle some cases.</p>
-<p>The more question will be asked is how to avoid Some() or Some(null), Map(&ldquo;a&rdquo;-&gt;&quot;&quot;) in user&rsquo;s input.</p>
-<h2><a href="#upload-function-is-blocked" name="upload-function-is-blocked" class="anchor"><span class="anchor-link"></span></a>Upload function is blocked</h2>
-<p>User report the upload function is broken when apply a new feature:</p>
-<p><img src="pic/cantuploadfileinternaluser.png" alt="Cant upload" /></p>
-<p>While the log in backend is:</p>
-<p><img src="pic/cantuploadFileLog.png" alt="upload log" /></p>
-<p>The bug is more obvious:</p>
-<dl>
-  <dt>Upload controller</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/uploadController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.{ByteArrayOutputStream, FileInputStream}
-import java.nio.file.{Files, Paths}
-import java.util.Calendar
-import java.util.UUID.randomUUID
-import javax.sql.rowset.serial.SerialBlob
-import scala.concurrent.{Await, Future, duration}
-import scala.concurrent.duration.Duration
-
-def uploadOriginalFile(year: Int, companyId: String, uploaderType: String, operationType: String) = Action.andThen(ipRateLimitFilterPerDay).async(parse.multipartFormData(maxLength = 1024 * 1024 * 1)) { implicit request =&gt;
-  ...
-  val financialData = Await.result(companyfinancialdataServiceRead.lookup(companyId, year), 10 second)
-
-  var financialDataFromFrontEnd: FinancialdataGetFromFrontend = FinancialdataGetFromFrontend.financialDataToFrontEnd(financialData.get, operationType)
-  var companyUser = companyuserServiceRead.waitForLookup(companyId)
-  /**
-   * Financial Data Ratio.
-   */
-  val workbook = WorkbookFactory.create(filetest)
-  val financialDataSource = FinancialDataUtils.extractFinancialDataFromFile(workbook)
-
-}.getOrElse(Future(BadRequest(&quot;Unable to Read File&quot;))) val fdSourceStr = Json.toJson(financialDataSource).toString()
-
-...
-companyNameCell.setCellValue(companyName)
-val yearCell = sheet.getRow(3).getCell(1)
-yearCell.setCellValue(yearStr)
-val bstream = new ByteArrayOutputStream()
-ratioWB.write(bstream)
-val ratioFileContent = new SerialBlob(bstream.toByteArray)
-/**
- * End of Financial Ratio.
- */
-
-var inputStream = new FileInputStream(filetest)
-var byteArray = FileUtils.inputStreamToByte(inputStream)
-var fileContentId = randomUUID().toString
-var fileContent = new OriginalFinancialFileContent(fileContentId, file.filename, new javax.sql.rowset.serial.SerialBlob(byteArray), Some(fdSourceStr), Some(ratioResultStr), Some(ratioFileContent))
-var fileRecord = new OriginalFinancialFile(randomUUID().toString, &quot;&quot;, financialDataFromFrontEnd.year, financialDataFromFrontEnd.companyId.toString, file.filename, fileContentId, true, emailOption, Some(TimeService.currentTime))
-
-}</code></pre></dd>
-  <dt>Code from a new feature</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/extractBalanceSheetFromExcel.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/><br/>def extractBalanceSheetFromExcel(workbook: Workbook) = {
-  val balanceSheet = workbook.getSheet(&quot;Balance Sheet&quot;)
-  val (assetStartRow: Int, assetStartColumn: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(balanceSheet, &quot;Current assets&quot;, true)
-  val (assetEndRow: Int, _: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(balanceSheet, &quot;Total assets&quot;, true)
-    ...
-}</code></pre></dd>
-</dl>
-<p>The upload function is an existed feature in our system. After that new feature is added to process specified type of Excel document. </p>
-<p>Then Excel file not match the new feature will fail.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/cacheAPI/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -399,7 +407,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/pagecantget/index.html" title="Page cant retrieve" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../codedesign/serviceImpl/index.html" title="Service design without interface" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -408,21 +416,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Page cant retrieve
+Service design without interface
 </span>
-</div>
-</a>
-<a href="../../bugs/wrongnotification/index.html" title="Wrong notification" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Wrong notification
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
