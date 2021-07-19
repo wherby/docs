@@ -388,6 +388,116 @@ object AppCache {
     })
   }
 }</code></pre></dd>
+  <dt>use cache2</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/cacheAPI/code/useCache2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.util.concurrent.TimeUnit
+
+object AppCache {
+
+  //http://cloudtu.github.io/blog/2018/08/guava-cache-memo.html
+  lazy val resultCache = Caffeine.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES).build[String, AnyRef]
+
+
+  def putValue(key: String, value: AnyRef) = {
+    resultCache.put(key, value)
+  }
+
+  def getValue(key: String) = {
+    val res = resultCache.getIfPresent(key)
+    if (res == null) {
+      None
+    } else {
+      Some(res)
+    }
+  }
+
+
+  def getTabValue(key: String, fx: () =&gt; AnyRef) = {
+    val cacheValue = getValue(key)
+    val resOpt = try {
+      cacheValue match {
+        case Some(value) =&gt; Some(value.asInstanceOf[Seq[Seq[ExcelField]]])
+        case _ =&gt;
+          val res = fx()
+          val resV = res.asInstanceOf[Seq[Seq[ExcelField]]]
+          putValue(key, resV)
+          Some(resV)
+      }
+    } catch {
+      case _: Throwable =&gt; None
+    }
+    resOpt.getOrElse(Seq[Seq[ExcelField]]())
+  }
+
+  def getTabValueList(key: String, fx: () =&gt; AnyRef) = {
+    val cacheValue = getValue(key)
+    val resOpt = try {
+      cacheValue match {
+        case Some(value) =&gt; Some(value.asInstanceOf[Seq[Seq[Seq[ExcelField]]]])
+        case _ =&gt;
+          val res = fx()
+          val resV = res.asInstanceOf[Seq[Seq[Seq[ExcelField]]]]
+          putValue(key, resV)
+          Some(resV)
+      }
+    } catch {
+      case _: Throwable =&gt;
+        None
+    }
+    resOpt.getOrElse(Seq[Seq[Seq[ExcelField]]]())
+  }
+}</code></pre></dd>
+  <dt>use cache3</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/cacheAPI/code/useCache3.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.util.concurrent.TimeUnit
+
+object AppCache {
+
+  //http://cloudtu.github.io/blog/2018/08/guava-cache-memo.html
+  lazy val resultCache = Caffeine.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES).build[String, AnyRef]
+
+
+  def putValue(key: String, value: AnyRef) = {
+    resultCache.put(key, value)
+  }
+
+  def getValue(key: String) = {
+    val res = resultCache.getIfPresent(key)
+    if (res == null) {
+      None
+    } else {
+      Some(res)
+    }
+  }
+
+
+  private def getOrSetCacheToSpecifiedType[T&lt;:AnyRef](key:String, fx: () =&gt; AnyRef)={
+    val cacheValueOpt = getValue(key)
+    val resOpt = try {
+      cacheValueOpt match {
+        case Some(value) =&gt; Some(value.asInstanceOf[T])
+        case _ =&gt;
+          val res = fx()
+          val resV = res.asInstanceOf[T]
+          putValue(key, resV)
+          Some(resV)
+      }
+    } catch {
+      case _: Throwable =&gt; None
+    }
+    resOpt
+  }
+
+  def getTabValue(key: String, fx: () =&gt; AnyRef) = {
+    val resOpt =getOrSetCacheToSpecifiedType[Seq[Seq[ExcelField]]](key,fx)
+    resOpt.getOrElse(Seq[Seq[ExcelField]]())
+  }
+
+  def getTabValueList(key: String, fx: () =&gt; AnyRef) = {
+    val resOpt = getOrSetCacheToSpecifiedType[Seq[Seq[Seq[ExcelField]]]](key,fx)
+    resOpt.getOrElse(Seq[Seq[Seq[ExcelField]]]())
+  }
+}</code></pre></dd>
 </dl>
 </div>
 <div>
