@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Apache MPM event · Docs</title>
+<title>Function and Val in code · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Apache MPM event
+Function and Val in code
 </span>
 </div>
 </div>
@@ -152,7 +152,7 @@ wherby/docs
   <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
   <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html" class="active page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
     <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
   </ul></li>
   <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
@@ -190,7 +190,7 @@ wherby/docs
     <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
     <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
-    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="active page">Function and Val in code</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -203,11 +203,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/appacheMPMEvent.html#apache-mpm-event" class="header">Apache MPM event</a>
+  <li><a href="../../bugs/functionandval/index.html#function-and-val-in-code" class="header">Function and Val in code</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html#summary" class="header">Summary</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#relationship-with-the-worker-mpm" class="header">Relationship with the Worker MPM</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#how-it-works" class="header">How it Works</a></li>
+    <li><a href="../../bugs/functionandval/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -229,11 +227,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../nio/code/appacheMPMEvent.html#apache-mpm-event" class="header">Apache MPM event</a>
+  <li><a href="../../bugs/functionandval/index.html#function-and-val-in-code" class="header">Function and Val in code</a>
   <ul>
-    <li><a href="../../nio/code/appacheMPMEvent.html#summary" class="header">Summary</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#relationship-with-the-worker-mpm" class="header">Relationship with the Worker MPM</a></li>
-    <li><a href="../../nio/code/appacheMPMEvent.html#how-it-works" class="header">How it Works</a></li>
+    <li><a href="../../bugs/functionandval/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -244,29 +240,242 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#apache-mpm-event" name="apache-mpm-event" class="anchor"><span class="anchor-link"></span></a>Apache MPM event</h2>
-<p>The original artical from <a href="https://httpd.apache.org/docs/2.4/mod/event.html" title="Apache MPM event" target="_blank" rel="noopener noreferrer">Apache MPM event</a></p>
-<h3><a href="#summary" name="summary" class="anchor"><span class="anchor-link"></span></a>Summary</h3>
-<p>The event Multi-Processing Module (MPM) is designed to allow more requests to be served simultaneously by passing off some processing work to the listeners threads, freeing up the worker threads to serve new requests.</p>
-<p>To use the event MPM, add &ndash;with-mpm=event to the configure script&rsquo;s arguments when building the httpd.</p>
-<h3><a href="#relationship-with-the-worker-mpm" name="relationship-with-the-worker-mpm" class="anchor"><span class="anchor-link"></span></a>Relationship with the Worker MPM</h3>
-<p>event is based on the worker MPM, which implements a hybrid multi-process multi-threaded server. A single control process (the parent) is responsible for launching child processes. Each child process creates a fixed number of server threads as specified in the ThreadsPerChild directive, as well as a listener thread which listens for connections and passes them to a worker thread for processing when they arrive.</p>
-<p>Run-time configuration directives are identical to those provided by worker, with the only addition of the AsyncRequestWorkerFactor.</p>
-<h3><a href="#how-it-works" name="how-it-works" class="anchor"><span class="anchor-link"></span></a>How it Works</h3>
-<p>This MPM tries to fix the &lsquo;keep alive problem&rsquo; in HTTP. After a client completes the first request, it can keep the connection open, sending further requests using the same socket and saving significant overhead in creating TCP connections. However, Apache HTTP Server traditionally keeps an entire child process/thread waiting for data from the client, which brings its own disadvantages. To solve this problem, this MPM uses a dedicated listener thread for each process to handle both the Listening sockets, all sockets that are in a Keep Alive state, sockets where the handler and protocol filters have done their work and the ones where the only remaining thing to do is send the data to the client.</p>
-<p>This new architecture, leveraging non-blocking sockets and modern kernel features exposed by APR (like Linux&rsquo;s epoll), no longer requires the mpm-accept Mutex configured to avoid the thundering herd problem.</p>
-<p>The total amount of connections that a single process/threads block can handle is regulated by the AsyncRequestWorkerFactor directive.</p>
-<h4><a href="#async-connections" name="async-connections" class="anchor"><span class="anchor-link"></span></a>Async connections</h4>
-<p>Async connections would need a fixed dedicated worker thread with the previous MPMs but not with event. The status page of mod_status shows new columns under the Async connections section:</p>
-<h4><a href="#writing" name="writing" class="anchor"><span class="anchor-link"></span></a>Writing</h4>
-<p>While sending the response to the client, it might happen that the TCP write buffer fills up because the connection is too slow. Usually in this case, a write() to the socket returns EWOULDBLOCK or EAGAIN to become writable again after an idle time. The worker holding the socket might be able to offload the waiting task to the listener thread, that in turn will re-assign it to the first idle worker thread available once an event will be raised for the socket (for example, &ldquo;the socket is now writable&rdquo;). Please check the Limitations section for more information.</p>
-<h4><a href="#keep-alive" name="keep-alive" class="anchor"><span class="anchor-link"></span></a>Keep-alive</h4>
-<p>Keep Alive handling is the most basic improvement from the worker MPM. Once a worker thread finishes to flush the response to the client, it can offload the socket handling to the listener thread, that in turn will wait for any event from the OS, like &ldquo;the socket is readable&rdquo;. If any new request comes from the client, then the listener will forward it to the first worker thread available. Conversely, if the KeepAliveTimeout occurs then the socket will be closed by the listener. In this way, the worker threads are not responsible for idle sockets, and they can be re-used to serve other requests.</p>
-<h4><a href="#closing" name="closing" class="anchor"><span class="anchor-link"></span></a>Closing</h4>
-<p>Sometimes the MPM needs to perform a lingering close, namely sending back an early error to the client while it is still transmitting data to httpd. Sending the response and then closing the connection immediately is not the correct thing to do since the client (still trying to send the rest of the request) would get a connection reset and could not read the httpd&rsquo;s response. The lingering close is time-bounded, but it can take a relatively long time, so it&rsquo;s offloaded to a worker thread (including the shutdown hooks and real socket close). From 2.4.28 onward, this is also the case when connections finally timeout (the listener thread never handles connections besides waiting for and dispatching their events). These improvements are valid for both HTTP/HTTPS connections.</p>
+<h1><a href="#function-and-val-in-code" name="function-and-val-in-code" class="anchor"><span class="anchor-link"></span></a>Function and Val in code</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>In scala function and val are quiet equal as below:</p>
+<p>def f1 = (a: Int) =&gt; { a *2} val f1 = (a: Int) =&gt; { a *2}</p>
+<p>In some case the two will have different feature:</p>
+<p>When use function, every thing as expected: <img src="pic/def.png" alt="Functiin" /></p>
+<p>When use val, the null pointer error show up: <img src="pic/val.png" alt="Val" /></p>
+<p>The code as below:</p>
+<dl>
+  <dt>ExtractorConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/code/HSBCMFLikeExtractor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import io.github.jonathanlink.PDFLayoutTextStripper
+import org.apache.pdfbox.pdmodel.PDDocument
+
+import java.io.File
+
+case class HSBCMFLikeExtractor(
+                                removeHeader: Seq[String],
+                                splitPosition: Seq[Int],
+                                trimContentLine: Option[Int] = None,
+                                tableToRecode: Option[(Seq[String], Int) =&gt; Seq[Seq[String]]] = None,
+                                splitSeq: Seq[(Int, (String =&gt; Seq[String]))] = Seq()
+                              )
+
+object HSBCMFLikeExtractor {
+  def getContentStr(filePath: String) = {
+    val file        = new File(filePath);
+    val document    = PDDocument.load(file);
+    val pdfStripper = new PDFLayoutTextStripper()
+    pdfStripper.getText(document)
+  }
+
+  def getTableContent(listStr: Seq[String], removeStr: Seq[String]) = {
+    val items = splitByEmptyLine(listStr)
+    items.filter(item =&gt; {
+      removeStr.foldLeft(true)((b, str1) =&gt; b &amp;&amp; item(0).indexOf(str1) &lt; 0)
+    })
+  }
+
+  private def splitByEmptyLine(listStr: Seq[String]): Seq[Seq[String]] = {
+    var res     = Seq[Seq[String]]()
+    var tempRes = Seq[String]()
+    for (line &lt;- listStr) {
+      if (line.trim().length == 0) {
+        if (tempRes.length &gt; 0) {
+          res = res :+ tempRes
+          tempRes = Seq()
+        }
+      } else {
+        tempRes = tempRes :+ line
+      }
+    }
+    if (tempRes.length &gt; 0) {
+      res = res :+ tempRes
+    }
+    res
+  }
+
+  private def getModifiedSplitPoint(strLine: String, splitPoint: Seq[Int]) = {
+    splitPoint.map { point =&gt;
+      var pointTemp = point - 1
+      while (pointTemp &lt; strLine.length - 1 &amp;&amp; strLine(pointTemp) != &#39; &#39;) {
+        pointTemp = pointTemp + 1
+      }
+      pointTemp
+    }
+  }
+
+  //suppose every record has the one none-empty beginning value for the record number at line 1.
+  val splitTableToRecords = (tableStr: Seq[String], sectionIndex: Int) =&gt; {
+    var res: Seq[Seq[String]] = Seq()
+    var tempRes: Seq[String]  = Seq()
+    for (line &lt;- tableStr) {
+      if (line.substring(0, sectionIndex).trim.length != 0 &amp;&amp; tempRes.length &gt; 0) {
+        res = res :+ tempRes
+        tempRes = Seq(line)
+      } else {
+        tempRes = tempRes :+ line
+      }
+    }
+    if (tempRes.length &gt; 0) {
+      res = res :+ tempRes
+    }
+    res
+  }
+
+  def splitLine(
+                 strLine: String,
+                 splitPoint: Seq[Int],
+                 splitFunSeq: Seq[(Int, (String =&gt; Seq[String]))]
+               ) = {
+    var res: Seq[String] = Seq()
+    var start            = 0
+    for (point &lt;- splitPoint) {
+      res = res :+ strLine.substring(start, point)
+      start = point
+    }
+    res = res :+ strLine.substring(start)
+    val functionMap = splitFunSeq.toMap
+    res.zipWithIndex.flatMap {
+      case (line, index) =&gt; {
+        functionMap.get(index) match {
+          case Some(fn) =&gt;
+            fn(line)
+          case _ =&gt; Seq(line)
+        }
+      }
+    }
+  }
+
+  def splitSectionAndJoin(
+                           itemLines: Seq[String],
+                           splitPoint: Seq[Int],
+                           splitFunSeq: Seq[(Int, (String =&gt; Seq[String]))] = Seq()
+                         ) = {
+    val res = itemLines
+      .map { itemline =&gt;
+        val modifiedPoints = getModifiedSplitPoint(itemline, splitPoint)
+        splitLine(itemline, modifiedPoints, splitFunSeq)
+      }
+    res.tail.foldLeft(res.head)((r, itemLine) =&gt; jointSeqStr(r, itemLine))
+  }
+
+  private def jointSeqStr(seqS1: Seq[String], seqS2: Seq[String]) = {
+    seqS1.zip(seqS2).map { case (a, b) =&gt; (a.trim + &quot; &quot; + b.trim).trim }
+  }
+
+  def extractRecord(hsbcMFLikeExtractor: HSBCMFLikeExtractor, content: String): Seq[Seq[String]] = {
+    val isContentSuit =
+      hsbcMFLikeExtractor.removeHeader.foldLeft(true)((b, str1) =&gt; content.indexOf(str1) &gt;= 0 &amp;&amp; b)
+    val recordSpliterFn = hsbcMFLikeExtractor.tableToRecode.getOrElse(splitTableToRecords)
+    isContentSuit match {
+      case true =&gt;
+        val lines         = SinglePageExtractor.splitToLines(content)
+        val tableContents = getTableContent(lines, hsbcMFLikeExtractor.removeHeader)
+        val afterTrimTableHeader = hsbcMFLikeExtractor.trimContentLine match {
+          case Some(lineNumber) =&gt;
+            tableContents.map { tableContent =&gt;
+              tableContent.slice(lineNumber, tableContent.length)
+            }
+          case _ =&gt; tableContents
+        }
+        afterTrimTableHeader
+          .flatMap { tableContent =&gt;
+            recordSpliterFn(tableContent, hsbcMFLikeExtractor.splitPosition(0))
+          }
+          .map { record =&gt;
+            splitSectionAndJoin(
+              record,
+              hsbcMFLikeExtractor.splitPosition,
+              hsbcMFLikeExtractor.splitSeq
+            )
+          }
+          .map { record =&gt;
+            record.map { x =&gt; x.trim }
+          }
+      case _ =&gt; Seq()
+    }
+  }
+
+  def extractRecordsFromFile(
+                              hsbcMFLikeExtractor: HSBCMFLikeExtractor,
+                              fileName: String
+                            ): Seq[Seq[String]] = {
+    val content = getContentStr(fileName)
+    extractRecord(hsbcMFLikeExtractor, content)
+  }
+}</code></pre></dd>
+  <dt>Reader Instance</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/code/SecHSBCMultiTBReader2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import com.pwc.ds.awm.processor.pdfExtractorMethods.HSBCMFLikeExtractor
+import com.pwc.ds.awm.processor.secHSBCMulti.reader.SecHSBCMultiTBReader.readerConfig
+import com.pwc.ds.awm.processor.singleegarow.TBRow.{AccountName, Balance, ClosingBalance_Detail, Description_Detail, Group1, createTBRowMap}
+
+object SecHSBCMultiTBReader2 {
+  val removeStr =
+    Seq(
+      &quot;HSBC         Securities             Services&quot;,
+      &quot;Equity,     Income       and    Expense        Report&quot;,
+      &quot;Fund code                 Valuation  date          Ledger  description/Securities  Ledger group  description/ Ledger  code                 Balance  in base             %  of  NAV Client  ID&quot;
+    )
+
+  val splitPoints = Seq(26, 51, 102, 139, 168).map(x =&gt; x + 4)
+  val readerConfig = HSBCMFLikeExtractor(
+    removeStr,
+    splitPoints,
+    Some(4),
+    Some(HSBCMFLikeExtractor.splitTableToRecords),
+    splitSeq = Seq((2, splitString))
+  )
+  val splitWords = Seq(
+    &quot;EQUITY&quot;,
+    &quot;EXPENSES&quot;,
+    &quot;DISTRIBUTION&quot;,
+    &quot;UNREALISED&quot;,
+    &quot;RESERVES&quot;,
+    &quot;INVESTMENT&quot;,
+    &quot;SUBSCRIPTION&quot;,
+    &quot;DISTRIBUTABLE&quot;,
+    &quot;REALISED&quot;,
+    &quot;ACCUMULATED&quot;
+  )
+
+  def splitString = (str: String) =&gt; {
+    try {
+      val wordFind = splitWords.filter(word =&gt; str.indexOf(word) &gt; 0).head
+      val index    = str.lastIndexOf(wordFind)
+      Seq(str.substring(0, index), str.substring(index, str.length))
+    } catch {
+      case _: Throwable =&gt;
+        //println(&quot;*&quot; * 100 + &quot; &quot; + str)
+        Seq(str, &quot;   &quot;)
+    }
+  }
+
+  def getRecord(filePath: String) = {
+    val res = HSBCMFLikeExtractor.extractRecordsFromFile(readerConfig, filePath)
+    res.map(row =&gt; getRow(row))
+  }
+
+  def getRow(row: Seq[String]): Map[String, String] = {
+    (
+      createTBRowMap() ++ Map(
+        Group1                -&gt; row(0),
+        Description_Detail    -&gt; row(2),
+        ClosingBalance_Detail -&gt; row(5),
+        AccountName           -&gt; row(3),
+        Balance               -&gt; row(5)
+      )
+      ).toMap
+  }
+}</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/nio/code/appacheMPMEvent.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -282,7 +491,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../nio/index.html" title="NIO and Akka-Http" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/numberAdd/index.html" title="Number add for round up" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -291,17 +500,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-NIO and Akka-Http
+Number add for round up
 </span>
 </div>
 </a>
-<a href="../../nio/code/scalableIOInJava.html" title="Scalable IO in Java" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Scalable IO in Java
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

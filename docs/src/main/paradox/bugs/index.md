@@ -13,4 +13,6 @@
 * [IE hosting](ieissue/index.md)
 
 * [Number add](numberAdd/index.md)
+
+* [Function and val](functionandval/index.md)
 @@@
