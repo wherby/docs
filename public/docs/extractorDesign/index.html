@@ -209,6 +209,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
     <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
+    <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -236,6 +237,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
     <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
+    <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -1682,6 +1684,490 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 <p><img src="./pic/type2AnotherReader.png" alt="Type2 reader result" /></p>
 <p>This way return result in line format, but lost formatted information(the space information is lost)</p>
 <p>So the configuration way has more complex configuration when deal with the different reader. While the combination way will have more flexibility to handle different type of input in different way.</p>
+<h2><a href="#remove-duplicated-code-using-function-programming" name="remove-duplicated-code-using-function-programming" class="anchor"><span class="anchor-link"></span></a>Remove duplicated code using function programming</h2>
+<p>Using first way could reduce the duplicated code, but all different processor will increase the configuration file&rsquo;s complexity to unmanageable. When using the second way will split each configuration to each processor, meanwhile introduce duplicated code in each processor and extractor.</p>
+<p>So we create a structure to for the generic workflow:</p>
+<pre class="prettyprint"><code class="language-scala">    case class BasicExcelReader(
+        header: String,
+        filter: Seq[(Seq[ExcelField], String) =&gt; Boolean],
+        mapper: Seq[ExcelField] =&gt; Map[String, String],
+        readerOpt: Option[String =&gt; Seq[Seq[ExcelField]]]
+    )
+</code></pre>
+<p>Code as below:</p>
+<dl>
+  <dt>WorkdayProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  val getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}</code></pre></dd>
+  <dt>TBProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class WorkdayTBProcessor extends BaseReportProcessor {
+  override def extractToObjectForPeriod(
+                                         sourceFilePath: String,
+                                         frontEndFundName: String,
+                                         frontEndPeriodStart: Date,
+                                         frontEndPeriodEnd: Date
+                                       ): GeneralSingleEGAStorage = {
+    val storage = new FundManagerSingleEGAStorage()
+    val tableRow = {
+      BasicExcelReaderHelper.processFileOnExcelReader(
+        sourceFilePath,
+        frontEndFundName,
+        WorkdayTBReader.setting
+      )
+    }
+    BasicTBProcessor.processFile(
+      tableRow,
+      frontEndPeriodStart,
+      frontEndPeriodEnd,
+      &quot;NoUse&quot;,
+      storage
+    )
+  }
+}</code></pre></dd>
+  <dt>TBReader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBRader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayTBReader {
+  val headerStr =
+    &quot;\tLedger Account\tTransaction Currency\tBook Code\tTransaction Balance\tLedger Balance&quot;
+  val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(3)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(2, &quot;Transaction Currency&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(4)
+
+  def createRow(row: Seq[ExcelField]) = {
+    (createTBRowMap() ++ Map(
+      Description_Detail    -&gt; getValueOfExcelField(row, 2),
+      ClosingBalance_Detail -&gt; getValueOfExcelField(row, 4),
+      AccountName           -&gt; getValueOfExcelField(row, 1),
+      Balance               -&gt; getValueOfExcelField(row, 5)
+    )).toMap
+  }
+
+  val setting = BasicExcelReader(
+    headerStr,
+    Seq(lengthFilter, headerTitleFilter, emptyFilter),
+    createRow,
+    None
+  )
+}</code></pre></dd>
+  <dt>GLProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Date
+
+class WorkdayGLProcessor extends BaseReportProcessor {
+  override def extractToObjectForPeriod(
+                                         sourceFilePath: String,
+                                         frontEndFundName: String,
+                                         frontEndPeriodStart: Date,
+                                         frontEndPeriodEnd: Date
+                                       ): GeneralSingleEGAStorage = {
+    val storage = new FundManagerSingleEGAStorage()
+    val tableRow =
+      BasicExcelReaderHelper.processFileOnExcelReader(
+        sourceFilePath,
+        frontEndFundName,
+        WorkdayGLReader.setting
+      )
+
+    val currency      = WorkdayGLReader2.getCurrency(sourceFilePath)
+    val groupedRecord = WorkdayGLReader2.getGroupedValue(sourceFilePath)
+    val tableRow2 = BasicExcelReaderHelper.processFileOnExcelReader(
+      sourceFilePath,
+      frontEndFundName,
+      WorkdayGLReader2.setting(currency, groupedRecord)
+    )
+    BasicGLProcessor.processFile(
+      tableRow ++ tableRow2,
+      frontEndPeriodStart,
+      frontEndPeriodEnd,
+      TranDate,
+      storage
+    )
+  }
+}</code></pre></dd>
+  <dt>GLReader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader {
+  val headerStr =
+    &quot;\tLedger/Budget Period\tJournal\tJournal Source\tTransaction\tAccounting Date\tLedger Account\tBook Code\tTransaction Debit Amount\tTransaction Credit Amount\tTransaction Debit minus Credit\tTransaction Currency\tJournal Line Exchange Rate\tLedger/Budget Debit Amount\tLedger/Budget Credit Amount\tLedger/Budget Debit minus Credit\tLedger Currency\tMemo\tLine Memo\tWorktags&quot;
+  val lenthFilter       = BasicExcelReaderHelper.basicRowLengthFilter(20)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(2, &quot;Journal&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(2)
+
+  def createRow(row: Seq[ExcelField]) = {
+    (createGLRowMap() ++ Map(
+      BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 6),
+      TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+      TranDescription             -&gt; getValueOfExcelField(row, 19),
+      Currency                    -&gt; getValueOfExcelField(row, 11),
+      LocalAmount                 -&gt; getValueOfExcelField(row, 10),
+      BookAmount                  -&gt; getValueOfExcelField(row, 15)
+    )).toMap
+  }
+
+  val setting = BasicExcelReader(
+    headerStr,
+    Seq(lenthFilter, headerTitleFilter, emptyFilter),
+    createRow,
+    None
+  )
+}</code></pre></dd>
+  <dt>GLReader2</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLRead2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader2 {
+  val headerStr =
+    &quot;Ledger Account\tJournal Entry\tCompany\tJournal Source\tTransaction\tAccounting Date\tMemo\tDebit\tCredit\tBalance\tNet Amount&quot;
+  val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(4)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(1, &quot;Journal Entry&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(9)
+
+  def getCurrency(inputFile: String): String = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    getValueOfExcelField(seqListValue(6), 1) //Hardcode for header value of &quot;Translation Currency&quot;
+  }
+
+  def getGroupedValue(inputFile: String): Map[String, Seq[Seq[ExcelField]]] = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    seqListValue.groupBy(list =&gt; list(0).field)
+  }
+
+  def getAmount(groupedRecord: Map[String, Seq[Seq[ExcelField]]], account: String): String = {
+    val lastRow = groupedRecord.filter(tempGroup =&gt; tempGroup._1 == account).head._2.last
+    getValueOfExcelField(lastRow, 9)
+  }
+
+  def createRow(currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =
+    (row: Seq[ExcelField]) =&gt; {
+      (createGLRowMap() ++ Map(
+        BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 0),
+        TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+        TranID                      -&gt; getValueOfExcelField(row, 1),
+        TranDescription             -&gt; getValueOfExcelField(row, 6),
+        Currency                    -&gt; currency,
+        LocalAmount                 -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        BookAmount                  -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        Balance                     -&gt; getValueOfExcelField(row, 9),
+        EndingBalanceAmount         -&gt; getAmount(groupedRecord, getValueOfExcelField(row, 0))
+      )).toMap
+    }
+
+  def setting = (currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =&gt; {
+    BasicExcelReader(
+      headerStr,
+      Seq(lengthFilter, headerTitleFilter, emptyFilter),
+      createRow(currency, groupedRecord),
+      None
+    )
+  }
+}</code></pre></dd>
+  <dt>BasicExcelReaderHelper</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicExcelReaderHelper.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object BasicExcelReaderHelper {
+  def processFileOnExcelReader(
+                                filePath: String,
+                                fundName: String,
+                                excelReader: BasicExcelReader
+                              ): Seq[Map[String, String]] = {
+    val reader       = excelReader.readerOpt.getOrElse(defaultExcelReaderForExcel(excelReader.header))
+    val excelContent = reader(filePath)
+    val targetContent = excelReader.filter.foldLeft(excelContent) { (excelContent, filter) =&gt;
+      excelContent.filter(row =&gt; filter(row, fundName))
+    }
+    targetContent.map { row =&gt;
+      excelReader.mapper(row)
+    }
+  }
+
+  def defaultExcelReaderForExcel(header: String): String =&gt; Seq[Seq[ExcelField]] =
+    (filePath: String) =&gt; {
+      val allSheet         = ExcelToArray.multiSheetToArray(filePath)
+      val headerNormalized = ExcelReaderHelper.stringNormalizer(header)
+      ExcelReaderHelper.getSpecifiedSheetWithoutReplacement(allSheet, headerNormalized)
+    }
+
+  def basicRowLengthFilter(length: Int) =
+    (row: Seq[ExcelField], fundName: String) =&gt; {
+      row.length &gt;= length
+    }
+
+  def basicHeaderTitleFilter(index: Int, value: String) =
+    (row: Seq[ExcelField], fundName: String) =&gt; {
+      row(index).field.toLowerCase.trim != value.toLowerCase.trim
+    }
+
+  def basicEmptyFilter(index: Int) = (row: Seq[ExcelField], fundName: String) =&gt; {
+    row(index).field.trim.length &gt; 0
+  }
+}
+
+case class BasicExcelReader(
+                             header: String,
+                             filter: Seq[(Seq[ExcelField], String) =&gt; Boolean],
+                             mapper: Seq[ExcelField] =&gt; Map[String, String],
+                             readerOpt: Option[String =&gt; Seq[Seq[ExcelField]]]
+                           )</code></pre></dd>
+  <dt>BasicProcessFile</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicProcessFile.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.File
+import scala.concurrent.Await
+
+object BasicProcessFile {
+
+  def getStorageBase(singleEGAStorage: GeneralSingleEGAStorage)(
+    selection: Seq[FundEngagementReportTypeSelectionData],
+    sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead
+  ) = {
+    GeneralSingleEGAHelper.rowToStorage(selection, singleEGAStorage, sheetTypesReportTypesMapRead)
+    singleEGAStorage
+  }
+
+  def extractFileAndStoreDataInDB(
+                                   content: String,
+                                   fundEngagement: FundEngagementData,
+                                   fund: Fund,
+                                   targetFilePath: String,
+                                   userEmail: String,
+                                   methodName: String,
+                                   multifondsUploadHelper: MultifondsUploadHelper,
+                                   doraServer: DoraServer,
+                                   fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+                                   fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite,
+                                   sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead,
+                                   disabledAfterYEReports: Map[String, Boolean],
+                                   someExtractor: Map[Seq[String], (AbstractProcessor, ExtractorConfig)]
+                                 ): Result = {
+    //filter the extractorMap with report header
+    //var someExtractor = morganExtractorMap
+
+    var warningMsg: Seq[Result] = Seq()
+    var exceptions: Seq[Result] = Seq()
+    var noWarning: Seq[Result]  = Seq()
+    var allEmpty                = true
+    someExtractor.map((kv) =&gt; {
+      val periodStart = fund.auditPeriodBegin
+      val periodEnd   = fund.auditPeriodEnd
+      val paras       = List(targetFilePath, kv._2._2, fund.name, periodStart, periodEnd)
+      val result = doraServer.runProcess(
+        paras,
+        kv._2._1.getClass.getCanonicalName.stripSuffix(&quot;$&quot;),
+        methodName
+      )
+      val newStorage = Await.result(result, ConstVar.ProcessJobWaitTime seconds)
+      try {
+        //check whether the result has exception
+        multifondsUploadHelper.checkJobResultException(newStorage)
+        if (newStorage.result.isInstanceOf[ProcessResult]) {
+          val newStorageResult = newStorage.result.asInstanceOf[ProcessResult]
+          if (newStorageResult.jobStatus.toString != &quot;Failed&quot;) {
+            if (newStorageResult.result.isInstanceOf[GeneralSingleEGAStorage]) {
+              if (
+                newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].isStorageNotEmpty()
+              ) {
+                allEmpty = false
+              }
+              filterAfterYEDataSH(
+                newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage],
+                disabledAfterYEReports
+              )
+              //store the extracted data in database
+              Await.result(
+                GeneralSingleEGAHelper.exportExcelToDatabase(
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage],
+                  fundEngagement.id,
+                  userEmail,
+                  fundEngagementReportTypeSelectionRead,
+                  fundEngagementReportTypeSelectionWrite,
+                  sheetTypesReportTypesMapRead
+                ),
+                100 seconds
+              )
+              if (newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].errorMsg.hasError) {
+                return BadRequest(
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].errorMsg.Msg
+                )
+              }
+              val res = Ok(
+                &quot;Extract Success&quot; + &quot;,&quot; + newStorageResult.result
+                  .asInstanceOf[GeneralSingleEGAStorage]
+                  .warningMsg
+                  .Msg + &quot;,&quot; + fund.name + &quot;,&quot; + periodStart + &quot;,&quot; + periodEnd
+              )
+              if (
+                newStorageResult.result
+                  .asInstanceOf[GeneralSingleEGAStorage]
+                  .warningMsg
+                  .Msg
+                  .length &gt; 0
+              ) {
+                val warningMsgs =
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].warningMsg
+                warningMsg = ModelChangeHelper
+                  .handleOldWarningMsgToWarningObject(warningMsgs, warningMsg, fund)
+              } else {
+                noWarning = noWarning :+ res
+              }
+            } else {
+              exceptions :+= encapErrorResponse(
+                UnprocessableEntity,
+                ExtractionErrorCode.UNSUPPORTED_REPORT_TYPE_FILE_EXTENSION
+              )
+
+            }
+          }
+        } else {
+          exceptions :+= encapErrorResponse(
+            UnprocessableEntity,
+            ExtractionErrorCode.UNRECOGNISED_ERROR
+          )
+        }
+      } catch {
+        //        case e:ExtractionWarning=&gt;{
+        //          Ok( Json.obj(&quot;errorCodes&quot; -&gt; Seq(e.errorCode).distinct))
+        //        }
+        case e: ExtractionError =&gt; {
+          encapErrorResponse(
+            UnprocessableEntity,
+            e.errorCode
+          )
+        }
+        case e: Exception =&gt; {
+          if (e.getMessage.indexOf(&quot;no newline character detected&quot;) &lt; 0) {
+            encapErrorResponse(
+              UnprocessableEntity,
+              ExtractionErrorCode.UNRECOGNISED_ERROR
+            )
+          }
+        }
+      }
+    })
+
+    if (exceptions.length &gt; 0) {
+      exceptions(0)
+    } else if (warningMsg.length &gt; 0) {
+      warningMsg(0)
+    } else if (allEmpty == true) {
+      encapErrorResponse(
+        UnprocessableEntity,
+        ExtractionErrorCode.UNRECOGNISED_ERROR
+      )
+    } else {
+      noWarning(0)
+    }
+  }
+
+  def processFiles(someExtractor: Map[Seq[String], (AbstractProcessor, ExtractorConfig)])(
+    request: Request[MultipartFormData[Files.TemporaryFile]],
+    fundEngagement: FundEngagementData,
+    fund: Fund,
+    multifondsUploadHelper: MultifondsUploadHelper,
+    doraServer: DoraServer,
+    fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+    fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite,
+    sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead,
+    disabledAfterYEReports: Map[String, Boolean]
+  ): Result = {
+    request.body
+      .file(&quot;file&quot;)
+      .map(file =&gt; {
+        val userEmail  = request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;)
+        val sourceFile = file.ref.toFile
+        val filenames  = file.filename.split(&#39;.&#39;)
+        if (filenames.length &lt;= 1) {
+          encapErrorResponse(
+            UnprocessableEntity,
+            ExtractionErrorCode.UNSUPPORTED_REPORT_TYPE_FILE_EXTENSION
+          )
+        } else {
+          val targetFile = new File(s&quot;${sourceFile.getPath}.${filenames.last}&quot;)
+          sourceFile.renameTo(targetFile)
+          var methodName = &quot;&quot;
+
+          if (filenames.last == &quot;xlsx&quot; || filenames.last == &quot;xlsm&quot; || filenames.last == &quot;xls&quot;) {
+            methodName = &quot;readFileAndExtractToObjectForPeriod&quot;
+          } else if (filenames.last == &quot;pdf&quot;) {
+            methodName = &quot;readPDFFileAndExtractToObject&quot;
+          } else {
+            methodName = &quot;readCSVFileAndExtractToObject&quot;
+          }
+
+          extractFileAndStoreDataInDB(
+            file.filename,
+            fundEngagement,
+            fund,
+            targetFile.getPath,
+            userEmail,
+            methodName,
+            multifondsUploadHelper,
+            doraServer,
+            fundEngagementReportTypeSelectionRead,
+            fundEngagementReportTypeSelectionWrite,
+            sheetTypesReportTypesMapRead,
+            disabledAfterYEReports,
+            someExtractor
+          )
+        }
+      })
+      .getOrElse(
+        encapErrorResponse(
+          UnprocessableEntity,
+          ExtractionErrorCode.UNRECOGNISED_ERROR
+        )
+      )
+  }
+}</code></pre></dd>
+</dl>
+<p>For all Excel file, go throw filter=&gt;mapper process as above.</p>
+<p>For GL type 1 fil as blow:</p>
+<p><img src="./pic/GLType1.png" alt="GL Type1" /></p>
+<p>the code will work perfectly to extract all information using one Excel row:</p>
+<pre class="prettyprint"><code class="language-scala">  def createRow(row: Seq[ExcelField]) = {
+    (createGLRowMap() ++ Map(
+      BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 6),
+      TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+      TranDescription             -&gt; getValueOfExcelField(row, 19),
+      Currency                    -&gt; getValueOfExcelField(row, 11),
+      LocalAmount                 -&gt; getValueOfExcelField(row, 10),
+      BookAmount                  -&gt; getValueOfExcelField(row, 15)
+    )).toMap
+  }
+</code></pre>
+<p>But for GL type2 input:</p>
+<p><img src="./pic/GLType2.png" alt="GL Type2" /></p>
+<p>There is need another input for currency and EndingBalanceAmount need additional information, but we don&rsquo;t want to change interface, then curry is used:</p>
+<pre class="prettyprint"><code class="language-scala"> def getGroupedValue(inputFile: String): Map[String, Seq[Seq[ExcelField]]] = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    seqListValue.groupBy(list =&gt; list(0).field)
+  }
+
+  def getAmount(groupedRecord: Map[String, Seq[Seq[ExcelField]]], account: String): String = {
+    val lastRow = groupedRecord.filter(tempGroup =&gt; tempGroup._1 == account).head._2.last
+    getValueOfExcelField(lastRow, 9)
+  }
+
+  def createRow(currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =
+    (row: Seq[ExcelField]) =&gt; {
+      (createGLRowMap() ++ Map(
+        BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 0),
+        TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+        TranID                      -&gt; getValueOfExcelField(row, 1),
+        TranDescription             -&gt; getValueOfExcelField(row, 6),
+        Currency                    -&gt; currency,
+        LocalAmount                 -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        BookAmount                  -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        Balance                     -&gt; getValueOfExcelField(row, 9),
+        EndingBalanceAmount         -&gt; getAmount(groupedRecord, getValueOfExcelField(row, 0))
+      )).toMap
+    }
+</code></pre>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/index.md" title="Edit this page" class="md-source-file md-edit">
