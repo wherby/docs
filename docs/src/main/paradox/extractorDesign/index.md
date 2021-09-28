@@ -183,6 +183,43 @@ want to change interface, then curry is used:
     }
 ```
 
+## Bug in processor design
+
+There is bug in processor design for getStorage function
+```scala 
+object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq("TB") -> (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq("GL") -> (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  //What's will be when create an instance in val
+  val getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+```
+
+need change to 
+
+
+```scala 
+object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq("TB") -> (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq("GL") -> (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  def getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+```
+
+If the getStorage is val, then the "new FundManagerSingleEGAStorage" will only create once.
+
+
+
 
 
 

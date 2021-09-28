@@ -210,6 +210,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
     <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
     <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
+    <li><a href="../extractorDesign/index.html#bug-in-processor-design" class="header">Bug in processor design</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -238,6 +239,7 @@ wherby/docs
     <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
     <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
     <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
+    <li><a href="../extractorDesign/index.html#bug-in-processor-design" class="header">Bug in processor design</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -2168,6 +2170,33 @@ object BasicProcessFile {
       )).toMap
     }
 </code></pre>
+<h2><a href="#bug-in-processor-design" name="bug-in-processor-design" class="anchor"><span class="anchor-link"></span></a>Bug in processor design</h2>
+<p>There is bug in processor design for getStorage function</p>
+<pre class="prettyprint"><code class="language-scala ">object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  //What&#39;s will be when create an instance in val
+  val getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+</code></pre>
+<p>need change to </p>
+<pre class="prettyprint"><code class="language-scala ">object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  def getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+</code></pre>
+<p>If the getStorage is val, then the &ldquo;new FundManagerSingleEGAStorage&rdquo; will only create once.</p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/index.md" title="Edit this page" class="md-source-file md-edit">
