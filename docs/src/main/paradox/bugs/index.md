@@ -15,4 +15,6 @@
 * [Number add](numberAdd/index.md)
 
 * [Function and val](functionandval/index.md)
+
+* [Excel formula issue](excelBug/index.md)
 @@@
