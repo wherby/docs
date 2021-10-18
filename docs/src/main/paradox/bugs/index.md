@@ -17,4 +17,6 @@
 * [Function and val](functionandval/index.md)
 
 * [Excel formula issue](excelBug/index.md)
+
+* [Nginx domain setting for post](nginxDomain/index.md)
 @@@
