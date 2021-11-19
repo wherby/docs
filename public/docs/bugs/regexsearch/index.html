@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Wrong notification · Docs</title>
+<title>Regex failed in frontend · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Wrong notification
+Regex failed in frontend
 </span>
 </div>
 </div>
@@ -187,13 +187,13 @@ wherby/docs
     <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
     <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
     <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
-    <li><a href="../../bugs/wrongnotification/index.html" class="active page">Wrong notification</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
     <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
     <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
     <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
     <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
-    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="active page">Regex failed in frontend</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -207,9 +207,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/wrongnotification/index.html#wrong-notification" class="header">Wrong notification</a>
+  <li><a href="../../bugs/regexsearch/index.html#regex-failed-in-frontend" class="header">Regex failed in frontend</a>
   <ul>
-    <li><a href="../../bugs/wrongnotification/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/regexsearch/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -231,9 +231,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/wrongnotification/index.html#wrong-notification" class="header">Wrong notification</a>
+  <li><a href="../../bugs/regexsearch/index.html#regex-failed-in-frontend" class="header">Regex failed in frontend</a>
   <ul>
-    <li><a href="../../bugs/wrongnotification/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/regexsearch/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -244,111 +244,20 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#wrong-notification" name="wrong-notification" class="anchor"><span class="anchor-link"></span></a>Wrong notification</h1>
+<h1><a href="#regex-failed-in-frontend" name="regex-failed-in-frontend" class="anchor"><span class="anchor-link"></span></a>Regex failed in frontend</h1>
 <h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
-<p>The client complains that the notification message is send to some internal user but the user login to system they can&rsquo;t find pending task</p>
-<pre><code>Subject: FW: PFIC system notification
-
-Hi Steven,
-
-Please find below feedback from our team member.  Could you please check if there is any update to email notification since we update the setting to approver of mapping rules?
-
-Best regards,
-Penny
-</code></pre>
-<p>How this bug introduces?</p>
-<p>Internal user (reviewer or approver) could see all notification from all engagements at first. And notification email will send to all internal users.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkByRole.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryForApprover(lastSendTimestampString: String)={
-  var  notificationFilter = Map[String,String]()
-  notificationFilter +=(&quot;notificationType&quot; -&gt; NotificationType.approver.toString)
-  notificationFilter +=(&quot;timestamp&quot; -&gt; lastSendTimestampString)
-  notificationRead.listNotifications(notificationFilter).map{
-    notificationSeq =&gt; if(notificationSeq.length &gt;0){
-      Logger.debug(&quot;Send mail to approver&quot;)
-      sendMailToRole(&quot;PwCApprover&quot;)
-    }
-  }
-}
-
-
-def sendMailToRole(roleStr:String)={
-  var  userFilter = Map[String,String]()
-  userFilter +=(&quot;enable&quot; -&gt;&quot;true&quot;)
-  userFilter += (&quot;role&quot;-&gt;roleStr)
-  userRead.userFilterQuery(userFilter).map{
-    seqUser=&gt; val emailSeq = seqUser.map{
-      user =&gt; user.email
-    }
-      emailSeq.map{
-        emailTmp =&gt;
-          val email = mailSender.getTestEmail(Seq(emailTmp))
-          mailSender.sendEmail(email)
-      }
-      println(s&quot;send mail to $emailSeq&quot;)
-  }
-}</code></pre>
-<p>For the internal user notification, the client want to only engagement user could see the notification. The UI part of the filter is enabled:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkNotificationByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
-def listNotification(notificationDataType:Option[NotificationDataType.NotificationDataType],year:Option[Int], entityId:Option[String]) = deadbolt.SubjectPresent()(parse.anyContent) {request =&gt; {
-  ...
-  notificationServiceRead.listNotifications(filterMap).flatMap(notifications =&gt; {
-    if (isPwC || isPwCRE || isPwCAP || isAdmin) {
-      notificationServiceRead.filterInternalNotifications(notifications, request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;))
-    } else Future(notifications)
-  })
-}
-
-override def filterInternalNotifications(notifications: Seq[Notification], email: String): Future[Seq[Notification]] = {
-  userRead.getUser(Some(email)).flatMap(usero =&gt; {
-    usero.map(user =&gt; {
-      userFundServiceRead.lookupFundsByUserId(user.id, Map()).map(funds =&gt; {
-        notifications.filter(notification =&gt; {
-          notification.notificationDataType match {
-            case NotificationDataType.fiInvestment | NotificationDataType.agreedFiInvestment | NotificationDataType.disagreedFiInvestment |
-                 NotificationDataType.externalFiInvestment | NotificationDataType.investorInvestment | NotificationDataType.externalInvestorInvestment |
-                 NotificationDataType.agreedInvestorInvestment | NotificationDataType.disagreedInvestorInvestment | NotificationDataType.statementWorkpaper =&gt; {
-              funds.find(_.id == notification.link).nonEmpty
-            }
-            case NotificationDataType.financialData | NotificationDataType.agreedFinancialData | NotificationDataType.disagreedFinancialData | NotificationDataType.externalFinancialData | NotificationDataType.externalFundFinancialFile =&gt; {
-              Await.result(userFundServiceRead.verifyForComapany(email, notification.link, Some(notification.year)), 10 seconds)
-            }
-            case _ =&gt; true
-          }
-        })
-      })
-    }).getOrElse(Future(notifications))
-  })
-}
-}</code></pre>
-<p>While this change applied, only specified user could see the notification, and other user will still get notification by email because email send is using role base.</p>
-<p>How to fix:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/fixByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
-
-def sendMailToRole(roleStr: String, notifications: Seq[Notification]) = {
-  var userFilter = Map[String, String]()
-  userFilter += (&quot;enable&quot; -&gt; &quot;true&quot;)
-  userFilter += (&quot;role&quot; -&gt; roleStr)
-  userRead.userFilterQuery(userFilter).map {
-    seqUser =&gt;
-      val emailSeq = seqUser.map {
-        user =&gt; user.email
-      }
-      Future.sequence(emailSeq.map {
-        emailTmp =&gt;
-          val filterdNotificaionF = notificationServiceRead.filterInternalNotifications(notifications, emailTmp)
-          filterdNotificaionF.map {
-            filterdNotificaion =&gt;
-              if (filterdNotificaion.length &gt; 0) {
-                val email = mailSender.getTestEmail(Seq(emailTmp))
-                mailSender.sendEmail(email)
-              }
-          }
-      })
-  }.flatten
-}</code></pre>
+<p>Search without bracket success :</p>
+<p><img src="pic/searchSucc.png" alt="Success search" /></p>
+<p>Search failed with bracket:</p>
+<p><img src="pic/searchFail.png" alt="Search failed" /></p>
+<p>When search with half bracket, the UI will crash:</p>
+<p><img src="pic/error.png" alt="Search error" /></p>
+<p>The reason for the failed is using regex in frontend, when in backend the search will success.</p>
+<p><img src="pic/searchSuc2.png" alt="Success 2 " /></p>
+<p>When search in backend, Slick can handle the special letter; while in frontend, the input should be verified. Don&rsquo;t trust user&rsquo;s input.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/regexsearch/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -364,7 +273,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/addfeature/index.html" title="Add features leads system fail" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/nginxDomain/index.html" title="nginx config for domain" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -373,17 +282,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Add features leads system fail
+nginx config for domain
 </span>
 </div>
 </a>
-<a href="../../bugs/ieissue/index.html" title="Hosting issue for IE" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Hosting issue for IE
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
