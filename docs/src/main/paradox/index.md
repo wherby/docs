@@ -70,4 +70,6 @@ This is the introduction for doradilla library.
 * [Bugs](bugs/index.md)
 
 * [Code design](codedesign/index.md)
+
+* [Python](python/enclosure/index.md)
 @@@
