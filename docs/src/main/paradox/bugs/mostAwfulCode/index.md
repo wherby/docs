@@ -306,9 +306,20 @@ The function has three parameters, that's matchLogic is the function return by B
 Well, with the shitty code logic, what's matchLogic will be in the function ruleMatchProcess, I think nobody can find out 
 without real time debugger.
 
-This is a perfect example of follow OO design and write code which can't be debugged.
+Well, if you want to say you can use debugger to check the running time value, then you are beyond naive, the value in debugger is
+as below:
 
+![matchLogic](pics/matchLogic.png)
+
+This is a perfect example of follow OO design and write code which can't be debugged.
+```markdown
     1. Use the interface, hardy trace the right implemetation
-    2. Use Factory mode, also no easy trace by another person which not the code writer.
+
+    2. Use Factory mode, also no easy trace by another person who is not the code writer.
+
     3. The logic jump from implementation and interface multiple times
-    4. The parameter configuration is by logic spaghetti. And the logic depends on multi input format. 
+
+    4. The parameter configuration is by logic spaghetti.
+        And the logic depends on multi input format. 
+```
+

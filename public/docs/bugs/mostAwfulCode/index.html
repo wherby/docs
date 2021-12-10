@@ -791,11 +791,17 @@ override def getExcelReportProcessorClass(
         }
 </code></pre>
 <p>Well, with the shitty code logic, what&rsquo;s matchLogic will be in the function ruleMatchProcess, I think nobody can find out without real time debugger.</p>
+<p>Well, if you want to say you can use debugger to check the running time value, then you are beyond naive, the value in debugger is as below:</p>
+<p><img src="pics/matchLogic.png" alt="matchLogic" /></p>
 <p>This is a perfect example of follow OO design and write code which can&rsquo;t be debugged.</p>
-<pre><code>1. Use the interface, hardy trace the right implemetation
-2. Use Factory mode, also no easy trace by another person which not the code writer.
-3. The logic jump from implementation and interface multiple times
-4. The parameter configuration is by logic spaghetti. And the logic depends on multi input format. 
+<pre class="prettyprint"><code class="language-markdown">    1. Use the interface, hardy trace the right implemetation
+
+    2. Use Factory mode, also no easy trace by another person who is not the code writer.
+
+    3. The logic jump from implementation and interface multiple times
+
+    4. The parameter configuration is by logic spaghetti.
+        And the logic depends on multi input format. 
 </code></pre>
 </div>
 <div>
