@@ -21,4 +21,6 @@
 * [Nginx domain setting for post](nginxDomain/index.md)
 
 * [Regex in frontend](regexsearch/index.md)
+
+* [Most awful code](mostAwfulCode/index.md)
 @@@
