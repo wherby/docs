@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Excel formula issue · Docs</title>
+<title>Java related · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Excel formula issue
+Java related
 </span>
 </div>
 </div>
@@ -191,11 +191,11 @@ wherby/docs
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
     <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
     <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
-    <li><a href="../../bugs/excelBug/index.html" class="active page">Excel formula issue</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
     <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
     <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
     <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
-    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/java/index.html" class="active page">Java related</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -210,11 +210,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/excelBug/index.html#excel-formula-issue" class="header">Excel formula issue</a>
+  <li><a href="../../bugs/java/index.html#java-related" class="header">Java related</a>
   <ul>
-    <li><a href="../../bugs/excelBug/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../bugs/excelBug/index.html#issue-code" class="header">Issue code</a></li>
-    <li><a href="../../bugs/excelBug/index.html#why-" class="header">Why?</a></li>
+    <li><a href="../../bugs/java/index.html#date" class="header">date</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -236,11 +234,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/excelBug/index.html#excel-formula-issue" class="header">Excel formula issue</a>
+  <li><a href="../../bugs/java/index.html#java-related" class="header">Java related</a>
   <ul>
-    <li><a href="../../bugs/excelBug/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../bugs/excelBug/index.html#issue-code" class="header">Issue code</a></li>
-    <li><a href="../../bugs/excelBug/index.html#why-" class="header">Why?</a></li>
+    <li><a href="../../bugs/java/index.html#date" class="header">date</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -251,26 +247,14 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#excel-formula-issue" name="excel-formula-issue" class="anchor"><span class="anchor-link"></span></a>Excel formula issue</h1>
-<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
-<p>In AWM downloaded EGA Excel file will have display issue in Windows system but not in Mac. The issue as below:</p>
-<p><img src="pic/1.jpg" alt="Issue pic" /></p>
-<p>The Sedol and ISIN field is formula, but show as value 0. After &ldquo;enable editing&rdquo; the formula will not evaluate correctly.</p>
-<p>What&rsquo;s the expected behavior:</p>
-<p><img src="pic/2.png" alt="Correct pic" /></p>
-<p>The formula should be empty at beginning, after &ldquo;enable editing&rdquo;, the value will evaluate correctly.</p>
-<p><img src="pic/3.png" alt="value pic" /></p>
-<h2><a href="#issue-code" name="issue-code" class="anchor"><span class="anchor-link"></span></a>Issue code</h2>
-<p>The issue of display is introduced by the code change:</p>
-<p><img src="pic/4.png" alt="sbt change" /></p>
-<p><img src="pic/5.png" alt="code change" /></p>
-<p>For the sbt change to include the streaming lib and code change to add function using streaming method to read excel. While the read function is not used.</p>
-<p>So the lib which introduce the display issue in windows.</p>
-<h2><a href="#why-" name="why-" class="anchor"><span class="anchor-link"></span></a>Why?</h2>
-<p>The lib may have a function to evaluate value when write cell to excel, when the formula can&rsquo;t be evaluated correctly, then use 0 as default.</p>
+<h1><a href="#java-related" name="java-related" class="anchor"><span class="anchor-link"></span></a>Java related</h1>
+<h2><a href="#date" name="date" class="anchor"><span class="anchor-link"></span></a>date</h2>
+<p><img src="./pic/dateFormat.png" alt="date pic" /></p>
+<p>See reference from <a href="https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">oracle site</a></p>
+<p><img src="./pic/fromOracleSite.png" alt="from oracle" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/excelBug/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/java/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -286,7 +270,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/functionandval/index.html" title="Function and Val in code" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/mostAwfulCode/index.html" title="Most awful code when use OO" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -295,17 +279,17 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Function and Val in code
+Most awful code when use OO
 </span>
 </div>
 </a>
-<a href="../../bugs/nginxDomain/index.html" title="nginx config for domain" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-nginx config for domain
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

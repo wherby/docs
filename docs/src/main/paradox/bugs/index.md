@@ -23,4 +23,6 @@
 * [Regex in frontend](regexsearch/index.md)
 
 * [Most awful code](mostAwfulCode/index.md)
+
+* [Java related](java/index.md)
 @@@
