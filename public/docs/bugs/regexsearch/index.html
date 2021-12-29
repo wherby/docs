@@ -212,6 +212,7 @@ wherby/docs
   <li><a href="../../bugs/regexsearch/index.html#regex-failed-in-frontend" class="header">Regex failed in frontend</a>
   <ul>
     <li><a href="../../bugs/regexsearch/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/regexsearch/index.html#think-more-about-the-regex" class="header">Think more about the regex</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -236,6 +237,7 @@ wherby/docs
   <li><a href="../../bugs/regexsearch/index.html#regex-failed-in-frontend" class="header">Regex failed in frontend</a>
   <ul>
     <li><a href="../../bugs/regexsearch/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/regexsearch/index.html#think-more-about-the-regex" class="header">Think more about the regex</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -257,6 +259,10 @@ wherby/docs
 <p>The reason for the failed is using regex in frontend, when in backend the search will success.</p>
 <p><img src="pic/searchSuc2.png" alt="Success 2 " /></p>
 <p>When search in backend, Slick can handle the special letter; while in frontend, the input should be verified. Don&rsquo;t trust user&rsquo;s input.</p>
+<h2><a href="#think-more-about-the-regex" name="think-more-about-the-regex" class="anchor"><span class="anchor-link"></span></a>Think more about the regex</h2>
+<p>Why the bug happens? The regex use user&rsquo;s &ldquo;random input&rdquo;, regex expression is very powerful tool in route or other server side use case but can&rsquo;t handle the simple user input. </p>
+<p>Which will introduce similarly philosophy thinking: &ldquo;With great power comes great responsibility&rdquo;. </p>
+<p>The &ldquo;great responsibility&rdquo; is which client&rsquo;s random input can&rsquo;t afford. So the regex used in client side is not good choice. Similar to the thread pool management, these powerful feature should be thoughtful and careful treated. </p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/regexsearch/index.md" title="Edit this page" class="md-source-file md-edit">
