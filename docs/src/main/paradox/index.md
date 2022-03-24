@@ -72,4 +72,5 @@ This is the introduction for doradilla library.
 * [Code design](codedesign/index.md)
 
 * [Python](python/enclosure/index.md)
+* [Issues](issues/index.md)
 @@@
