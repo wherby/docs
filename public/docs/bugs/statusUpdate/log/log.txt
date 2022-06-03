@@ -1,0 +1,14 @@
+13:15:30.751 [clustering-cluster-akka.actor.default-dispatcher-27] [info] d.c.f.FsmActor akka://clustering-cluster@localhost:1600/user/driveradbe9c10-d6a9-11ec-a4da-99207fd004c7/fsmActoradbf1140-d6a9-11ec-a4da-99207fd004c7 - Some(JobMeta(0b4b0e71-d6ac-11ec-a4da-99207fd004c7)) is end
+13:15:30.751 [processor-pool-thread--2] [error] c.p.d.c.e.c.JobInstance - processor failed, java.lang.Exception: exit code is non-zero(1)
+13:15:30.751 [processor-pool-thread--2] [error] c.p.d.c.e.c.MultiThreadJobRunnerImpl - java.lang.Exception: exit code is non-zero(1)
+13:15:30.752 [processor-pool-thread--2] [error] c.p.d.c.e.c.JobInstance - processor failed, java.lang.RuntimeException: java.lang.Exception: exit code is non-zero(1)
+13:15:30.752 [processor-pool-thread--2] [error] c.p.d.c.e.c.MultiThreadJobRunnerImpl - java.lang.RuntimeException: java.lang.Exception: exit code is non-zero(1)
+13:15:30.753 [application-akka.actor.default-dispatcher-11] [info] c.p.d.c.s.ProjectServiceWriteImpl - Job failed
+13:15:30.753 [application-akka.actor.default-dispatcher-11] [info] c.p.d.c.s.ProjectServiceWriteImpl - Job failed
+13:15:30.757 [application-akka.actor.default-dispatcher-11] [info] c.p.d.c.d.i.SlickProjectDAO - %update%projectId: 4215 - Some(Process)
+13:15:30.757 [application-akka.actor.default-dispatcher-11] [info] c.p.d.c.d.i.SlickProjectDAO - %update%projectId: 4215 - Some(Process)
+13:15:30.758 [application-akka.actor.default-dispatcher-117] [info] c.p.d.c.s.ProjectServiceWriteImpl - projectId: 4215 - ProjectData(4215,frontend bugfix test,Some(786546cb-7813-47d7-9414-374344b8c724),None,None,None,Some(1861),Some(2022-05-18 13:01:50.0),Some(1861),None,Some(2022-06-01 13:01:50.0),Some(Failed),None,None,Some(afe90779-a049-4542-8066-40f37b7b5a2e),None,None,Some(jiawei.jw.wu@cn.pwc.com))
+13:15:30.758 [application-akka.actor.default-dispatcher-117] [info] c.p.d.c.d.i.SlickProjectDAO - %updateStatus%projectId: 4215 - Some(Failed)
+13:15:30.758 [application-akka.actor.default-dispatcher-11] [info] c.p.d.c.d.i.SlickProjectDAO - %update%projectId: 4215 - Some(Process)
+13:15:30.763 [application-akka.actor.default-dispatcher-117] [info] c.p.d.c.s.ProjectServiceWriteImpl - projectId: 4215 - Apply audit log
+13:15:30.765 [application-akka.actor.default-dispatcher-12] [info] c.p.d.c.d.i.SlickProjectDAO - %update%projectId: 4215 - Some(Failed)

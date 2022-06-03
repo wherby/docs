@@ -30,4 +30,6 @@
 * [PDF reader](pdfreader/index.md)
 * [RedundantDBOperation](redundantoperation/index.md)
 * [Status tracking](statusUpdate/index.md)
+* [UI crash](uicrash/index.md)
+* [UI test](uitest/index.md)
 @@@

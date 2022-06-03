@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>UI crash · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+UI crash
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="active page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/uicrash/index.html#ui-crash" class="header">UI crash</a>
+  <ul>
+    <li><a href="../../bugs/uicrash/index.html#issue-1" class="header">Issue 1</a></li>
+    <li><a href="../../bugs/uicrash/index.html#issue-2" class="header">Issue 2</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/uicrash/index.html#ui-crash" class="header">UI crash</a>
+  <ul>
+    <li><a href="../../bugs/uicrash/index.html#issue-1" class="header">Issue 1</a></li>
+    <li><a href="../../bugs/uicrash/index.html#issue-2" class="header">Issue 2</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#ui-crash" name="ui-crash" class="anchor"><span class="anchor-link"></span></a>UI crash</h1>
+<h2><a href="#issue-1" name="issue-1" class="anchor"><span class="anchor-link"></span></a>Issue 1</h2>
+<p>When user is assigned to specified engagement, then user can&rsquo;t login to the system</p>
+<p><img src="pic/engagementname.png" alt="engagement" /></p>
+<p><img src="pic/cantlogin.png" alt="Cantlogin" /></p>
+<p>The fund name is &ldquo;Bosheng China Special Value – Fund 2021&rdquo;</p>
+<p>But &ldquo;–&rdquo; is different from &ldquo;-&rdquo;</p>
+<p><img src="pic/ascii.png" alt="ascii" /></p>
+<p>The code for the issue is </p>
+<pre class="prettyprint"><code class="language-javascript">    try{
+        var userResponse = await axios.get(`/user`, {headers:userInfo})
+        if(userResponse.data){
+          let privilege = userResponse.data ? userResponse.data.userInfoFront.privilege : &quot;&quot;
+          //window.sessionStorage.setItem(&quot;userInfo&quot;,btoa(JSON.stringify(userResponse.data)))
+          store.dispatch(setPrivilege(privilege))
+          var loginValue = this.email || &quot;my account&quot;;
+          this.props.login(loginValue);
+          let state = this.props.location.state || {};
+          window.location.href = state.from || &#39;/&#39;;
+        }
+        else {
+          this.setState({
+            ishiddenrerror: false
+          });
+        }
+      }
+      catch (e) {
+        this.setState({
+          ishiddenrerror: false
+        })
+      }
+</code></pre>
+<p>The btoa will throw exception,while catch will not print anything about this exception.</p>
+<h2><a href="#issue-2" name="issue-2" class="anchor"><span class="anchor-link"></span></a>Issue 2</h2>
+<p>User report some financial data can&rsquo;t be load in frontend. <img src="pic/datacantload.png" alt="Data dont load" /></p>
+<p>The &ldquo;capitalgain&rdquo; gain field is not correct in the json string</p>
+<dl>
+  <dt>The code for the update ordinary earning operation</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/code/ordinaryearning.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.collection.immutable.ListMap
+import scala.collection.mutable.ListBuffer
+
+def extractProfitLossSheetFromExcel(frontEndFinancialData:FinancialdataGetFromFrontend, workbook:Workbook) = {
+  //get profit loss data list from uploaded excel
+  var rowKey_profit_loss: ListMap[String, String] = RowKeys.rowKeys_ProfitLoss.map(key_val =&gt; (key_val._2.toLowerCase, key_val._1))
+  val profitLossSheet = workbook.getSheet(&quot;P&amp;L&quot;)
+  val (profitLossStartRow: Int, profitLossStartColumn: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(profitLossSheet, &quot;Net Sales&quot;, true)
+  val (profitLossEndRow: Int, _: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(profitLossSheet, &quot;Net Income&quot;, true)
+  var profitLossDataList = new ListBuffer[ProfitLossCol]()
+
+  var netProfitLoss = &quot;0&quot;;
+  var capitalGain = &quot;0&quot;
+  for (rowNum &lt;- profitLossStartRow to profitLossEndRow) {
+    val row = profitLossSheet.getRow(rowNum)
+    val excelEnglishKey = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn).getOrElse(&quot;&quot;).toLowerCase;
+    val keyOpt = rowKey_profit_loss.get(excelEnglishKey)
+    if (keyOpt.isDefined) {
+      profitLossDataList += ProfitLossCol(keyOpt.get, ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;&quot;))
+
+      //set oridinary earnings
+      if (keyOpt.get.equals(&quot;net_income&quot;)) {
+        netProfitLoss = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;0&quot;)
+      }
+      else if (keyOpt.get.equals(&quot;including_realized_gain_on_disposal_of_assets_held_for_more_than_one_year&quot;)) {
+        capitalGain = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;0&quot;)
+      }
+    }
+  }
+  var ordianaryOptionFromFrontEnd = Json.parse(frontEndFinancialData.ordinaryearningsandgain.getOrElse(companyfinancialdataServiceRead.ordinaryearningsandgain)).as[OrdinaryEarningsAndGainOption]
+  val ordinaryearningsandgain = &quot;{\&quot;netprofitloss\&quot;:&quot; + netProfitLoss + &quot;,\&quot;capitalgain\&quot;:&quot; + capitalGain + &quot;,\&quot;currency\&quot;:&quot; + ordianaryOptionFromFrontEnd.currency.getOrElse(&quot;1&quot;) + &quot;}&quot;
+  (profitLossDataList, ordinaryearningsandgain)
+}</code></pre></dd>
+  <dt>The code for Excel Reader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/code/ExcelReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">/**
+ * get cell value as string base on cell type
+ * @param row
+ * @param index
+ * @return
+ */
+def getCellValueAsStringOption(row: Row,index: Int):Option[String] = {
+  getCellOption(row, index).flatMap(cell =&gt; {
+    var cellStyle = cell.getCellType
+    cellStyle match {
+      case CellType.NUMERIC =&gt; {
+        Option(cell.getNumericCellValue.toString.trim)
+      }
+      case CellType.STRING =&gt; {
+        Option(cell.getStringCellValue.trim)
+      }
+      case CellType.BOOLEAN =&gt; {
+        Option(cell.getBooleanCellValue.toString.trim)
+      }
+      case CellType.FORMULA =&gt; {
+        cell.getCachedFormulaResultType match {
+          case CellType.NUMERIC =&gt;
+            Option(cell.getNumericCellValue.toString.trim)
+          case CellType.STRING  =&gt;
+            Option(cell.getStringCellValue.trim)
+          case _=&gt;
+            Option(cell.getCellFormula)
+        }
+      }
+      case _ =&gt; {
+        None
+      }
+    }
+  })
+}</code></pre></dd>
+</dl>
+<p>When excel has a field of &ldquo; &rdquo;, then the filed set in json will be missing.</p>
+<p>The key point is always using class instead of man-made string format.</p>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../bugs/statusUpdate/index.html" title="project status update issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+project status update issue
+</span>
+</div>
+</a>
+<a href="../../bugs/uitest/index.html" title="UI test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+UI test
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-43080126-2"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});if(document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+
+</body>
+</html>
