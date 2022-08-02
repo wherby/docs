@@ -33,4 +33,6 @@
 * [UI crash](uicrash/index.md)
 * [UI test](uitest/index.md)
 * [Statistics load issue](loadIssue2/index.md)
+* [Statistics load issue](loadIssue2/index.md)
+* [Initial crash](initialCrash/index.md)
 @@@
