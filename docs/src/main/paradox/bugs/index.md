@@ -32,4 +32,5 @@
 * [Status tracking](statusUpdate/index.md)
 * [UI crash](uicrash/index.md)
 * [UI test](uitest/index.md)
+* [Statistics load issue](loadIssue2/index.md)
 @@@
