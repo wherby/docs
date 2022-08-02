@@ -28,4 +28,5 @@
 
 * [Valuation load issue](loadissue/index.md)
 * [PDF reader](pdfreader/index.md)
+* [Statistics load issue](loadIssue2/index.md)
 @@@
