@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Java related · Docs</title>
+<title>Dependency · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Java related
+Dependency
 </span>
 </div>
 </div>
@@ -195,7 +195,7 @@ wherby/docs
     <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
     <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
     <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
-    <li><a href="../../bugs/java/index.html" class="active page">Java related</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
     <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
     <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
     <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
@@ -227,15 +227,16 @@ wherby/docs
   </ul></li>
   <li><a href="../../design/index.html" class="page">Design</a>
   <ul>
-    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+    <li><a href="../../design/dependency/index.html" class="active page">Dependency</a></li>
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/java/index.html#java-related" class="header">Java related</a>
+  <li><a href="../../design/dependency/index.html#dependency" class="header">Dependency</a>
   <ul>
-    <li><a href="../../bugs/java/index.html#date" class="header">date</a></li>
+    <li><a href="../../design/dependency/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../design/dependency/index.html#remove-the-dependency" class="header">Remove the dependency</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -257,9 +258,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/java/index.html#java-related" class="header">Java related</a>
+  <li><a href="../../design/dependency/index.html#dependency" class="header">Dependency</a>
   <ul>
-    <li><a href="../../bugs/java/index.html#date" class="header">date</a></li>
+    <li><a href="../../design/dependency/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../design/dependency/index.html#remove-the-dependency" class="header">Remove the dependency</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -270,14 +272,28 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#java-related" name="java-related" class="anchor"><span class="anchor-link"></span></a>Java related</h1>
-<h2><a href="#date" name="date" class="anchor"><span class="anchor-link"></span></a>date</h2>
-<p><img src="./pic/dateFormat.png" alt="date pic" /></p>
-<p>See reference from <a href="https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">oracle site</a></p>
-<p><img src="./pic/fromOracleSite.png" alt="from oracle" /></p>
+<h1><a href="#dependency" name="dependency" class="anchor"><span class="anchor-link"></span></a>Dependency</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>In dora lib, there is one depency on java driver core of datastax:</p>
+<p><img src="pic/dependency.png" alt="dependency" /></p>
+<p>While the lib depends on netty-handler, but this lib has CVE not fixed in current version and only available one is in about 9 years ago </p>
+<p><img src="pic/NettyHandler.png" alt="Netty-handle" /></p>
+<h2><a href="#remove-the-dependency" name="remove-the-dependency" class="anchor"><span class="anchor-link"></span></a>Remove the dependency</h2>
+<p>The lib is used to create time uuid for actor which is used wildly in lib, but at very beginning, this lib function is used in interface like:</p>
+<pre><code>package doracore.util
+import com.datastax.oss.driver.api.core.uuid.Uuids
+object MyUUID {
+  def getUUIDString() = {
+    Uuids.timeBased().toString
+  }
+}
+</code></pre>
+<p>so remove the lib will be easily:</p>
+<p><img src="pic/libRemove.png" alt="Remove lib" /></p>
+<p><a href="https://github.com/wherby/dora/commit/fb78c1c7d6e5029e71f29889513567e8e3880655">https://github.com/wherby/dora/commit/fb78c1c7d6e5029e71f29889513567e8e3880655</a></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/java/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/design/dependency/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -293,7 +309,7 @@ Edit this page
 <footer class="md-footer">
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/mostAwfulCode/index.html" title="Most awful code when use OO" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../design/index.html" title="Design" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -302,21 +318,8 @@ Edit this page
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Most awful code when use OO
+Design
 </span>
-</div>
-</a>
-<a href="../../bugs/loadissue/index.html" title="Load issue for valuation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Load issue for valuation
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
