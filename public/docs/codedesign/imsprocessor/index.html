@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>IMS processor · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+IMS processor
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="active page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../codedesign/imsprocessor/index.html#ims-processor" class="header">IMS processor</a>
+  <ul>
+    <li><a href="../../codedesign/imsprocessor/index.html#code" class="header">Code</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../codedesign/imsprocessor/index.html#ims-processor" class="header">IMS processor</a>
+  <ul>
+    <li><a href="../../codedesign/imsprocessor/index.html#code" class="header">Code</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#ims-processor" name="ims-processor" class="anchor"><span class="anchor-link"></span></a>IMS processor</h1>
+<h2><a href="#code" name="code" class="anchor"><span class="anchor-link"></span></a>Code</h2>
+<dl>
+  <dt>Controller</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/controller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">val hsbcIMSExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+  Seq(
+    &quot;PURCHASE TRANSACTION REPORT&quot;
+  ) -&gt; (ReportProcessor, PurchaseTransactionReportConfig.extractorConfig),
+  Seq(
+    &quot;QUICK VALUATION REPORT&quot;
+  ) -&gt; (QuickValuationReportProcessor, QuickValuationReportConfig.extractorConfig_POSITION),
+  Seq(
+    &quot;SALES TRANSACTION REPORT&quot;
+  ) -&gt; (ReportProcessor, SalesTransactionReportConfig.extractorConfig),
+  Seq(
+    &quot;ACCOUNTS MOVEMENT REPORT&quot;
+  ) -&gt; (ReportProcessor, AccountsMovementReportConfig.extractorConfig),
+  Seq(
+    &quot;CONSOLIDATED TRIAL BALANCE&quot;
+  ) -&gt; (new ConsolidationTrialBalanceReportProcessor, ConsolidatedTrialBalancedReportConfig.extractorConfig),
+  Seq(
+    &quot;OUTSTANDING DIVIDEND REPORT&quot;
+  ) -&gt; (new OutstandingDividendReportProcessor, OutstandingDividendReportConfig.extractorConfig)
+)</code></pre></dd>
+  <dt>ReportProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/ReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ReportProcessor {}
+
+object ReportProcessor extends AbstractProcessor with BaseFileReader {
+  def getMemoryOutput(extractorConfig: ExtractorConfig): AbstractReportMemoryOutput = {
+    extractorConfig.reportType match {
+      case &quot;PURCHASE TRANSACTION REPORT&quot; =&gt; PurchaseTransactionReportMemoryOutput
+      case &quot;SALES TRANSACTION REPORT&quot;    =&gt; SalesTransactionReportMemoryOutput
+      case &quot;ACCOUNTS MOVEMENT REPORT&quot;    =&gt; AccountsMovementReportMemoryOutput
+      case _ =&gt; {
+        throw UnsupportedReportTypeException(extractorConfig.reportType)
+      }
+    }
+  }
+
+  def getExcelOutput(
+                      extractorConfig: ExtractorConfig
+                    ): (ExcelOutputConfig, BaseReportExcelOutput) = {
+    extractorConfig.reportType match {
+      case &quot;PURCHASE TRANSACTION REPORT&quot; =&gt;
+        (PurchaseTransactionReportConfig.outputterConfig, PurchaseTransactionReportExcelOutput)
+      case &quot;SALES TRANSACTION REPORT&quot; =&gt;
+        (SalesTransactionReportConfig.outputterConfig, PurchaseTransactionReportExcelOutput)
+      case &quot;ACCOUNTS MOVEMENT REPORT&quot; =&gt;
+        (AccountsMovementReportConfig.outputterConfig, PurchaseTransactionReportExcelOutput)
+      case &quot;FUND PRICE REPORT&quot; =&gt;
+        (FundPriceReportConfig.outputterConfig, PurchaseTransactionReportExcelOutput)
+      case _ =&gt; {
+        throw UnsupportedReportTypeException(extractorConfig.reportType)
+      }
+    }
+  }
+
+  def getExtractors(content: String, extractorConfig: ExtractorConfig): (
+    BlockSeparator,
+      SanitizerConfig,
+      ExtractorConfig,
+      BaseReportSanitizer,
+      BaseReportExtractor
+    ) = {
+    extractorConfig.reportType match {
+      case &quot;PURCHASE TRANSACTION REPORT&quot; =&gt;
+        (
+          new BlockSeparatorImpl {},
+          PurchaseTransactionReportConfig.sanitizeConfig,
+          PurchaseTransactionReportConfig.extractorConfig,
+          SalesTransactionReportSanitizer,
+          new PurchaseReportExtractor(PurchaseTransactionReportConfig.singleCurrencyBodyRowConfig)
+        )
+      case &quot;SALES TRANSACTION REPORT&quot; =&gt; {
+        val extractorConfig =
+          if (content.contains(&quot;USING EFFECTIVE YIELD AMORTIZATION&quot;))
+            SalesTransactionReportAdditionalConfig.extractorConfig
+          else SalesTransactionReportConfig.extractorConfig
+        (
+          new BlockSeparatorImpl {},
+          SalesTransactionReportConfig.sanitizeConfig,
+          extractorConfig,
+          SalesTransactionReportSanitizer,
+          new PurchaseReportExtractor(SalesTransactionReportConfig.singleCurrencyBodyRowConfig)
+        )
+      }
+      case &quot;ACCOUNTS MOVEMENT REPORT&quot; =&gt;
+        (
+          new AccountsMovementReportBlockSeparator(),
+          AccountsMovementReportConfig.sanitizeConfig,
+          AccountsMovementReportConfig.extractorConfig,
+          AccountsMovementReportSanitizer,
+          new AccountsMovementReportExtractor()
+        )
+      case &quot;FUND PRICE REPORT&quot; =&gt;
+        (
+          new BlockSeparatorImpl {},
+          FundPriceReportConfig.sanitizeConfig,
+          FundPriceReportConfig.extractorConfig,
+          StaticBaseReportSanitizer,
+          new BaseReportExtractor()
+        )
+      case _ =&gt; {
+        throw UnsupportedReportTypeException(extractorConfig.reportType)
+      }
+    }
+  }
+
+  def readFileAndExtractToSheets(
+                                  sourceFilePath: String,
+                                  extractorConfig: ExtractorConfig
+                                ): Seq[PurchaseReportExtractedSheet] = {
+    val source = extractTextFromFile(sourceFilePath)
+
+    val (blockSeparator, sanitizerConfig, targetExtractorConfig, sanitizer, extractor) =
+      getExtractors(source, extractorConfig)
+
+    val rawSheets = logTime(&quot;split content into sheet&quot;) {
+      blockSeparator.splitContentIntoSheets(source)
+    }
+
+    val lineBreaker = DataSanitizer.detectLinebreaker(source)
+
+    var sheets = logTime(&quot;extract all sheets&quot;) {
+      rawSheets.zipWithIndex.map(v =&gt; {
+        logTime(&quot;extract single sheet&quot;) {
+          val sheet = v._1
+
+          val (headers, tables, summaries) = logTime(&quot;page block time&quot;) {
+            blockSeparator.getPageBlocks(
+              sheet,
+              targetExtractorConfig.tableConfig,
+              lineBreaker,
+              true,
+              targetExtractorConfig.pageLineNumber
+            )
+          }
+          val (sanitizedHeader, sanitizedTable, sanitizedSummary) = logTime(&quot;sanitizer time&quot;) {
+            sanitizer.sanitizeBlocks(headers, tables, summaries, sanitizerConfig)
+          }
+          val (extractedSummary, extractedTable) = logTime(&quot;extract report time&quot;) {
+            extractor.extractSingleReport(
+              sanitizedHeader,
+              sanitizedTable,
+              sanitizedSummary,
+              targetExtractorConfig
+            )
+          }
+          PurchaseReportExtractedSheet(
+            s&quot;${targetExtractorConfig.reportType} ${v._2}&quot;,
+            extractedTable,
+            extractedSummary,
+            Seq()
+          )
+        }
+      })
+    }
+    sheets
+  }
+
+  override def readFileAndExtractToObjectForPeriod(
+                                                    sourceFilePath: String,
+                                                    extractorConfig: ExtractorConfig,
+                                                    fundName: String,
+                                                    frontEndPeriodStart: Date,
+                                                    frontEndPeriodEnd: Date
+                                                  ): SingleEGAStorage = {
+    val sheets    = readFileAndExtractToSheets(sourceFilePath, extractorConfig)
+    val outputter = getMemoryOutput(extractorConfig)
+    val newStorage = outputter.extractSheetToObjectForPeriod(
+      sheets,
+      fundName,
+      frontEndPeriodStart,
+      frontEndPeriodEnd
+    )
+    newStorage
+  }
+}</code></pre></dd>
+  <dt>BlockSeparatorImple</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/BlockSeparatorImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait BlockSeparatorImpl extends BlockSeparator {
+
+  val endOfReport = &quot;END OF REPORT&quot;;
+
+  var dataSanitizer: BaseDataSanitizerImpl = new BaseDataSanitizerImpl {}
+
+  var isReportHeaderPaternStrictMode: Option[Boolean] = None
+
+  /** * @throws java.lang.NumberFormatException  If the string does not contain a parsable `Double`.
+   * * @throws java.lang.NullPointerException  If the string is null.
+   *
+   * @param str
+   * @return
+   */
+  override def parseDouble(str: String): Double = {
+    try {
+      str.replaceAll(&quot;,&quot;, &quot;&quot;).toDouble
+    } catch {
+      case x: NumberFormatException =&gt; {
+        SafeLogger.logStringError(Logger, str + &quot; can&#39;t be parse into double. &quot;, x)
+        0
+      }
+      case e: Exception =&gt; {
+        SafeLogger.logStringError(Logger, str + &quot; can&#39;t be parse into double. &quot;, e)
+        0
+      }
+    }
+  }
+
+  override def splitContentIntoPages(
+                                      content: String,
+                                      lineBreaker: String,
+                                      pageLineNum: Int = 1
+                                    ): Array[String] = {
+    var splitPagePattern = &quot;&quot;
+    if (pageLineNum == 1) {
+      splitPagePattern = s&quot;(?=[ \\t]*${lineBreaker}.*PAGE(\\s)*(\\d)+)&quot;
+    } else if (pageLineNum == 2) {
+      splitPagePattern = s&quot;(?=[ \\t]*${lineBreaker}.*${lineBreaker}.*PAGE(\\s)*(\\d)+)&quot;
+    } else {
+      splitPagePattern = &quot;(?=(.*&quot; + lineBreaker + &quot;){&quot; + pageLineNum + &quot;}.**PAGE(\\s)*(\\d)+)&quot;;
+    }
+    var pages = content.split(splitPagePattern);
+    pages = pages.filter(page =&gt; {
+      !dataSanitizer.isGarbageContent(page) &amp;&amp; page.contains(&quot;PAGE&quot;)
+    })
+    pages
+  }
+
+  override def splitContentIntoSegments(
+                                         content: String,
+                                         lineBreaker: String,
+                                         indicator: String
+                                       ): Array[String] = {
+    var splitPagePattern = &quot;(?=&quot; + lineBreaker + &quot;.*&quot; + indicator + &quot;)&quot;;
+    var segments         = content.split(splitPagePattern);
+    segments = segments.filter(!dataSanitizer.isGarbageContent(_)) // to filter empty block
+    segments
+  }
+
+  /** there maybe two kinds of report header patterns, one contains space line in the report header, one does not. this function find out which, and returns.
+   * @param pageContent
+   * @param reportHeaderLineNumber
+   * @param lineBreaker
+   * @return
+   */
+  def getReportHeaderPattern(
+                              pageContent: String,
+                              reportHeaderLineNumber: Int,
+                              lineBreaker: String
+                            ): String = {
+    isReportHeaderPaternStrictMode match {
+      case Some(true) =&gt; &quot;^(.*\\w+.*&quot; + lineBreaker + &quot;){&quot; + reportHeaderLineNumber + &quot;}&quot;
+      case Some(false) =&gt;
+        &quot;^(.*&quot; + lineBreaker + &quot;){&quot; + reportHeaderLineNumber + &quot;,}?(\\s*&quot; + lineBreaker + &quot;)&quot;
+      case _ =&gt; {
+        var headerPattern1 = &quot;^(.*\\w+.*&quot; + lineBreaker + &quot;){&quot; + reportHeaderLineNumber + &quot;}&quot;;
+        var headerPattern2 =
+          &quot;^(.*&quot; + lineBreaker + &quot;){&quot; + reportHeaderLineNumber + &quot;,}?(\\s*&quot; + lineBreaker + &quot;)&quot;;
+        if (headerPattern1.r.findFirstMatchIn(pageContent).isDefined) {
+          isReportHeaderPaternStrictMode = Some(true)
+          headerPattern1
+        } else {
+          isReportHeaderPaternStrictMode = Some(false)
+          headerPattern2
+        }
+      }
+    }
+  }
+
+  /** get report header end index in the page content, the page content should start with the report header.
+   * @param pageContent
+   * @param reportHeaderLineNumber
+   * @return
+   */
+  override def getReportHeaderEndIndex(
+                                        pageContent: String,
+                                        reportHeaderLineNumber: Int,
+                                        lineBreaker: String
+                                      ): Int = {
+    var left          = dataSanitizer.trimEmptyStartLines(pageContent, lineBreaker)
+    var headerPattern = getReportHeaderPattern(pageContent, reportHeaderLineNumber, lineBreaker)
+    var headerReg     = headerPattern.r.findFirstMatchIn(left);
+    headerReg match {
+      case Some(headerMatch) =&gt; {
+        headerMatch.end
+      }
+      case _ =&gt; {
+        //TODO the page content is wrong, need error handling
+        throw new Exception(&quot;there is no report header in this page&quot;)
+      }
+    }
+  }
+
+  /** get the table header end index in the page content. the page content should start with the table header.
+   * @param pageContent
+   * @param tableHeaderLineNumber
+   * @return
+   */
+  override def getTableHeaderEndIndex(
+                                       pageContent: String,
+                                       tableHeaderLineNumber: Int,
+                                       lineBreaker: String
+                                     ): Int = {
+    var headerAfterFirstRow = if (tableHeaderLineNumber &gt; 1) {
+      &quot;(.*&quot; + lineBreaker + &quot;){&quot; + (tableHeaderLineNumber - 1).toString + &quot;}&quot;
+    } else { &quot;&quot; }
+    var txtTableHeaderPattern = &quot;^(.*\\w+.*&quot; + lineBreaker + headerAfterFirstRow + &quot;)&quot;
+    //var txtTableHeaderPattern = &quot;^(.*\\w+.*&quot; + lineBreaker + &quot;){&quot; + tableHeaderLineNumber + &quot;}&quot;;
+    var txtTableHeaderReg = txtTableHeaderPattern.r.findFirstMatchIn(pageContent);
+    txtTableHeaderReg match {
+      case Some(titleMatch) =&gt; {
+        titleMatch.end
+      }
+      case _ =&gt; {
+        -1
+      }
+    }
+  }
+
+  /** @param sheetContent
+   * @param tableConfig
+   * @param lineBreaker
+   * @param hasSummary if this report contains the summary part, the summary part must be surrounded with stars ******
+   * @return
+   */
+  override def getPageBlocks(
+                              sheetContent: String,
+                              tableConfig: TableConfig,
+                              lineBreaker: String,
+                              hasSummary: Boolean = false,
+                              pageLineNumber: Int = 1
+                            ): (Seq[BlockConfig], Seq[BlockConfig], Seq[BlockConfig]) = {
+    var sheets: Array[String] = splitContentIntoSheets(sheetContent);
+    var pages: Array[String] = splitContentIntoPages(
+      sheetContent,
+      lineBreaker,
+      pageLineNumber
+    ) // the pages must contain word &quot;PAGE&quot;
+
+    var reportHeaders = Seq[BlockConfig]()
+    var tablebodies   = Seq[BlockConfig]()
+    var summaries     = Seq[BlockConfig]()
+
+    for (pageNum &lt;- 0 until pages.length) {
+      var reportHeaderStr = &quot;&quot;
+      var tableContent    = &quot;&quot;
+      if (!dataSanitizer.isGarbageContent(pages(pageNum))) { // when page is summary page, it&#39;s empty content
+        var page = pages(pageNum)
+        var left = dataSanitizer.trimEmptyStartLines(page, lineBreaker)
+        var reportHeaderLastIndex =
+          getReportHeaderEndIndex(left, tableConfig.reportHeaderLineNumber, lineBreaker);
+        reportHeaderStr = left.substring(0, reportHeaderLastIndex);
+        left = left.substring(reportHeaderLastIndex)
+
+        var (summaryContent: String, tableBodyContent: String) =
+          if (hasSummary) getSummaryContent(left, lineBreaker)
+          else (&quot;&quot;, left) // here get summary content by star (*) lines
+        summaries = summaries :+ BlockConfig(summaryContent, pageNum)
+        tableContent = dataSanitizer.trimEmptyStartLines(tableBodyContent, lineBreaker)
+      }
+      reportHeaders = reportHeaders :+ BlockConfig(reportHeaderStr, pageNum)
+      tablebodies = tablebodies :+ BlockConfig(tableContent, pageNum)
+    }
+    (reportHeaders, tablebodies, summaries)
+  }
+
+  override def splitContentIntoSheets(
+                                       content: String,
+                                       sheetSeparator: String = null
+                                     ): Array[String] = {
+
+    var splitSheetPattern = &quot;(?&lt;=&quot; + endOfReport + &quot;)&quot;;
+    if (sheetSeparator != null) {
+      splitSheetPattern = &quot;(?&lt;=&quot; + sheetSeparator + &quot;)&quot;
+    }
+
+    var sheets = content.split(splitSheetPattern);
+    sheets = sheets.filter(!dataSanitizer.isGarbageContent(_))
+
+    sheets = sheets.filter(sheet =&gt; {
+      sheet.contains(&quot;PAGE&quot;)
+    })
+    sheets
+  }
+
+  override def getTotalPageNumber(content: String): Int = {
+    var pagePattern = &quot;PAGE\\s*([1-9]\\d*)\\b&quot;.r;
+    var matches     = pagePattern.findAllMatchIn(content);
+
+    var pageNum: Int = 1;
+    matches.foreach(regMatch =&gt; {
+      var currentPageNum = Integer.parseInt(regMatch.group(1));
+      if (currentPageNum &gt; pageNum) {
+        pageNum = currentPageNum
+      }
+    })
+    pageNum
+  }
+
+  /** @param blockSeperatorLineNumber
+   * @param tableHeaderLineNum: it&#39;s to instruct how many lines one block contains
+   * @param tableBodyContent : this content only contains table body, without summary or others.
+   * @return
+   */
+  override def splitTableContentIntoBlocks(
+                                            blockSeperatorLineNumber: Int,
+                                            tableHeaderLineNum: Int,
+                                            tableContent: String,
+                                            lineBreaker: String
+                                          ): Seq[BlockConfig] = {
+
+    var tableBodyContent = dataSanitizer.trimEmptyStartLines(tableContent, lineBreaker)
+    var pageBlocks       = Seq[BlockConfig]();
+    if (blockSeperatorLineNumber == 1) {
+
+      if (tableHeaderLineNum == 1) {
+        pageBlocks =
+          tableBodyContent.split(lineBreaker).toSeq.map(blockContent =&gt; BlockConfig(blockContent))
+      } else {
+        var bodylines = tableBodyContent.split(lineBreaker);
+
+        for (bodylineNum &lt;- 0 until bodylines.length by tableHeaderLineNum) {
+          var blockContent = &quot;&quot;;
+          for (blockLineNum &lt;- 0 until tableHeaderLineNum) {
+            if (bodylines.length &gt; (bodylineNum + blockLineNum)) { // ensure it&#39;s not out of range when accessing bodylines
+              blockContent = blockContent + lineBreaker + bodylines(bodylineNum + blockLineNum)
+            }
+          }
+          pageBlocks = pageBlocks :+ BlockConfig(blockContent);
+        }
+      }
+
+    } else if (blockSeperatorLineNumber &gt;= 2) {
+      pageBlocks = tableBodyContent
+        .split(&quot;(\\s*&quot; + lineBreaker + &quot;){&quot; + blockSeperatorLineNumber + &quot;}&quot;)
+        .toSeq
+        .map(blockContent =&gt; BlockConfig(blockContent));
+    }
+
+    pageBlocks
+  }
+
+  /** summary content is surrounded with star lines both at the beginning and at the ending
+   * @param content
+   * @return
+   */
+  override def getSummaryContent(content: String, lineBreaker: String): (String, String) = {
+    var left           = content;
+    var summaryContent = &quot;&quot;;
+    var summaryPattern = (&quot;\\*{5,}(.*&quot; + lineBreaker + &quot;)+\\*{5,}&quot;).r;
+    summaryPattern.findFirstMatchIn(content) match {
+      case Some(value) =&gt; {
+        summaryContent = value.toString;
+        summaryContent = dataSanitizer.trimEmptyStartLines(summaryContent, lineBreaker);
+        summaryContent = dataSanitizer.trimEmptyEndLines(summaryContent, lineBreaker);
+        left = content.substring(0, value.start)
+        left = dataSanitizer.trimEmptyStartLines(left, lineBreaker);
+        left = dataSanitizer.trimEmptyEndLines(left, lineBreaker)
+      }
+      case _ =&gt; {}
+    }
+    (summaryContent, left)
+  }
+
+}</code></pre></dd>
+  <dt>PSRConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/psrconfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object PurchaseTransactionReportConfig {
+  val extractorConfig = ExtractorConfig(
+    &quot;PURCHASE TRANSACTION REPORT&quot;,
+    Seq(
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 143),
+        ColumnConfig(&quot;&quot;, 143, 158)
+      ),
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 160),
+        ColumnConfig(&quot;&quot;, 160, 168)
+      ),
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 160)
+      ),
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 53),
+        ColumnConfig(ColumnTitles.START_DATE, 58, 66),
+        ColumnConfig(ColumnTitles.END_DATE, 70, 78)
+      ),
+      Seq(
+        ColumnConfig(ColumnTitles.FUND_NAME, 0, 160)
+      ),
+      Seq(
+        ColumnConfig(ColumnTitles.FUND_NAME, 0, 160)
+      )
+    ),
+    TableConfig(
+      &quot;.*T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y.*&quot;,
+      4,
+      tableBodyConfig = TableBodyConfig(
+        rows = Seq(
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;TD DATE/&quot;, 0, 9),
+              ColumnConfig(&quot;BROKER&quot;, 9, 25),
+              ColumnConfig(&quot;TRANS #&quot;, 25, 35),
+              ColumnConfig(&quot;NUMBER OF SHARES&quot;, 35, 56),
+              ColumnConfig(&quot;CCY_1&quot;, 56, 59),
+              ColumnConfig(&quot;UNIT PRICE_1&quot;, 59, 76),
+              ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 76, 94),
+              ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 94, 113),
+              ColumnConfig(&quot;OTHER FEES_1&quot;, 113, 131),
+              ColumnConfig(&quot;SETTLEMENT AMOUNT_1&quot;, 131, 150),
+              ColumnConfig(&quot;INT PURCHASE_1&quot;, 150, 165)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;STL DATE&quot;, 0, 9),
+              ColumnConfig(&quot;SECURITY NAME_1&quot;, 9, 56),
+              ColumnConfig(&quot;CCY_2&quot;, 56, 59),
+              ColumnConfig(&quot;UNIT PRICE_2&quot;, 59, 76),
+              ColumnConfig(&quot;PRINCIPAL COST_2&quot;, 76, 94),
+              ColumnConfig(&quot;BROKER COMMISSION_2&quot;, 94, 113),
+              ColumnConfig(&quot;OTHER FEES_2&quot;, 113, 131),
+              ColumnConfig(&quot;SETTLEMENT AMOUNT_2&quot;, 131, 150),
+              ColumnConfig(&quot;INT PURCHASE_2&quot;, 150, 165)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;SECURITY NAME_2&quot;, 0, 59),
+              ColumnConfig(&quot;PRINCIPAL COST_3&quot;, 81, 84)
+            ),
+            true
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;SECURITY ID &amp; CODE&quot;, 0, 59)
+            )
+          )
+        ),
+        s&quot;\\s*$dateRegex.*&quot;
+      ),
+      summaries = Seq(
+        // Ignore the TRADED CCY TOTAL row and BASE CCY TOTAL row
+      ),
+      separators = Seq(
+        TableSeparatorConfig(
+          &quot;---------------&quot;,
+          1,
+          1,
+          rows = Seq(
+            Seq(
+              ColumnConfig(&quot;&quot;, 0, 165)
+            ),
+            // skip the middle line of the separator
+            Seq(),
+            Seq(
+              ColumnConfig(&quot;GenericInvestment&quot;, 0, 165)
+            )
+          ),
+          appendToBody = true
+        )
+      ),
+      rowCount = None,
+      subTable = Some(
+        TableConfig(
+          &quot;.*BASE CURRENCY.*&quot;,
+          3,
+          TableBodyConfig(
+            rows = Seq(
+              TableRowConfig(
+                Seq(
+                  ColumnConfig(&quot;TD DATE/&quot;, 0, 56, 4),
+                  ColumnConfig(&quot;CCY_1&quot;, 56, 59),
+                  ColumnConfig(&quot;UNIT PRICE_1&quot;, 59, 76),
+                  ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 76, 94),
+                  ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 94, 113),
+                  ColumnConfig(&quot;OTHER FEES_1&quot;, 113, 131),
+                  ColumnConfig(&quot;SETTLEMENT AMOUNT_1&quot;, 131, 150),
+                  ColumnConfig(&quot;INT PURCHASE_1&quot;, 150, 165)
+                )
+              )
+            ),
+            indicator = &quot;.*GRAND TOTAL.*&quot;
+          ),
+          rowCount = Some(1)
+        )
+      ),
+      reportHeaderLineNumber = 6
+    ),
+    Some(
+      TableConfig(tableBodyConfig =
+        TableBodyConfig(
+          Seq(TableRowConfig(Seq(ColumnConfig(&quot;&quot;, 0, 75), ColumnConfig(&quot;&quot;, 76, 92)))),
+          &quot;&quot;
+        )
+      )
+    )
+  )
+
+  val singleCurrencyBodyRowConfig = TableBodyConfig(
+    Seq(
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;TD DATE/&quot;, 0, 9),
+          ColumnConfig(&quot;BROKER&quot;, 9, 25),
+          ColumnConfig(&quot;TRANS #&quot;, 25, 35),
+          ColumnConfig(&quot;NUMBER OF SHARES&quot;, 35, 56),
+          ColumnConfig(&quot;CCY_1&quot;, 56, 59),
+          ColumnConfig(&quot;UNIT PRICE_1&quot;, 59, 76),
+          ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 76, 94),
+          ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 94, 113),
+          ColumnConfig(&quot;OTHER FEES_1&quot;, 113, 131),
+          ColumnConfig(&quot;SETTLEMENT AMOUNT_1&quot;, 131, 150),
+          ColumnConfig(&quot;INT PURCHASE_1&quot;, 150, 165),
+          //Copy the value as BASE CCY
+          ColumnConfig(&quot;CCY_2&quot;, 56, 59),
+          ColumnConfig(&quot;UNIT PRICE_2&quot;, 59, 76),
+          ColumnConfig(&quot;PRINCIPAL COST_2&quot;, 76, 94),
+          ColumnConfig(&quot;BROKER COMMISSION_2&quot;, 94, 113),
+          ColumnConfig(&quot;OTHER FEES_2&quot;, 113, 131),
+          ColumnConfig(&quot;SETTLEMENT AMOUNT_2&quot;, 131, 150),
+          ColumnConfig(&quot;INT PURCHASE_2&quot;, 150, 165)
+        )
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;STL DATE&quot;, 0, 9),
+          ColumnConfig(&quot;SECURITY NAME_1&quot;, 9, 56)
+        )
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;SECURITY NAME_2&quot;, 0, 59),
+          ColumnConfig(&quot;PRINCIPAL COST_3&quot;, 81, 84)
+        ),
+        true
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;SECURITY ID &amp; CODE&quot;, 0, 59)
+        )
+      )
+    ),
+    s&quot;\\s*$dateRegex.*&quot;
+  )
+
+  val sanitizeConfig = SanitizerConfig(
+    ignores = Seq(
+      SanitizerLineConfig(&quot;PRICE IS OUTSIDE TOLERANCE&quot;, true),
+      SanitizerLineConfig(&quot;SYSTEM DATE&quot;)
+    )
+  )
+
+  val outputterConfig = ExcelOutputConfig(
+    false,
+    Seq(
+      &quot;TD DATE/&quot;,
+      &quot;STL DATE&quot;,
+      &quot;BROKER&quot;,
+      &quot;SECURITY NAME&quot;,
+      &quot;SECURITY ID &amp; CODE&quot;,
+      &quot;TRANS #&quot;,
+      &quot;NUMBER OF SHARES&quot;,
+      &quot;CCY_1&quot;,
+      &quot;UNIT PRICE_1&quot;,
+      &quot;PRINCIPAL COST_1&quot;,
+      &quot;BROKER COMMISSION_1&quot;,
+      &quot;OTHER FEES_1&quot;,
+      &quot;SETTLEMENT AMOUNT_1&quot;,
+      &quot;INT PURCHASE_1&quot;,
+      &quot;CCY_2&quot;,
+      &quot;UNIT PRICE_2&quot;,
+      &quot;PRINCIPAL COST_2&quot;,
+      &quot;BROKER COMMISSION_2&quot;,
+      &quot;OTHER FEES_2&quot;,
+      &quot;SETTLEMENT AMOUNT_2&quot;,
+      &quot;INT PURCHASE_2&quot;,
+      &quot;PRINCIPAL COST_3&quot;
+    )
+  )
+}</code></pre></dd>
+  <dt>SaleConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/salesconfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object SalesTransactionReportConfig {
+  val extractorConfig = ExtractorConfig(
+    &quot;SALES TRANSACTION REPORT&quot;,
+    Seq(
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 173),
+        ColumnConfig(&quot;&quot;, 173, 188)
+      ),
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 190),
+        ColumnConfig(&quot;&quot;, 190, 198)
+      ),
+      Seq(
+        ColumnConfig(&quot;&quot;, 0, 198)
+      ),
+      Seq(
+        ColumnConfig(&quot;Group1&quot;, 0, 5),
+        ColumnConfig(&quot;&quot;, 5, 73),
+        ColumnConfig(ColumnTitles.START_DATE, 78, 86),
+        ColumnConfig(ColumnTitles.END_DATE, 90, 98)
+      ),
+      Seq(
+        ColumnConfig(ColumnTitles.FUND_NAME, 0, 198)
+      ),
+      Seq(
+        ColumnConfig(ColumnTitles.FUND_NAME, 0, 198)
+      )
+    ),
+    TableConfig(
+      &quot;.*T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y.*&quot;,
+      4,
+      TableBodyConfig(
+        Seq(
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;NUMBER OF SHARES&quot;, 18, 198)
+            )
+          ),
+          /*
+        There are totally 4 REALISED PROFIT/LOSS(-) in one table row. The first two values maps to CCY_1, so named REALISED PROFIT/LOSS(-)_1_1 and REALISED PROFIT/LOSS(-)_1_2
+        The second two values maps to CCY_2 so named REALISED PROFIT/LOSS(-)_2_1 and REALISED PROFIT/LOSS(-)_2_2
+           */
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;TD DATE/&quot;, 0, 8),
+              ColumnConfig(&quot;BROKER&quot;, 8, 25),
+              ColumnConfig(&quot;TRANS #&quot;, 25, 44),
+              ColumnConfig(&quot;CCY_1&quot;, 44, 47),
+              ColumnConfig(&quot;UNIT PRICE_1&quot;, 47, 61),
+              ColumnConfig(&quot;NET PROCEEDS_1&quot;, 61, 84),
+              ColumnConfig(&quot;COST WRITTEN-OFF_1&quot;, 84, 106),
+              ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_1&quot;, 106, 125),
+              ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 125, 143),
+              ColumnConfig(&quot;OTHER FEES_1&quot;, 143, 164),
+              ColumnConfig(&quot;INT SOLD_1&quot;, 164, 179),
+              ColumnConfig(&quot;DEFERRED INCOME_1&quot;, 179, 198)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 61, 84),
+              ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_2&quot;, 106, 125)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;STL DATE&quot;, 0, 8),
+              ColumnConfig(&quot;SECURITY NAME_1&quot;, 8, 44),
+              ColumnConfig(&quot;CCY_2&quot;, 44, 47),
+              ColumnConfig(&quot;UNIT PRICE_2&quot;, 47, 61),
+              ColumnConfig(&quot;NET PROCEEDS_2&quot;, 61, 84),
+              ColumnConfig(&quot;COST WRITTEN-OFF_2&quot;, 84, 106),
+              ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_2_1&quot;, 106, 125),
+              ColumnConfig(&quot;BROKER COMMISSION_2&quot;, 125, 143),
+              ColumnConfig(&quot;OTHER FEES_2&quot;, 143, 164),
+              ColumnConfig(&quot;INT SOLD_2&quot;, 164, 179),
+              ColumnConfig(&quot;DEFERRED INCOME_2&quot;, 179, 198)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;SECURITY NAME_2&quot;, 8, 44),
+              ColumnConfig(&quot;PRINCIPAL COST_2&quot;, 61, 84),
+              ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_2_2&quot;, 106, 125)
+            )
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;SECURITY NAME_3&quot;, 8, 44)
+            ),
+            true
+          ),
+          TableRowConfig(
+            Seq(
+              ColumnConfig(&quot;SECURITY ID &amp; CODE&quot;, 0, 106)
+            )
+          )
+        ),
+        &quot;NUMBER OF SHARES :.*&quot;
+      ),
+      Seq(
+        //Ignore *total* rows
+      ),
+      separators = Seq(
+        TableSeparatorConfig(
+          &quot;---------------&quot;,
+          1,
+          1,
+          rows = Seq(
+            Seq(
+              ColumnConfig(&quot;&quot;, 0, 165)
+            ),
+            // skip the middle line of the separator
+            Seq(),
+            Seq(
+              ColumnConfig(&quot;GenericInvestment&quot;, 0, 165)
+            )
+          ),
+          appendToBody = true
+        )
+      ),
+      rowCount = None,
+      subTable = Some(
+        TableConfig(
+          &quot;.*BASE CURRENCY.*&quot;,
+          4,
+          TableBodyConfig(
+            rows = Seq(
+              TableRowConfig(
+                Seq(
+                  ColumnConfig(&quot;TD DATE/&quot;, 0, 44, 4),
+                  ColumnConfig(&quot;CCY_1&quot;, 44, 47),
+                  ColumnConfig(&quot;UNIT PRICE_1&quot;, 47, 61),
+                  ColumnConfig(&quot;NET PROCEEDS_1&quot;, 61, 84),
+                  ColumnConfig(&quot;COST WRITTEN-OFF_1&quot;, 84, 106),
+                  ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_1&quot;, 106, 125),
+                  ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 125, 143),
+                  ColumnConfig(&quot;OTHER FEES_1&quot;, 143, 164),
+                  ColumnConfig(&quot;INT SOLD_1&quot;, 164, 179),
+                  ColumnConfig(&quot;DEFERRED INCOME_1&quot;, 179, 198)
+                )
+              ),
+              TableRowConfig(
+                Seq(
+                  ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 61, 84),
+                  ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_2&quot;, 106, 125)
+                )
+              )
+            ),
+            //Ignore the COUNTRY TOTAL row, only keep the GRAND TOTAL row
+            indicator = &quot;.*GRAND TOTAL.*&quot;
+          ),
+          rowCount = Some(1)
+        )
+      ),
+      reportHeaderLineNumber = 6
+    ),
+    Some(
+      TableConfig(tableBodyConfig =
+        TableBodyConfig(
+          Seq(
+            TableRowConfig(
+              Seq(
+                ColumnConfig(&quot;&quot;, 0, 75),
+                ColumnConfig(&quot;&quot;, 76, 92)
+              )
+            )
+          ),
+          &quot;&quot;
+        )
+      )
+    )
+  )
+
+  val singleCurrencyBodyRowConfig = TableBodyConfig(
+    Seq(
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;NUMBER OF SHARES&quot;, 18, 198)
+        )
+      ),
+      /*
+      There are totally 4 REALISED PROFIT/LOSS(-) in one table row. The first two values maps to CCY_1, so named REALISED PROFIT/LOSS(-)_1_1 and REALISED PROFIT/LOSS(-)_1_2
+      The second two values maps to CCY_2 so named REALISED PROFIT/LOSS(-)_2_1 and REALISED PROFIT/LOSS(-)_2_2
+       */
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;TD DATE/&quot;, 0, 8),
+          ColumnConfig(&quot;BROKER&quot;, 8, 25),
+          ColumnConfig(&quot;TRANS #&quot;, 25, 44),
+          ColumnConfig(&quot;CCY_1&quot;, 44, 47),
+          ColumnConfig(&quot;UNIT PRICE_1&quot;, 47, 61),
+          ColumnConfig(&quot;NET PROCEEDS_1&quot;, 61, 84),
+          ColumnConfig(&quot;COST WRITTEN-OFF_1&quot;, 84, 106),
+          ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_1&quot;, 106, 125),
+          ColumnConfig(&quot;BROKER COMMISSION_1&quot;, 125, 143),
+          ColumnConfig(&quot;OTHER FEES_1&quot;, 143, 164),
+          ColumnConfig(&quot;INT SOLD_1&quot;, 164, 179),
+          ColumnConfig(&quot;DEFERRED INCOME_1&quot;, 179, 198),
+          //Copy the values as BASE CCY
+          ColumnConfig(&quot;CCY_2&quot;, 44, 47),
+          ColumnConfig(&quot;UNIT PRICE_2&quot;, 47, 61),
+          ColumnConfig(&quot;NET PROCEEDS_2&quot;, 61, 84),
+          ColumnConfig(&quot;COST WRITTEN-OFF_2&quot;, 84, 106),
+          ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_2_1&quot;, 106, 125),
+          ColumnConfig(&quot;BROKER COMMISSION_2&quot;, 125, 143),
+          ColumnConfig(&quot;OTHER FEES_2&quot;, 143, 164),
+          ColumnConfig(&quot;INT SOLD_2&quot;, 164, 179),
+          ColumnConfig(&quot;DEFERRED INCOME_2&quot;, 179, 198)
+        )
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;STL DATE&quot;, 0, 8),
+          ColumnConfig(&quot;SECURITY NAME_1&quot;, 8, 44),
+          ColumnConfig(&quot;PRINCIPAL COST_1&quot;, 61, 84),
+          ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_1_2&quot;, 106, 125),
+          //Copy the values as BASE CCY
+          ColumnConfig(&quot;PRINCIPAL COST_2&quot;, 61, 84),
+          ColumnConfig(&quot;REALISED PROFIT/LOSS(-)_2_2&quot;, 106, 125)
+        )
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;SECURITY NAME_2&quot;, 8, 44)
+        ),
+        true
+      ),
+      TableRowConfig(
+        Seq(
+          ColumnConfig(&quot;SECURITY ID &amp; CODE&quot;, 0, 106)
+        )
+      )
+    ),
+    &quot;NUMBER OF SHARES :.*&quot;
+  )
+
+  val sanitizeConfig = SanitizerConfig(
+    ignores = Seq(
+      SanitizerLineConfig(&quot;PRICE IS OUTSIDE TOLERANCE&quot;, true),
+      SanitizerLineConfig(&quot;SYSTEM DATE&quot;),
+      SanitizerLineConfig(&quot;TOTAL REALISED PROFIT EXCLUDING ANY REALISED LOSS&quot;)
+    )
+  )
+
+  val outputterConfig = ExcelOutputConfig(
+    false,
+    Seq(
+      &quot;TD DATE/&quot;,
+      &quot;STL DATE&quot;,
+      &quot;BROKER&quot;,
+      &quot;SECURITY NAME&quot;,
+      &quot;SECURITY ID &amp; CODE&quot;,
+      &quot;TRANS #&quot;,
+      &quot;NUMBER OF SHARES&quot;,
+      &quot;CCY_1&quot;,
+      &quot;UNIT PRICE_1&quot;,
+      &quot;NET PROCEEDS_1&quot;,
+      &quot;COST WRITTEN-OFF_1&quot;,
+      &quot;REALISED PROFIT/LOSS(-)_1_1&quot;,
+      &quot;BROKER COMMISSION_1&quot;,
+      &quot;OTHER FEES_1&quot;,
+      &quot;INT SOLD_1&quot;,
+      &quot;DEFERRED INCOME_1&quot;,
+      &quot;PRINCIPAL COST_1&quot;,
+      &quot;REALISED PROFIT/LOSS(-)_1_2&quot;,
+      &quot;CCY_2&quot;,
+      &quot;UNIT PRICE_2&quot;,
+      &quot;NET PROCEEDS_2&quot;,
+      &quot;COST WRITTEN-OFF_2&quot;,
+      &quot;REALISED PROFIT/LOSS(-)_2_1&quot;,
+      &quot;BROKER COMMISSION_2&quot;,
+      &quot;OTHER FEES_2&quot;,
+      &quot;INT SOLD_2&quot;,
+      &quot;DEFERRED INCOME_2&quot;,
+      &quot;PRINCIPAL COST_2&quot;,
+      &quot;REALISED PROFIT/LOSS(-)_2_2&quot;,
+      &quot;P/L ON EX.RATE&quot;
+    )
+  )
+}</code></pre></dd>
+</dl>
+<p>The original input files</p>
+<dl>
+  <dt>PSR</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/psr.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>                                                            FIDELITY LTD.                                                                      REF SR9020     PAGE     1
+                                                   PURCHASE TRANSACTION REPORT                                                                                  04/01/20
+                                                      OPTION : BY TRADE DATE
+
+GAEF 00460816                                        FROM  1/01/19 TO 31/12/19
+     FID
+     FD
+
+
+CANADA
+---------------
+ EQUITIES
+
+                                                        ----------------------- T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ---------------------------
+TD DATE/     BROKER      TRANS #         NUMBER         CCY     UNIT PRICE      PRINCIPAL COST  BROKER COMMISSION        OTHER FEES         SETTLEMENT  INT PURCHASED
+STL DATE SECURITY NAME                  OF SHARES                                                                                           AMOUNT
+           SECURITY ID &amp; CODE
+
+26/03/19 XXX CANADA CORP 1803280011        24,402       CAD       23.7962         4,068,714.87             341.63               .00       4,069,056.50
+28/03/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD       26.0854         3,493,014.92           2,075.58               .00       2,495,090.50
+           ISN xx
+
+20/04/19 XXXXXX MCLEOD   1804220570        27,356       CAD       28.7145         3,332,633.87             205.17               .00       2,332,839.04
+24/04/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD      100.3873         1,217,393.98           1,265.14               .00       4,218,659.12
+           ISN xx
+
+20/04/19 XXXXXXX BURNS   1804240034            98       CAD       48.6400             4,766.72                .74               .00           2,767.46
+24/04/19 XXXXXX ENERGY INC COM NPV (TOR)                HKD      199.9279            29,392.93               4.56               .00          49,397.49
+           ISN xx</code></pre></dd>
+  <dt>Sale</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/salestransaction.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>                                                                                FIDELITY LTD.                                                                                REF SR9020     PAGE     1
+                                                                          SALES TRANSACTION REPORT                                                                                            04/01/19
+                                                                          OPTION : BY TRADE DATE
+
+GAEF 00460816                                                            FROM  1/01/18 TO 31/12/18
+     FIDEY XS EQ
+     FD
+
+
+CANADA
+---------------
+ EQUITIES
+
+                                            ------------------------------------------ T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ----------------------------------------------------
+TD DATE/     BROKER      TRANS #            CCY     UNIT PRICE                NET         COST WRITTEN-OFF       REALISED                BROKER                OTHER       INT SOLD   DEFERRED INCOME
+STL DATE SECURITY NAME                                                      PROCEEDS/                         PROFIT/LOSS(-)         COMMISSION                 FEES
+           SECURITY ID &amp; CODE                                         PRINCIPAL COST                          P/L ON EX.RATE
+
+NUMBER OF SHARES :           46,934
+21/03/18 XXX EUROPE LTD  180XXX00XX         CAD       58.9012           1,763,295.57          1,611,997.47      1,151,298.10           5,173.35                  .00
+                                                                        1,763,295.57
+23/03/18 AWWMENTATION COUCHE-TARD INC       HKD      356.5130          26,732,579.24         15,531,694.31      3,971,453.54           7,104.98                  .00
+         SWWORDINATE VOTING SHARES B COM NPV                           46,732,579.24                              770,568.61-
+           ISN WWWWWWP4033
+
+NUMBER OF SHARES :           33,084
+22/03/18 WWE EUROPE LTD  1803230030         CAD       57.4888           1,901,794.04          3,136,304.69        765,489.35             165.42                  .00
+                                                                        1,901,794.04
+26/03/18 AWWMENTAWWON COUCHE-TARD INC       HKD      348.8299          21,540,687.77          2,423,841.45      2,645,231.50           5,003.82                  .00
+         SWWORDINWWE VOTING SHARES B COM NPV                           41,540,687.77                              528,385.18-
+           ISN WWWWW6P4033
+
+
+</code></pre></dd>
+</dl>
+<p>Then client changes input files</p>
+<dl>
+  <dt>PSR</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/psr.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">                                 HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                            REF SR9020     PAGE     1
+                                                   PURCHASE TRANSACTION REPORT                                                                                  13/05/21
+                                                      OPTION : BY TRADE DATE
+CSSB 00843367                                        FROM  1/01/20 TO 31/12/20
+     CSOP www BF
+     - SP2
+CHINA
+---------------
+ EQUITIES
+                                                        ----------------------- T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ---------------------------
+TD DATE/     BROKER      TRANS #         NUMBER         CCY     UNIT PRICE      PRINCIPAL COST  BROKER COMMISSION        OTHER FEES         SETTLEMENT  INT PURCHASED
+STL DATE SECURITY NAME                  OF SHARES                                                                                           AMOUNT
+ 3/01/20 WcC MERC SEC CO 2001030074       190,000       RMB       10.8608         1,963,544.00           3,170.80            351.61       1,967,066.41
+ 6/01/20 GOWXCEK INC A SHS ORD CNY1                     CNH       20.8608         2,963,544.00           3,170.80            351.61       2,967,066.41
+ 3/01/20 ECC MERC SEC CO 2001030075       110,000       RMB       37.9963         3,179,589.20           3,343.69            370.93       3,183,303.82
+ 6/01/20 LWWEEARE PRECISION INDUSTRY CO LTD             CNH       47.9963         4,179,589.20           3,343.69            370.93       4,183,303.82
+         A SHS ORD CNY1                                                          .00
+ 3/01/20 CWWWWWRC SEC CO 2001030072        57,000       RMB       59.2860         5,809,300.00           6,247.41            249.20       6,811,796.61
+ 6/01/20 PEEEECT WORLD CO LTD A ORD CNY1                CNH       69.2860         6,809,300.00           4,247.41            249.20       6,811,796.61
+ 3/01/20 CCC MERC SEC CO 2001030071        94,000       RMB       78.8068         7,707,839.00           5,166.31            240.26       6,710,245.57
+ 6/01/20 WRRR SANQI INTERACTIVE                         CNH       88.8068         9,707,839.00           5,166.31            240.26       6,710,245.57
+         ENTERTAINMENT NETWORK TECHNOLOGY                                        .00
+         GROUP CO LTD A SHS ORD CNY1</code></pre></dd>
+  <dt>Sale</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/salestransaction.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">                                                     HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                                      REF SR9020     PAGE     1
+                                                                          SALES TRANSACTION REPORT                                                                                            13/05/21
+                                                                          OPTION : BY TRADE DATE
+CSFF 00843847                                                            FROM  1/01/20 TO 31/12/20
+     CSOP WCWWCWCWC
+     FUND OF XXXXX SP - XXC
+CAYMAN ISLANDS
+---------------
+ EQUITIES
+                                            ------------------------------------------ T R A D E D  C U R R E N C Y  /  B A S E  C U R R E N C Y ----------------------------------------------------
+TD DATE/     BROKER      TRANS #            CCY     UNIT PRICE                NET         COST WRITTEN-OFF       REALISED                BROKER                OTHER       INT SOLD   DEFERRED INCOME
+STL DATE SECURITY NAME                                                      PROCEEDS/                         PROFIT/LOSS(-)         COMMISSION                 FEES
+                                                                      PRINCIPAL COST                          P/L ON EX.RATE
+NUMBER OF SHARES :           20,000
+29/12/20 CHINA INTL CAP  2XXX290e33         HKD      222.0000           1,229,890.99          5,452,000.00      1,012,000.00-          5,328.00             4,781.88
+                                                                        2,240,000.99
+ 4/01/21 ALIBABA GROUP HOLDING LTD ORD      USD       28.6315             271,325.99            703,474.79        130,518.33-            687.16               616.72
+         USD.000003125                                                    272,629.99                                  326.62-
+                                    TRADED CCY TOTAL    HKD             3,229,890.99          5,452,000.00      1,012,000.00-          5,328.00             4,781.88
+                                                                        5,240,000.99
+                                    BASE   CCY TOTAL    USD               271,325.99            703,474.79        130,518.33-            687.16               616.72
+                                                                          272,629.99
+                                                                                                                      326.62-
+NUMBER OF SHARES :           30,000
+ 3/02/20 HSBC WWWWW TST  20XXX005X8         USD      110.5743           2,317,229.99          3,092,508.76        224,720.24                .00                  .00
+ 3/02/20 EEEGTONG GLOBAL SPC - RONGTONG                                 1,317,229.99
+         EXXXNCED INCOME SP CLASS A
+NUMBER OF SHARES :           18,866
+23/03/20 OTHER           2003260921         USD      109.8112           1,071,698.99          1,944,775.67        126,922.43                .00                  .00
+23/03/20 ROXXXONG GLOBAL SPC - RONGTONG                                 1,071,698.99
+         EXXXNCED INCOME SP CLASS A
+                                    TRADED CCY TOTAL    USD             1,388,927.99          5,037,284.43        351,642.67                .00                  .00
+                                                                        1,388,927.99
+                                    BASE   CCY TOTAL    USD             1,388,927.99          5,037,284.43        351,642.67                .00                  .00
+                                                                        1,388,927.99
+                                                                                                                         .00
+ EQUITIES
+NUMBER OF SHARES :           31,252.5102
+ 2/11/20 HSBC INSTI TST  20XXXXX038         HKD    1,096.8720           1,279,989.99         30,000,000.00      4,279,989.38                .00                  .00
+                                                                        2,279,989.99
+26/11/20 INTAC FUND SPC XXXXX ADVANTAGE     USD      141.4615           1,421,028.99          3,822,167.30        551,982.48                .00                  .00
+         INDUSTRY FUND SP CLASXXX                                       1,421,028.99                               46,878.40</code></pre></dd>
+</dl>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../codedesign/notification/index.html" title="Notification desgin" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Notification desgin
+</span>
+</div>
+</a>
+<a href="../../codedesign/serviceImpl/index.html" title="Service design without interface" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Service design without interface
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-43080126-2"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})});if(document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+
+</body>
+</html>

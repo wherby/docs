@@ -60,4 +60,17 @@ This is the introduction for doradilla library.
 * [Refactor code](presentationlayer/index.md)
 
 * [Refine code with function programming](coderefineusingfp/index.md)
+
+* [Scala traps](traps/index.md)
+
+* [Allocate mem failed in docker](alloctMemFail/index.md)
+
+* [Extractor design](extractorDesign/index.md)
+
+* [Bugs](bugs/index.md)
+
+* [Code design](codedesign/index.md)
+
+* [Python](python/enclosure/index.md)
+* [Issues](issues/index.md)
 @@@

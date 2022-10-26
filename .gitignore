@@ -12,6 +12,7 @@ tempdata
 /logs
 /sbt-dist
 .DS_Store
+.vscode
 conf/server
 
 #### for eclipse ####

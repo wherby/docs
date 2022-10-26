@@ -1,0 +1,49 @@
+Hi Penny,
+
+Yes, the issue is caused by the notification of global mapping rule change. The email need to send specified approver/reviewer.  The bug will be fix ASAP.
+
+Thanks
+Steven
+
+
+From: "Penny XX Wei  
+Date: Tuesday, April 20, 2021 at 10:46 AM
+To: "Steven T Zhou 
+Subject: FW: PFIC system notification
+
+Hi Steven,
+
+Please find below feedback from our team member.  Could you please check if there is any update to email notification since we update the setting to approver of mapping rules?
+
+Best regards,
+Penny
+
+From: Sara 
+Sent: 19 April 2021 23:21
+To: Penny XX Wei 
+Subject: FW: PFIC system notification
+
+Hi Penny –  lots of our team members received the below email but no outstanding tasks showed up upon log-in. I assume no action needs to be done but just FYI, in case some changes in the setting can be done to prevent mass email from sending out.
+
+From: Penny *** Chan
+Sent: Monday, April 19, 2021 11:12 PM
+To: Sara
+Subject: FW: PFIC system notification
+
+Hi Sara – not sure what this is…
+
+
+From: pfic-no-reply@cn.pwc.com <pfic-no-reply@cn.pwc.com>
+Sent: Monday, April 19, 2021 5:45 PM
+To: Penny *** Chan 
+Subject: PFIC system notification
+
+Dear user,
+There are some pending tasks for you in PFIC platform.
+
+Please login to PFIC platform to view the tasks via the link below:
+
+https://digitalpfictesting.pwchk.com
+Thanks
+
+ 
