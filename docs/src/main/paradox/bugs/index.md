@@ -36,4 +36,5 @@
 * [Statistics load issue](loadIssue2/index.md)
 * [Initial crash](initialCrash/index.md)
 * [Debug cidr python processor](debugcidr/index.md)
+* [Task failure](taskFailure/index.md)
 @@@

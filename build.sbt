@@ -33,15 +33,19 @@ lazy val root = (project in file("."))
     name := """document""",
     organization := "io.github.wherby",
     version := "1.0-SNAPSHOT",
-    scalaVersion := "2.13.1",
+    scalaVersion := "2.13.3",
     libraryDependencies ++= Seq(
       guice,
       "com.digitaltangible" %% "play-guard" % "2.5.0",
-      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
+      // For async
+      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
     ),
     scalacOptions ++= Seq(
       "-feature",
       "-deprecation",
-      "-Xfatal-warnings"
+      "-Xfatal-warnings",
+      "-Xasync",
     )
   )

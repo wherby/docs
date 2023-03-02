@@ -30,15 +30,16 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * a path of `/`.
    */
   def index() = rateAction { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())
+    //Ok(views.html.index())
+    Ok("running")
   }
   
-  def explore() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.explore())
-  }
-  
-  def tutorial() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.tutorial())
-  }
+//  def explore() = Action { implicit request: Request[AnyContent] =>
+//    Ok(views.html.explore())
+//  }
+//
+//  def tutorial() = Action { implicit request: Request[AnyContent] =>
+//    Ok(views.html.tutorial())
+//  }
   
 }
