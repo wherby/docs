@@ -26,5 +26,9 @@ object AsyncSerialMap extends App {
   Thread.sleep(1000)
 }
 
-
+/*
+[Serial] exec f1 first though it sleep some time.
+[Serial] exec f2 second.
+serial result:f1 and f2
+ */
 

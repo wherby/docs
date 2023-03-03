@@ -27,3 +27,9 @@ object AsyncParallelMap extends App {
   }
   Thread.sleep(2000)
 }
+
+/*
+[parallel] exec f2 second.
+[parallel] exec f1 second as it sleep some time.
+parallel result:f1 and f2
+ */

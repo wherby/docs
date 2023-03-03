@@ -28,3 +28,9 @@ object ParallelFutureMap extends App {
   }
   Thread.sleep(1000)
 }
+
+/*
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Parallel result:f1 and f2
+ */
