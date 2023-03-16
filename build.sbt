@@ -11,7 +11,7 @@ lazy val docs = (project in file("docs")).
   //paradoxTheme := Some(builtinParadoxTheme("generic")),
   paradoxIllegalLinkPath := raw".*\\.md".r,
  Compile / paradoxMaterialTheme ~= {
-   _.withGoogleAnalytics("UA-43080126-2") // Remember to change this!
+   _.withGoogleAnalytics("G-LVLRXPE9ZP") // Remember to change this!
  },
  Compile / paradoxMaterialTheme ~= {
    ParadoxMaterialTheme()
