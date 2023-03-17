@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../assets/images/favicon.png">
+<title>How to structure a extractor process. · Docs</title>
+<link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../lib/prettify/prettify.css">
+<script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+How to structure a extractor process.
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../future/index.html" class="page">Future value</a></li>
+  <li><a href="../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../react/index.html" class="page">React web render</a></li>
+  <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../extractorDesign/index.html" class="active page">How to structure a extractor process.</a></li>
+  <li><a href="../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
+  </ul></li>
+  <li><a href="../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+  </ul></li>
+  <li><a href="../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../extractorDesign/index.html#how-to-structure-a-extractor-process-" class="header">How to structure a extractor process.</a>
+  <ul>
+    <li><a href="../extractorDesign/index.html#using-oo-design" class="header">Using OO design</a></li>
+    <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
+    <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
+    <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
+    <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
+    <li><a href="../extractorDesign/index.html#bug-in-processor-design" class="header">Bug in processor design</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../extractorDesign/index.html#how-to-structure-a-extractor-process-" class="header">How to structure a extractor process.</a>
+  <ul>
+    <li><a href="../extractorDesign/index.html#using-oo-design" class="header">Using OO design</a></li>
+    <li><a href="../extractorDesign/index.html#another-way-of-design" class="header">Another way of design</a></li>
+    <li><a href="../extractorDesign/index.html#how-to-compare-the-two-ways" class="header">How to compare the two ways</a></li>
+    <li><a href="../extractorDesign/index.html#pdf-different-type" class="header">PDF different type</a></li>
+    <li><a href="../extractorDesign/index.html#remove-duplicated-code-using-function-programming" class="header">Remove duplicated code using function programming</a></li>
+    <li><a href="../extractorDesign/index.html#bug-in-processor-design" class="header">Bug in processor design</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#how-to-structure-a-extractor-process-" name="how-to-structure-a-extractor-process-" class="anchor"><span class="anchor-link"></span></a>How to structure a extractor process.</h1>
+<h2><a href="#using-oo-design" name="using-oo-design" class="anchor"><span class="anchor-link"></span></a>Using OO design</h2>
+<dl>
+  <dt>Caller method</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/caller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.File
+
+val genevaExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+  Seq(&quot;Trial Balance&quot;) -&gt; (new TrialBalanceExcelReportProcessor, TrialBalanceReportConfig.extractorConfig),
+  Seq(&quot;Detailed General Ledger&quot;) -&gt; (new DetailedGeneralLedgerExcelReportProcessor, DetailedGeneralLedgerReportConfig.extractorConfig),
+  Seq(&quot;Position Appraisal Report&quot;) -&gt; (new PositionAppraisalReportProcessor, PositionAppraisalReportConfig.extractorConfig),
+  Seq(&quot;Cash Appraisal Report&quot;) -&gt; (new CashAppraisalReportProcessor, CashAppraisalReportConfig.extractorConfig),
+  Seq(&quot;Purchase and Sale Transaction Report&quot;) -&gt; (new PurchaseAndSaleTransactionReportProcessor, PurchaseAndSaleTransactionReportConfig.extractorConfig),
+  Seq(&quot;Dividends Detail Report&quot;) -&gt; (new DividendsDetailReportProcessor, DividendsDetailReportConfig.extractorConfig),
+  Seq(&quot;Realized Gain Loss Report&quot;) -&gt; (new RealisedGainLossReportProcessor, RealisedGainLossReportConfig.extractorConfig),
+  Seq(&quot;Realized Gain/Loss Report&quot;) -&gt; (new RealisedGainLossReportProcessor, RealisedGainLossReportConfig.extractorConfig)
+)
+
+
+def processGenevaFiles(request: Request[MultipartFormData[Files.TemporaryFile]], fundEngagement: FundEngagementData, fund: Fund): Result = {
+  request.body.file(&quot;file&quot;).map(file =&gt; {
+    ...
+    if (filenames.length &lt;= 1) {
+      encapErrorResponse(
+        play.api.mvc.Results.UnprocessableEntity,
+        ExtractionErrorCode.UNSUPPORTED_REPORT_TYPE_FILE_EXTENSION
+      )
+    } else {
+      ....
+      if (filenames.last == &quot;xls&quot;) {
+        methodName = &quot;readFileAndExtractToObjectForPeriod&quot;
+      } else {
+        methodName = &quot;readCSVFileAndExtractToObject&quot;
+      }
+      extractGenevaFileAndStoreDataInDB(content, fundEngagement, fund, targetFile.getPath, userEmail, methodName)
+    }
+  })
+    ...
+}
+
+def extractGenevaFileAndStoreDataInDB(content: String, fundEngagement: FundEngagementData, fund: Fund, targetFilePath: String, userEmail: String, methodName: String): Result = {
+  //filter the extractorMap with report header
+  val someExtractor = genevaExtractorMap.find((kv) =&gt; {
+    kv._1.map(k =&gt; content.contains(k)).reduce(_ &amp;&amp; _)
+  })
+  someExtractor.map((kv) =&gt; {
+    val periodStart = fund.auditPeriodBegin
+    val periodEnd = fund.auditPeriodEnd
+    val paras = List(targetFilePath, kv._2._2, fund.name, periodStart, periodEnd)
+    val result = doraServer.runProcess(paras, kv._2._1.getClass.getCanonicalName.stripSuffix(&quot;$&quot;), methodName)
+    val newStorage = Await.result(result, ConstVar.ProcessJobWaitTime seconds)
+      ....
+  })
+}</code></pre></dd>
+</dl>
+<p>Process design using OO</p>
+<dl>
+  <dt>PositionAppraisalReportProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
+
+import java.io.FileOutputStream
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.TimeZone
+
+import com.pwc.ds.awm.component.safelogger.SafeLogger
+import com.pwc.ds.awm.const.ExtractionErrorCode
+import com.pwc.ds.awm.processor.date2UTCLocalDate
+import com.pwc.ds.awm.processor.exceptions.{ExtractionError, ExtractionException}
+import com.pwc.ds.awm.processor.generateEGA.basicReport.GenevaSingleEGAStorage
+import com.pwc.ds.awm.processor.reportconfigs.extractorschema.{BlockConfig, ColumnConfig, ExtractorConfig, TableConfig}
+import com.pwc.ds.awm.processor.singleegarow.PositionRow
+import org.apache.poi.ss.usermodel.CellStyle
+import org.apache.poi.xssf.usermodel.XSSFSheet
+import play.api.Logger
+
+import scala.collection.Map
+import scala.util.control.Breaks.{break, breakable}
+
+class PositionAppraisalReportProcessor extends BaseExcelReportProcessor {
+
+  override  def outputTableBodyRowIntoObjectForPeriod(tableHeaderColumns: Seq[Seq[ColumnConfig]], bodyBlocks: Seq[BlockConfig], lineBreaker: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date, fileStartDate: LocalDate, fileEndDate: LocalDate, isCSV: Boolean): Any = {
+    var newStorage = new GenevaSingleEGAStorage()
+
+    var regex = &quot;\\|&quot;
+    if(isCSV) {
+      regex = &quot;,(?=(?:[^\&quot;]*\&quot;[^\&quot;]*\&quot;)*[^\&quot;]*$)&quot;
+    }
+
+    if(fileEndDate.isBefore(date2UTCLocalDate(frontEndPeriodStart))){
+      throw ExtractionException(&quot;Report date found to be outside the audit period!&quot;)
+    } else if (!date2UTCLocalDate(frontEndPeriodStart).isAfter(fileEndDate) &amp;&amp; !fileEndDate.isAfter(date2UTCLocalDate(frontEndPeriodEnd))){
+      var positionRows: Seq[Map[String, String]] = Seq()
+
+      for (block &lt;- bodyBlocks) {
+        var positionRow: Map[String, String] = Map()
+
+        var blocklines = block.content.split(regex, -1);
+        var headerLine = tableHeaderColumns(0);
+        positionRow = fillPositionRow(blocklines, headerLine)
+
+        if (positionRow != null &amp;&amp; !positionRow.isEmpty)
+          positionRows = positionRows :+ positionRow
+      }
+      newStorage.positionAppraisalReportPositionData = positionRows
+    }else if (fileEndDate.isAfter(date2UTCLocalDate(frontEndPeriodEnd))) {
+      throw ExtractionError(ExtractionErrorCode.AUDIT_PERIOD_MISMATCH)
+    }
+    newStorage
+  }
+
+  def fillPositionRow(bodyLineList: Seq[String], headerLine: Seq[ColumnConfig]): Map[String, String] = {
+    var positionRow = PositionRow.createPositionRowMap()
+    for (headerColumnNum &lt;- 0 until headerLine.length) {
+      var cellValue = bodyLineList(headerColumnNum)
+      if(cellValue.startsWith(&quot;\&quot;&quot;)) {
+        cellValue = cellValue.replace(&quot;\&quot;&quot;, &quot;&quot;)
+      }
+      headerLine(headerColumnNum).title match {
+        case &quot;Portfolio&quot; =&gt; {positionRow.put(PositionRow.Group1, cellValue); positionRow.put(PositionRow.Portfolio, cellValue)}
+        case &quot;Investment Type&quot;=&gt;positionRow.put(PositionRow.Group2, cellValue)
+        case &quot;Security ID&quot; =&gt; positionRow.put(PositionRow.InvestID, cellValue)
+        case &quot;Investment&quot; =&gt; positionRow.put(PositionRow.Description, cellValue)
+        case &quot;Quantity&quot; =&gt; positionRow.put(PositionRow.Quantity, cellValue)
+        case &quot;Local Market Price&quot; =&gt; positionRow.put(PositionRow.MarketPrice, cellValue)
+        case &quot;Current Book Cost&quot; =&gt; positionRow.put(PositionRow.CostBook, cellValue)
+        case &quot;Local Market Value&quot; =&gt; positionRow.put(PositionRow.MarketValueLocal, cellValue)
+        case &quot;Book Market Value&quot; =&gt; positionRow.put(PositionRow.MarketValueBook, cellValue)
+        case &quot;Book Unrealized Gain/Loss&quot; =&gt; positionRow.put(PositionRow.UnrealizedGainOrLoss, cellValue)
+        case &quot;% NAV&quot; =&gt; positionRow.put(PositionRow.PercentAssets, cellValue)
+        case &quot;Sedol&quot; =&gt; positionRow.put(PositionRow.Sedol, cellValue)
+        case &quot;Isin&quot; =&gt; positionRow.put(PositionRow.ISIN, cellValue)
+        case &quot;Ticker&quot; =&gt; positionRow.put(PositionRow.Ticker, cellValue)
+        case &quot;Exchange Rate&quot; =&gt; {positionRow.put(PositionRow.FXRate, cellValue); positionRow.put(PositionRow.FXRate2, cellValue)}
+        case &quot;Long/Short&quot; =&gt; positionRow.put(PositionRow.LongShort, cellValue)
+        case &quot;Currency&quot; =&gt; positionRow.put(PositionRow.Currency, cellValue)
+        case &quot;Custodian&quot; =&gt; positionRow.put(PositionRow.Custodian, cellValue)
+        case &quot;Security Exchange Listing&quot; =&gt; positionRow.put(PositionRow.SecurityExchangeListing, cellValue)
+        case _ =&gt; {}
+      }
+    }
+    positionRow
+  }
+
+  override def outputExcelTableBodyRow(sheet: XSSFSheet, bodyBlocks: Seq[BlockConfig], cellStyle: CellStyle): Unit = {
+    var rowNum = 1
+    for(block &lt;- bodyBlocks){
+      var row = sheet.createRow(rowNum);
+      var blockLine = block.content;
+      var bodyLineList = blockLine.split(&quot;\\|&quot;, -1)
+      row.createCell(0).setCellValue(bodyLineList(0))
+      row.createCell(1).setCellValue(bodyLineList(28))
+      row.createCell(2).setCellValue(bodyLineList(9))
+      row.createCell(3).setCellValue(bodyLineList(0))
+      row.createCell(4).setCellValue(bodyLineList(8))
+      val cell = row.createCell(5)
+      if(bodyLineList(16) != &quot;&quot;){
+        cell.setCellValue(bodyLineList(16).toDouble)
+      }else {
+        cell.setCellValue(bodyLineList(16))
+      }
+      val cell2 = row.createCell(6)
+      if(bodyLineList(17) != &quot;&quot;){
+        cell2.setCellValue(bodyLineList(17).toDouble)
+      }else{
+        cell2.setCellValue(bodyLineList(17))
+      }
+      val cell3 = row.createCell(7)
+      if(bodyLineList(21) != &quot;&quot;){
+        cell3.setCellValue(bodyLineList(21).toDouble)
+      }else{
+        cell3.setCellValue(bodyLineList(21))
+      }
+      val cell4 = row.createCell(8)
+      if(bodyLineList(20) != &quot;&quot;){
+        cell4.setCellValue(bodyLineList(20).toDouble)
+      }else{
+        cell4.setCellValue(bodyLineList(20))
+      }
+      val cell5 = row.createCell(9)
+      if(bodyLineList(22) != &quot;&quot;){
+        cell5.setCellValue(bodyLineList(22).toDouble)
+      }else{
+        cell5.setCellValue(bodyLineList(22))
+      }
+      val cell6 = row.createCell(10)
+      if(bodyLineList(23) != &quot;&quot;){
+        cell6.setCellValue(bodyLineList(23).toDouble)
+      }else{
+        cell6.setCellValue(bodyLineList(23))
+      }
+      val cell7 = row.createCell(11)
+      if(bodyLineList(25) != &quot;&quot;){
+        cell7.setCellValue(bodyLineList(25).toDouble)
+      }else{
+        cell7.setCellValue(bodyLineList(25))
+      }
+      row.createCell(12).setCellValue(&quot;N/A&quot;)
+      row.createCell(13).setCellValue(&quot;N/A&quot;)
+      row.createCell(14).setCellValue(bodyLineList(11))
+      row.createCell(15).setCellValue(bodyLineList(12))
+      row.createCell(16).setCellValue(bodyLineList(14))
+      val cell8 = row.createCell(17)
+      if(bodyLineList(34) != &quot;&quot;){
+        cell7.setCellValue(bodyLineList(34).toDouble)
+      }else{
+        cell7.setCellValue(bodyLineList(34))
+      }
+      row.createCell(18).setCellValue(bodyLineList(4))
+      row.createCell(19).setCellValue(bodyLineList(7))
+      row.createCell(20).setCellValue(bodyLineList(5))
+      row.createCell(21).setCellValue(bodyLineList(27))
+      val cell9 = row.createCell(22)
+      if(bodyLineList(34) != &quot;&quot;){
+        cell7.setCellValue(bodyLineList(34).toDouble)
+      }else{
+        cell7.setCellValue(bodyLineList(34))
+      }
+
+      rowNum = rowNum + 1;
+    }
+  }
+}</code></pre></dd>
+  <dt>BaseExcelReportProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseExcelReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
+
+import java.io.{File, FileInputStream, FileOutputStream}
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.TimeZone
+
+import com.pwc.ds.awm.component.safelogger.SafeLogger
+import com.pwc.ds.awm.processor.exceptions.ExtractionException
+import com.pwc.ds.awm.processor.generateEGA.basicReport.GenevaSingleEGAStorage
+import com.pwc.ds.awm.processor.reportconfigs.extractorschema.{BlockConfig, ColumnConfig, ExtractorConfig}
+import com.pwc.ds.awm.processor.{BaseReportProcessor, date2UTCLocalDate}
+import org.apache.commons.lang.StringUtils
+import org.apache.poi.hssf.usermodel.{HSSFDateUtil, HSSFWorkbook}
+import org.apache.poi.ss.usermodel.{CellStyle, CellType, DateUtil, Row}
+import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
+import play.api.Logger
+
+import scala.util.control.Breaks.{break, breakable}
+
+class BaseExcelReportProcessor extends BaseReportProcessor{
+
+  val excelFormatter = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;)
+  val csvFormatter = new SimpleDateFormat(&quot;MM-dd-yyyy&quot;)
+  val outputFormatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;)
+
+  override def extractToObjectForPeriod (sourceFilePath: String, frontEndFundName: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date): Any = {
+
+    val inputStream = new FileInputStream(new File(sourceFilePath))
+    val workbook = new HSSFWorkbook(inputStream)
+
+    var sheetIterator = workbook.sheetIterator()
+    var hasReportFound = false
+
+    var isHeader = true
+    var isTableHeader = true
+
+    var newStorage: Any = new GenevaSingleEGAStorage()
+    var tableHeaderColumns = reportConfig.tableConfig.tableBodyConfig
+    var headerList = tableHeaderColumns(0);
+    var headerNum = headerList.length
+
+    var reportHeaders = Seq[String]()
+    var tableHeaders = Seq[String]()
+    var tablebodies = Seq[BlockConfig]()
+
+    while(sheetIterator.hasNext){
+      var sheet = sheetIterator.next()
+      var lastIndex = -1
+      var rowIterator = sheet.rowIterator()
+      while(rowIterator.hasNext){
+        var row = rowIterator.next()
+        var index = row.getRowNum
+        if(index != lastIndex +1){
+          isHeader =false
+        }
+        lastIndex = index
+        if(checkIfRowIsEmpty(row)){
+          isHeader = false
+        }
+        if(reportHeaders.contains(&quot;Dividends Detail Report:&quot;)){
+          if(row.getCell(0).getStringCellValue == &quot;Portfolio&quot;){
+            isHeader = false
+          }
+        }
+        if(isHeader){
+          reportHeaders = reportHeaders :+ getReportHeader(row)
+        }else{
+          if(isTableHeader){
+            var nextRow = rowIterator.next()
+            if(!checkIfRowIsEmpty(nextRow)){
+              tableHeaders = getTableHeaders(row, headerNum)
+              isTableHeader = false
+            }else{
+              tableHeaders = getTableHeaders(rowIterator.next(), headerNum)
+              isTableHeader = false
+            }
+          }else{
+            if(!checkIfRowIsEmpty(row)){
+              tablebodies = tablebodies :+ getTableContent(row, headerNum)
+            }
+          }
+        }
+      }
+      var reportHeadersWithContent = reportHeaders.filter(header =&gt; {
+        header.trim.length &gt; 0
+      })
+      var tableHeadersWithContent = tableHeaders.filter(header =&gt; {
+        header.trim.length &gt; 0
+      })
+      if(tablebodies.length == 0) {
+        throw ExtractionException(&quot;File contains 0 records, please check your file and upload again.&quot;)
+      }
+      if(reportHeadersWithContent.contains(&quot;Report Type: Receivable Summary:&quot;)){
+        throw ExtractionException(&quot;Please upload Dividends Detail Report in income summary format.&quot;)
+      }
+      if (reportHeadersWithContent.length &gt; 0) {
+        hasReportFound = true
+
+        //verify whether the uploaded excel is valid
+        import java.text.SimpleDateFormat
+        var formatter = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;)
+        formatter.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;))
+        var excelPeriodStartStrList = Seq[String]()
+        var excelPeriodStartDate = &quot;&quot;
+        var excelPeriodEndStrList = Seq[String]()
+        var excelPeriodEndDate = &quot;&quot;
+        var fileStartDate = LocalDate.now()
+        var fileEndDate = LocalDate.now()
+        breakable{
+          for(i &lt;-0 to reportHeadersWithContent.length-1){
+            if(reportHeadersWithContent(i).contains(&quot;Period Start Date&quot;)) {
+              excelPeriodStartStrList = reportHeadersWithContent(i).split(&quot;:&quot;)
+              excelPeriodStartDate = excelPeriodStartStrList(1)
+              fileStartDate = date2UTCLocalDate(formatter.parse(excelPeriodStartDate))
+            }
+            if(reportHeadersWithContent(i).contains(&quot;Period End Date&quot;)){
+              excelPeriodEndStrList = reportHeadersWithContent(i).split(&quot;:&quot;)
+              excelPeriodEndDate = excelPeriodEndStrList(1)
+              fileEndDate = date2UTCLocalDate(formatter.parse(excelPeriodEndDate))
+              break()
+            }
+          }
+        }
+
+        newStorage = outputTableBodyRowIntoObjectForPeriod(tableHeaderColumns, tablebodies, this.lineBreaker, frontEndPeriodStart, frontEndPeriodEnd, fileStartDate, fileEndDate, false)
+      }
+    }
+    if (!hasReportFound) {
+      SafeLogger.logString(Logger, s&quot;No report found for fund ${frontEndFundName} in period ${frontEndPeriodStart} ${frontEndPeriodEnd}&quot;)
+    }
+    newStorage
+  }
+
+  def getReportHeader(row: Row): String = {
+    var reportHeader = &quot;&quot;
+    val cellIterator = row.cellIterator()
+    while(cellIterator.hasNext){
+      var cell = cellIterator.next()
+      cell.getCellType match {
+        case CellType.NUMERIC =&gt; reportHeader = reportHeader + cell.getNumericCellValue + &quot;:&quot;
+        case CellType.STRING =&gt; reportHeader = reportHeader + cell.getStringCellValue + &quot;:&quot;
+        case _ =&gt; {}
+      }
+    }
+    reportHeader
+  }
+  def getTableHeaders(row: Row, headerNum: Int): Seq[String] = {
+    var tableHeaders = Seq[String]()
+
+    for(cn &lt;- 0 to headerNum-1) {
+      var cell = row.getCell(cn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+      cell.getCellType() match {
+        case CellType.STRING =&gt; {tableHeaders = tableHeaders :+ cell.getStringCellValue}
+        case CellType.BOOLEAN =&gt; {tableHeaders = tableHeaders :+ cell.getBooleanCellValue.toString}
+        case CellType.NUMERIC =&gt; {tableHeaders = tableHeaders :+ cell.getNumericCellValue.toString}
+        case CellType.BLANK =&gt; {
+          if(cn == headerNum-1){
+            tableHeaders = tableHeaders :+ &quot;null&quot;
+          } else {
+            tableHeaders = tableHeaders :+ &quot;&quot;
+          }
+        }
+      }
+    }
+    tableHeaders
+  }
+
+  def getTableContent(row: Row, headerNum: Int): BlockConfig = {
+    var rowValues = Seq[String]()
+
+    for(cn &lt;- 0 to headerNum-1) {
+      var cell = row.getCell(cn, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+      cell.getCellType() match {
+        case CellType.STRING =&gt; {rowValues = rowValues :+ cell.getStringCellValue}
+        case CellType.BOOLEAN =&gt; {rowValues = rowValues :+ cell.getBooleanCellValue.toString}
+        case CellType.NUMERIC =&gt; {
+          if (DateUtil.isCellDateFormatted(cell)) {
+            rowValues = rowValues :+ excelFormatter.format(cell.getDateCellValue)
+          } else {
+            rowValues = rowValues :+ cell.getNumericCellValue.toString
+          }
+        }
+        case CellType.BLANK =&gt; {
+          if(cn == headerNum-1){
+            rowValues = rowValues :+ &quot;null&quot;
+          } else {
+            rowValues = rowValues :+ &quot;&quot;
+          }
+        }
+      }
+    }
+
+    BlockConfig(rowValues.mkString(&quot;|&quot;))
+  }
+
+  def checkIfRowIsEmpty(row: Row): Boolean = {
+    if(row == null) {
+      return true
+    }
+    if(row.getLastCellNum &lt;= 0){
+      return true
+    }
+    val cellIterator = row.cellIterator()
+    while(cellIterator.hasNext){
+      val cell = cellIterator.next()
+      if(cell != null &amp;&amp; cell.getCellTypeEnum() != CellType.BLANK &amp;&amp; StringUtils.isNotBlank(cell.toString())){
+        return false
+      }
+    }
+    true
+  }
+
+  def outputTableBodyRowIntoObjectForPeriod(tableHeaderColumns: Seq[Seq[ColumnConfig]], bodyBlocks: Seq[BlockConfig], lineBreaker: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date, fileStartDate: LocalDate, fileEndDate: LocalDate, isCSV: Boolean): Any = {
+    new GenevaSingleEGAStorage()
+  }
+
+  override def extractToExcel(sourceFilePath: String): XSSFWorkbook = {
+    val workbook = new XSSFWorkbook()
+
+    val cellStyle = workbook.createCellStyle
+    val createHelper = workbook.getCreationHelper
+    cellStyle.setDataFormat(createHelper.createDataFormat.getFormat(&quot;MM/dd/yyyy&quot;))
+
+    val inputStream = new FileInputStream(new File(sourceFilePath))
+    val workbookSource = new HSSFWorkbook(inputStream)
+
+    var sheetIterator = workbookSource.sheetIterator()
+
+    var isHeader = true
+    var isTableHeader = true
+
+    var tableHeaderColumns = reportConfig.tableConfig.tableBodyConfig
+    var headerList = tableHeaderColumns(0);
+    var headerNum = headerList.length
+
+    var reportHeaders = Seq[String]()
+    var tableHeaders = Seq[String]()
+    var tablebodies = Seq[BlockConfig]()
+    while(sheetIterator.hasNext) {
+      var sheet = sheetIterator.next()
+      var rowIterator = sheet.rowIterator()
+      while (rowIterator.hasNext) {
+        var row = rowIterator.next()
+        if (checkIfRowIsEmpty(row)) {
+          isHeader = false
+        }
+        if (isHeader) {
+          reportHeaders = reportHeaders :+ getReportHeader(row)
+        } else {
+          if (isTableHeader) {
+            var nextRow = rowIterator.next()
+            if(!checkIfRowIsEmpty(nextRow)){
+              tableHeaders = getTableHeaders(nextRow, headerNum)
+              isTableHeader = false
+            }else{
+              tableHeaders = getTableHeaders(rowIterator.next(), headerNum)
+              isTableHeader = false
+            }
+          } else {
+            tablebodies = tablebodies :+ getTableContent(row, headerNum)
+          }
+        }
+      }
+      var reportHeadersWithContent = reportHeaders.filter(header =&gt; {
+        header.trim.length &gt; 0
+      })
+      var tableHeadersWithContent = tableHeaders.filter(header =&gt; {
+        header.trim.length &gt; 0
+      })
+    }
+
+    var reportName = reportConfig.reportType
+    var bodySheet = workbook.createSheet(reportName)
+    outputExcelTableHeaderRow(bodySheet, tableHeaderColumns)
+    outputExcelTableBodyRow(bodySheet, tablebodies, cellStyle)
+    workbook
+  }
+
+  def outputExcelTableHeaderRow(sheet: XSSFSheet, tableHeaderColumns: Seq[Seq[ColumnConfig]]):Unit = {
+
+    var rowNum = 0
+    var row = sheet.createRow(rowNum);
+
+    reportConfig.reportType match {
+      case &quot;Trial balance&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;Group1&quot;)
+        row.createCell(1).setCellValue(&quot;Group2&quot;)
+        row.createCell(2).setCellValue(&quot;FinancialAccount_Detail&quot;)
+        row.createCell(3).setCellValue(&quot;Description_Detail&quot;)
+        row.createCell(4).setCellValue(&quot;OpeningBalance_Detail&quot;)
+        row.createCell(5).setCellValue(&quot;Debits_Detail&quot;)
+        row.createCell(6).setCellValue(&quot;Credits_Detail&quot;)
+        row.createCell(7).setCellValue(&quot;ClosingBalance_Detail&quot;)
+        row.createCell(8).setCellValue(&quot;Account name&quot;)
+        row.createCell(9).setCellValue(&quot;Balance&quot;)
+      }
+      case &quot;Detailed general ledger&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;BeginingBalanceDescription&quot;)
+        row.createCell(1).setCellValue(&quot;BeginingBalanceAmount&quot;)
+        row.createCell(2).setCellValue(&quot;Tran Date&quot;)
+        row.createCell(3).setCellValue(&quot;Tran ID&quot;)
+        row.createCell(4).setCellValue(&quot;Tran Description&quot;)
+        row.createCell(5).setCellValue(&quot;Investment&quot;)
+        row.createCell(6).setCellValue(&quot;Loc&quot;)
+        row.createCell(7).setCellValue(&quot;Currency&quot;)
+        row.createCell(8).setCellValue(&quot;Local Amount&quot;)
+        row.createCell(9).setCellValue(&quot;Book Amount&quot;)
+        row.createCell(10).setCellValue(&quot;Balance&quot;)
+        row.createCell(11).setCellValue(&quot;EndingBalanceDescription&quot;)
+        row.createCell(12).setCellValue(&quot;EndingBalanceAmount&quot;)
+      }
+      case &quot;Position appraisal report&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;Group1&quot;)
+        row.createCell(1).setCellValue(&quot;Group2&quot;)
+        row.createCell(2).setCellValue(&quot;InvestID&quot;)
+        row.createCell(3).setCellValue(&quot;Portfolio&quot;)
+        row.createCell(4).setCellValue(&quot;Description&quot;)
+        row.createCell(5).setCellValue(&quot;Quantity&quot;)
+        row.createCell(6).setCellValue(&quot;MarketPrice&quot;)
+        row.createCell(7).setCellValue(&quot;CostBook&quot;)
+        row.createCell(8).setCellValue(&quot;MarketValueLocal&quot;)
+        row.createCell(9).setCellValue(&quot;MarketValueBook&quot;)
+        row.createCell(10).setCellValue(&quot;UnrealizedGainOrLoss&quot;)
+        row.createCell(11).setCellValue(&quot;PercentAssets&quot;)
+        row.createCell(12).setCellValue(&quot;ExtendedDescription&quot;)
+        row.createCell(13).setCellValue(&quot;Description3&quot;)
+        row.createCell(14).setCellValue(&quot;Sedol&quot;)
+        row.createCell(15).setCellValue(&quot;ISIN&quot;)
+        row.createCell(16).setCellValue(&quot;Ticker&quot;)
+        row.createCell(17).setCellValue(&quot;FX rate&quot;)
+        row.createCell(18).setCellValue(&quot;Long/Short&quot;)
+        row.createCell(19).setCellValue(&quot;Currency&quot;)
+        row.createCell(20).setCellValue(&quot;Custodian&quot;)
+        row.createCell(21).setCellValue(&quot;Security Exchange Listing&quot;)
+        row.createCell(22).setCellValue(&quot;FX rate&quot;)
+      }
+      case &quot;Cash appraisal report&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;LongShortDescription&quot;)
+        row.createCell(1).setCellValue(&quot;GroupByInfo&quot;)
+        row.createCell(2).setCellValue(&quot;InvestDescription&quot;)
+        row.createCell(3).setCellValue(&quot;InvestID&quot;)
+        row.createCell(4).setCellValue(&quot;Quantity&quot;)
+        row.createCell(5).setCellValue(&quot;FXRate&quot;)
+        row.createCell(6).setCellValue(&quot;CostBook&quot;)
+        row.createCell(7).setCellValue(&quot;MarketValueBook&quot;)
+        row.createCell(8).setCellValue(&quot;BookUnrealizedGrainLoss&quot;)
+        row.createCell(9).setCellValue(&quot;percentInvest&quot;)
+        row.createCell(10).setCellValue(&quot;percentsign&quot;)
+        row.createCell(11).setCellValue(&quot;TB name&quot;)
+        row.createCell(12).setCellValue(&quot;PwC Mapping&quot;)
+      }
+      case &quot;Purchase and sale transaction report&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;TradeDate&quot;)
+        row.createCell(1).setCellValue(&quot;SettleDate&quot;)
+        row.createCell(2).setCellValue(&quot;TranType&quot;)
+        row.createCell(3).setCellValue(&quot;InvestID&quot;)
+        row.createCell(4).setCellValue(&quot;Investment&quot;)
+        row.createCell(5).setCellValue(&quot;CustodianAccount&quot;)
+        row.createCell(6).setCellValue(&quot;Quantity&quot;)
+        row.createCell(7).setCellValue(&quot;Price&quot;)
+        row.createCell(8).setCellValue(&quot;SEC&quot;)
+        row.createCell(9).setCellValue(&quot;LocalAmount&quot;)
+        row.createCell(10).setCellValue(&quot;BookAmount&quot;)
+        row.createCell(11).setCellValue(&quot;ContractDate&quot;)
+        row.createCell(12).setCellValue(&quot;TranID&quot;)
+        row.createCell(13).setCellValue(&quot;GenericInvestment&quot;)
+        row.createCell(14).setCellValue(&quot;Broker&quot;)
+        row.createCell(15).setCellValue(&quot;Trader&quot;)
+        row.createCell(16).setCellValue(&quot;Commission&quot;)
+        row.createCell(17).setCellValue(&quot;Expenses&quot;)
+        row.createCell(18).setCellValue(&quot;LocalCurrency&quot;)
+        row.createCell(19).setCellValue(&quot;TotalBookAmount&quot;)
+        row.createCell(20).setCellValue(&quot;Portfolio&quot;)
+        row.createCell(21).setCellValue(&quot;Fund Currency&quot;)
+        row.createCell(22).setCellValue(&quot;Long/Short&quot;)
+        row.createCell(23).setCellValue(&quot;Sedol&quot;)
+        row.createCell(24).setCellValue(&quot;ISIN&quot;)
+        row.createCell(25).setCellValue(&quot;Ticker&quot;)
+      }
+      case &quot;Dividends Detail Report&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;Sort&quot;)
+        row.createCell(1).setCellValue(&quot;Currency&quot;)
+        row.createCell(2).setCellValue(&quot;CustAccount&quot;)
+        row.createCell(3).setCellValue(&quot;Investment&quot;)
+        row.createCell(4).setCellValue(&quot;InvID&quot;)
+        row.createCell(5).setCellValue(&quot;TransID&quot;)
+        row.createCell(6).setCellValue(&quot;ExDate&quot;)
+        row.createCell(7).setCellValue(&quot;ExDateQuantity&quot;)
+        row.createCell(8).setCellValue(&quot;LocalDividendPerShareAmount&quot;)
+        row.createCell(9).setCellValue(&quot;WHTaxRate&quot;)
+        row.createCell(10).setCellValue(&quot;LocalGrossDividendIncExp&quot;)
+        row.createCell(11).setCellValue(&quot;LocalNetDividendIncExp&quot;)
+        row.createCell(12).setCellValue(&quot;LocalWHTax&quot;)
+        row.createCell(13).setCellValue(&quot;BookGrossDividendIncExp&quot;)
+        row.createCell(14).setCellValue(&quot;BookNetDividendIncExp&quot;)
+        row.createCell(15).setCellValue(&quot;BookWHTax&quot;)
+        row.createCell(16).setCellValue(&quot;PayDate&quot;)
+        row.createCell(17).setCellValue(&quot;LocalReclaim&quot;)
+        row.createCell(18).setCellValue(&quot;BookReclaim&quot;)
+        row.createCell(19).setCellValue(&quot;Sedol&quot;)
+        row.createCell(20).setCellValue(&quot;ISIN&quot;)
+        row.createCell(21).setCellValue(&quot;Ticker&quot;)
+        row.createCell(22).setCellValue(&quot;ISIN&quot;)
+        row.createCell(23).setCellValue(&quot;Ticker&quot;)
+        row.createCell(24).setCellValue(&quot;Investment&quot;)
+      }
+      case &quot;Realised Gain Loss report&quot; =&gt; {
+        row.createCell(0).setCellValue(&quot;Group1&quot;)
+        row.createCell(1).setCellValue(&quot;InvestmentCode&quot;)
+        row.createCell(2).setCellValue(&quot;CloseDate&quot;)
+        row.createCell(3).setCellValue(&quot;ClosingID&quot;)
+        row.createCell(4).setCellValue(&quot;TransactionType&quot;)
+        row.createCell(5).setCellValue(&quot;TaxLotDate&quot;)
+        row.createCell(6).setCellValue(&quot;TaxLotID&quot;)
+        row.createCell(7).setCellValue(&quot;TaxLotPrice&quot;)
+        row.createCell(8).setCellValue(&quot;ClosingPrice&quot;)
+        row.createCell(9).setCellValue(&quot;OriginalFace&quot;)
+        row.createCell(10).setCellValue(&quot;QuantityOrCurrentFace&quot;)
+        row.createCell(11).setCellValue(&quot;NetProceedsBook&quot;)
+        row.createCell(12).setCellValue(&quot;CostBook&quot;)
+        row.createCell(13).setCellValue(&quot;PriceGLBook&quot;)
+        row.createCell(14).setCellValue(&quot;FXGainLoss&quot;)
+        row.createCell(15).setCellValue(&quot;STCapitalGL&quot;)
+        row.createCell(16).setCellValue(&quot;LTCapitalGL&quot;)
+        row.createCell(17).setCellValue(&quot;OrdinaryIncome&quot;)
+        row.createCell(18).setCellValue(&quot;TotalGLBook&quot;)
+        row.createCell(19).setCellValue(&quot;NetProceedsLocal&quot;)
+        row.createCell(20).setCellValue(&quot;CostLocal&quot;)
+        row.createCell(21).setCellValue(&quot;PriceGLLocal&quot;)
+        row.createCell(22).setCellValue(&quot;Sedol&quot;)
+        row.createCell(23).setCellValue(&quot;ISIN&quot;)
+        row.createCell(24).setCellValue(&quot;Ticker&quot;)
+        row.createCell(25).setCellValue(&quot;Currency&quot;)
+      }
+      case _ =&gt; {}
+    }
+
+  }
+
+  def outputExcelTableBodyRow(sheet: XSSFSheet, bodyBlocks: Seq[BlockConfig], cellStyle: CellStyle):Unit = {}
+
+  def readCSVFileAndExtractToObject(sourceFilePath: String, extractorConfig: ExtractorConfig, fundEngagementId:String, auditPeriodBegin: Date, auditPeriodEnd: Date):Any = {
+    var ofstream: FileOutputStream = null
+    this.reportConfig = extractorConfig
+    //extract csv file
+    val newStorage = extractToObject(sourceFilePath, fundEngagementId, auditPeriodBegin, auditPeriodEnd)
+    newStorage
+  }
+
+  def extractToObject(sourceFilePath: String, frontEndFundName:String, auditPeriodBegin: Date, auditPeriodEnd: Date) = {
+    val content = fileReader.extractTextFromFile(sourceFilePath)
+    this.setLineBreaker(dataSanitizer.detectLinebreaker(content))
+
+    var hasReportFound = false
+    var newStorage: Any = new GenevaSingleEGAStorage()
+
+    var tableConfig = reportConfig.tableConfig
+    var (reportHeaders, tableHeaders, tablebodies): (String, String, Seq[BlockConfig]) = getReportDetails(content, tableConfig)
+
+    if(tablebodies.length == 0 || (tablebodies.length == 1 &amp;&amp; tablebodies(0).content == &quot;&quot;)) {
+      throw ExtractionException(&quot;File contains 0 records, please check your file and upload again.&quot;)
+    }
+    var headerStrList = reportHeaders.split(&quot;\r\n&quot;)
+    //verify whether the uploaded excel is valid
+    import java.text.SimpleDateFormat
+    var formatter = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;)
+    formatter.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;))
+    var excelPeriodStartStrList = Seq[String]()
+    var excelPeriodStartDate = &quot;&quot;
+    var excelPeriodEndStrList = Seq[String]()
+    var excelPeriodEndDate = &quot;&quot;
+    var fileStartDate = LocalDate.now()
+    var fileEndDate = LocalDate.now()
+    breakable{
+      for(i &lt;-0 to headerStrList.length-1){
+        if(headerStrList(i).contains(&quot;Period Start Date&quot;)) {
+          if(headerStrList(i).contains(&quot;,&quot;)) {
+            excelPeriodStartStrList = headerStrList(i).split(&quot;,&quot;)
+          } else if(headerStrList(i).contains(&quot;:&quot;)) {
+            excelPeriodStartStrList = headerStrList(i).split(&quot;:&quot;)
+          }
+          if(excelPeriodStartStrList.length &gt; 1) {
+            excelPeriodStartDate = excelPeriodStartStrList(1).replace(&quot;\&quot;&quot;, &quot;&quot;)
+            println(&quot;MG: excelPeriodStartDate IS&quot; + excelPeriodStartDate.substring(1, excelPeriodStartDate.length-1))
+            fileStartDate = date2UTCLocalDate(formatter.parse(excelPeriodStartDate))
+          }
+        }
+        if(headerStrList(i).contains(&quot;Period End Date&quot;)){
+          if(headerStrList(i).contains(&quot;,&quot;)) {
+            excelPeriodEndStrList = headerStrList(i).split(&quot;,&quot;)
+          } else if(headerStrList(i).contains(&quot;:&quot;)) {
+            excelPeriodEndStrList = headerStrList(i).split(&quot;:&quot;)
+          }
+          if(excelPeriodEndStrList.length &gt; 1) {
+            excelPeriodEndDate = excelPeriodEndStrList(1).replace(&quot;\&quot;&quot;, &quot;&quot;)
+            fileEndDate = date2UTCLocalDate(formatter.parse(excelPeriodEndDate))
+          }
+          break()
+        }
+      }
+    }
+
+    if(tableHeaders != &quot;&quot;){
+      hasReportFound = true
+      reportConfigGenerator.initiateTableHeaderStartIndex(tableHeaders, tableConfig.tableBodyConfig,this.lineBreaker)
+      newStorage = outputTableBodyRowIntoObjectForPeriod(tableConfig.tableBodyConfig, tablebodies, this.lineBreaker, auditPeriodBegin, auditPeriodEnd, fileStartDate, fileEndDate, true)
+    }
+    if(!hasReportFound){
+      SafeLogger.logString(Logger, s&quot;No report found for fund ${frontEndFundName} in period from ${new Date(auditPeriodBegin.getTime)} to ${new Date(auditPeriodEnd.getTime)}&quot;)
+    }
+
+    newStorage
+  }
+
+}</code></pre></dd>
+  <dt>BaseReportProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor
+
+import java.io.{File, FileOutputStream, IOException}
+import java.sql.Date
+import java.time.LocalDate
+import java.util.TimeZone
+import com.pwc.ds.awm.component.safelogger.SafeLogger
+import com.pwc.ds.awm.const.ExtractionErrorCode
+import com.pwc.ds.awm.processor.OutputMode.Type
+import com.pwc.ds.awm.processor.utils.{BaseFileReader, FileReader}
+import com.pwc.ds.awm.processor.reportconfigs.extractorschema._
+import com.pwc.ds.awm.processor._
+import com.pwc.ds.awm.processor.exceptions.{ExtractionError, ExtractionException}
+import com.pwc.ds.awm.processor.generateEGA.basicReport.SingleEGAStorage
+import org.apache.poi.xssf.usermodel.{XSSFSheet, XSSFWorkbook}
+import play.api.Logger
+
+import util.control.Breaks._
+
+
+abstract class BaseReportProcessor() extends AbstractProcessor {
+
+
+  var lineBreaker:String = &quot;&quot;
+
+  var reportConfig: ExtractorConfig = null
+  val outputExcel:BaseExcelOutput = new BaseExcelOutput;
+  val reportConfigGenerator: ReportConfigGenerator = new ReportConfigGeneratorImpl {}
+  val dataSanitizer:BaseDataSanitizerImpl = new BaseDataSanitizerImpl {}
+  val blockSeporator:BlockSeparatorImpl = new BlockSeparatorImpl {}
+  val fileReader = new FileReader
+
+  /**
+   * child class need to implement this function
+   * @param reportHeader
+   * @param lineBreaker
+   * @return
+   */
+  def outputTableBodyRowIntoMemory(tableHeaderColumns: Seq[Seq[ColumnConfig]], txtTableBodyPages: Seq[Seq[BlockConfig]], txtReportHeaders:Seq[String], lineBreaker:String) = {
+
+  }
+
+  def outputTableBodyRowIntoObjectForPeriod(tableHeaderColumns: Seq[Seq[ColumnConfig]], txtTableBodyPages: Seq[Seq[BlockConfig]], txtReportHeaders:Seq[String], lineBreaker:String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date):Any = {
+    new SingleEGAStorage()
+  }
+  /**
+   * child class need to implement this function
+   * @param reportHeader
+   * @param lineBreaker
+   * @return
+   */
+  def getFundName(reportHeader:String, lineBreaker:String):String = {
+    &quot;&quot;
+  }
+
+  /**
+   * child class need to implement this function
+   * @param reportHeader
+   * @param lineBreaker
+   * @return
+   */
+  def getReportYear(reportHeader:String, lineBreaker:String): Int = {
+    2018
+  }
+
+  def isReportYearValid(txtYear:Integer, frontEndYear:Integer):Boolean ={
+    return true
+  }
+
+  /**
+   * to decide if the fund name is same with the fund name from front end
+   * @param txtFundName
+   * @param frontEndFundName
+   * @return
+   */
+  def isFundNameValid(txtFundName:String, frontEndFundName:String):Boolean = {
+    txtFundName.trim.toUpperCase.contains(frontEndFundName.trim.toUpperCase())
+  }
+
+
+  def setLineBreaker(content: String) = {
+    this.lineBreaker = dataSanitizer.detectLinebreaker(content)
+  }
+
+  /**
+   * 1. remove the empty lines in the start or end of in the block content.
+   * 2. also replace dailytotal,grandtotal these words with whitespaces in case it affects the column span setting afterwards
+   *
+   * @param block
+   * @return
+   */
+  def organizeBlock(block: BlockConfig): BlockConfig ={
+
+    block.content = block.content.replaceAll(&quot;RESTRICTED\\.*&quot;,&quot;&quot;)
+    if(!dataSanitizer.isTableContent(block.content)){
+      block.blockType = BlockType.discard
+    }
+    else if(block.content.contains(BlockType.grandTotal.toString)){
+      block.content = block.content.replaceAll(BlockType.grandTotal.toString, &quot;           &quot;)
+      block.blockType = BlockType.grandTotal
+    }
+    var content = dataSanitizer.trimEmptyStartLines(block.content, lineBreaker)
+    content = dataSanitizer.trimEmptyEndLines(content, lineBreaker)
+    block.content = content
+    block
+  }
+
+
+  def extractToExcel(sourceFilePath: String): XSSFWorkbook = {
+
+    val workbook = new XSSFWorkbook()
+
+    val content = fileReader.extractTextFromFile(sourceFilePath)
+
+    this.setLineBreaker(dataSanitizer.detectLinebreaker(content))
+
+    var sheets:Array[String] = blockSeporator.splitContentIntoSheets(content);
+
+    for(sheetNum &lt;- 0 until sheets.length){
+
+      var sheetContent = sheets(sheetNum);
+
+      var pages:Array[String] = blockSeporator.splitContentIntoPages(sheetContent, this.lineBreaker) // the pages must contain word &quot;PAGE&quot;
+
+      var bodySheet = workbook.createSheet(&quot;result_&quot; + (sheetNum + 1))
+
+      var hasSummary = reportConfig.summaryConfig.isDefined
+      var summaries = getPageBlocksAndInputToExcel(bodySheet, pages, reportConfig.tableConfig, pages.length, hasSummary)
+
+
+      if(reportConfig.summaryConfig.isDefined &amp;&amp; summaries.filter(_.trim.length&gt;0).length &gt; 0){
+
+        var summaryConfig = reportConfig.summaryConfig.get
+        var summarySheet = workbook.createSheet(&quot;summary_for_report_&quot; + (sheetNum + 1))
+        getPageBlocksAndInputToExcel(summarySheet, summaries.toArray, summaryConfig, pages.length)
+      }
+
+    }
+    workbook
+  }
+
+  def extractToMemory(sourceFilePath: String, frontEndFundName:String, frontEndYear:Integer) = {
+    val content = fileReader.extractTextFromFile(sourceFilePath)
+    this.setLineBreaker(dataSanitizer.detectLinebreaker(content))
+    var sheets:Array[String] = blockSeporator.splitContentIntoSheets(content).filter(content =&gt; content.contains(frontEndFundName))
+    var hasReportFound = false
+    breakable{
+      for(sheet &lt;- sheets){
+        var pages:Array[String] = blockSeporator.splitContentIntoPages(sheet, this.lineBreaker) // the pages must contain word &quot;PAGE&quot;
+        var hasSummary = reportConfig.summaryConfig.isDefined
+        var (txtReportHeaders,txtTableHeaders, txtTablebodies, sumaries):(Array[String],Array[String],Seq[Seq[BlockConfig]], Seq[String]) = getPageDetailedBlocks(pages, reportConfig.tableConfig, hasSummary);
+
+        var txtReportHeadersWithContent = txtReportHeaders.filter(header =&gt; {header.trim.length &gt; 0})
+        var txtTableHeadersWithContent = txtTableHeaders.filter(header =&gt; {header.trim.length &gt; 0})
+        if(txtReportHeadersWithContent.length &gt; 0){
+          var txtYear = this.getReportYear(txtReportHeadersWithContent(0), this.lineBreaker)
+          var txtFundName = this.getFundName(txtReportHeadersWithContent(0), this.lineBreaker)
+          if(isReportYearValid(txtYear, frontEndYear) &amp;&amp; isFundNameValid(txtFundName, frontEndFundName)){
+            hasReportFound = true
+            var tableHeaderColumns = reportConfig.tableConfig.tableBodyConfig
+            reportConfigGenerator.initiateTableHeaderStartIndex(txtTableHeadersWithContent(0), tableHeaderColumns,this.lineBreaker)
+            reportConfigGenerator.setColumnStartAccordingToTableContent(txtTablebodies, tableHeaderColumns, this.lineBreaker)
+            reportConfigGenerator.setColumnEndIndex(tableHeaderColumns)
+            outputTableBodyRowIntoMemory(tableHeaderColumns, txtTablebodies, txtReportHeaders, this.lineBreaker)
+            break
+          }
+        }
+
+      }
+    }
+    if(!hasReportFound){
+      SafeLogger.logString(Logger, s&quot;No report found for fund ${frontEndFundName} in year ${frontEndYear}&quot;)
+    }
+  }
+
+
+  def getPageBlocksAndInputToExcel(sheet:XSSFSheet, pages:Array[String],
+                                   tableConfig: TableConfig, totalPageNum :Int= 0, hasSummary:Boolean = false):Seq[String] = {
+
+    var tableHeaderColumns = tableConfig.tableBodyConfig
+
+    var (txtReportHeaders,txtTableHeaders, txtTablebodies, sumaries):(Array[String],Array[String],Seq[Seq[BlockConfig]], Seq[String]) = getPageDetailedBlocks(pages, tableConfig, hasSummary);
+
+    var txtHeadersWithContent = txtTableHeaders.filter(header =&gt; {
+      header.trim.length &gt; 0
+    })
+
+    if(txtTablebodies.flatten.length &gt;0 &amp;&amp; txtHeadersWithContent.length &gt; 0 &amp;&amp; txtTableHeaders.length &gt; 0){ //only there are contents, we output to the excel
+      reportConfigGenerator.initiateTableHeaderStartIndex(txtHeadersWithContent(0), tableHeaderColumns,this.lineBreaker)
+
+      reportConfigGenerator.setColumnStartAccordingToTableContent(txtTablebodies, tableHeaderColumns, this.lineBreaker)
+
+      reportConfigGenerator.setColumnEndIndex(tableHeaderColumns)
+
+      outputExcel.outputExcelTableHeaderRow(sheet, tableHeaderColumns, Some(0));
+      outputExcel.outputExcelTableBodyRow(sheet, tableHeaderColumns, txtTablebodies,txtReportHeaders,this.lineBreaker, totalPageNum)
+    }
+    sumaries
+  }
+
+  /**
+   * @param pages: separate pages into reportHeaders, tableHeaders, tableBodies, summaries. (summary must be embraced with star(*) lines.
+   * @param blockType: define how many line breaks exist in table body.
+   * @param reportHeaderLineNum
+   * @param tableHeaderLineNum
+   * @return  reportHeaders, tableHeaders, summaries are aligned with page number
+   */
+  def getPageDetailedBlocks(pages:Array[String], tableConfig:TableConfig, hasSummary:Boolean): (Array[String],Array[String],Seq[Seq[BlockConfig]], Seq[String])={
+    var reportHeaders = new Array[String](pages.length)
+    var tableHeaders = new Array[String](pages.length)
+    var tablebodies = Seq[Seq[BlockConfig]]()
+    var summaries = Seq[String]()
+    for(pageNum &lt;- 0 until pages.length){
+
+      var headerStr = &quot;&quot;
+      var txtTableHeaderStr = &quot;&quot;
+      var pageBlocks = Seq[BlockConfig]()
+      if(!dataSanitizer.isGarbageContent(pages(pageNum))){ // when page is summary page, it&#39;s empty content
+        var page = pages(pageNum)
+        var left = dataSanitizer.trimEmptyStartLines(page, this.lineBreaker)
+        var reportHeaderLastIndex = blockSeporator.getReportHeaderEndIndex(left,tableConfig.reportHeaderLineNumber, lineBreaker);
+        headerStr = left.substring(0, reportHeaderLastIndex);
+        left = left.substring(reportHeaderLastIndex)
+
+        var (summaryContent:String, tableBodyContent:String) = if(hasSummary) blockSeporator.getSummaryContent(left,lineBreaker) else (&quot;&quot;,left)// here get summary content by star (*) lines
+        summaries = summaries :+ summaryContent
+        left = dataSanitizer.trimEmptyStartLines(tableBodyContent, this.lineBreaker);
+
+        var tableHeaderLastIndex = blockSeporator.getTableHeaderEndIndex(left,tableConfig.tableHeaderLineNumber, lineBreaker);
+        txtTableHeaderStr = if(tableHeaderLastIndex&gt;0)left.substring(0, tableHeaderLastIndex) else &quot;&quot;;
+        left = if(tableHeaderLastIndex&gt;0)left.substring(tableHeaderLastIndex) else &quot;&quot;
+
+        pageBlocks = blockSeporator.splitTableContentIntoBlocks(tableConfig.blockSeperatorNumber, tableConfig.tableHeaderLineNumber, left, lineBreaker);
+
+        pageBlocks = pageBlocks.map(block =&gt; {
+          block.pageNum = pageNum + 1;
+          organizeBlock(block)
+        })
+
+        pageBlocks = pageBlocks.filter(block =&gt; {
+          block.blockType != BlockType.discard
+        })
+      }
+      reportHeaders(pageNum) = headerStr;
+      tableHeaders(pageNum) = txtTableHeaderStr;
+      tablebodies = tablebodies :+ pageBlocks
+    }
+    return (reportHeaders, tableHeaders, tablebodies, summaries)
+  }
+
+
+  def readFileAndExtract(sourceFilePath: String, destFilePath: String, mode: Type, extractorConfig: ExtractorConfig, fundName:String, year: Integer): Unit = {
+    var ofstream: FileOutputStream = null
+    this.reportConfig = extractorConfig
+    try {
+      mode match {
+        case OutputMode.Excel =&gt;{
+          val workbook = extractToExcel(sourceFilePath)
+          val outfile = new File(destFilePath)
+          ofstream = new FileOutputStream(outfile)
+          if (!outfile.exists()) outfile.createNewFile()
+          workbook.write(ofstream)
+          ofstream.flush()
+          ofstream.close()
+        }
+        case OutputMode.Memory =&gt;{
+          extractToMemory(sourceFilePath, fundName, year)
+        }
+      }
+
+    } catch {
+      case e: Exception =&gt; SafeLogger.logStringError(Logger, s&quot;Error when extracting ${extractorConfig.reportType} for fund(${fundName}) year ${year}&quot;, e)
+    } finally {
+      try {
+        if (ofstream != null) ofstream.close()
+      } catch {
+        case e: IOException =&gt; SafeLogger.logStringError(Logger, s&quot;Error when saving file for ${extractorConfig.reportType} for fund(${fundName}) year ${year}&quot;, e)
+      }
+    }
+  }
+
+  def isReportDateValid( periodStart: Date, periodEnd: Date, date1: Date, date2: Date = null): Boolean = {
+    !date2UTCLocalDate(date1).isAfter(date2UTCLocalDate(periodEnd)) &amp;&amp; !date2UTCLocalDate(date1).isBefore(date2UTCLocalDate(periodStart))
+  }
+
+  def isCurrentYear(periodStart: Date, periodEnd: Date, date1: Date, date2:Date = null): Boolean = {
+    !date2UTCLocalDate(date2).isAfter(date2UTCLocalDate(periodEnd)) &amp;&amp; !date2UTCLocalDate(date1).isBefore(date2UTCLocalDate(periodStart))
+  }
+
+  def isPreviousYear(periodStart: Date, periodEnd: Date, date1: Date, date2:Date = null): Boolean = {
+    date2UTCLocalDate(date1).isBefore(date2UTCLocalDate(periodStart))
+  }
+  def isAfterYear(periodStart: Date, periodEnd: Date, date1: Date, date2:Date = null): Boolean = {
+    date2UTCLocalDate(date1).isAfter(date2UTCLocalDate(periodEnd))
+  }
+
+  def getReportStartDate(reportHeader: String, lineBreaker: String): Date = {
+    null
+  }
+  def getReportEndDate(reportHeader: String, lineBreaker: String): Date = {
+    null
+  }
+
+
+  /**
+   *
+   * Below is the methods to extract to object, this is for HSBC IMS extraction
+   */
+
+  def extractToObjectForPeriod(sourceFilePath: String, frontEndFundName: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date): Any = {
+    val content = fileReader.extractTextFromFile(sourceFilePath)
+    this.setLineBreaker(dataSanitizer.detectLinebreaker(content))
+    var sheets:Array[String] = blockSeporator.splitContentIntoSheets(content).filter(content =&gt; content.contains(frontEndFundName))
+
+    var hasReportFound = false
+    var newStorage:Any = null
+    breakable{
+      for(sheet &lt;- sheets){
+        var pages:Array[String] = blockSeporator.splitContentIntoPages(sheet, this.lineBreaker) // the pages must contain word &quot;PAGE&quot;
+        var hasSummary = reportConfig.summaryConfig.isDefined
+        var (txtReportHeaders,txtTableHeaders, txtTablebodies, sumaries):(Array[String],Array[String],Seq[Seq[BlockConfig]], Seq[String]) = getPageDetailedBlocks(pages, reportConfig.tableConfig, hasSummary);
+
+        var txtReportHeadersWithContent = txtReportHeaders.filter(header =&gt; {header.trim.length &gt; 0})
+        var txtTableHeadersWithContent = txtTableHeaders.filter(header =&gt; {header.trim.length &gt; 0})
+        if(txtReportHeadersWithContent.length &gt; 0){
+          var date1 = this.getReportStartDate(txtReportHeadersWithContent(0), this.lineBreaker)
+          var date2 =  this.getReportEndDate(txtReportHeadersWithContent(0), this.lineBreaker)
+          var txtFundName = this.getFundName(txtReportHeadersWithContent(0), this.lineBreaker)
+          if (isFundNameValid(txtFundName, frontEndFundName) &amp;&amp; isReportDateValid(frontEndPeriodStart, frontEndPeriodEnd, date1, date2)) {
+            hasReportFound = true
+            var tableHeaderColumns = reportConfig.tableConfig.tableBodyConfig
+            reportConfigGenerator.initiateTableHeaderStartIndex(txtTableHeadersWithContent(0), tableHeaderColumns,this.lineBreaker)
+            reportConfigGenerator.setColumnStartAccordingToTableContent(txtTablebodies, tableHeaderColumns, this.lineBreaker)
+            reportConfigGenerator.setColumnEndIndex(tableHeaderColumns)
+            newStorage = outputTableBodyRowIntoObjectForPeriod(tableHeaderColumns, txtTablebodies, txtReportHeaders, this.lineBreaker, frontEndPeriodStart, frontEndPeriodEnd)
+            break
+          }
+        }
+      }
+    }
+
+    if(!hasReportFound){
+      SafeLogger.logString(Logger, s&quot;No report found for fund ${frontEndFundName} in period ${frontEndPeriodStart} ${frontEndPeriodEnd}&quot;)
+      throw ExtractionError(ExtractionErrorCode.ZERO_RECORDS_EXTRACTED)
+      //throw ExtractionException(s&quot;No report found for fund ${frontEndFundName}.&quot;)
+    }
+
+    newStorage
+  }
+
+  override def readFileAndExtractToObjectForPeriod(sourceFilePath: String, extractorConfig: ExtractorConfig, fundName: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date): Any = {
+    var ofstream: FileOutputStream = null
+    this.reportConfig = extractorConfig
+    val newStorage = extractToObjectForPeriod(sourceFilePath, fundName, frontEndPeriodStart, frontEndPeriodEnd)
+    newStorage
+  }
+
+  /**
+   * @param content     : separate csv file content into reportHeaders, tableHeaders, tableBodies.
+   * @param tableConfig
+   * @return reportHeaders, tableHeaders, tableBodies
+   */
+  def getReportDetails(content: String, tableConfig: TableConfig): (String, String, Seq[BlockConfig]) = {
+    var reportHeaders = &quot;&quot;
+    var tableHeaders = &quot;&quot;
+    var tablebodies = Seq[BlockConfig]()
+
+    var tableConfig = reportConfig.tableConfig
+    //trim empty start lines
+    var left = dataSanitizer.trimEmptyStartLines(content, lineBreaker);
+    //get the report header end index
+    var reportHeaderLastIndex = blockSeporator.getReportHeaderEndIndex(left, tableConfig.reportHeaderLineNumber, lineBreaker);
+    //get the report header string which contains multiple lines
+    reportHeaders = left.substring(0, reportHeaderLastIndex);
+
+    //get the string without the report headers
+    left = left.substring(reportHeaderLastIndex)
+
+    left = dataSanitizer.trimEmptyStartLines(left, this.lineBreaker);
+    var tableHeaderLastIndex = blockSeporator.getTableHeaderEndIndex(left, tableConfig.tableHeaderLineNumber, this.lineBreaker);
+    tableHeaders = if (tableHeaderLastIndex &gt; 0) left.substring(0, tableHeaderLastIndex) else &quot;&quot;;
+
+    //get the string without the report headers and table headers
+    left = if (tableHeaderLastIndex &gt; 0) left.substring(tableHeaderLastIndex) else &quot;&quot;
+
+    if (tableHeaders.length &gt; 0) {
+      left = dataSanitizer.trimEmptyStartLines(left, lineBreaker)
+      tablebodies = blockSeporator.splitTableContentIntoBlocks(tableConfig.blockSeperatorNumber, tableConfig.tableHeaderLineNumber, left, this.lineBreaker)
+      tablebodies = tablebodies.map(block =&gt; {
+        organizeBlock(block)
+      })
+    }
+    return (reportHeaders, tableHeaders, tablebodies)
+  }
+
+
+}</code></pre></dd>
+  <dt>AbstractProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/AbstractProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor
+
+import java.sql.Date
+import java.time.LocalDate
+
+import com.pwc.ds.awm.processor.OutputMode.Type
+import com.pwc.ds.awm.processor.reportconfigs.extractorschema.ExtractorConfig
+
+object OutputMode extends Enumeration {
+  type Type = Value
+  val Excel = Value(&quot;Excel&quot;)
+  val Memory = Value(&quot;Memory&quot;)
+}
+
+trait AbstractProcessor {
+  def readFileAndExtract(sourceFilePath: String, destFilePath: String, mode: Type, extractorConfig: ExtractorConfig, fundName:String, year:Integer): Unit
+
+  def readFileAndExtractToObjectForPeriod(sourceFilePath: String, extractorConfig: ExtractorConfig, fundName: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date):Any
+}</code></pre></dd>
+</dl>
+<p>Configuration file</p>
+<dl>
+  <dt>PositionAppraisalReportConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportConfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>import com.pwc.ds.awm.processor.reportconfigs.extractorschema
+import com.pwc.ds.awm.processor.reportconfigs.extractorschema.{ColumnConfig, DataType, TableConfig}
+
+object PositionAppraisalReportConfig {
+        var reportName = &quot;Position appraisal report&quot;
+
+        var tableHeaderColumns: Seq[Seq[ColumnConfig]] = Seq(
+        Seq(ColumnConfig(&quot;Portfolio&quot;, -1, -1,span = 1, columnNum = 0, rowNum = 0),
+        ColumnConfig(&quot;Fund Structure&quot;, -1, -1,span = 1, columnNum = 1, rowNum = 0),
+        ColumnConfig(&quot;Portfolio Currency&quot;,-1, -1, span = 1, columnNum = 2, rowNum = 0),
+        ColumnConfig(&quot;Period End Date&quot;,-1, -1, span = 1, columnNum = 3, rowNum = 0, columnType = DataType.Date),
+        ColumnConfig(&quot;Long/Short&quot;,-1, -1, span = 1, columnNum = 4, rowNum = 0),
+        ColumnConfig(&quot;Custodian&quot;,-1, -1, span = 1, columnNum = 5, rowNum = 0),
+        ColumnConfig(&quot;Sort Key&quot;,-1, -1, span = 1, columnNum = 6, rowNum = 0),
+        ColumnConfig(&quot;Currency&quot;,-1, -1, span = 1, columnNum = 7, rowNum = 0),
+        ColumnConfig(&quot;Investment&quot;,-1, -1, span = 1, columnNum = 8, rowNum = 0),
+        ColumnConfig(&quot;Security ID&quot;,-1, -1, span = 1, columnNum = 9, rowNum = 0),
+        ColumnConfig(&quot;Underlying ID&quot;,-1, -1, span = 1, columnNum = 10, rowNum = 0),
+        ColumnConfig(&quot;Sedol&quot;,-1, -1, span = 1, columnNum = 11, rowNum = 0),
+        ColumnConfig(&quot;Isin&quot;,-1, -1, span = 1, columnNum = 12, rowNum = 0),
+        ColumnConfig(&quot;Cusip&quot;,-1, -1, span = 1, columnNum = 13, rowNum = 0),
+        ColumnConfig(&quot;Ticker&quot;,-1, -1, span = 1, columnNum = 14, rowNum = 0),
+        ColumnConfig(&quot;ALT2&quot;,-1, -1, span = 1, columnNum = 15, rowNum = 0),
+        ColumnConfig(&quot;Quantity&quot;,-1, -1, span = 1, columnNum = 16, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Local Market Price&quot;,-1, -1, span = 1, columnNum = 17, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;In Element Currency&quot;,-1, -1, span = 1, columnNum = 18, rowNum = 0),
+        ColumnConfig(&quot;Current Local Cost&quot;,-1, -1, span = 1, columnNum = 19, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Local Market Value&quot;,-1, -1, span = 1, columnNum = 20, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Current Book Cost&quot;,-1, -1, span = 1, columnNum = 21, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Book Market Value&quot;,-1, -1, span = 1, columnNum = 22, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Book Unrealized Gain/Loss&quot;,-1, -1, span = 1, columnNum = 23, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;% Invest&quot;,-1, -1, span = 1, columnNum = 24, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;% NAV&quot;,-1, -1, span = 1, columnNum = 25, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Transaction Type&quot;,-1, -1, span = 1, columnNum = 26, rowNum = 0),
+        ColumnConfig(&quot;Security Exchange Listing&quot;,-1, -1, span = 1, columnNum = 27, rowNum = 0),
+        ColumnConfig(&quot;Investment Type&quot;,-1, -1, span = 1, columnNum = 28, rowNum = 0),
+        ColumnConfig(&quot;Country&quot;,-1, -1, span = 1, columnNum = 29, rowNum = 0),
+        ColumnConfig(&quot;Issue Date&quot;,-1, -1, span = 1, columnNum = 30, rowNum = 0, columnType = DataType.Date),
+        ColumnConfig(&quot;Client Type&quot;,-1, -1, span = 1, columnNum = 31, rowNum = 0),
+        ColumnConfig(&quot;Client Residency/Country Code&quot;,-1, -1, span = 1, columnNum = 32, rowNum = 0),
+        ColumnConfig(&quot;Security Issuer Country Code&quot;,-1, -1, span = 1, columnNum = 33, rowNum = 0),
+        ColumnConfig(&quot;Exchange Rate&quot;,-1, -1, span = 1, columnNum = 34, rowNum = 0, columnType = DataType.Number),
+        ColumnConfig(&quot;Notional Cost&quot;,-1, -1, span = 1, columnNum = 35, rowNum = 0),
+        ColumnConfig(&quot;Swap Book Price&quot;,-1, -1, span = 1, columnNum = 36, rowNum = 0)
+        ));
+
+        var extractorConfig = new extractorschema.ExtractorConfig(reportType = reportName,
+        tableConfig = TableConfig(tableHeaderLineNumber = 1, tableBodyConfig = tableHeaderColumns, reportHeaderLineNumber = 10, blockSeperatorNumber = 1))
+        }</code></pre></dd>
+  <dt>ExtractorConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/ExtractorConfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class ExtractorConfig (reportType: String,
+                            headerColumns: Seq[Seq[ColumnConfig]] = Seq[Seq[ColumnConfig]](), // report header span config
+        tableConfig: TableConfig,
+        summaryConfig: Option[TableConfig] = None,
+        summarySeparator: String = &quot;********&quot;,
+        pageLineNumber: Int = 1,
+        nextReportType: String = &quot;&quot;,
+        tableFirstHeaderWithContent: String = &quot;&quot;
+        )</code></pre></dd>
+</dl>
+<h2><a href="#another-way-of-design" name="another-way-of-design" class="anchor"><span class="anchor-link"></span></a>Another way of design</h2>
+<dl>
+  <dt>Caller method</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/caller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">var morganExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+  Seq(&quot;Trial Balance&quot;) -&gt; (new MorganTBProcessor, ReportFundTrialBalanceReportConfig.extractorConfig),
+  Seq(&quot;Position Appraisal&quot;) -&gt; (new MorganPositionProcessor, LongShortPositionAppraisalReportConfig.extractorConfig),
+  Seq(&quot;Purchases and Sales&quot;) -&gt; (new MorganPSRProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+  Seq(&quot;Ledger movement&quot;) -&gt; (new MorganGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+  Seq(&quot;Realized Gain Loss&quot;) -&gt; (new MorganRGLProcessor, ReportRealizedGainLossReportConfig.extractorConfig),
+  Seq(&quot;DAILY CASH EXPOSURE&quot;) -&gt; (new CashExposureReportProcessor, CashExposureReportConfig.extractorConfig),
+  Seq(&quot;DIVIDEND INCOME AND EXPENSE&quot;) -&gt; (new DividendIncomeAndExpenseReportProcessor, DividendIncomeAndExpenseReportConfig.extractorConfig)
+)
+
+
+def processFiles(request: Request[MultipartFormData[Files.TemporaryFile]], fundEngagement: FundEngagementData, fund: Fund,
+                 multifondsUploadHelper: MultifondsUploadHelper,
+                 doraServer: DoraServer,
+                 fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+                 fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite): Result = {
+  request.body.file(&quot;file&quot;).map(file =&gt; {
+    ...
+      if (filenames.last == &quot;xlsx&quot; || filenames.last == &quot;xlsm&quot; || filenames.last == &quot;xls&quot;) {
+        methodName = &quot;readFileAndExtractToObjectForPeriod&quot;
+      } else if (filenames.last == &quot;pdf&quot;) {
+        methodName = &quot;readPDFFileAndExtractToObject&quot;
+      } else {
+        methodName = &quot;readCSVFileAndExtractToObject&quot;
+      }
+
+      extractFileAndStoreDataInDB(file.filename, fundEngagement, fund, targetFile.getPath, userEmail, methodName,
+        multifondsUploadHelper,
+        doraServer,
+        fundEngagementReportTypeSelectionRead,
+        fundEngagementReportTypeSelectionWrite)
+    }
+  })
+
+}
+
+
+def extractFileAndStoreDataInDB(content: String, fundEngagement: FundEngagementData, fund: Fund, targetFilePath: String, userEmail: String, methodName: String,
+                                multifondsUploadHelper: MultifondsUploadHelper,
+                                doraServer: DoraServer,
+                                fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+                                fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite): Result = {
+  //filter the extractorMap with report header
+  var someExtractor = morganExtractorMap
+
+    ...
+  someExtractor.map((kv) =&gt; {
+    val periodStart = fund.auditPeriodBegin
+    val periodEnd = fund.auditPeriodEnd
+    val paras = List(targetFilePath, kv._2._2, fund.name, periodStart, periodEnd)
+    val result = doraServer.runProcess(paras, kv._2._1.getClass.getCanonicalName.stripSuffix(&quot;$&quot;), methodName)
+    val newStorage = Await.result(result, ConstVar.ProcessJobWaitTime seconds)
+      ...s
+
+  })
+
+
+}</code></pre></dd>
+</dl>
+<dl>
+  <dt>MorganPSRProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganPSRProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Date
+import com.pwc.ds.awm.const.ExtractionWarningCode
+import com.pwc.ds.awm.processor.BaseReportProcessor
+import com.pwc.ds.awm.processor.exceptions.ExtractionWarning
+import com.pwc.ds.awm.processor.generateEGA.basicReport.{GeneralSingleEGAStorage, MorgenSingleEGAStorage, WarningStatus}
+import com.pwc.ds.awm.processor.morgan.excelreader.MorganExcelPSRReader
+import com.pwc.ds.awm.processor.singleegarow.PSRRow.TradeDate
+
+class MorganPSRProcessor extends BaseReportProcessor {
+  override def extractToObjectForPeriod(sourceFilePath: String, frontEndFundName: String, frontEndPeriodStart: Date, frontEndPeriodEnd: Date): GeneralSingleEGAStorage = {
+    val storage = new MorgenSingleEGAStorage()
+    val psrTable = MorganExcelPSRReader.readPSRSheet(sourceFilePath, frontEndFundName)
+    val (row, rowAE, _) = GeneralSingleEGAStorage.splitTimeRange(psrTable, TradeDate, frontEndPeriodStart, frontEndPeriodEnd)
+    storage.purchaseAndSaleTransactionReportPSRData = row
+    storage.purchaseAndSaleTransactionReportPSRAfterYEData = rowAE
+    if(row.length != 0 &amp;&amp; rowAE.length !=0){
+      //throw  ExtractionWarning(ExtractionWarningCode.AFTER_YE_DATA)
+      storage.warningMsg=WarningStatus(true,s&quot;PSR and PSR (after YE)&quot;)
+    }
+    storage
+  }
+}</code></pre></dd>
+  <dt>MorganExcelPSRReader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganExcelPSRReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.morgan.excelreader
+
+import com.pwc.ds.awm.component.excel.{ExcelField, ExcelToArray}
+import com.pwc.ds.awm.const.ExtractionErrorCode
+import com.pwc.ds.awm.processor.SSCexcelReport.excelreader.ExcelReaderHelper
+import com.pwc.ds.awm.processor.SSCexcelReport.excelreader.ExcelReaderHelper.getValueOfExcelField
+import com.pwc.ds.awm.processor.exceptions.{AWMNameException, ExtractionError}
+import com.pwc.ds.awm.processor.fargo.excelreader.FargoExcelCashReader.{getFXRate, getLongShortDescription}
+import com.pwc.ds.awm.processor.singleegarow.PSRRow.{BookAmount, Broker, Commission, ContractDate, CustodianAccount, Expenses, FundCurrenty, GenericInvestment, ISIN, InvestID, Investment, LocalAmount, LocalCurrency, LongShort, Portfolio, Price, Quantity, SEC, Sedol, SettleDate, Ticker, TotalBookAmount, TradeDate, Trader, TranID, TranType}
+import com.pwc.ds.awm.processor.{NA_STR, convertDateStringToYMDString}
+
+object MorganExcelPSRReader {
+  val psrHeaderOrg = &quot;Portfolio ID\tPortfolio Name\tCategory Desc1\tCategory Desc2\tCUSIP\tSecurity Description\tTransaction Category\tBuy Sell Ind\tOpen/Close Ind\tTrade Date\tSettlement Date\tDate Acquired\tIssue Currency\tQuantity\tCost Change (Issue)\tCost Change (Base)\tLedger Journal Amount(Issue)\tLedger Journal Amount(Base)\tNet Amount (Settlement)\tTransaction Journal Desc\tOrder No\tGroup ID\tLedger Account Number\tLedger Account Name\tProcess Date\tCustodian\tMoney Manager\tDeal ID\tContract ID\tPosition Type\tAsset Type\tAsset Class Level1\tAsset Class Level2\tDebit/Credit\tCancel Ind\tHas Been Cancelled\tisManual&quot;
+  val psrHeader = ExcelReaderHelper.stringNormalizer(psrHeaderOrg)
+
+  def readPSRSheet(filePath:String, fundName:String):Seq[Map[String,String]]={
+    val psrSheet = ExcelToArray.multiSheetToArray(filePath)
+    val psrSheetVerify = ExcelReaderHelper.getSpecifiedSheet(psrSheet,psrHeader)
+    val res= psrSheetVerify.filter(row =&gt;row.length &gt;2 &amp;&amp; row(1).field.toLowerCase.trim == fundName.toLowerCase.trim).map{
+      row =&gt; createPSRRow(row)
+    }
+    if(psrSheetVerify.length &gt;1 &amp;&amp; res.length ==0){
+      throw ExtractionError(ExtractionErrorCode.FUND_NAME_MISMATCH)
+    }
+    res
+  }
+
+  def createPSRRow(row:Seq[ExcelField])={
+    Map(
+      TradeDate -&gt; convertDateStringToYMDString(getValueOfExcelField(row,9)),
+      SettleDate -&gt; convertDateStringToYMDString(getValueOfExcelField(row,10)),
+      TranType -&gt; getValueOfExcelField(row,7),
+      InvestID -&gt; getValueOfExcelField(row,4),
+      Investment -&gt; getValueOfExcelField(row,5),
+      CustodianAccount -&gt; getValueOfExcelField(row,25),
+      Quantity -&gt; getValueOfExcelField(row,13),
+      Price -&gt; NA_STR,
+      SEC -&gt; NA_STR,
+      LocalAmount -&gt; getValueOfExcelField(row,14),
+      BookAmount -&gt; getValueOfExcelField(row,15),
+      ContractDate -&gt; NA_STR,
+      TranID -&gt; getValueOfExcelField(row,28),
+      GenericInvestment -&gt;  getValueOfExcelField(row,32),
+      Broker -&gt;NA_STR,
+      Trader -&gt; NA_STR,
+      Commission -&gt;NA_STR ,
+      Expenses -&gt; NA_STR,
+      LocalCurrency -&gt; getValueOfExcelField(row,12),
+      TotalBookAmount -&gt; NA_STR,
+      Portfolio -&gt; getValueOfExcelField(row,1),
+      FundCurrenty -&gt; NA_STR,
+      LongShort -&gt;getValueOfExcelField(row,23),
+      Sedol -&gt; NA_STR,
+      ISIN -&gt; NA_STR,
+      Ticker -&gt; NA_STR
+    )
+  }
+}</code></pre></dd>
+</dl>
+<h2><a href="#how-to-compare-the-two-ways" name="how-to-compare-the-two-ways" class="anchor"><span class="anchor-link"></span></a>How to compare the two ways</h2>
+<p>The two ways achieves same result.</p>
+<p>The OO way use a big configuration to control all behaviors. The functions in configuration are:</p>
+<pre><code>1. convert excel to standard input 
+2. located the target field in input
+3. extract target input into result
+4. format the result value 
+</code></pre>
+<p>The another way combines the configuration of different functions.</p>
+<h2><a href="#pdf-different-type" name="pdf-different-type" class="anchor"><span class="anchor-link"></span></a>PDF different type</h2>
+<p>From beginning, we use pdf reader to read pdf contents to text lines:</p>
+<dl>
+  <dt>Read PDF for type1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readPdf.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>def readPDF(sourceFile:String)={
+  extractAllTextFromPdfFile(sourceFile,EmptyConfigForPDF.extractorConfig)
+}
+
+def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorConfig): String = {
+  try {
+    var content = &quot;&quot;
+    if (isPdfFileExtension(sourceFilePath)) {
+      var file = new File(sourceFilePath);
+      val document = PDDocument.load(file);
+      var stripper:LayoutPdfTextStripper = new LayoutPdfTextStripper;
+      stripper.setReportConfig(reportConfig)
+      stripper.setSortByPosition(true);
+      content = stripper.getText(document);
+      document.close()
+    }
+    content
+  } catch {
+    case e: IOException =&gt; throw new IOException(&quot;read source pdf file IO error&quot;)
+    case e: Exception =&gt; throw new Exception(JsError(&quot;read source pdf file IO error&quot;))
+  }
+}</code></pre></dd>
+</dl>
+<p>The pdf reader will return text content in formatted way:</p>
+<p><img src="./pic/type1.png" alt="Type1 format" /></p>
+<p>While there is another type of pdf which will return unformatted result:</p>
+<p><img src="./pic/type2.png" alt="Type2 format" /></p>
+<dl>
+  <dt>Then the reader need be change,</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readRaw.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def readRawPDF(sourceFile:String):String={
+  val document = PDDocument.load(new File(sourceFile))
+  val striper = new PDFTextStripper()
+  striper.setSortByPosition(true)
+  val content = striper.getText(document)
+  document.close()
+  content
+}</code></pre></dd>
+</dl>
+<p>The result will be:</p>
+<p><img src="./pic/type2AnotherReader.png" alt="Type2 reader result" /></p>
+<p>This way return result in line format, but lost formatted information(the space information is lost)</p>
+<p>So the configuration way has more complex configuration when deal with the different reader. While the combination way will have more flexibility to handle different type of input in different way.</p>
+<h2><a href="#remove-duplicated-code-using-function-programming" name="remove-duplicated-code-using-function-programming" class="anchor"><span class="anchor-link"></span></a>Remove duplicated code using function programming</h2>
+<p>Using first way could reduce the duplicated code, but all different processor will increase the configuration file&rsquo;s complexity to unmanageable. When using the second way will split each configuration to each processor, meanwhile introduce duplicated code in each processor and extractor.</p>
+<p>So we create a structure to for the generic workflow:</p>
+<pre class="prettyprint"><code class="language-scala">    case class BasicExcelReader(
+        header: String,
+        filter: Seq[(Seq[ExcelField], String) =&gt; Boolean],
+        mapper: Seq[ExcelField] =&gt; Map[String, String],
+        readerOpt: Option[String =&gt; Seq[Seq[ExcelField]]]
+    )
+</code></pre>
+<p>Code as below:</p>
+<dl>
+  <dt>WorkdayProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  val getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}</code></pre></dd>
+  <dt>TBProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class WorkdayTBProcessor extends BaseReportProcessor {
+  override def extractToObjectForPeriod(
+                                         sourceFilePath: String,
+                                         frontEndFundName: String,
+                                         frontEndPeriodStart: Date,
+                                         frontEndPeriodEnd: Date
+                                       ): GeneralSingleEGAStorage = {
+    val storage = new FundManagerSingleEGAStorage()
+    val tableRow = {
+      BasicExcelReaderHelper.processFileOnExcelReader(
+        sourceFilePath,
+        frontEndFundName,
+        WorkdayTBReader.setting
+      )
+    }
+    BasicTBProcessor.processFile(
+      tableRow,
+      frontEndPeriodStart,
+      frontEndPeriodEnd,
+      &quot;NoUse&quot;,
+      storage
+    )
+  }
+}</code></pre></dd>
+  <dt>TBReader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBRader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayTBReader {
+  val headerStr =
+    &quot;\tLedger Account\tTransaction Currency\tBook Code\tTransaction Balance\tLedger Balance&quot;
+  val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(3)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(2, &quot;Transaction Currency&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(4)
+
+  def createRow(row: Seq[ExcelField]) = {
+    (createTBRowMap() ++ Map(
+      Description_Detail    -&gt; getValueOfExcelField(row, 2),
+      ClosingBalance_Detail -&gt; getValueOfExcelField(row, 4),
+      AccountName           -&gt; getValueOfExcelField(row, 1),
+      Balance               -&gt; getValueOfExcelField(row, 5)
+    )).toMap
+  }
+
+  val setting = BasicExcelReader(
+    headerStr,
+    Seq(lengthFilter, headerTitleFilter, emptyFilter),
+    createRow,
+    None
+  )
+}</code></pre></dd>
+  <dt>GLProcessor</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Date
+
+class WorkdayGLProcessor extends BaseReportProcessor {
+  override def extractToObjectForPeriod(
+                                         sourceFilePath: String,
+                                         frontEndFundName: String,
+                                         frontEndPeriodStart: Date,
+                                         frontEndPeriodEnd: Date
+                                       ): GeneralSingleEGAStorage = {
+    val storage = new FundManagerSingleEGAStorage()
+    val tableRow =
+      BasicExcelReaderHelper.processFileOnExcelReader(
+        sourceFilePath,
+        frontEndFundName,
+        WorkdayGLReader.setting
+      )
+
+    val currency      = WorkdayGLReader2.getCurrency(sourceFilePath)
+    val groupedRecord = WorkdayGLReader2.getGroupedValue(sourceFilePath)
+    val tableRow2 = BasicExcelReaderHelper.processFileOnExcelReader(
+      sourceFilePath,
+      frontEndFundName,
+      WorkdayGLReader2.setting(currency, groupedRecord)
+    )
+    BasicGLProcessor.processFile(
+      tableRow ++ tableRow2,
+      frontEndPeriodStart,
+      frontEndPeriodEnd,
+      TranDate,
+      storage
+    )
+  }
+}</code></pre></dd>
+  <dt>GLReader</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader {
+  val headerStr =
+    &quot;\tLedger/Budget Period\tJournal\tJournal Source\tTransaction\tAccounting Date\tLedger Account\tBook Code\tTransaction Debit Amount\tTransaction Credit Amount\tTransaction Debit minus Credit\tTransaction Currency\tJournal Line Exchange Rate\tLedger/Budget Debit Amount\tLedger/Budget Credit Amount\tLedger/Budget Debit minus Credit\tLedger Currency\tMemo\tLine Memo\tWorktags&quot;
+  val lenthFilter       = BasicExcelReaderHelper.basicRowLengthFilter(20)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(2, &quot;Journal&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(2)
+
+  def createRow(row: Seq[ExcelField]) = {
+    (createGLRowMap() ++ Map(
+      BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 6),
+      TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+      TranDescription             -&gt; getValueOfExcelField(row, 19),
+      Currency                    -&gt; getValueOfExcelField(row, 11),
+      LocalAmount                 -&gt; getValueOfExcelField(row, 10),
+      BookAmount                  -&gt; getValueOfExcelField(row, 15)
+    )).toMap
+  }
+
+  val setting = BasicExcelReader(
+    headerStr,
+    Seq(lenthFilter, headerTitleFilter, emptyFilter),
+    createRow,
+    None
+  )
+}</code></pre></dd>
+  <dt>GLReader2</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLRead2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader2 {
+  val headerStr =
+    &quot;Ledger Account\tJournal Entry\tCompany\tJournal Source\tTransaction\tAccounting Date\tMemo\tDebit\tCredit\tBalance\tNet Amount&quot;
+  val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(4)
+  val headerTitleFilter = BasicExcelReaderHelper.basicHeaderTitleFilter(1, &quot;Journal Entry&quot;)
+  val emptyFilter       = BasicExcelReaderHelper.basicEmptyFilter(9)
+
+  def getCurrency(inputFile: String): String = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    getValueOfExcelField(seqListValue(6), 1) //Hardcode for header value of &quot;Translation Currency&quot;
+  }
+
+  def getGroupedValue(inputFile: String): Map[String, Seq[Seq[ExcelField]]] = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    seqListValue.groupBy(list =&gt; list(0).field)
+  }
+
+  def getAmount(groupedRecord: Map[String, Seq[Seq[ExcelField]]], account: String): String = {
+    val lastRow = groupedRecord.filter(tempGroup =&gt; tempGroup._1 == account).head._2.last
+    getValueOfExcelField(lastRow, 9)
+  }
+
+  def createRow(currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =
+    (row: Seq[ExcelField]) =&gt; {
+      (createGLRowMap() ++ Map(
+        BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 0),
+        TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+        TranID                      -&gt; getValueOfExcelField(row, 1),
+        TranDescription             -&gt; getValueOfExcelField(row, 6),
+        Currency                    -&gt; currency,
+        LocalAmount                 -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        BookAmount                  -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        Balance                     -&gt; getValueOfExcelField(row, 9),
+        EndingBalanceAmount         -&gt; getAmount(groupedRecord, getValueOfExcelField(row, 0))
+      )).toMap
+    }
+
+  def setting = (currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =&gt; {
+    BasicExcelReader(
+      headerStr,
+      Seq(lengthFilter, headerTitleFilter, emptyFilter),
+      createRow(currency, groupedRecord),
+      None
+    )
+  }
+}</code></pre></dd>
+  <dt>BasicExcelReaderHelper</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicExcelReaderHelper.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object BasicExcelReaderHelper {
+  def processFileOnExcelReader(
+                                filePath: String,
+                                fundName: String,
+                                excelReader: BasicExcelReader
+                              ): Seq[Map[String, String]] = {
+    val reader       = excelReader.readerOpt.getOrElse(defaultExcelReaderForExcel(excelReader.header))
+    val excelContent = reader(filePath)
+    val targetContent = excelReader.filter.foldLeft(excelContent) { (excelContent, filter) =&gt;
+      excelContent.filter(row =&gt; filter(row, fundName))
+    }
+    targetContent.map { row =&gt;
+      excelReader.mapper(row)
+    }
+  }
+
+  def defaultExcelReaderForExcel(header: String): String =&gt; Seq[Seq[ExcelField]] =
+    (filePath: String) =&gt; {
+      val allSheet         = ExcelToArray.multiSheetToArray(filePath)
+      val headerNormalized = ExcelReaderHelper.stringNormalizer(header)
+      ExcelReaderHelper.getSpecifiedSheetWithoutReplacement(allSheet, headerNormalized)
+    }
+
+  def basicRowLengthFilter(length: Int) =
+    (row: Seq[ExcelField], fundName: String) =&gt; {
+      row.length &gt;= length
+    }
+
+  def basicHeaderTitleFilter(index: Int, value: String) =
+    (row: Seq[ExcelField], fundName: String) =&gt; {
+      row(index).field.toLowerCase.trim != value.toLowerCase.trim
+    }
+
+  def basicEmptyFilter(index: Int) = (row: Seq[ExcelField], fundName: String) =&gt; {
+    row(index).field.trim.length &gt; 0
+  }
+}
+
+case class BasicExcelReader(
+                             header: String,
+                             filter: Seq[(Seq[ExcelField], String) =&gt; Boolean],
+                             mapper: Seq[ExcelField] =&gt; Map[String, String],
+                             readerOpt: Option[String =&gt; Seq[Seq[ExcelField]]]
+                           )</code></pre></dd>
+  <dt>BasicProcessFile</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicProcessFile.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.File
+import scala.concurrent.Await
+
+object BasicProcessFile {
+
+  def getStorageBase(singleEGAStorage: GeneralSingleEGAStorage)(
+    selection: Seq[FundEngagementReportTypeSelectionData],
+    sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead
+  ) = {
+    GeneralSingleEGAHelper.rowToStorage(selection, singleEGAStorage, sheetTypesReportTypesMapRead)
+    singleEGAStorage
+  }
+
+  def extractFileAndStoreDataInDB(
+                                   content: String,
+                                   fundEngagement: FundEngagementData,
+                                   fund: Fund,
+                                   targetFilePath: String,
+                                   userEmail: String,
+                                   methodName: String,
+                                   multifondsUploadHelper: MultifondsUploadHelper,
+                                   doraServer: DoraServer,
+                                   fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+                                   fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite,
+                                   sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead,
+                                   disabledAfterYEReports: Map[String, Boolean],
+                                   someExtractor: Map[Seq[String], (AbstractProcessor, ExtractorConfig)]
+                                 ): Result = {
+    //filter the extractorMap with report header
+    //var someExtractor = morganExtractorMap
+
+    var warningMsg: Seq[Result] = Seq()
+    var exceptions: Seq[Result] = Seq()
+    var noWarning: Seq[Result]  = Seq()
+    var allEmpty                = true
+    someExtractor.map((kv) =&gt; {
+      val periodStart = fund.auditPeriodBegin
+      val periodEnd   = fund.auditPeriodEnd
+      val paras       = List(targetFilePath, kv._2._2, fund.name, periodStart, periodEnd)
+      val result = doraServer.runProcess(
+        paras,
+        kv._2._1.getClass.getCanonicalName.stripSuffix(&quot;$&quot;),
+        methodName
+      )
+      val newStorage = Await.result(result, ConstVar.ProcessJobWaitTime seconds)
+      try {
+        //check whether the result has exception
+        multifondsUploadHelper.checkJobResultException(newStorage)
+        if (newStorage.result.isInstanceOf[ProcessResult]) {
+          val newStorageResult = newStorage.result.asInstanceOf[ProcessResult]
+          if (newStorageResult.jobStatus.toString != &quot;Failed&quot;) {
+            if (newStorageResult.result.isInstanceOf[GeneralSingleEGAStorage]) {
+              if (
+                newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].isStorageNotEmpty()
+              ) {
+                allEmpty = false
+              }
+              filterAfterYEDataSH(
+                newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage],
+                disabledAfterYEReports
+              )
+              //store the extracted data in database
+              Await.result(
+                GeneralSingleEGAHelper.exportExcelToDatabase(
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage],
+                  fundEngagement.id,
+                  userEmail,
+                  fundEngagementReportTypeSelectionRead,
+                  fundEngagementReportTypeSelectionWrite,
+                  sheetTypesReportTypesMapRead
+                ),
+                100 seconds
+              )
+              if (newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].errorMsg.hasError) {
+                return BadRequest(
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].errorMsg.Msg
+                )
+              }
+              val res = Ok(
+                &quot;Extract Success&quot; + &quot;,&quot; + newStorageResult.result
+                  .asInstanceOf[GeneralSingleEGAStorage]
+                  .warningMsg
+                  .Msg + &quot;,&quot; + fund.name + &quot;,&quot; + periodStart + &quot;,&quot; + periodEnd
+              )
+              if (
+                newStorageResult.result
+                  .asInstanceOf[GeneralSingleEGAStorage]
+                  .warningMsg
+                  .Msg
+                  .length &gt; 0
+              ) {
+                val warningMsgs =
+                  newStorageResult.result.asInstanceOf[GeneralSingleEGAStorage].warningMsg
+                warningMsg = ModelChangeHelper
+                  .handleOldWarningMsgToWarningObject(warningMsgs, warningMsg, fund)
+              } else {
+                noWarning = noWarning :+ res
+              }
+            } else {
+              exceptions :+= encapErrorResponse(
+                UnprocessableEntity,
+                ExtractionErrorCode.UNSUPPORTED_REPORT_TYPE_FILE_EXTENSION
+              )
+
+            }
+          }
+        } else {
+          exceptions :+= encapErrorResponse(
+            UnprocessableEntity,
+            ExtractionErrorCode.UNRECOGNISED_ERROR
+          )
+        }
+      } catch {
+        //        case e:ExtractionWarning=&gt;{
+        //          Ok( Json.obj(&quot;errorCodes&quot; -&gt; Seq(e.errorCode).distinct))
+        //        }
+        case e: ExtractionError =&gt; {
+          encapErrorResponse(
+            UnprocessableEntity,
+            e.errorCode
+          )
+        }
+        case e: Exception =&gt; {
+          if (e.getMessage.indexOf(&quot;no newline character detected&quot;) &lt; 0) {
+            encapErrorResponse(
+              UnprocessableEntity,
+              ExtractionErrorCode.UNRECOGNISED_ERROR
+            )
+          }
+        }
+      }
+    })
+
+    if (exceptions.length &gt; 0) {
+      exceptions(0)
+    } else if (warningMsg.length &gt; 0) {
+      warningMsg(0)
+    } else if (allEmpty == true) {
+      encapErrorResponse(
+        UnprocessableEntity,
+        ExtractionErrorCode.UNRECOGNISED_ERROR
+      )
+    } else {
+      noWarning(0)
+    }
+  }
+
+  def processFiles(someExtractor: Map[Seq[String], (AbstractProcessor, ExtractorConfig)])(
+    request: Request[MultipartFormData[Files.TemporaryFile]],
+    fundEngagement: FundEngagementData,
+    fund: Fund,
+    multifondsUploadHelper: MultifondsUploadHelper,
+    doraServer: DoraServer,
+    fundEngagementReportTypeSelectionRead: FundEngagementReportTypeSelectionRead,
+    fundEngagementReportTypeSelectionWrite: FundEngagementReportTypeSelectionWrite,
+    sheetTypesReportTypesMapRead: SheetTypesReportTypesMapRead,
+    disabledAfterYEReports: Map[String, Boolean]
+  ): Result = {
+    request.body
+      .file(&quot;file&quot;)
+      .map(file =&gt; {
+        val userEmail  = request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;)
+        val sourceFile = file.ref.toFile
+        val filenames  = file.filename.split(&#39;.&#39;)
+        if (filenames.length &lt;= 1) {
+          encapErrorResponse(
+            UnprocessableEntity,
+            ExtractionErrorCode.UNSUPPORTED_REPORT_TYPE_FILE_EXTENSION
+          )
+        } else {
+          val targetFile = new File(s&quot;${sourceFile.getPath}.${filenames.last}&quot;)
+          sourceFile.renameTo(targetFile)
+          var methodName = &quot;&quot;
+
+          if (filenames.last == &quot;xlsx&quot; || filenames.last == &quot;xlsm&quot; || filenames.last == &quot;xls&quot;) {
+            methodName = &quot;readFileAndExtractToObjectForPeriod&quot;
+          } else if (filenames.last == &quot;pdf&quot;) {
+            methodName = &quot;readPDFFileAndExtractToObject&quot;
+          } else {
+            methodName = &quot;readCSVFileAndExtractToObject&quot;
+          }
+
+          extractFileAndStoreDataInDB(
+            file.filename,
+            fundEngagement,
+            fund,
+            targetFile.getPath,
+            userEmail,
+            methodName,
+            multifondsUploadHelper,
+            doraServer,
+            fundEngagementReportTypeSelectionRead,
+            fundEngagementReportTypeSelectionWrite,
+            sheetTypesReportTypesMapRead,
+            disabledAfterYEReports,
+            someExtractor
+          )
+        }
+      })
+      .getOrElse(
+        encapErrorResponse(
+          UnprocessableEntity,
+          ExtractionErrorCode.UNRECOGNISED_ERROR
+        )
+      )
+  }
+}</code></pre></dd>
+</dl>
+<p>For all Excel file, go throw filter=&gt;mapper process as above.</p>
+<p>For GL type 1 fil as blow:</p>
+<p><img src="./pic/GLType1.png" alt="GL Type1" /></p>
+<p>the code will work perfectly to extract all information using one Excel row:</p>
+<pre class="prettyprint"><code class="language-scala">  def createRow(row: Seq[ExcelField]) = {
+    (createGLRowMap() ++ Map(
+      BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 6),
+      TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+      TranDescription             -&gt; getValueOfExcelField(row, 19),
+      Currency                    -&gt; getValueOfExcelField(row, 11),
+      LocalAmount                 -&gt; getValueOfExcelField(row, 10),
+      BookAmount                  -&gt; getValueOfExcelField(row, 15)
+    )).toMap
+  }
+</code></pre>
+<p>But for GL type2 input:</p>
+<p><img src="./pic/GLType2.png" alt="GL Type2" /></p>
+<p>There is need another input for currency and EndingBalanceAmount need additional information, but we don&rsquo;t want to change interface, then curry is used:</p>
+<pre class="prettyprint"><code class="language-scala"> def getGroupedValue(inputFile: String): Map[String, Seq[Seq[ExcelField]]] = {
+    val seqListValue = BasicExcelReaderHelper.defaultExcelReaderForExcel(headerStr)(inputFile)
+    seqListValue.groupBy(list =&gt; list(0).field)
+  }
+
+  def getAmount(groupedRecord: Map[String, Seq[Seq[ExcelField]]], account: String): String = {
+    val lastRow = groupedRecord.filter(tempGroup =&gt; tempGroup._1 == account).head._2.last
+    getValueOfExcelField(lastRow, 9)
+  }
+
+  def createRow(currency: String, groupedRecord: Map[String, Seq[Seq[ExcelField]]]) =
+    (row: Seq[ExcelField]) =&gt; {
+      (createGLRowMap() ++ Map(
+        BeginingBalanceDescriptiton -&gt; getValueOfExcelField(row, 0),
+        TranDate                    -&gt; convertDateStringToYMDString(getValueOfExcelField(row, 5)),
+        TranID                      -&gt; getValueOfExcelField(row, 1),
+        TranDescription             -&gt; getValueOfExcelField(row, 6),
+        Currency                    -&gt; currency,
+        LocalAmount                 -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        BookAmount                  -&gt; getValueOfExcelFieldWithDefault(row, 10, Some(&quot;&quot;)),
+        Balance                     -&gt; getValueOfExcelField(row, 9),
+        EndingBalanceAmount         -&gt; getAmount(groupedRecord, getValueOfExcelField(row, 0))
+      )).toMap
+    }
+</code></pre>
+<h2><a href="#bug-in-processor-design" name="bug-in-processor-design" class="anchor"><span class="anchor-link"></span></a>Bug in processor design</h2>
+<p>There is bug in processor design for getStorage function</p>
+<pre class="prettyprint"><code class="language-scala ">object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  //What&#39;s will be when create an instance in val
+  val getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+</code></pre>
+<p>need change to </p>
+<pre class="prettyprint"><code class="language-scala ">object WorkdayProcessor {
+  val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+    Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
+    Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
+  )
+
+  val processFiles = BasicProcessFile.processFiles(extractorMap) _
+
+  def getStorage = BasicProcessFile.getStorageBase(new FundManagerSingleEGAStorage) _
+}
+</code></pre>
+<p>If the getStorage is val, then the &ldquo;new FundManagerSingleEGAStorage&rdquo; will only create once.</p>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../alloctMemFail/index.html" title="JVM allocate memory failed in docker" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+JVM allocate memory failed in docker
+</span>
+</div>
+</a>
+<a href="../bugs/index.html" title="Bugs" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Bugs
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../assets/javascripts/application.583bbe55.js"></script>
+<script src="../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../."}})</script>
+<script type="text/javascript" src="../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script src="../assets/ga4.js"></script>
+</body>
+</html>

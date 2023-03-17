@@ -28,4 +28,4 @@ node_modules/
 null/
 .vscode
 .metals/*
-public/docs/*
+#public/docs/*

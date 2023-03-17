@@ -1,0 +1,7 @@
+[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`fund_engagement_id`, x2.`extraction_status`,
+ x2.`upload_file_status`, x2.`upload_file_content`, x2.`selected`, x3.`display`, x4.`display`, x2.`createby`,
+  x2.`createdatetime`, x2.`modifyby`, x2.`modifydatetime` from `fund_engagement_report_type_selection` x2,
+  `fund_engagement` x5, `funds` x6, `fund_admin` x7, `sheettypes_reporttypes_map` x8, `sheet_types` x3, `report_types`
+  x4 where ((((((x2.`fund_engagement_id` = x5.`id`) and (x2.`fund_engagement_id` = '3ed111d1-5f9a-4afd-bc6a-99286e2de59a'))
+  and (x5.`fundid` = x6.`id`)) and (x6.`fund_admin_id` = x7.`id`)) and (x2.`sheettypes_reporttypes_map_id` = x8.`id`))
+  and (x8.`sheettypeid` = x3.`id`)) and (x8.`reporttypeid` = x4.`id`)

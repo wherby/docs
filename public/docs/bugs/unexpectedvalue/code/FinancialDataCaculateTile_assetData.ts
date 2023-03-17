@@ -1,0 +1,64 @@
+export const BalanceSheetDataRows_asset_subtitle:string[] = [
+    "current_assets",
+    "noncurrent_assets",  //The col is a subtitle
+]
+
+  const Rule_total_noncurrent_assets:Calculation = {
+      resultRowKey:"total_noncurrent_assets",
+      rule:[
+          {
+              rowKey:"available_for_sale",
+              type:"plus"
+          },{
+              rowKey:"held_to_maturity",
+              type:"plus"
+          },
+          {
+              rowKey:"longterm_equity_investment",
+              type:"plus"
+          },{
+              rowKey:"longterm_debt_investment",
+              type:"plus"
+          },{
+              rowKey:"other_equity_instrument_investment",
+              type:"plus"
+          },{
+              rowKey:"fixed_assets_net_of_AD_and_impairment",
+              type:"plus"
+          },{
+              rowKey:"fixed_assets_to_be_disposed",
+              type:"plus"
+          },{
+              rowKey:"construction_materials",
+              type:"plus"
+          },{
+              rowKey:"construction_in_progress",
+              type:"plus"
+          },{
+              rowKey:"intangible_assets_net_of_amortization",
+              type:"plus"
+          },{
+              rowKey:"development_cost",
+              type:"plus"
+          },{
+              rowKey:"goodwill",
+              type:"plus"
+          },{
+              rowKey:"long_term_prepayments",
+              type:"plus"
+          },{
+              rowKey:"long_term_receivable",
+              type:"plus"
+          },{
+              rowKey:"deferred_assets",
+              type:"plus"
+          },{
+              rowKey:"other_noncurrent_assets",
+              type:"plus"
+          },{
+              rowKey:"deferred_tax_assets",
+              type:"plus"
+          },
+      ]
+  }
+
