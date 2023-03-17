@@ -1,3 +1,0 @@
-def secureAction[A](action: Action[A]): Action[A] = Secure("PwCClient").async(action.parser) { implicit request =>
-...
-}
