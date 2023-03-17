@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>MySQL query failed · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+MySQL query failed
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html" class="active page">MySQL query failed</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+  </ul></li>
+  <li><a href="../../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/sqlfailed/index.html#mysql-query-failed" class="header">MySQL query failed</a>
+  <ul>
+    <li><a href="../../bugs/sqlfailed/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#code" class="header">Code</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#issue-finder-in-code" class="header">Issue finder in code</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#more-advance-topic" class="header">More advance topic</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/sqlfailed/index.html#mysql-query-failed" class="header">MySQL query failed</a>
+  <ul>
+    <li><a href="../../bugs/sqlfailed/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#code" class="header">Code</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#issue-finder-in-code" class="header">Issue finder in code</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html#more-advance-topic" class="header">More advance topic</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#mysql-query-failed" name="mysql-query-failed" class="anchor"><span class="anchor-link"></span></a>MySQL query failed</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<dl>
+  <dt>Error</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/txt/error.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[warn] c.z.h.p.ProxyConnection - myapp.database - Connection com.mysql.cj.jdbc.ConnectionImpl@7d5dbfc5 marked as broken because of SQLSTATE(08S01), ErrorCode(1159)
+java.sql.SQLNonTransientConnectionException: Got timeout reading communication packets        
+at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)        
+at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)        
+at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)        
+at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:955)        
+at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:372)        
+at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)        
+at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)        
+at slick.jdbc.StatementInvoker.results(StatementInvoker.scala:39)        
+at slick.jdbc.StatementInvoker.iteratorTo(StatementInvoker.scala:22)        
+at slick.jdbc.Invoker.first(Invoker.scala:30)
+[info] s.JobServiceImpl - ec9b85de-4799-44cd-8ec4-5614b5a81e3f failed to complete
+</code></pre></dd>
+</dl>
+<h2><a href="#code" name="code" class="anchor"><span class="anchor-link"></span></a>Code</h2>
+<p>The query as below</p>
+<dl>
+  <dt>StatDao</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/SlickStatDAO.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">@Singleton
+class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extends StatDAO with Tables {
+
+
+  val usedb = new UseDBcommandGenerator(&quot;idr_usage&quot;).generate()
+
+  /**
+   * for HK
+   */
+
+...
+
+  val drop_v_engagement_HK = new DropEngagementCommandGenerator(&quot;HK&quot;).generate()
+  val create_v_engagement_HK = new CreateEngagementCommandGenerator(&quot;HK&quot;, mysqlHKUser, mysqlHKPwd, mysqlHkIpAddress, mysqlHKPort).generate()
+  val drop_tenant_HK = new DropTenantCommandGenerator(&quot;HK&quot;).generate()
+  val create_tenant_HK = new CreateTenantCommandGenerator(&quot;HK&quot;, mysqlHKUser, mysqlHKPwd, mysqlHkIpAddress, mysqlHKPort).generate()
+  val drop_tenant_engagement_HK = new DropTenantEngagementCommandGenerator(&quot;HK&quot;).generate()
+  val create_tenant_engagement_HK = new CreateTenantEngagementCommandGenerator(&quot;HK&quot;, mysqlHKUser, mysqlHKPwd, mysqlHkIpAddress, mysqlHKPort).generate()
+  val drop_audit_log_HK = new DropAuditLogCommandGenerator(&quot;HK&quot;).generate()
+  val create_audit_log_HK = new CreateAuditLogCommandGenerator(&quot;HK&quot;, mysqlHKUser, mysqlHKPwd, mysqlHkIpAddress, mysqlHKPort).generate()
+  val drop_Local_Engagement_HK = new DropLocalEngagementCommandGenerator(&quot;HK&quot;).generate()
+  val create_Local_Engagement_HK = new CreateLocalEngagementCommandGenerator(&quot;HK&quot;).generate()
+  val insert_into_Local_Engagement_HK = new InsertIntoLocalEngagementCommandGenerator(&quot;HK&quot;).generate()
+  //    val alter_Environment_HK = new AlterLocalEngagementCommandGenerator(&quot;HK&quot;, &quot;Environment&quot;, &quot;HK-AMIR&quot;).generate()
+  val alter_Environment_HK = new AlterLocalEngagementCommandGenerator(&quot;HK&quot;, &quot;Environment&quot;, &quot;Hong Kong&quot;).generate()
+
+
+  /**
+   * for common
+   */
+...
+
+  /**
+   * UNION
+   */
+..
+
+  override def getAll: Future[Seq[Stat]] = {
+    val sql = IdrUsageUnion.result
+    db.run(sql).map(_.map(statsRowToStat))
+  }
+  override def getAllWOid: Future[Seq[StatWOid]] = {
+    val sql = IdrUsageUnion.result
+    db.run(sql).map(_.map(statsRowToStatWOid))
+  }
+
+  def compute: Future[Seq[Stat]] = this.synchronized {
+
+    val f = for {
+      _ &lt;- db.run(usedb)
+//      HK
+      _ &lt;- db.run(drop_v_engagement_HK)
+      _ &lt;- db.run(create_v_engagement_HK)
+      _ &lt;- db.run(drop_tenant_HK)
+      _ &lt;- db.run(create_tenant_HK)
+      _ &lt;- db.run(drop_tenant_engagement_HK)
+      _ &lt;- db.run(create_tenant_engagement_HK)
+      _ &lt;- db.run(drop_audit_log_HK)
+      _ &lt;- db.run(create_audit_log_HK)
+      _ &lt;- db.run(drop_Local_Engagement_HK)
+      _ &lt;- db.run(create_Local_Engagement_HK)
+      _ &lt;- db.run(insert_into_Local_Engagement_HK)
+      _ &lt;- db.run(alter_Environment_HK)
+//      COMMON
+...
+
+
+      /**
+       * Union all Local Engagement Tables
+       */
+      _ &lt;- db.run(drop_union_all)
+      _ &lt;- db.run(create_union_all)
+      x &lt;- db.run(IdrUsageUnion.result)
+    } yield x
+
+    f.map(seq =&gt; seq.map(statsRowToStat))
+  }
+
+}</code></pre></dd>
+  <dt>DropEngagementCommandGenerator</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/DropEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class DropEngagementCommandGenerator @Inject() (ServerEnvironment:String) extends CommandGeneratorByServerEnvironment {
+  val profile: JdbcProfile = _root_.slick.jdbc.MySQLProfile
+  import profile.api._
+  def generate(): SqlAction[Int, NoStream, Effect] = {
+    sqlu&quot;&quot;&quot;
+          DROP TABLE IF EXISTS `V_Engagement_#${ServerEnvironment}`;
+          &quot;&quot;&quot;
+  }
+}</code></pre></dd>
+  <dt>CreateEngagementCommandGenerator</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/CreateEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class CreateEngagementCommandGenerator @Inject() (ServerEnvironment:String, MySQLuser:String, MySQLpwd:String, MySQLipAdress:String, MySQLport:String) extends CommandGeneratorByServerEnvironment {
+  val profile: JdbcProfile = _root_.slick.jdbc.MySQLProfile
+  import profile.api._
+  def generate(): SqlAction[Int, NoStream, Effect] = {
+    val databaseName  = if (ServerEnvironment == &quot;SOE&quot;) &quot;cidrprod&quot; else &quot;cidr&quot;
+    sqlu&quot;&quot;&quot;
+          CREATE TABLE `V_Engagement_#$ServerEnvironment` (
+             `SchemaName` VARCHAR(128) DEFAULT NULL,
+            `EngagementId` VARCHAR(128) DEFAULT NULL,
+            `Name` VARCHAR(512) DEFAULT NULL,
+            `ClientId` VARCHAR(128) DEFAULT NULL,
+            `PeriodBeginDate` DATETIME DEFAULT NULL,
+            `PeriodEndDate` DATETIME DEFAULT NULL,
+            `ReportSignDate` DATETIME DEFAULT NULL,
+            `ReportReleaseDate` DATETIME DEFAULT NULL,
+            `ArchiveDate` DATETIME DEFAULT NULL,
+            `CreateDate` DATETIME DEFAULT NULL,
+            `ActualArchiveDate` DATETIME DEFAULT NULL,
+            `FreezeDate` DATETIME DEFAULT NULL,
+            `TFOffice` VARCHAR(512) DEFAULT NULL,
+            `TFRegion` VARCHAR(512) DEFAULT NULL,
+            `TFStatusid` VARCHAR(128) DEFAULT NULL,
+            `LastUpdateDate` DATETIME DEFAULT NULL,
+            `EnableAutoSync` TINYINT(1) NOT NULL DEFAULT &#39;1&#39;,
+            UNIQUE KEY `V_Engagement_EngagementId_IDX` (`EngagementId`),
+            KEY `V_Engagement_LastUpdated_IDX` (`LastUpdateDate`),
+            KEY `V_Engagement_Name_IDX` (`Name`),
+            KEY `V_Engagement_TFStatusid_IDX` (`TFStatusid`)
+          )  ENGINE=FEDERATED DEFAULT CHARSET=UTF8MB4 CONNECTION=&#39;mysql://#$MySQLuser:#$MySQLpwd@#$MySQLipAdress:#$MySQLport/#$databaseName/V_Engagement&#39;;
+          &quot;&quot;&quot;
+  }
+
+}</code></pre></dd>
+</dl>
+<p>The query function is basically create &ldquo;FEDERATED&rdquo; table of remote mysql table and do the query.</p>
+<p>More about &ldquo;FEDERATED&rdquo; storage in the <a href="https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html">url</a>.</p>
+<p>For &ldquo;SQLSTATE(08S01), ErrorCode(1159)&rdquo; </p>
+<p>The url <a href="https://dba.stackexchange.com/questions/205398/mysql-got-timeout-reading-communication-packets-when-reading-federated-table">MySQL Got timeout reading communication packets when reading federated table</a> tells some config need to be applied to mysql:</p>
+<p><img src="./pic/stackexchange.png" alt="mysql setting" /></p>
+<h2><a href="#issue-finder-in-code" name="issue-finder-in-code" class="anchor"><span class="anchor-link"></span></a>Issue finder in code</h2>
+<p>After the Mysql config is updated, there will be failure for the job, but no error info printed.</p>
+<p>Issue finder start:</p>
+<dl>
+  <dt>Logback setting</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/logback.xml" target="_blank" title="Go to snippet source"></a><code class="language-xml">&lt;configuration&gt;
+
+  &lt;conversionRule conversionWord=&quot;coloredLevel&quot; converterClass=&quot;play.api.libs.logback.ColoredLevel&quot;/&gt;
+
+  &lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.FileAppender&quot;&gt;
+    &lt;file&gt;${application.home:-.}/logs/application.log&lt;/file&gt;
+    &lt;encoder&gt;
+      &lt;pattern&gt;%date [%level] from %logger in %thread - %message%n%xException&lt;/pattern&gt;
+    &lt;/encoder&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+    &lt;encoder&gt;
+      &lt;pattern&gt;%coloredLevel %logger{15} - %message%n%xException{10}&lt;/pattern&gt;
+    &lt;/encoder&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;ASYNCFILE&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;
+    &lt;appender-ref ref=&quot;FILE&quot;/&gt;
+  &lt;/appender&gt;
+
+  &lt;appender name=&quot;ASYNCSTDOUT&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;
+    &lt;appender-ref ref=&quot;STDOUT&quot;/&gt;
+  &lt;/appender&gt;
+
+  &lt;logger name=&quot;play&quot; level=&quot;INFO&quot;/&gt;
+  &lt;logger name=&quot;application&quot; level=&quot;INFO&quot;/&gt;
+
+  &lt;!-- Useful debugging settings in slick --&gt;
+  &lt;logger name=&quot;slick.jdbc.JdbcBackend.statement&quot; level=&quot;INFO&quot;/&gt;
+  &lt;logger name=&quot;slick.jdbc.JdbcBackend.benchmark&quot; level=&quot;INFO&quot;/&gt;
+  &lt;logger name=&quot;com.zaxxer.hikari&quot; level=&quot;WARN&quot;/&gt;
+  &lt;logger name=&quot;controllers&quot; level=&quot;DEBUG&quot;/&gt;
+  &lt;logger name=&quot;service&quot; level=&quot;DEBUG&quot;/&gt;
+
+  &lt;root level=&quot;WARN&quot;&gt;
+    &lt;appender-ref ref=&quot;ASYNCFILE&quot;/&gt;
+    &lt;appender-ref ref=&quot;ASYNCSTDOUT&quot;/&gt;
+  &lt;/root&gt;
+
+&lt;/configuration&gt;</code></pre></dd>
+  <dt>Job service impl</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/JobServiceImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class JobServiceImpl @Inject()(statDao: StatDAO) extends JobService {
+  var state: JobServiceState = JobServiceState(None, false, false, LocalTime.now(), Some(LocalTime.now()), Nil)
+  implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(Executors.newSingleThreadExecutor())
+  final val failureLimit = 5
+  override def getState: JobServiceState =
+    state
+
+  override def updateRunning(running: Boolean): Future[JobServiceState] =
+    Future {
+      state = state.copy(running = running)
+      state
+    }
+
+  override def updateStartTime(startTime: LocalTime): Future[JobServiceState] =
+    Future {
+      state = state.copy(startTime = startTime)
+      state
+    }
+
+  override def updateEndTime(endTime: Option[LocalTime]): Future[JobServiceState] =
+    Future {
+      state = state.copy(endTime = endTime)
+      state
+    }
+
+  override def updateSuccessful(successful: Boolean): Future[JobServiceState] =
+    Future {
+    state = state.copy(successful = successful)
+    state
+  }
+
+
+  override def updateId(idOpt: Option[UUID]): Future[JobServiceState] =
+    Future {
+      state = state.copy(id = idOpt)
+      state
+    }
+
+  override def startAJob(uuid: UUID): Future[Seq[Stat]] = {
+    if (state.running) {
+      LoggerFactory.getLogger(this.getClass).warn(s&quot;${state.id} already running.&quot;)
+      Future.failed(new RuntimeException(&quot;is running!!!&quot;))
+    } else {
+      LoggerFactory.getLogger(this.getClass).info(s&quot;start another job $uuid&quot;)
+      val EngagementsStats = updateRunning(true)
+        .flatMap(_ =&gt; updateId(Some(uuid)))
+        .flatMap(_ =&gt; updateStartTime(LocalTime.now()))
+        .flatMap(_ =&gt; updateEndTime(None))
+        .flatMap(_ =&gt; statDao.compute)
+
+      EngagementsStats.onComplete {
+        case Success(value) =&gt;
+          LoggerFactory.getLogger(this.getClass).info(s&quot;${state.id.getOrElse(&quot;null&quot;)} successfully complete, using time ${ChronoUnit.SECONDS.between(state.startTime, LocalTime.now())}&quot;)
+          updateRunning(false)
+            .flatMap(_ =&gt; updateSuccessful(true))
+            .flatMap(_ =&gt; updateEndTime(Some(LocalTime.now())))
+            .foreach(_ =&gt; {
+              state = state.copy(history = state.copy(history = Nil) :: state.history)
+            })
+        case Failure(exception) =&gt;
+          LoggerFactory.getLogger(this.getClass).info(s&quot;${state.id.getOrElse(&quot;null&quot;)} failed to complete&quot;)
+          updateRunning(false)
+            .flatMap(_ =&gt; updateSuccessful(false))
+            .flatMap(_ =&gt; updateEndTime(Some(LocalTime.now())))
+            .foreach(_ =&gt; {
+              state = state.copy(history = state.copy(history = Nil) :: state.history)
+            })
+      }
+      EngagementsStats
+    }
+  }
+
+  override def startAJob(): Future[Seq[Stat]] = startAJob(UUID.randomUUID())
+}</code></pre></dd>
+</dl>
+<h2><a href="#more-advance-topic" name="more-advance-topic" class="anchor"><span class="anchor-link"></span></a>More advance topic</h2>
+<p>From reference <a href="https://blog.csdn.net/azurelaker/article/details/89604689">如何在Scala的for comprehension中使用Future</a></p>
+<p>Let&rsquo;s see what&rsquo;s output of each code snip:</p>
+<dl>
+  <dt>s1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+object SerialFutureMap extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+  
+  val serial = for {
+    f1 &lt;- Future {
+      Thread.sleep(300)
+      println(&quot;[Serial] exec f1 first.&quot;)
+      &quot;f1&quot;
+    }
+    
+    f2 &lt;- Future {
+      println(&quot;[Serial] exec f2 second.&quot;)
+      &quot;f2&quot;
+    }
+  } yield {
+    f1 + &quot; and &quot; + f2
+  }
+  
+  serial foreach {
+    case result =&gt; println(&quot;Serial result:&quot; + result)
+  }
+
+  Thread.sleep(1000)
+}
+
+/*
+[Serial] exec f1 first.
+[Serial] exec f2 second.
+Serial result:f1 and f2
+ */</code></pre></dd>
+  <dt>p1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+
+object ParallelFutureMap extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val f1 = Future {
+    Thread.sleep(300)
+    println(&quot;[Parallel] exec f1 second as it is sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  val f2 = Future {
+    println(&quot;[Parallel] exec f2 first.&quot;)
+    &quot;f2&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    second &lt;- f2
+  } yield {
+    first + &quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Parallel result:&quot; + result)
+  }
+  Thread.sleep(1000)
+}
+
+/*
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Parallel result:f1 and f2
+ */</code></pre></dd>
+  <dt>s2</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object SerialFutureMap2 extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  def f1 = Future {
+    Thread.sleep(300)
+    println(&quot;[Serial] exec f1 first though it sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  def f2 = Future {
+    println(&quot;[Serial] exec f2 second.&quot;)
+    &quot;f2&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    second &lt;- f2
+
+  } yield {
+    first + &quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Serial result:&quot; + result)
+  }
+
+  Thread.sleep(1000)
+}
+
+/*
+[Serial] exec f1 first though it sleep some time.
+[Serial] exec f2 second.
+Serial result:f1 and f2
+ */
+</code></pre></dd>
+  <dt>as1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncSerialMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object AsyncSerialMap extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+  import scala.async.Async.{async, await}
+
+  def f1(name : String) = Future {
+    Thread.sleep(300)
+    println(&quot;[Serial] exec f1 first though it sleep some time.&quot;)
+    name
+  }
+
+  def f2(name : String) = Future {
+    println(&quot;[Serial] exec f2 second.&quot;)
+    name
+  }
+
+  val serial = async {
+    await(f1(&quot;f1&quot;)) + &quot; and &quot; + await(f2(&quot;f2&quot;))
+  }
+
+  serial foreach {
+    case result =&gt; println(&quot;serial result:&quot; + result)
+  }
+  Thread.sleep(1000)
+}
+
+/*
+[Serial] exec f1 first though it sleep some time.
+[Serial] exec f2 second.
+serial result:f1 and f2
+ */
+</code></pre></dd>
+  <dt>ap1</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncParallelMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object AsyncParallelMap extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+  import scala.async.Async.{async, await}
+
+  def f1(name: String) = Future {
+    Thread.sleep(300)
+    println(&quot;[parallel] exec f1 second as it sleep some time.&quot;)
+    name
+  }
+
+  def f2(name: String) = Future {
+    println(&quot;[parallel] exec f2 second.&quot;)
+    name
+  }
+
+  val parallel = async {
+    val result1 = f1(&quot;f1&quot;)
+    val result2 = f2(&quot;f2&quot;)
+    await(result1) + &quot; and &quot; + await(result2)
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;parallel result:&quot; + result)
+  }
+  Thread.sleep(2000)
+}
+
+/*
+[parallel] exec f2 second.
+[parallel] exec f1 second as it sleep some time.
+parallel result:f1 and f2
+ */</code></pre></dd>
+  <dt>p2</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+
+object ParallelFutureMap2 extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val f1 = Future {
+    Thread.sleep(1000)
+    println(&quot;[Parallel] exec f1 second as it is sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  val f2 = Future {
+    Thread.sleep(500)
+    println(&quot;[Parallel] exec f2 first.&quot;)
+    &quot;f2&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    _&lt;-Future{println(&quot;Print in for&quot;)
+      &quot;f3&quot;
+    }
+    second &lt;- f2
+  } yield {
+    first + &quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Parallel result:&quot; + result)
+  }
+  Thread.sleep(1000)
+}
+
+/*
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Print in for
+Parallel result:f1 and f2
+ */</code></pre></dd>
+  <dt>p3</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap3.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object ParallelFutureMap3 extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val f1 = Future {
+    Thread.sleep(3000)
+    println(&quot;[Parallel] exec f1 second as it is sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  val f2 = Future {
+    Thread.sleep(1000)
+    println(&quot;[Parallel] exec f2 first.&quot;)
+    &quot;f2&quot;
+  }
+  val f3f = Future{println(&quot;Print in for&quot;)
+    &quot;f3&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    f3&lt;-f3f
+    second &lt;- f2
+  } yield {
+    f3+&quot; and &quot;+ first + &quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Parallel result:&quot; + result)
+  }
+  Thread.sleep(4000)
+}
+
+/*
+Print in for
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Parallel result:f3 and f1 and f2
+ */</code></pre></dd>
+  <dt>p4</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap4.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object ParallelFutureMap4 extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val f1 = Future {
+    Thread.sleep(2000)
+    println(&quot;[Parallel] exec f1 second as it is sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  val f2 = Future {
+    Thread.sleep(100)
+    println(&quot;[Parallel] exec f2 first.&quot;)
+    &quot;f2&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    f3&lt;-Future{println(&quot;Print in for&quot;)
+      &quot;f3&quot;
+    }
+    second &lt;- f2
+  } yield {
+    f3 + &quot; and &quot;+first + &quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Parallel result:&quot; + result)
+  }
+  Thread.sleep(4000)
+}
+
+/*
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Print in for
+Parallel result:f3 and f1 and f2
+ */</code></pre></dd>
+  <dt>p5</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap5.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+
+object ParallelFutureMap5 extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val f1 = Future {
+    Thread.sleep(5000)
+    println(&quot;[Parallel] exec f1 second as it is sleep some time.&quot;)
+    &quot;f1&quot;
+  }
+
+  val f2 = Future {
+    Thread.sleep(1000)
+    println(&quot;[Parallel] exec f2 first.&quot;)
+    &quot;f2&quot;
+  }
+  val f3 = Future{println(&quot;Print in for&quot;)
+    &quot;f3&quot;
+  }
+
+  val parallel = for {
+    first &lt;- f1
+    third&lt;-f3
+    second &lt;- f2
+  } yield {
+     first + &quot; and &quot;+ third+&quot; and &quot; + second
+  }
+
+  parallel foreach {
+    case result =&gt; println(&quot;Parallel result:&quot; + result)
+  }
+  Thread.sleep(6000)
+}
+
+/*
+Print in for
+[Parallel] exec f2 first.
+[Parallel] exec f1 second as it is sleep some time.
+Parallel result:f1 and f3 and f2
+ */</code></pre></dd>
+</dl>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../bugs/taskFailure/index.html" title="Schedule task" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Schedule task
+</span>
+</div>
+</a>
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Code design
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script src="../../assets/ga4.js"></script>
+</body>
+</html>

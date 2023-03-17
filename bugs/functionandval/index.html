@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>Function and Val in code · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+Function and Val in code
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="active page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+  </ul></li>
+  <li><a href="../../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/functionandval/index.html#function-and-val-in-code" class="header">Function and Val in code</a>
+  <ul>
+    <li><a href="../../bugs/functionandval/index.html#issue" class="header">Issue</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/functionandval/index.html#function-and-val-in-code" class="header">Function and Val in code</a>
+  <ul>
+    <li><a href="../../bugs/functionandval/index.html#issue" class="header">Issue</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#function-and-val-in-code" name="function-and-val-in-code" class="anchor"><span class="anchor-link"></span></a>Function and Val in code</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>In scala function and val are quiet equal as below:</p>
+<p>def f1 = (a: Int) =&gt; { a *2} val f1 = (a: Int) =&gt; { a *2}</p>
+<p>In some case the two will have different feature:</p>
+<p>When use function, every thing as expected: <img src="pic/def.png" alt="Functiin" /></p>
+<p>When use val, the null pointer error show up: <img src="pic/val.png" alt="Val" /></p>
+<p>The code as below:</p>
+<dl>
+  <dt>ExtractorConfig</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/code/HSBCMFLikeExtractor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import io.github.jonathanlink.PDFLayoutTextStripper
+import org.apache.pdfbox.pdmodel.PDDocument
+
+import java.io.File
+
+case class HSBCMFLikeExtractor(
+                                removeHeader: Seq[String],
+                                splitPosition: Seq[Int],
+                                trimContentLine: Option[Int] = None,
+                                tableToRecode: Option[(Seq[String], Int) =&gt; Seq[Seq[String]]] = None,
+                                splitSeq: Seq[(Int, (String =&gt; Seq[String]))] = Seq()
+                              )
+
+object HSBCMFLikeExtractor {
+  def getContentStr(filePath: String) = {
+    val file        = new File(filePath);
+    val document    = PDDocument.load(file);
+    val pdfStripper = new PDFLayoutTextStripper()
+    pdfStripper.getText(document)
+  }
+
+  def getTableContent(listStr: Seq[String], removeStr: Seq[String]) = {
+    val items = splitByEmptyLine(listStr)
+    items.filter(item =&gt; {
+      removeStr.foldLeft(true)((b, str1) =&gt; b &amp;&amp; item(0).indexOf(str1) &lt; 0)
+    })
+  }
+
+  private def splitByEmptyLine(listStr: Seq[String]): Seq[Seq[String]] = {
+    var res     = Seq[Seq[String]]()
+    var tempRes = Seq[String]()
+    for (line &lt;- listStr) {
+      if (line.trim().length == 0) {
+        if (tempRes.length &gt; 0) {
+          res = res :+ tempRes
+          tempRes = Seq()
+        }
+      } else {
+        tempRes = tempRes :+ line
+      }
+    }
+    if (tempRes.length &gt; 0) {
+      res = res :+ tempRes
+    }
+    res
+  }
+
+  private def getModifiedSplitPoint(strLine: String, splitPoint: Seq[Int]) = {
+    splitPoint.map { point =&gt;
+      var pointTemp = point - 1
+      while (pointTemp &lt; strLine.length - 1 &amp;&amp; strLine(pointTemp) != &#39; &#39;) {
+        pointTemp = pointTemp + 1
+      }
+      pointTemp
+    }
+  }
+
+  //suppose every record has the one none-empty beginning value for the record number at line 1.
+  val splitTableToRecords = (tableStr: Seq[String], sectionIndex: Int) =&gt; {
+    var res: Seq[Seq[String]] = Seq()
+    var tempRes: Seq[String]  = Seq()
+    for (line &lt;- tableStr) {
+      if (line.substring(0, sectionIndex).trim.length != 0 &amp;&amp; tempRes.length &gt; 0) {
+        res = res :+ tempRes
+        tempRes = Seq(line)
+      } else {
+        tempRes = tempRes :+ line
+      }
+    }
+    if (tempRes.length &gt; 0) {
+      res = res :+ tempRes
+    }
+    res
+  }
+
+  def splitLine(
+                 strLine: String,
+                 splitPoint: Seq[Int],
+                 splitFunSeq: Seq[(Int, (String =&gt; Seq[String]))]
+               ) = {
+    var res: Seq[String] = Seq()
+    var start            = 0
+    for (point &lt;- splitPoint) {
+      res = res :+ strLine.substring(start, point)
+      start = point
+    }
+    res = res :+ strLine.substring(start)
+    val functionMap = splitFunSeq.toMap
+    res.zipWithIndex.flatMap {
+      case (line, index) =&gt; {
+        functionMap.get(index) match {
+          case Some(fn) =&gt;
+            fn(line)
+          case _ =&gt; Seq(line)
+        }
+      }
+    }
+  }
+
+  def splitSectionAndJoin(
+                           itemLines: Seq[String],
+                           splitPoint: Seq[Int],
+                           splitFunSeq: Seq[(Int, (String =&gt; Seq[String]))] = Seq()
+                         ) = {
+    val res = itemLines
+      .map { itemline =&gt;
+        val modifiedPoints = getModifiedSplitPoint(itemline, splitPoint)
+        splitLine(itemline, modifiedPoints, splitFunSeq)
+      }
+    res.tail.foldLeft(res.head)((r, itemLine) =&gt; jointSeqStr(r, itemLine))
+  }
+
+  private def jointSeqStr(seqS1: Seq[String], seqS2: Seq[String]) = {
+    seqS1.zip(seqS2).map { case (a, b) =&gt; (a.trim + &quot; &quot; + b.trim).trim }
+  }
+
+  def extractRecord(hsbcMFLikeExtractor: HSBCMFLikeExtractor, content: String): Seq[Seq[String]] = {
+    val isContentSuit =
+      hsbcMFLikeExtractor.removeHeader.foldLeft(true)((b, str1) =&gt; content.indexOf(str1) &gt;= 0 &amp;&amp; b)
+    val recordSpliterFn = hsbcMFLikeExtractor.tableToRecode.getOrElse(splitTableToRecords)
+    isContentSuit match {
+      case true =&gt;
+        val lines         = SinglePageExtractor.splitToLines(content)
+        val tableContents = getTableContent(lines, hsbcMFLikeExtractor.removeHeader)
+        val afterTrimTableHeader = hsbcMFLikeExtractor.trimContentLine match {
+          case Some(lineNumber) =&gt;
+            tableContents.map { tableContent =&gt;
+              tableContent.slice(lineNumber, tableContent.length)
+            }
+          case _ =&gt; tableContents
+        }
+        afterTrimTableHeader
+          .flatMap { tableContent =&gt;
+            recordSpliterFn(tableContent, hsbcMFLikeExtractor.splitPosition(0))
+          }
+          .map { record =&gt;
+            splitSectionAndJoin(
+              record,
+              hsbcMFLikeExtractor.splitPosition,
+              hsbcMFLikeExtractor.splitSeq
+            )
+          }
+          .map { record =&gt;
+            record.map { x =&gt; x.trim }
+          }
+      case _ =&gt; Seq()
+    }
+  }
+
+  def extractRecordsFromFile(
+                              hsbcMFLikeExtractor: HSBCMFLikeExtractor,
+                              fileName: String
+                            ): Seq[Seq[String]] = {
+    val content = getContentStr(fileName)
+    extractRecord(hsbcMFLikeExtractor, content)
+  }
+}</code></pre></dd>
+  <dt>Reader Instance</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/code/SecHSBCMultiTBReader2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import com.pwc.ds.awm.processor.pdfExtractorMethods.HSBCMFLikeExtractor
+import com.pwc.ds.awm.processor.secHSBCMulti.reader.SecHSBCMultiTBReader.readerConfig
+import com.pwc.ds.awm.processor.singleegarow.TBRow.{AccountName, Balance, ClosingBalance_Detail, Description_Detail, Group1, createTBRowMap}
+
+object SecHSBCMultiTBReader2 {
+  val removeStr =
+    Seq(
+      &quot;HSBC         Securities             Services&quot;,
+      &quot;Equity,     Income       and    Expense        Report&quot;,
+      &quot;Fund code                 Valuation  date          Ledger  description/Securities  Ledger group  description/ Ledger  code                 Balance  in base             %  of  NAV Client  ID&quot;
+    )
+
+  val splitPoints = Seq(26, 51, 102, 139, 168).map(x =&gt; x + 4)
+  val readerConfig = HSBCMFLikeExtractor(
+    removeStr,
+    splitPoints,
+    Some(4),
+    Some(HSBCMFLikeExtractor.splitTableToRecords),
+    splitSeq = Seq((2, splitString))
+  )
+  val splitWords = Seq(
+    &quot;EQUITY&quot;,
+    &quot;EXPENSES&quot;,
+    &quot;DISTRIBUTION&quot;,
+    &quot;UNREALISED&quot;,
+    &quot;RESERVES&quot;,
+    &quot;INVESTMENT&quot;,
+    &quot;SUBSCRIPTION&quot;,
+    &quot;DISTRIBUTABLE&quot;,
+    &quot;REALISED&quot;,
+    &quot;ACCUMULATED&quot;
+  )
+
+  def splitString = (str: String) =&gt; {
+    try {
+      val wordFind = splitWords.filter(word =&gt; str.indexOf(word) &gt; 0).head
+      val index    = str.lastIndexOf(wordFind)
+      Seq(str.substring(0, index), str.substring(index, str.length))
+    } catch {
+      case _: Throwable =&gt;
+        //println(&quot;*&quot; * 100 + &quot; &quot; + str)
+        Seq(str, &quot;   &quot;)
+    }
+  }
+
+  def getRecord(filePath: String) = {
+    val res = HSBCMFLikeExtractor.extractRecordsFromFile(readerConfig, filePath)
+    res.map(row =&gt; getRow(row))
+  }
+
+  def getRow(row: Seq[String]): Map[String, String] = {
+    (
+      createTBRowMap() ++ Map(
+        Group1                -&gt; row(0),
+        Description_Detail    -&gt; row(2),
+        ClosingBalance_Detail -&gt; row(5),
+        AccountName           -&gt; row(3),
+        Balance               -&gt; row(5)
+      )
+      ).toMap
+  }
+}</code></pre></dd>
+</dl>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/functionandval/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../bugs/numberAdd/index.html" title="Number add for round up" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Number add for round up
+</span>
+</div>
+</a>
+<a href="../../bugs/excelBug/index.html" title="Excel formula issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Excel formula issue
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+<script src="../../assets/ga4.js"></script>
+</body>
+</html>

@@ -1,3 +1,0 @@
-#Single truth principle
-
-
