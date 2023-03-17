@@ -10,9 +10,9 @@ lazy val docs = (project in file("docs")).
   //version := "0.1.0",
   //paradoxTheme := Some(builtinParadoxTheme("generic")),
   paradoxIllegalLinkPath := raw".*\\.md".r,
-  Compile / paradoxMaterialTheme ~= {
-  _.withCustomJavaScript("assets/ga4.js")
-},
+//   Compile / paradoxMaterialTheme ~= {
+//   _.withCustomJavaScript("assets/ga4.js")
+// },
 //  Compile / paradoxMaterialTheme ~= {
 //    _.withGoogleAnalytics("UA-43080126-2") // Remember to change this!
 //  },
