@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Handle verification · Docs</title>
+<title>Cache for slow query · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Handle verification
+Cache for slow query
 </span>
 </div>
 </div>
@@ -221,12 +221,12 @@ wherby/docs
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
-    <li><a href="../../issues/exceptionhandle/index.html" class="active page">Handle verification</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
     <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
     <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
     <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
     <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
-    <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html" class="active page">Cache for slow query</a></li>
   </ul></li>
   <li><a href="../../design/index.html" class="page">Design</a>
   <ul>
@@ -236,9 +236,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/exceptionhandle/index.html#handle-verification" class="header">Handle verification</a>
+  <li><a href="../../issues/cacheforslowquery/index.html#cache-for-slow-query" class="header">Cache for slow query</a>
   <ul>
-    <li><a href="../../issues/exceptionhandle/index.html#throw-or-not-throw" class="header">Throw or not throw</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -260,9 +260,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/exceptionhandle/index.html#handle-verification" class="header">Handle verification</a>
+  <li><a href="../../issues/cacheforslowquery/index.html#cache-for-slow-query" class="header">Cache for slow query</a>
   <ul>
-    <li><a href="../../issues/exceptionhandle/index.html#throw-or-not-throw" class="header">Throw or not throw</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -273,63 +273,60 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#handle-verification" name="handle-verification" class="anchor"><span class="anchor-link"></span></a>Handle verification</h1>
-<h2><a href="#throw-or-not-throw" name="throw-or-not-throw" class="anchor"><span class="anchor-link"></span></a>Throw or not throw</h2>
+<h1><a href="#cache-for-slow-query" name="cache-for-slow-query" class="anchor"><span class="anchor-link"></span></a>Cache for slow query</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>AWM has a slow query for getCompletionRatioByEngagementIds(engagementIds), </p>
+<p>fix: <img src="pic/cacheforslowquery.png" alt="Cache for slow query" /></p>
 <dl>
-  <dt>Code with throw</dt>
+  <dt>code</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/exceptionhandle/code/throw2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
-
-def fiHasInvestments(fiIds: String) = deadbolt.Pattern(value = &quot;v_myfi&quot;, patternType = PatternType.REGEX)() { implicit request =&gt;
-  validateUserUtil.validateUser(request, fiIds.split(&quot;,&quot;).seq).flatMap(_ =&gt; {
-    fiuserServiceRead.fiHasInvestments(fiIds).map {
-      fiHasInvestments =&gt; Ok(Json.toJson(fiHasInvestments))
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/cacheforslowquery/code/statisticsController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def lookupEngagementsCompletion() = deadbolt.SubjectPresent()(parse.anyContent) {
+  implicit authRequest =&gt;
+    {
+      val engagementIdsJsArray = authRequest.body.asJson
+      val format               = new SimpleDateFormat(&quot;d-M-y&quot;)
+      val date                 = format.format(Calendar.getInstance().getTime())
+      engagementIdsJsArray match {
+        case Some(array) =&gt; {
+          val engagementIds   = array.as[Seq[String]]
+          val engagementHash  = engagementIds.mkString(&quot;,&quot;).hashCode
+          val dateId          = date + engagementHash.toString
+          val resultOptFuture = sysCacheService.lookupStatistLogRecord(dateId)
+          resultOptFuture.flatMap { resultOpt =&gt;
+            resultOpt match {
+              case Some(result) =&gt;
+                val resultCache = result.cache
+                val staticsLog = Json
+                  .parse(resultCache)
+                  .asOpt[CacheRecordInSys]
+                  .flatMap { entity =&gt;
+                    entity.staticsLog
+                  }
+                  .getOrElse(&quot;{}&quot;)
+                println(&quot;get from cache&quot;)
+                Future(Ok(staticsLog))
+              case _ =&gt;
+                sysCacheService.updateStaticsLog(&quot;{}&quot;, dateId).flatMap { _ =&gt;
+                  getCompletionRatioByEngagementIds(engagementIds).map(res =&gt; {
+                    sysCacheService.updateStaticsLog(Json.toJson(res).toString(), dateId)
+                    println(s&quot;Calc the value for $dateId&quot;)
+                    Ok(Json.toJson(res))
+                  })
+                }
+            }
+          }
+        }
+        case _ =&gt; {
+          val emptyMap: Map[String, Double] = Map()
+          Future(Ok(Json.toJson(emptyMap)))
+        }
+      }
     }
-  }).recover {
-    case e: UnauthorizedException =&gt; Unauthorized
-  }
-}
-
-def validateUser(request: AuthenticatedRequest[Any], ids: Seq[String]): Future[Unit] = {
-  request.subject.map(s =&gt; {
-    val isPwC = s.permissions.filter(_.value == &quot;b_pwc&quot;).nonEmpty
-    if (!isPwC) {
-      userRead.getUser(Some(s.identifier)).map(u =&gt; {
-        ids.foreach(entityId=&gt;{
-          val validuser = u.map(_.userid.exists(_.equals(entityId))).getOrElse(false)
-          if (!validuser) throw new UnauthorizedException()
-        })
-      })
-    } else {
-      Future.unit
-    }
-  }).getOrElse(Future.failed(new UnauthorizedException()))
-}</code></pre></dd>
-  <dt>Code without throw</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/exceptionhandle/code/notthrow.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
-
-def queryFundsWithStatus(engagementId: String) = deadbolt.SubjectPresent()() { implicit request =&gt;
-{
-  val email = request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;)
-  userInfoQueryService.verifyEmailWithEngagement(email,engagementId).flatMap{
-    verified=&gt;verified match {
-      case  true =&gt;fundsRead.queryFundReportStatus(engagementId).map(fe =&gt; Ok(Json.toJson(fe)))
-      case _=&gt;Future(Unauthorized)
-    }
-  }
-}
-}
-
-def verifyEmailWithEngagement(email:String,engagementId: String):Future[Boolean]={
-  engagementRead.getAssignedEngagements(email).map{
-    engagementList=&gt;engagementList.map(_.id).contains(engagementId)
-  }
 }</code></pre></dd>
 </dl>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/exceptionhandle/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/cacheforslowquery/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -353,7 +350,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../issues/filereader/index.html" title="Read Excel will modify" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../issues/warningmessage/index.html" title="Suppress insecurerequestwarning" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -362,17 +359,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Read Excel will modify
+Suppress insecurerequestwarning
 </span>
 </div>
 </a>
-<a href="../../issues/codeStyle/inde.html" title="Code not easy to understand" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../design/index.html" title="Design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Code not easy to understand
+Design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

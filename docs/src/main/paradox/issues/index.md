@@ -8,5 +8,5 @@
 * [Play UI cache issue](playui/index.md)
 * [CP web display issue](uidisplay/index.md)
 * [Suppress insecurerequestwarning](warningmessage/index.md)
-
+* [Cache for slow query](cacheforslowquery/index.md)
 @@@
