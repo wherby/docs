@@ -38,4 +38,5 @@
 * [Debug cidr python processor](debugcidr/index.md)
 * [Task failure](taskFailure/index.md)
 * [MySQL task faile](sqlfailed/index.md)
+* [Wrong finacial data saved](wrongUpdated/index.md)
 @@@
