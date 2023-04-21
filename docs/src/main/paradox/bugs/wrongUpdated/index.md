@@ -27,4 +27,9 @@ Then the post body will have year "2021" and data of 2022 which is not refreshed
 
 ![Post data for 2021](pic/postData2021.png)
 
+## How to avoid this?
+
+1. check in backend-- year 2021 should be blocked in api call 
+2. don't trust froutend input -- front end status may be in corrupted format
+
 
