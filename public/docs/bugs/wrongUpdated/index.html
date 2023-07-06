@@ -228,6 +228,8 @@ wherby/docs
     <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
     <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
     <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
+    <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
+    <li><a href="../../issues/datefield/index.html" class="page">Date time different issue</a></li>
   </ul></li>
   <li><a href="../../design/index.html" class="page">Design</a>
   <ul>
@@ -241,6 +243,7 @@ wherby/docs
   <ul>
     <li><a href="../../bugs/wrongUpdated/index.html#issue" class="header">Issue</a></li>
     <li><a href="../../bugs/wrongUpdated/index.html#how-to-modify-the-data-which-cant-be-modified" class="header">How to modify the data which can&rsquo;t be modified</a></li>
+    <li><a href="../../bugs/wrongUpdated/index.html#how-to-avoid-this-" class="header">How to avoid this?</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -266,6 +269,7 @@ wherby/docs
   <ul>
     <li><a href="../../bugs/wrongUpdated/index.html#issue" class="header">Issue</a></li>
     <li><a href="../../bugs/wrongUpdated/index.html#how-to-modify-the-data-which-cant-be-modified" class="header">How to modify the data which can&rsquo;t be modified</a></li>
+    <li><a href="../../bugs/wrongUpdated/index.html#how-to-avoid-this-" class="header">How to avoid this?</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -289,6 +293,11 @@ wherby/docs
 <p>there could see the data for 2022 in updated.</p>
 <p>And in year 2022, there is a button of &ldquo;Save&rdquo; which is enabled, and set the network to &ldquo;Slow 3G&rdquo; and select &ldquo;2021&rdquo; year, before the UI refresh finish, click &ldquo;Save&rdquo; button. Then the post body will have year &ldquo;2021&rdquo; and data of 2022 which is not refreshed </p>
 <p><img src="pic/postData2021.png" alt="Post data for 2021" /></p>
+<h2><a href="#how-to-avoid-this-" name="how-to-avoid-this-" class="anchor"><span class="anchor-link"></span></a>How to avoid this?</h2>
+<ol>
+  <li>check in backend&ndash; year 2021 should be blocked in api call</li>
+  <li>don&rsquo;t trust froutend input &ndash; front end status may be in corrupted format</li>
+</ol>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongUpdated/index.md" title="Edit this page" class="md-source-file md-edit">
