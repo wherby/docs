@@ -1,0 +1,1549 @@
+Tag push event of tag v5.1.7 in project digital-solution/funds-ai/ds-awm
+Started by GitLab push by Sawyer Liu
+Querying the current revision of tag v5.1.7...
+Current revision of tag v5.1.7 is 925d2d660420db43a5ab67a1683e09e189257cc2
+Obtained Jenkinsfile-sha from 925d2d660420db43a5ab67a1683e09e189257cc2
+Loading library ds-pipeline@v2.1.6.4
+Attempting to resolve v2.1.6.4 from remote references...
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+using GIT_ASKPASS to set credentials ds-gitlab-checkout
+ > git ls-remote -h -- http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git # timeout=10
+Could not find v2.1.6.4 in remote references. Pulling heads to local for deep search...
+ > git rev-parse --resolve-git-dir /var/jenkins_home/caches/git-52438d366598c249f3299952a2097676/.git # timeout=10
+Setting origin to http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git
+ > git config remote.origin.url http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git config --get remote.origin.url # timeout=10
+using GIT_ASKPASS to set credentials ds-gitlab-checkout
+ > git fetch --tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse v2.1.6.4^{commit} # timeout=10
+ > git branch -a -v --no-abbrev --contains e5ec91c182e660ba42fa04f6983cd90dd308d984 # timeout=10
+Selected match: testmp4 revision e5ec91c182e660ba42fa04f6983cd90dd308d984
+The recommended git tool is: NONE
+using credential ds-gitlab-checkout
+Cloning the remote Git repository
+Cloning with configured refspecs honoured and without tags
+Cloning repository http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git
+ > git init /var/jenkins_home/jobs/awm-tag-branch/branches/v5-1-7.jhf2mg/workspace@libs/6d3755afe9c8766583af2aae2dea666aba5c219569bbef50cfda1cdce1c1a9d1 # timeout=10
+Fetching upstream changes from http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+using GIT_ASKPASS to set credentials ds-gitlab-checkout
+ > git fetch --no-tags --force --progress -- http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url http://cnhk-dskm.asia.pwcinternal.com/digital-solution/devopstools/jenkins-shared-library-aks.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision e5ec91c182e660ba42fa04f6983cd90dd308d984 (testmp4)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f e5ec91c182e660ba42fa04f6983cd90dd308d984 # timeout=10
+Commit message: "Update standardPipeline.groovy with safe testing branch Testmp4 for CI build"
+First time build. Skipping changelog.
+[GitLab Pipeline Status] Notifying tag build status: RUNNING awm-tag-branch/v5.1.7 #1: Build started...
+[GitLab Pipeline Status] Notified
+[Pipeline] Start of Pipeline
+[Pipeline] milestone
+Trying to pass milestone 1
+[Pipeline] node
+Still waiting to schedule task
+Waiting for next available executor on ‘jenkins-slave-jnlp3-cbm9b’
+Agent jenkins-slave-jnlp3-64t4c is provisioned from template jenkins-slave-jnlp3
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  labels:
+    jenkins: "slave"
+    jenkins/label-digest: "ef7ba27a213bce604fbf981b2dd89c344438ef1c"
+    jenkins/label: "jenkins-slave-jnlp3"
+  name: "jenkins-slave-jnlp3-64t4c"
+  namespace: "devops-tools"
+spec:
+  containers:
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-service:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "jenkins-slave-jnlp3-64t4c"
+    - name: "JAVA_OPTS"
+      value: "-Duser.timezone=Asia/Shanghai"
+    - name: "JENKINS_NAME"
+      value: "jenkins-slave-jnlp3-64t4c"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins-service.devops-tools.svc.cluster.local:8080/"
+    image: "hkappdlv006.asia.pwcinternal.com:443/jenkins/jenkins-slave-java11:v1"
+    imagePullPolicy: "Always"
+    name: "jnlp"
+    resources: {}
+    securityContext:
+      privileged: true
+    tty: true
+    volumeMounts:
+    - mountPath: "/etc/localtime"
+      name: "volume-1"
+      readOnly: false
+    - mountPath: "/etc/blackbox-secret"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  serviceAccountName: "jenkins"
+  volumes:
+  - name: "volume-0"
+    secret:
+      optional: false
+      secretName: "gpg-bb-key-secret"
+  - hostPath:
+      path: "/usr/share/zoneinfo/Asia/Shanghai"
+    name: "volume-1"
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+
+Running on jenkins-slave-jnlp3-64t4c in /home/jenkins/agent/workspace/awm-tag-branch_v5.1.7
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential ds-gitlab-checkout
+Cloning the remote Git repository
+Using shallow clone with depth 1
+Honoring refspec on initial clone
+Cloning repository http://cnhk-dskm.asia.pwcinternal.com/digital-solution/funds-ai/ds-awm.git
+ > git init /home/jenkins/agent/workspace/awm-tag-branch_v5.1.7 # timeout=10
+Fetching upstream changes from http://cnhk-dskm.asia.pwcinternal.com/digital-solution/funds-ai/ds-awm.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+using GIT_ASKPASS to set credentials ds-gitlab-checkout
+ > git fetch --tags --force --progress --depth=1 -- http://cnhk-dskm.asia.pwcinternal.com/digital-solution/funds-ai/ds-awm.git +refs/tags/v5.1.7:refs/tags/v5.1.7 # timeout=60
+Avoid second fetch
+Checking out Revision 925d2d660420db43a5ab67a1683e09e189257cc2 (v5.1.7)
+ > git config remote.origin.url http://cnhk-dskm.asia.pwcinternal.com/digital-solution/funds-ai/ds-awm.git # timeout=10
+ > git config --add remote.origin.fetch +refs/tags/v5.1.7:refs/tags/v5.1.7 # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 925d2d660420db43a5ab67a1683e09e189257cc2 # timeout=60
+Commit message: "AWM-2305  Hsbc multifund tb new mapping"
+First time build. Skipping changelog.
+[GitLab Pipeline Status] Notifying tag build status: RUNNING awm-tag-branch/v5.1.7 #1: Build started...
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $HARBOR_USER or $HARBOR_PASS
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Setup environment)
+[Pipeline] withCredentials
+Masking supported pattern matches of $BB_SECRETS_CREDENTIALS or $BB_SECRETS_CREDENTIALS_PSW
+[Pipeline] {
+[Pipeline] echo
+Setup environment 'prod' for branch/tag v5.1.7 commit 925d2d66
+[Pipeline] echo
+Decrypting secrets
+[Pipeline] sh
++ ./deploy/funds-ai/pipeline/customSecretDecr.sh
+IMPORTING GPG KEY
+gpg: directory '/home/jenkins/.gnupg' created
+gpg: keybox '/home/jenkins/.gnupg/pubring.kbx' created
+gpg: /home/jenkins/.gnupg/trustdb.gpg: trustdb created
+gpg: key D5EB7D9B28DAE1A6: public key "svc_deployacct (This is for CICD process) <svc_deployacct@venturestesting.com>" imported
+gpg: To migrate 'secring.gpg', with each smartcard, run: gpg --card-status
+gpg: key D5EB7D9B28DAE1A6: secret key imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+FETCHING SECRETS
+Initialized empty Git repository in /home/jenkins/agent/workspace/awm-tag-branch_v5.1.7/config/.git/
+From http://cnhk-dskm.asia.pwcinternal.com/digital-solution/funds-ai/funds-ai-config-sha
+ * branch            HEAD       -> FETCH_HEAD
+Git FETCH END
+========== Importing keychain: START
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+========== Importing keychain: DONE
+========== Decrypting new/changed files: START
+========== EXTRACTED customEnvVars-dev.groovy
+========== Decrypting new/changed files: DONE
+total 28K
+drwxr-xr-x  2 jenkins jenkins   38 Oct 12 15:07 .
+drwxr-xr-x 16 jenkins jenkins 4.0K Oct 12 15:07 ..
+-rw-r--r--  1 jenkins jenkins  24K Oct 12 15:07 customEnvVars-dev.groovy
+Finish the description job
+[Pipeline] fileExists
+[Pipeline] fileExists
+[Pipeline] echo
+Default file exists
+[Pipeline] load
+[Pipeline] { (./secret/customEnvVars-dev.groovy)
+[Pipeline] }
+[Pipeline] // load
+[Pipeline] sh
++ ./deploy/funds-ai/pipeline/customSetup.sh
+Custom pipeline setup...
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit Test)
+Stage "Unit Test" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Build image hkappdlv006.asia.pwcinternal.com:443/awm/prod:v5.1.7-1
+[Pipeline] sh
++ docker login hkappdlv006.asia.pwcinternal.com:443 -u **** -p ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /home/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] sh
++ ./deploy/funds-ai/pipeline/customBuildScript.sh
+Building Frontend and Backend
+Building docker image...
+Sending build context to Docker daemon  399.1MB
+
+Step 1/27 : FROM hkappdlv006.asia.pwcinternal.com:443/awm/build:buildci7 as builder
+buildci7: Pulling from awm/build
+1d5252f66ea9: Pulling fs layer
+eefb43356e06: Pulling fs layer
+5912e707be98: Pulling fs layer
+0e9b71961835: Pulling fs layer
+db9c9ad875ed: Pulling fs layer
+10ee57593394: Pulling fs layer
+df5038c2a083: Pulling fs layer
+1476d24dc9ba: Pulling fs layer
+ea4785bb8dfc: Pulling fs layer
+d1e63d67291b: Pulling fs layer
+2b99509eca9b: Pulling fs layer
+4451e933c86e: Pulling fs layer
+b228b24b4800: Pulling fs layer
+7cda42c0a988: Pulling fs layer
+b5eec083da22: Pulling fs layer
+7d914410dea1: Pulling fs layer
+c3a81ccfcb85: Pulling fs layer
+d9d19775dea9: Pulling fs layer
+dbf616f8b28c: Pulling fs layer
+dbc536e174fd: Pulling fs layer
+4c453f5b38d3: Pulling fs layer
+ffe0f866bf22: Pulling fs layer
+046bf73b6fd8: Pulling fs layer
+222d203acf04: Pulling fs layer
+c1d4f46c25cd: Pulling fs layer
+b5eec083da22: Waiting
+10ee57593394: Waiting
+7d914410dea1: Waiting
+928f1bb853ac: Pulling fs layer
+df63444ccd5e: Pulling fs layer
+0e9b71961835: Waiting
+db9c9ad875ed: Waiting
+dbc536e174fd: Waiting
+4c453f5b38d3: Waiting
+ffe0f866bf22: Waiting
+c1d4f46c25cd: Waiting
+c3a81ccfcb85: Waiting
+928f1bb853ac: Waiting
+046bf73b6fd8: Waiting
+dbf616f8b28c: Waiting
+222d203acf04: Waiting
+df5038c2a083: Waiting
+7cda42c0a988: Waiting
+4451e933c86e: Waiting
+2b99509eca9b: Waiting
+df63444ccd5e: Waiting
+ea4785bb8dfc: Waiting
+b228b24b4800: Waiting
+d1e63d67291b: Waiting
+eefb43356e06: Verifying Checksum
+eefb43356e06: Download complete
+0e9b71961835: Verifying Checksum
+5912e707be98: Verifying Checksum
+5912e707be98: Download complete
+db9c9ad875ed: Verifying Checksum
+db9c9ad875ed: Download complete
+10ee57593394: Verifying Checksum
+10ee57593394: Download complete
+df5038c2a083: Verifying Checksum
+df5038c2a083: Download complete
+1d5252f66ea9: Download complete
+ea4785bb8dfc: Verifying Checksum
+ea4785bb8dfc: Download complete
+2b99509eca9b: Verifying Checksum
+2b99509eca9b: Download complete
+1476d24dc9ba: Verifying Checksum
+1476d24dc9ba: Download complete
+b228b24b4800: Verifying Checksum
+b228b24b4800: Download complete
+1d5252f66ea9: Pull complete
+eefb43356e06: Pull complete
+4451e933c86e: Download complete
+5912e707be98: Pull complete
+0e9b71961835: Pull complete
+b5eec083da22: Download complete
+db9c9ad875ed: Pull complete
+10ee57593394: Pull complete
+df5038c2a083: Pull complete
+1476d24dc9ba: Pull complete
+ea4785bb8dfc: Pull complete
+d1e63d67291b: Verifying Checksum
+d1e63d67291b: Download complete
+7cda42c0a988: Verifying Checksum
+7cda42c0a988: Download complete
+d9d19775dea9: Verifying Checksum
+d9d19775dea9: Download complete
+d1e63d67291b: Pull complete
+dbf616f8b28c: Verifying Checksum
+dbf616f8b28c: Download complete
+dbc536e174fd: Verifying Checksum
+dbc536e174fd: Download complete
+c3a81ccfcb85: Verifying Checksum
+c3a81ccfcb85: Download complete
+ffe0f866bf22: Verifying Checksum
+ffe0f866bf22: Download complete
+4c453f5b38d3: Verifying Checksum
+4c453f5b38d3: Download complete
+7d914410dea1: Verifying Checksum
+7d914410dea1: Download complete
+c1d4f46c25cd: Verifying Checksum
+c1d4f46c25cd: Download complete
+928f1bb853ac: Download complete
+2b99509eca9b: Pull complete
+046bf73b6fd8: Verifying Checksum
+046bf73b6fd8: Download complete
+222d203acf04: Verifying Checksum
+222d203acf04: Download complete
+4451e933c86e: Pull complete
+b228b24b4800: Pull complete
+df63444ccd5e: Verifying Checksum
+df63444ccd5e: Download complete
+7cda42c0a988: Pull complete
+b5eec083da22: Pull complete
+7d914410dea1: Pull complete
+c3a81ccfcb85: Pull complete
+d9d19775dea9: Pull complete
+dbf616f8b28c: Pull complete
+dbc536e174fd: Pull complete
+4c453f5b38d3: Pull complete
+ffe0f866bf22: Pull complete
+046bf73b6fd8: Pull complete
+222d203acf04: Pull complete
+c1d4f46c25cd: Pull complete
+928f1bb853ac: Pull complete
+df63444ccd5e: Pull complete
+Digest: sha256:35da88cdb10ea45f5cb07f311786ca7a3d4be74fb7b8dd9b92c33d7efc42ecc6
+Status: Downloaded newer image for hkappdlv006.asia.pwcinternal.com:443/awm/build:buildci7
+ ---> 74bf02215994
+Step 2/27 : ENV NODE_TLS_REJECT_UNAUTHORIZED 0
+ ---> Running in 564f502ecd01
+Removing intermediate container 564f502ecd01
+ ---> a56a0901c4e5
+Step 3/27 : WORKDIR /app/ui
+ ---> Running in 33093b969697
+Removing intermediate container 33093b969697
+ ---> a5c7e366d95f
+Step 4/27 : COPY ./ui/package* ./
+ ---> a0dc031af47a
+Step 5/27 : COPY ./ui/.npmrc ./
+ ---> 2c6ccaf76b83
+Step 6/27 : RUN npm config set strict-ssl false
+ ---> Running in 99aff950f4a5
+Removing intermediate container 99aff950f4a5
+ ---> 8df66b28ec3a
+Step 7/27 : RUN npm ci
+ ---> Running in 7573bd71f38f
+[91mnpm[0m[91m WARN deprecated fsevents@1.2.4: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+[0m[91mnpm [0m[91mWARN deprecated fsevents@1.2.9: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+[0m[91m(node:7) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+[0m[91mnpm[0m[91m WARN deprecated ini@1.3.5: Please update to ini >=1.3.6 to avoid a prototype pollution issue
+[0m[91mnpm[0m[91m WARN deprecated[0m[91m topo@2.0.2: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+[0m[91mnpm WARN [0m[91mdeprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+[0m[91mnpm WARN deprecated[0m[91m kleur@2.0.2: Please upgrade to kleur@3 or migrate to 'ansi-colors' if you prefer the old syntax. Visit <https://github.com/lukeed/kleur/releases/tag/v3.0.0\> for migration path(s).
+[0m[91mnpm WARN deprecated flatten@1.0.2: flatten is deprecated in favor of utility frameworks such as lodash.
+[0m[91mnpm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+[0m[91mnpm WARN deprecated request-promise-native@1.0.7: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
+[0m[91mnpm WARN deprecated har-validator@5.1.3: this library is no longer supported
+[0m[91mnpm WARN deprecated eslint-loader@2.1.1: This loader has been deprecated. Please use eslint-webpack-plugin
+[0m[91mnpm WARN deprecated hoek@4.2.1: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+[0m[91mnpm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+[0m[91mnpm WARN deprecated w3c-hr-time@1.0.1: Use your platform's native performance.now() and performance.timeOrigin.
+[0m[91mnpm WARN deprecated left-pad@1.3.0: use String.prototype.padStart()
+[0m[91mnpm WARN deprecated acorn-dynamic-import@3.0.0: This is probably built in to whatever tool you're using. If you still need it... idk
+[0m[91mnpm WARN deprecated source-map-url@0.4.0: See https://github.com/lydell/source-map-url#deprecated
+[0m[91mnpm WARN deprecated circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+[0m[91mnpm WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm WARN deprecated sane@2.5.2: some dependency vulnerabilities fixed, support for node < 10 dropped, and newer ECMAScript syntax/features added
+[0m[91mnpm WARN deprecated chokidar@2.1.8: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+[0m[91mnpm WARN deprecated debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+[0m[91mnpm WARN deprecated html-webpack-plugin@4.0.0-alpha.2: please switch to a stable version
+[0m[91mnpm WARN deprecated babel-eslint@9.0.0: babel-eslint is now @babel/eslint-parser. This package will no longer receive updates.
+[0m[91mnpm WARN deprecated uuid@3.3.2: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+[0m[91mnpm WARN deprecated source-map-resolve@0.5.2: See https://github.com/lydell/source-map-resolve#deprecated
+[0m[91mnpm WARN deprecated mkdirp@0.5.1: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+[0m[91mnpm WARN deprecated i18next-xhr-backend@1.5.1: replaced by i18next-http-backend
+[0m[91mnpm WARN deprecated request@2.88.0: request has been deprecated, see https://github.com/request/request/issues/3142
+[0m[91mnpm WARN deprecated @babel/polyfill@7.0.0: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
+[0m[91mnpm WARN deprecated buffer@4.9.1: This version of 'buffer' is out-of-date. You must update to v4.9.2 or newer
+[0m[91mnpm WARN deprecated joi@11.4.0: This version has been deprecated in accordance with the hapi support policy (hapi.im/support). Please upgrade to the latest version to get the best features, bug fixes, and security patches. If you are unable to upgrade at this time, paid support is available for older versions (hapi.im/commercial).
+[0m[91mnpm WARN deprecated uglify-es@3.3.9: support for ECMAScript is superseded by `uglify-js` as of v3.13.0
+[0m[91mnpm WARN deprecated axios@0.19.0: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+[0m[91mnpm WARN deprecated svgo@1.3.0: This SVGO version is no longer supported. Upgrade to v2.x.x.
+[0m[91mnpm WARN deprecated core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+[0m[91mnpm WARN deprecated core-js@2.5.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+[0m[91mnpm WARN deprecated ant-design-pro@2.3.2: This library had stop maintenance, please use https://procomponents.ant.design and https://charts.ant.design instead
+[0m
+added 2285 packages, and audited 2847 packages in 2m
+
+27 packages are looking for funding
+  run `npm fund` for details
+
+165 vulnerabilities (14 low, 41 moderate, 92 high, 18 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+Removing intermediate container 7573bd71f38f
+ ---> 22794e0bd426
+Step 8/27 : WORKDIR /app
+ ---> Running in b373a30dbde7
+Removing intermediate container b373a30dbde7
+ ---> 0139675785c3
+Step 9/27 : COPY . .
+ ---> f781b3e0173c
+Step 10/27 : RUN cp ./tmp2/deploy/funds-ai/awm.mp4 ./ui/public/home/video/awm.mp4
+ ---> Running in d9463de30291
+Removing intermediate container d9463de30291
+ ---> 40a7350cb884
+Step 11/27 : RUN sbt clean
+ ---> Running in f53926192420
+[info] welcome to sbt 1.7.1 (Debian Java 11.0.20)
+[info] loading settings for project app-build from plugins.sbt ...
+[info] loading project definition from /app/project
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[info] compiling 3 Scala sources to /app/project/target/scala-2.12/sbt-1.0/classes ...
+[warn] /app/project/Common.scala:40:16: method sonatypeRepo in class ResolverFunctions is deprecated (since 1.7.0): Use sonatypeOssRepos instead
+[warn]       Resolver.sonatypeRepo("releases"),
+[warn]                ^
+[warn] /app/project/Common.scala:41:16: method sonatypeRepo in class ResolverFunctions is deprecated (since 1.7.0): Use sonatypeOssRepos instead
+[warn]       Resolver.sonatypeRepo("snapshots")),
+[warn]                ^
+[warn] /app/project/Common.scala:48:19: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+[warn]     scalacOptions in Test ++= Seq("-Yrangepos")
+[warn]                   ^
+[warn] three warnings found
+[info] done compiling
+[91m/app/build.sbt:18: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  publishArtifact in (Compile, packageDoc) := false,
+                  ^
+[0m[91m/app/build.sbt:19: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  publishArtifact in packageDoc := false,
+                  ^
+[0m[91m/app/build.sbt:20: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  sources in (Compile,doc) := Seq.empty,
+          ^
+[0m[91m/app/build.sbt:155: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+coverageEnabled in(Test, compile) := true
+                ^
+[0m[91m/app/build.sbt:156: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+coverageEnabled in(Compile, compile) := false
+                ^
+[0m[91m/app/build.sbt:165: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+aggregate in testOnly := false
+          ^
+[0m[91m/app/ui-build.sbt:66: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+test := ((test in Test) dependsOn `ui-test`).value
+               ^
+[0m[info] loading settings for project root from build.sbt,ui-build.sbt ...
+Use default env
+[info] loading settings for project flyway from build.sbt ...
+[91m/app/modules/slick/build.sbt:40: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+sourceGenerators in Compile += slickCodegen.taskValue
+                 ^
+[0m[info] loading settings for project slick from build.sbt ...
+[info]   __              __
+[info]   \ \     ____   / /____ _ __  __
+[info]    \ \   / __ \ / // __ `// / / /
+[info]    / /  / /_/ // // /_/ // /_/ /
+[info]   /_/  / .___//_/ \__,_/ \__, /
+[info]       /_/               /____/
+[info] 
+[info] Version 2.8.18 running Java 11.0.20
+[info] 
+[info] Play is run entirely by the community. Please consider contributing and/or donating:
+[info] https://www.playframework.com/sponsors
+[info] 
+[warn] there are 3 keys that are not used by any other settings/tasks:
+[warn]  
+[warn] * root / Compile / compile / coverageEnabled
+[warn]   +- /app/build.sbt:156
+[warn] * root / Test / compile / coverageEnabled
+[warn]   +- /app/build.sbt:155
+[warn] * root / packageDoc / publishArtifact
+[warn]   +- /app/build.sbt:19
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[success] Total time: 0 s, completed Oct 12, 2023, 7:15:03 AM
+Removing intermediate container f53926192420
+ ---> 2874e4dfc934
+Step 12/27 : RUN sbt compile & exit 0
+ ---> Running in ffcf02ec81ae
+Removing intermediate container ffcf02ec81ae
+ ---> fc07b0ab4ccb
+Step 13/27 : RUN sbt dist & exit 0
+ ---> Running in 5d33f9a86c4b
+Removing intermediate container 5d33f9a86c4b
+ ---> 41b780ad0b19
+Step 14/27 : RUN sbt dist & exit 0
+ ---> Running in 7f6441815e0d
+Removing intermediate container 7f6441815e0d
+ ---> 189b2dbcb799
+Step 15/27 : RUN sbt dist
+ ---> Running in 45030f947192
+[info] welcome to sbt 1.7.1 (Debian Java 11.0.20)
+[info] loading settings for project app-build from plugins.sbt ...
+[info] loading project definition from /app/project
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[warn] Multiple resolvers having different access mechanism configured with same name 'Flyway'. To avoid conflict, Remove duplicate project resolvers (`resolvers`) or rename publishing resolver (`publishTo`).
+[91m/app/build.sbt:18: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  publishArtifact in (Compile, packageDoc) := false,
+                  ^
+[0m[91m/app/build.sbt:19: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  publishArtifact in packageDoc := false,
+                  ^
+[0m[91m/app/build.sbt:20: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+  sources in (Compile,doc) := Seq.empty,
+          ^
+[0m[91m/app/build.sbt:155: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+coverageEnabled in(Test, compile) := true
+                ^
+[0m[91m/app/build.sbt:156: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+coverageEnabled in(Compile, compile) := false
+                ^
+[0m[91m/app/build.sbt:165: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+aggregate in testOnly := false
+          ^
+[0m[91m/app/ui-build.sbt:66: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+test := ((test in Test) dependsOn `ui-test`).value
+               ^
+[0m[info] loading settings for project root from build.sbt,ui-build.sbt ...
+Use default env
+[info] loading settings for project flyway from build.sbt ...
+[91m/app/modules/slick/build.sbt:40: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+sourceGenerators in Compile += slickCodegen.taskValue
+                 ^
+[0m[info] loading settings for project slick from build.sbt ...
+[info]   __              __
+[info]   \ \     ____   / /____ _ __  __
+[info]    \ \   / __ \ / // __ `// / / /
+[info]    / /  / /_/ // // /_/ // /_/ /
+[info]   /_/  / .___//_/ \__,_/ \__, /
+[info]       /_/               /____/
+[info] 
+[info] Version 2.8.18 running Java 11.0.20
+[info] 
+[info] Play is run entirely by the community. Please consider contributing and/or donating:
+[info] https://www.playframework.com/sponsors
+[info] 
+[warn] there are 3 keys that are not used by any other settings/tasks:
+[warn]  
+[warn] * root / Compile / compile / coverageEnabled
+[warn]   +- /app/build.sbt:156
+[warn] * root / Test / compile / coverageEnabled
+[warn]   +- /app/build.sbt:155
+[warn] * root / packageDoc / publishArtifact
+[warn]   +- /app/build.sbt:19
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+
+> awm-ui@0.1.0 build
+> rimraf ../public && react-app-rewired build && ncp build ../public && rimraf build
+
+Creating an optimized production build...
+[91mBrowserslist: caniuse-lite is outdated. Please run next command `npm update`
+[0mCompiled successfully.
+
+File sizes after gzip:
+
+  659.17 KB  build/static/js/1.d3ef4df5.chunk.js
+  108.1 KB   build/static/js/main.e3cd14f4.chunk.js
+  74.59 KB   build/static/css/main.47ac9ab0.chunk.css
+  763 B      build/static/js/runtime~main.229c360f.js
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  http://bit.ly/CRA-deploy
+
+[info] Wrote /app/target/scala-2.13/ds-awm_2.13-1.0-SNAPSHOT.pom
+[info] compiling 814 Scala sources and 5 Java sources to /app/target/scala-2.13/classes ...
+[warn] /app/app/com/pwc/ds/awm/component/excel/ExcelToArray.scala:37:5: A try without a catch or finally is equivalent to putting its body in a block; no exceptions are handled.
+[warn]     try {
+[warn]     ^
+[warn] /app/app/com/pwc/ds/awm/component/pivot/PivotTableHelper.scala:32:12: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]       case _ => 0
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/component/pivot/PivotTableHelper.scala:59:12: This catches all Throwables. If this is really intended, use `case ex : Throwable` to clear this warning.
+[warn]       case ex => 0
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/component/verification/EGAFileFormatVerification.scala:183:12: This catches all Throwables. If this is really intended, use `case ex : Throwable` to clear this warning.
+[warn]       case ex =>
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/component/verification/EGAFileFormatVerification.scala:139:12: This catches all Throwables. If this is really intended, use `case ex : Throwable` to clear this warning.
+[warn]       case ex =>
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/component/verification/EGAFileFormatVerification.scala:96:12: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]       case _ => return (false, "file Not match", "")
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/controllers/RegisterController.scala:55:17: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Future.apply[T](body: => T)(implicit executor: scala.concurrent.ExecutionContext): scala.concurrent.Future[T]
+[warn]   given arguments: <none>
+[warn]  after adaptation: Future((): Unit)
+[warn]           Future().map { result =>
+[warn]                 ^
+[warn] /app/app/com/pwc/ds/awm/controllers/RoleController.scala:35:21: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method all,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     roleServiceRead.all.map { roles =>
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/controllers/RoleController.scala:83:15: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Future.apply[T](body: => T)(implicit executor: scala.concurrent.ExecutionContext): scala.concurrent.Future[T]
+[warn]   given arguments: <none>
+[warn]  after adaptation: Future((): Unit)
+[warn]         Future().map { result => {
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/controllers/UserController.scala:191:24: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getUserByEmailBack,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     case Some(true) => getUserByEmailBack
+[warn]                        ^
+[warn] /app/app/com/pwc/ds/awm/controllers/UserController.scala:192:24: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getUserByEmailFront,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     case _          => getUserByEmailFront
+[warn]                        ^
+[warn] /app/app/com/pwc/ds/awm/db/SecurityPriceDAO.scala:20:60: procedure syntax is deprecated: instead, add `: Unit` to explicitly declare `recordMultiple`'s return type
+[warn]   def recordMultiple(securityPriceList: Seq[SecurityPrice])
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/awm/db/autogen/Tables.scala:4:23: early initializers are deprecated; they will be replaced by trait parameters in 3.0, see the migration guide on avoiding var/val in traits.
+[warn] object Tables extends {
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/extractor/GeneralExcelExtractor.scala:91:26: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]         if (row == null) break
+[warn]                          ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportProcessor.scala:210:13: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]             break
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportProcessor.scala:461:13: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]             break
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/processor/GAEFClassAProcessor.scala:105:15: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]               break
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/GAEFClassBProcessor.scala:105:15: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]               break
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCIms/ConsolidationTrialBalanceReportProcessor.scala:270:13: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]             break
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCIms/OutstandingDividendReportProcessor.scala:75:21: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]                   ) break
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCIms/OutstandingDividendReportProcessor.scala:83:23: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]                   ) { break }
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCIms/OutstandingDividendReportProcessor.scala:86:28: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]                   } else { break }
+[warn]                            ^
+[warn] /app/app/com/pwc/ds/awm/processor/LedgerMovementReportProcessor.scala:305:55: Widening conversion from Long to Double is deprecated because it loses precision. Write `.toDouble` instead.
+[warn]       row.createCell(3).setCellValue(bodyLineList(13).toLong)
+[warn]                                                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/ReportConfigGeneratorImpl.scala:64:19: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]                   break
+[warn]                   ^
+[warn] /app/app/com/pwc/ds/awm/processor/SSCexcelReport/excelreader/SSCExcelRGLReader.scala:95:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]       case e => {
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/SSCexcelReport/excelreader/SSCExcelRGLReader.scala:142:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]       case e => {
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/apex/DetailedGeneralLedgerReportProcessor.scala:54:12: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Option.fold[B](ifEmpty: => B)(f: A => B): B
+[warn]   given arguments: <none>
+[warn]  after adaptation: Option.fold((): Unit)
+[warn]       .fold()(msg => warningMsg += WarningTabStatus(REPORT_NAME, msg))
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/bnp/DetailedGeneralLedgerReportProcessor.scala:50:12: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Option.fold[B](ifEmpty: => B)(f: A => B): B
+[warn]   given arguments: <none>
+[warn]  after adaptation: Option.fold((): Unit)
+[warn]       .fold()(msg => warningMsg += WarningTabStatus(REPORT_NAME, msg))
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/bnp/DividendReportProcessor.scala:64:12: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Option.fold[B](ifEmpty: => B)(f: A => B): B
+[warn]   given arguments: <none>
+[warn]  after adaptation: Option.fold((): Unit)
+[warn]       .fold()(msg => warningMsg += WarningTabStatus(REPORT_NAME, msg))
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/bnp/PurchaseSaleReportProcessor.scala:54:12: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Option.fold[B](ifEmpty: => B)(f: A => B): B
+[warn]   given arguments: <none>
+[warn]  after adaptation: Option.fold((): Unit)
+[warn]       .fold()(msg => warningMsg += WarningTabStatus(REPORT_NAME, msg))
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/bnp/PurchaseSaleReportProcessor.scala:85:12: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Option.fold[B](ifEmpty: => B)(f: A => B): B
+[warn]   given arguments: <none>
+[warn]  after adaptation: Option.fold((): Unit)
+[warn]       .fold()(msg => warningMsg += WarningTabStatus(REPORT_NAME, msg))
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/confirmationPdf/LayoutConfirmationPdfTextStripper.scala:201:13: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]             break;
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/processor/generalExcel/BasicExcelReader.scala:250:12: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]       case _=>println(s"$key not existed in mapper")
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/generalExcel/ExcelReaderHelper.scala:140:16: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]           case _ => row(index).field.trim
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/generateEGA/basicReport/GeneralSingleEGAStorage.scala:330:16: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]           case e =>
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/generateEGA/basicReport/GeneralSingleEGAStorage.scala:245:16: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]           case e =>
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/generateEGA/basicReport/GeneralSingleEGAStorage.scala:287:16: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]           case e =>
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/generateEGA/basicReport/HSBC_MultifondsSingleEGAStorage.scala:33:16: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]           case e =>
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/generateEGA/basicReport/HSBC_MultifondsSingleEGAStorage.scala:73:16: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]           case e =>
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/maples/DividendReportProcessor.scala:262:53: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     if (localExDate.isBefore(fundProfileStartDate)) break
+[warn]                                                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/maples/PurchaseSaleReportProcessor.scala:119:60: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]         if (localTradeDate.isBefore(fundProfileStartDate)) break
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/awm/processor/maples/PurchaseSaleReportProcessor.scala:194:60: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]         if (localTradeDate.isBefore(fundProfileStartDate)) break
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/awm/processor/maples/RealisedGainLossProcessor.scala:136:60: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]         if (localTradeDate.isBefore(fundProfileStartDate)) break
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/awm/processor/maples/RealisedGainLossProcessor.scala:202:60: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]         if (localTradeDate.isBefore(fundProfileStartDate)) break
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/awm/processor/morgan/excelreader/MorganExcelTBReader.scala:186:12: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]       case _ => str1
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/mufg/DividendReportProcessor.scala:378:53: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     if (localExDate.isBefore(fundProfileStartDate)) break
+[warn]                                                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/mufg/DividendReportProcessor.scala:315:53: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]     if (localExDate.isBefore(fundProfileStartDate)) break
+[warn]                                                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/package.scala:329:16: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]           case _ => throw ExtractionException(s"Can't transform ${dateString} into date")
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/package.scala:384:16: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]           case _ => false
+[warn]                ^
+[warn] /app/app/com/pwc/ds/awm/processor/pdfReport/LayoutPdfTextStripper.scala:182:13: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]             break;
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/processor/pdfReport/MorganPDFReport/BaseMorganPdfReportProcessor.scala:204:14: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]         case _ => format2.parse(str)
+[warn]              ^
+[warn] /app/app/com/pwc/ds/awm/processor/pdfReport/PdfReportConfigGeneratorImpl.scala:38:21: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method break,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn]                     break
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/BaseSSPdfReportProcessor.scala:202:14: This catches all Throwables. If this is really intended, use `case _ : Throwable` to clear this warning.
+[warn]         case _ => format2.parse(str)
+[warn]              ^
+[warn] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/excelReader/StateStreetExcelPsrReader.scala:109:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]       case e => {
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/excelReader/StateStreetExcelTBReader.scala:112:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]       case e=>{
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/excelReader/StateStreetExcelTBReader.scala:143:12: This catches all Throwables. If this is really intended, use `case e : Throwable` to clear this warning.
+[warn]       case e => {
+[warn]            ^
+[warn] /app/app/com/pwc/ds/awm/processor/utils/OutputParamToWorkbook.scala:167:35: Widening conversion from Long to Double is deprecated because it loses precision. Write `.toDouble` instead.
+[warn]                 cell.setCellValue(newCellvalue)
+[warn]                                   ^
+[warn] /app/app/com/pwc/ds/awm/processor/utils/OutputParamToWorkbook.scala:222:50: Widening conversion from Long to Double is deprecated because it loses precision. Write `.toDouble` instead.
+[warn]                   cell.setCellValue(newCellvalue.longValue)
+[warn]                                                  ^
+[warn] /app/app/com/pwc/ds/awm/services/FundEngagementReportTypeSelectionWriteImpl.scala:196:15: adaptation of an empty argument list by inserting () is deprecated: this is unlikely to be what you want
+[warn]         signature: Future.apply[T](body: => T)(implicit executor: scala.concurrent.ExecutionContext): scala.concurrent.Future[T]
+[warn]   given arguments: <none>
+[warn]  after adaptation: Future((): Unit)
+[warn]         Future()
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/services/SecurityPriceWrite.scala:10:60: procedure syntax is deprecated: instead, add `: Unit` to explicitly declare `recordMultiple`'s return type
+[warn]   def recordMultiple(securityPriceList: Seq[SecurityPrice])
+[warn]                                                            ^
+[warn] /app/app/com/pwc/ds/oauth/PwCCallbckUrlResolver.scala:13:51: procedure syntax is deprecated for constructors: add `=`, as in method definition
+[warn]   def this(customParams: util.Map[String, String]) {
+[warn]                                                   ^
+[warn] /app/conf/routes:79:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getAllCountryCities,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] GET     /api/allCountryCities               com.pwc.ds.awm.controllers.CityController.getAllCountryCities
+[warn] /app/conf/routes:86:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getAllConfigs,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] GET     /api/configs                            com.pwc.ds.awm.controllers.ConfigController.getAllConfigs
+[warn] /app/conf/routes:198:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method updateFund,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] PUT     /api/fund                               com.pwc.ds.awm.controllers.FundsController.updateFund
+[warn] /app/conf/routes:79:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getAllCountryCities,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] GET     /api/allCountryCities               com.pwc.ds.awm.controllers.CityController.getAllCountryCities
+[warn] /app/conf/routes:86:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method getAllConfigs,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] GET     /api/configs                            com.pwc.ds.awm.controllers.ConfigController.getAllConfigs
+[warn] /app/conf/routes:198:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method updateFund,
+[warn] or remove the empty argument list from its definition (Java-defined methods are exempt).
+[warn] In Scala 3, an unapplied method like this will be eta-expanded into a function.
+[warn] PUT     /api/fund                               com.pwc.ds.awm.controllers.FundsController.updateFund
+[warn] /app/app/com/pwc/ds/awm/component/excel/securityprice/RecordToSecurityPrice.scala:164:32: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]     stringInput.split("-").map { x => x.trim }
+[warn]                                ^
+[warn] /app/app/com/pwc/ds/awm/component/pivot/PivotTableHelper.scala:49:27: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]         mapTemp = mapTemp + (sumName -> valStr)
+[warn]                           ^
+[warn] /app/app/com/pwc/ds/awm/component/scheduler/ScheduledTasks.scala:27:27: method schedule in trait Scheduler is deprecated (since 2.6.0): Use scheduleWithFixedDelay or scheduleAtFixedRate instead. This has the same semantics as scheduleAtFixedRate, but scheduleWithFixedDelay is often preferred.
+[warn]     actorSystem.scheduler.schedule(
+[warn]                           ^
+[warn] /app/app/com/pwc/ds/awm/controllers/FsliController.scala:210:42: method + in class Int is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`
+[warn]                 Future(Ok(frontData.size + " records imported successfully"))
+[warn]                                          ^
+[warn] /app/app/com/pwc/ds/awm/controllers/FsliController.scala:262:32: method + in class Int is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`
+[warn]                     countValid + " record(s) imported successfully and "
+[warn]                                ^
+[warn] /app/app/com/pwc/ds/awm/controllers/FsliController.scala:267:38: method + in class Int is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`
+[warn]                 Future(Ok(countValid + " record(s) imported successfully"))
+[warn]                                      ^
+[warn] /app/app/com/pwc/ds/awm/controllers/FsliController.scala:271:34: method + in class Int is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`
+[warn]                     countInValid + " record(s) cannot be imported due to unmatched Stndard FSLI (PwC Mapping)"
+[warn]                                  ^
+[warn] /app/app/com/pwc/ds/awm/controllers/JsonParser.scala:15:52: method mapValues in trait MapOps is deprecated (since 2.13.0): Use .view.mapValues(f). A future version will include a strict version of this method (for now, .view.mapValues(f).toMap).
+[warn]       case obj: JsObject  => Json.toJson(obj.value.mapValues(v => trimJson(v)))
+[warn]                                                    ^
+[warn] /app/app/com/pwc/ds/awm/controllers/SingleEGAController.scala:584:44: method + in class Int is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`
+[warn]                           updateContent._4 + " records updated, " + updateContent._5 + " invalid records found."
+[warn]                                            ^
+[warn] /app/app/com/pwc/ds/awm/controllers/SingleEGAController.scala:887:15: a pure expression does nothing in statement position; multiline expressions might require enclosing parentheses
+[warn]               sourceFile
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/controllers/SingleEGAController.scala:922:13: a pure expression does nothing in statement position; multiline expressions might require enclosing parentheses
+[warn]             sourceFile
+[warn]             ^
+[warn] /app/app/com/pwc/ds/awm/extractor/PdfExtractor.scala:36:35: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]         result = rawDocument.split("\n\n\\*\\*\\*\\*PAGE Start\\*\\*\\*\\*\n\n")
+[warn]                                   ^
+[warn] /app/app/com/pwc/ds/awm/processor/BankTransactionReportProcessor.scala:72:7: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]       txtReportHeaders,
+[warn]       ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportProcessor.scala:207:15: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]               txtReportHeaders,
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportProcessor.scala:267:9: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]         txtReportHeaders,
+[warn]         ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportProcessor.scala:456:15: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]               txtReportHeaders,
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/BaseReportSanitizer.scala:33:11: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]       .map(line => SanitizedDataLine(-1, line, block.pageNum))
+[warn]           ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/BaseHSBCPdfReportProcessor.scala:135:9: method copyArrayToImmutableIndexedSeq in class LowPriorityImplicits2 is deprecated (since 2.13.0): Implicit conversions from Array to immutable.IndexedSeq are implemented by copying; Use the more efficient non-copying ArraySeq.unsafeWrapArray or an explicit toIndexedSeq call
+[warn]         txtReportHeaders,
+[warn]         ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/CollateralPositionByAgreementProcessor.scala:124:15: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]       headRow += ("Statement Date" -> headerList(6))
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/CollateralPositionByAgreementProcessor.scala:147:23: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                   row += (headerColumn.displayTitle.getOrElse(headerColumn.title) -> cellValue)
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/CreditDefaultSwapReportProcessor.scala:124:15: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]       headRow += ("Statement Date" -> headerList(6))
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/CreditDefaultSwapReportProcessor.scala:147:23: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                   row += (headerColumn.displayTitle.getOrElse(headerColumn.title) -> cellValue)
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:143:15: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]       headRow += ("Statement Date" -> headerList(6))
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:168:21: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                 row += ("Account No." -> bodyLineList(1))
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:169:21: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                 row += ("Currency"    -> value.substring(0, 3))
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:172:23: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                   row += ("Balance" -> value.substring(3, value.length - 2))
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:174:23: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                   row += ("Balance" -> ("-" + value.substring(3, value.length - 2)))
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:176:23: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                   row += ("Balance" -> value.substring(3, value.length))
+[warn]                       ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:184:21: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                 row += ("Account No." -> cellValue)
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:185:21: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                 row += ("Currency"    -> value.substring(0, 3))
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/ItemTwoReportProcessor.scala:186:21: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]                 row += ("Balance"     -> value.substring(3, value.length))
+[warn]                     ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/OTCExposureTradesByAgreementProcessor.scala:125:15: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]       headRow += ("Statement Date" -> headerList(6))
+[warn]               ^
+[warn] /app/app/com/pwc/ds/awm/processor/HSBCConfirmationPdf/OTCExposureTradesByAgreementProcessor.scala:144:17: method + in trait MapOps is deprecated (since 2.13.0): Consider requiring an immutable Map or fall back to Map.concat.
+[warn]             row += ("Source Reference" -> cellValue)
+[warn]                 ^
+[warn] 100 warnings found
+[info] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/StateStreetPDFDividendReaderFunc.java: StateStreetPDFDividendReaderFunc.java uses unchecked or unsafe operations.
+[info] /app/app/com/pwc/ds/awm/processor/stateStreet/excelType/StateStreetPDFDividendReaderFunc.java: Recompile with -Xlint:unchecked for details.
+[info] done compiling
+[warn] [1] The maintainer is empty
+[warn] Add this to your build.sbt
+[warn]   maintainer := "your.name@company.org"
+[success] All package validations passed
+[info] Your package is ready in /app/target/universal/ds-awm-1.0-SNAPSHOT.zip
+[success] Total time: 218 s (03:38), completed Oct 12, 2023, 7:19:02 AM
+Removing intermediate container 45030f947192
+ ---> c1011330c22a
+Step 16/27 : RUN unzip ./target/universal/ds-awm-1.0-SNAPSHOT.zip -d ./
+ ---> Running in 901c61ba60d9
+Archive:  ./target/universal/ds-awm-1.0-SNAPSHOT.zip
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/ds-awm.ds-awm-1.0-SNAPSHOT-sans-externalized.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.scala-library-2.13.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.twirl-api_2.13-1.5.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-server_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-netty-server_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-logback_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.filters-helpers_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-guice_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.slick.slick_2.13-3.4.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.slick.slick-hikaricp_2.13-3.4.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-caffeine-cache_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.bouncycastle.bcprov-jdk15on-1.70.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ahc-ws_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-core-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-cache_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.pac4j.play-pac4j_2.13-11.1.0-PLAY2.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.pac4j.pac4j-http-5.6.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.pac4j.pac4j-saml-5.6.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.pac4j.pac4j-oauth-5.6.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-io.commons-io-2.11.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/be.objectify.deadbolt-scala_2.13-2.8.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.poi.poi-5.2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.poi.poi-ooxml-5.2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.poi.poi-scratchpad-5.2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.deepoove.poi-tl-1.12.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.spray.spray-json_2.13-1.3.6.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-web-5.3.23.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.github.wherby.dora_2.13-1.8.0.7.006.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/ai.x.play-json-extensions_2.13-0.40.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.santuario.xmlsec-3.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.asynchttpclient.async-http-client-2.12.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.json.org.json-chargebee-1.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-validator.commons-validator-1.4.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-csv-1.9.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.pdfbox.pdfbox-2.0.16.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.ben-manes.caffeine.caffeine-3.1.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-core-5.3.26.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-mailer_2.13-8.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-mailer-guice_2.13-8.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/ch.qos.logback.logback-classic-1.4.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.module.jackson-module-scala_2.13-2.14.0-rc2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/javax.xml.bind.jaxb-api-2.3.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.modules.scala-xml_2.13-1.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.netty.netty-reactive-streams-http-2.0.7.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-transport-native-epoll-4.1.84.Final-linux-x86_64.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.inject.guice-5.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.inject.extensions.guice-assistedinject-4.2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.mysql.mysql-connector-j-8.0.31.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.slf4j.slf4j-api-2.0.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.config-1.4.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.reactivestreams.reactive-streams-1.0.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.modules.scala-collection-compat_2.13-2.8.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.zaxxer.HikariCP-4.0.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.ben-manes.caffeine.jcache-2.8.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/javax.cache.cache-api-1.1.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ws_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ahc-ws-standalone_2.13-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.shaded-asynchttpclient-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.shaded-oauth-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-lang-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-cache-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-crypto-hash-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-crypto-cipher-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-config-core-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-config-ogdl-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-event-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.pac4j.pac4j-core-5.6.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-core-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-saml-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-saml-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-soap-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-xmlsec-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-security-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-security-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-profile-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-profile-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-messaging-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-messaging-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-storage-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-beans-5.3.23.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-orm-5.3.23.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-xmlsec-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.guava.guava-31.1-jre.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.cryptacular.cryptacular-1.2.5.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/net.shibboleth.tool.xmlsectool-3.0.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/joda-time.joda-time-2.11.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.velocity.velocity-engine-core-2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-collections.commons-collections-3.2.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.slf4j.jcl-over-slf4j-2.0.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.httpcomponents.httpcore-4.4.15.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-codec.commons-codec-1.15.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.scribejava.scribejava-apis-8.3.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.reflections.reflections-0.10.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-collections4-4.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-math3-3.6.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.zaxxer.SparseBitSet-1.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.logging.log4j.log4j-api-2.18.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.poi.poi-ooxml-lite-5.2.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlbeans.xmlbeans-5.1.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-compress-1.21.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.virtuald.curvesapi-1.07.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-lang3-3.11.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-transcoder-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-codec-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-actor_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-slf4j_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-testkit_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-json_2.13-2.9.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.core.jackson-databind-2.14.0-rc2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/jakarta.xml.bind.jakarta.xml.bind-api-3.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.woodstox.woodstox-core-6.2.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.asynchttpclient.async-http-client-netty-utils-2.12.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-codec-http-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-handler-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-codec-socks-4.1.60.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-handler-proxy-4.1.60.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.netty.netty-reactive-streams-2.0.7.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.sun.activation.jakarta.activation-2.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-beanutils.commons-beanutils-1.9.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-digester.commons-digester-1.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/commons-logging.commons-logging-1.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.pdfbox.fontbox-2.0.16.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.checkerframework.checker-qual-3.22.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.errorprone.error_prone_annotations-2.14.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-jcl-5.3.26.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/javax.inject.javax.inject-1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.commons.commons-email-1.5.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/ch.qos.logback.logback-core-1.4.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.core.jackson-core-2.14.0-rc2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.core.jackson-annotations-2.14.0-rc2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.thoughtworks.paranamer.paranamer-2.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.build-link-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-streams_2.13-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.slf4j.jul-to-slf4j-1.7.36.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-actor-typed_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-serialization-jackson_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.datatype.jackson-datatype-jdk8-2.11.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.datatype.jackson-datatype-jsr310-2.11.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.jsonwebtoken.jjwt-0.9.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/jakarta.transaction.jakarta.transaction-api-1.3.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.modules.scala-java8-compat_2.13-1.0.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.ssl-config-core_2.13-0.4.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.modules.scala-parser-combinators_2.13-1.1.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-common-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-buffer-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-transport-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-transport-native-unix-common-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-transport-classes-epoll-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/aopalliance.aopalliance-1.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.protobuf.protobuf-java-3.19.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.osgi.org.osgi.service.component.annotations-1.4.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ws-standalone_2.13-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ws-standalone-xml_2.13-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-ws-standalone-json_2.13-2.1.10.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.cachecontrol_2.13-2.0.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.shiro.shiro-crypto-core-1.10.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.code.findbugs.jsr305-3.0.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.dropwizard.metrics.metrics-core-4.2.9.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/net.shibboleth.utilities.java-support-8.1.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-soap-impl-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.opensaml.opensaml-storage-api-4.2.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.httpcomponents.httpclient-4.5.13.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.bouncycastle.bcpkix-jdk15on-1.70.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.glassfish.jakarta.json-1.1.6.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-jdbc-5.3.23.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-tx-5.3.23.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.guava.failureaccess-1.0.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.guava.listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.google.j2objc.j2objc-annotations-1.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.bouncycastle.bcprov-jdk18on-1.71.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.beust.jcommander-1.78.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.scribejava.scribejava-core-8.3.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.javassist.javassist-3.28.0-GA.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-anim-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-awt-util-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-bridge-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-dom-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-gvt-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-shared-resources-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-svggen-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-util-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-xml-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/xml-apis.xml-apis-ext-1.3.04.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-functional_2.13-2.9.3.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.scala-lang.scala-reflect-2.13.8.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.codehaus.woodstox.stax2-api-4.2.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-codec-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/io.netty.netty-resolver-4.1.84.Final.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.sun.mail.javax.mail-1.5.6.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.play.play-exceptions-2.8.18.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-stream_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.module.jackson-module-parameter-names-2.11.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.fasterxml.jackson.dataformat.jackson-dataformat-cbor-2.11.4.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.lz4.lz4-java-1.8.0.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.springframework.spring-test-5.3.19.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.bouncycastle.bcutil-jdk15on-1.70.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.github.scribejava.scribejava-java8-8.3.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-css-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-ext-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-parser-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-svg-dom-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.xmlgraphics-commons-2.6.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-script-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/xml-apis.xml-apis-1.4.01.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-constants-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/org.apache.xmlgraphics.batik-i18n-1.14.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/javax.activation.activation-1.1.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/com.typesafe.akka.akka-protobuf-v3_2.13-2.6.20.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/xalan.xalan-2.7.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/xalan.serializer-2.7.2.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/lib/ds-awm.ds-awm-1.0-SNAPSHOT-assets.jar  
+  inflating: ./ds-awm-1.0-SNAPSHOT/bin/ds-awm  
+  inflating: ./ds-awm-1.0-SNAPSHOT/bin/ds-awm.bat  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/stag/secure.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/oauth/auth.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/HSBC IMS.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Workday.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uat/samlKeystore.jks  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/GSP Output Form_Download Template.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/FST - Single EGA (HSBC).xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/SS&C Ex-Citi_SS&C GlobeOp.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/sampleAccountsMovementReport.txt  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/BNY Mellon.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/gum.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uatnew/samlKeystore.jks  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/test.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/State Street.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/SS&C WellsFargo.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/python/requirements-38-base.txt  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/python/generateWord.py  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Maples.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uatnew/secure.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/FundTemplate.docx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Price App Input Form.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Funds AI Application Form - Investment Advisor.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uatnew/openidp-feide.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Cost plus single EGA - template.xlsm  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/openidp-feide.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/logback.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/stag.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/python/combineWords.py  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/TestTemplate.docx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/APEX.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Welink demo python template.docx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/GSP Input Form_Download Template.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uat/secure.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/cert/stag/data2trust.pwcinternal.com.pfx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Standard Mapping Template.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/routes  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/BCT.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/stag/openidp-feide.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/MUFG.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Sage.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/BNP Paribas.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Morgan Stanley.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/HSBC MultiFonds.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/secure.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Welink demo.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/FSLI Mapping Template.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/cert/uat/data2trust-uat.pwcinternal.com.pfx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/uat.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/local/localhost.pkcs12  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/HSBC Geneva.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/prod/secure.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/prod/openidp-feide.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/BOCIP.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/prod.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/mail.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/application.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/uatnew.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/samlKeystore.jks  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/db.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/oauth/prod/auth.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/GSP Input Form_v2.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/uat/openidp-feide.xml  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/cert/prod/fundsassuranceintelligence.pwcinternal.com.pfx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/oauth/qa/auth.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Northern Trust.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/stag/samlKeystore.jks  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Welink demo python template(bak).docx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/MYOB.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Account Number Referencing_Download Template.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/Funds AI Application Form - Hedge & Traditional Fund.xlsx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/dev.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Flex.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/python/generateCorp.py  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Citco.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/download/Oracle.zip  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/securitysetting.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/templates/sampleAccountsMovementReport.docx  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/oauth/uat/auth.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/security/prod/samlKeystore.jks  
+  inflating: ./ds-awm-1.0-SNAPSHOT/conf/doraserver.conf  
+  inflating: ./ds-awm-1.0-SNAPSHOT/README.md  
+Removing intermediate container 901c61ba60d9
+ ---> 0d92de3b4a24
+Step 17/27 : FROM hkappdlv006.asia.pwcinternal.com:443/java/openjdk:python3.8.17jdk11.20  as app
+python3.8.17jdk11.20: Pulling from java/openjdk
+1d5252f66ea9: Already exists
+eefb43356e06: Already exists
+5912e707be98: Already exists
+0e9b71961835: Already exists
+db9c9ad875ed: Already exists
+10ee57593394: Already exists
+df5038c2a083: Already exists
+1476d24dc9ba: Already exists
+ea4785bb8dfc: Already exists
+d1e63d67291b: Already exists
+Digest: sha256:964de2e05bea6b8a0a2d1ee87ce0b58a4f51d2ed0c5c92ecf74c1024da27407f
+Status: Downloaded newer image for hkappdlv006.asia.pwcinternal.com:443/java/openjdk:python3.8.17jdk11.20
+ ---> 3834c0a74b32
+Step 18/27 : WORKDIR /app
+ ---> Running in 33ea9e084b38
+Removing intermediate container 33ea9e084b38
+ ---> 84770113d3fe
+Step 19/27 : COPY conf/python/requirements-38-base.txt /app
+ ---> 547923de40ec
+Step 20/27 : RUN cd /app && pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements-38-base.txt && rm -f requirements-38-base.txt
+ ---> Running in 5dd3f0d158c0
+Collecting docxtpl==0.16.7
+  Downloading docxtpl-0.16.7-py2.py3-none-any.whl (28 kB)
+Collecting openpyxl==3.1.2
+  Downloading openpyxl-3.1.2-py2.py3-none-any.whl (249 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 250.0/250.0 kB 2.7 MB/s eta 0:00:00
+Collecting jinja2
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 6.6 MB/s eta 0:00:00
+Collecting lxml
+  Downloading lxml-4.9.3-cp38-cp38-manylinux_2_28_x86_64.whl (8.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 26.8 MB/s eta 0:00:00
+Collecting six
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting docxcompose
+  Downloading docxcompose-1.4.0.tar.gz (20 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting python-docx
+  Downloading python_docx-1.0.0-py3-none-any.whl (236 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 236.1/236.1 kB 16.3 MB/s eta 0:00:00
+Collecting et-xmlfile
+  Downloading et_xmlfile-1.1.0-py3-none-any.whl (4.7 kB)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.8/site-packages (from docxcompose->docxtpl==0.16.7->-r requirements-38-base.txt (line 1)) (57.5.0)
+Collecting babel
+  Downloading Babel-2.13.0-py3-none-any.whl (10.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.1/10.1 MB 46.8 MB/s eta 0:00:00
+Collecting typing-extensions
+  Downloading typing_extensions-4.8.0-py3-none-any.whl (31 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting pytz>=2015.7
+  Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.5/502.5 kB 27.9 MB/s eta 0:00:00
+Building wheels for collected packages: docxcompose
+  Building wheel for docxcompose (setup.py): started
+  Building wheel for docxcompose (setup.py): finished with status 'done'
+  Created wheel for docxcompose: filename=docxcompose-1.4.0-py3-none-any.whl size=23284 sha256=e2965407bc662bd9f89a4085857e512a4c0c80f84758c7272ce7e562114a265c
+  Stored in directory: /root/.cache/pip/wheels/ed/d0/00/de6c3de933fbd6dd8eb7dfe2042084cd7d9eb89d0b748ccbf8
+Successfully built docxcompose
+Installing collected packages: pytz, typing-extensions, six, MarkupSafe, lxml, et-xmlfile, babel, python-docx, openpyxl, jinja2, docxcompose, docxtpl
+Successfully installed MarkupSafe-2.1.3 babel-2.13.0 docxcompose-1.4.0 docxtpl-0.16.7 et-xmlfile-1.1.0 jinja2-3.1.2 lxml-4.9.3 openpyxl-3.1.2 python-docx-1.0.0 pytz-2023.3.post1 six-1.16.0 typing-extensions-4.8.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip is available: 23.0.1 -> 23.2.1
+[notice] To update, run: pip install --upgrade pip
+[0mRemoving intermediate container 5dd3f0d158c0
+ ---> f406001f519a
+Step 21/27 : RUN pip3 install -U pytest
+ ---> Running in f510a15e5e7b
+Collecting pytest
+  Downloading pytest-7.4.2-py3-none-any.whl (324 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 324.5/324.5 kB 2.4 MB/s eta 0:00:00
+Collecting exceptiongroup>=1.0.0rc8
+  Downloading exceptiongroup-1.1.3-py3-none-any.whl (14 kB)
+Collecting iniconfig
+  Downloading iniconfig-2.0.0-py3-none-any.whl (5.9 kB)
+Collecting tomli>=1.0.0
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Collecting pluggy<2.0,>=0.12
+  Downloading pluggy-1.3.0-py3-none-any.whl (18 kB)
+Collecting packaging
+  Downloading packaging-23.2-py3-none-any.whl (53 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.0/53.0 kB 4.2 MB/s eta 0:00:00
+Installing collected packages: tomli, pluggy, packaging, iniconfig, exceptiongroup, pytest
+Successfully installed exceptiongroup-1.1.3 iniconfig-2.0.0 packaging-23.2 pluggy-1.3.0 pytest-7.4.2 tomli-2.0.1
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip is available: 23.0.1 -> 23.2.1
+[notice] To update, run: pip install --upgrade pip
+[0mRemoving intermediate container f510a15e5e7b
+ ---> 7bb29d57775f
+Step 22/27 : RUN sed -i 's/jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 768/jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 2048, TLSv1, TLSv1.1/g' /etc/java-11-openjdk/security/java.security
+ ---> Running in e47872254be2
+Removing intermediate container e47872254be2
+ ---> 7abb032914b3
+Step 23/27 : COPY ./deploy/start-awm.sh ./ds-awm-1.0-SNAPSHOT/
+ ---> f92e569ff355
+Step 24/27 : COPY --from=builder /app/ds-awm-1.0-SNAPSHOT ./ds-awm-1.0-SNAPSHOT/
+ ---> a6257c0e3700
+Step 25/27 : ENV MYSQL_IP_VARIABLE mysql-awm
+ ---> Running in 182a5f68d01b
+Removing intermediate container 182a5f68d01b
+ ---> 1129e76d9b1c
+Step 26/27 : RUN chmod 777 ./*
+ ---> Running in fdb886f572f1
+Removing intermediate container fdb886f572f1
+ ---> 9953ec76b0a9
+Step 27/27 : CMD ["/app/ds-awm-1.0-SNAPSHOT/start-awm.sh"]
+ ---> Running in aa46d70b66ac
+Removing intermediate container aa46d70b66ac
+ ---> f036dafbae5c
+Successfully built f036dafbae5c
+Successfully tagged hkappdlv006.asia.pwcinternal.com:443/awm/prod:v5.1.7-1
+The push refers to repository [hkappdlv006.asia.pwcinternal.com:443/awm/prod]
+b7a8aebff7df: Preparing
+afcb5a8e7b6f: Preparing
+f883cca61eb8: Preparing
+8937cb35f927: Preparing
+dc4d2dfbd73d: Preparing
+37bcdd3653ae: Preparing
+f48f7065d223: Preparing
+c8491f63c50c: Preparing
+3a13088fc055: Preparing
+dcafe78e592a: Preparing
+3abcfd7ae0a8: Preparing
+3995fb6e36cb: Preparing
+834a3738ae75: Preparing
+51a64f769f91: Preparing
+849dffc575aa: Preparing
+6da41b41e8a9: Preparing
+d1e9ee275250: Preparing
+8ce178ff9f34: Preparing
+834a3738ae75: Waiting
+3995fb6e36cb: Waiting
+51a64f769f91: Waiting
+f48f7065d223: Waiting
+849dffc575aa: Waiting
+c8491f63c50c: Waiting
+6da41b41e8a9: Waiting
+3a13088fc055: Waiting
+d1e9ee275250: Waiting
+dcafe78e592a: Waiting
+8ce178ff9f34: Waiting
+3abcfd7ae0a8: Waiting
+37bcdd3653ae: Waiting
+8937cb35f927: Pushed
+dc4d2dfbd73d: Pushed
+f883cca61eb8: Pushed
+b7a8aebff7df: Pushed
+3a13088fc055: Layer already exists
+dcafe78e592a: Layer already exists
+3abcfd7ae0a8: Layer already exists
+f48f7065d223: Pushed
+c8491f63c50c: Pushed
+3995fb6e36cb: Layer already exists
+834a3738ae75: Layer already exists
+51a64f769f91: Layer already exists
+849dffc575aa: Layer already exists
+6da41b41e8a9: Layer already exists
+d1e9ee275250: Layer already exists
+8ce178ff9f34: Layer already exists
+37bcdd3653ae: Pushed
+afcb5a8e7b6f: Pushed
+v5.1.7-1: digest: sha256:95ecfbae9f6be960d3303b1ab0a436a630fb73e78d32f10d5da1ad19161b3ec2 size: 4102
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Integration Test)
+Stage "Integration Test" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Container Image Scan)
+Stage "Container Image Scan" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Source code scan)
+Stage "Source code scan" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deployment)
+[Pipeline] parallel
+[Pipeline] { (Branch: Developer Environment)
+[Pipeline] { (Branch: QA Environment)
+[Pipeline] stage
+[Pipeline] { (Developer Environment)
+[Pipeline] stage
+[Pipeline] { (QA Environment)
+Stage "QA Environment" skipped due to when conditional
+[Pipeline] }
+Stage "Developer Environment" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (End to End Test)
+Stage "End to End Test" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Cleanup)
+[Pipeline] echo
+Deleting decrypted secrets
+[Pipeline] sh
++ ./deploy/funds-ai/pipeline/customSecretDel.sh
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+SUCCESS
+[Pipeline] script
+[Pipeline] {
+[Pipeline] emailext
+Sending email to: xiaofei.x.yu@cn.pwc.com
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+[GitLab Pipeline Status] Notifying tag build status: SUCCESS awm-tag-branch/v5.1.7 #1: This commit looks good.
+[GitLab Pipeline Status] Notified
+Finished: SUCCESS
