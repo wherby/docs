@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Issues · Docs</title>
+<title>Fast and slow jobs · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Issues
+Fast and slow jobs
 </span>
 </div>
 </div>
@@ -218,7 +218,7 @@ wherby/docs
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
   <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
-  <li><a href="../issues/index.html" class="active page">Issues</a>
+  <li><a href="../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
     <li><a href="../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
@@ -231,9 +231,19 @@ wherby/docs
   <ul>
     <li><a href="../design/dependency/index.html" class="page">Dependency</a></li>
   </ul></li>
-  <li><a href="../fastandslowjobs/index.html" class="page">Fast and slow jobs</a></li>
+  <li><a href="../fastandslowjobs/index.html" class="active page">Fast and slow jobs</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../fastandslowjobs/index.html#fast-and-slow-jobs" class="header">Fast and slow jobs</a>
+  <ul>
+    <li><a href="../fastandslowjobs/index.html#basic-fast-jobs-flow" class="header">Basic fast jobs flow</a></li>
+    <li><a href="../fastandslowjobs/index.html#with-slow-job" class="header">With Slow job</a></li>
+    <li><a href="../fastandslowjobs/index.html#with-sperated" class="header">With sperated</a></li>
+    <li><a href="../fastandslowjobs/index.html#split-workflow" class="header">Split workflow</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -247,23 +257,46 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../fastandslowjobs/index.html#fast-and-slow-jobs" class="header">Fast and slow jobs</a>
+  <ul>
+    <li><a href="../fastandslowjobs/index.html#basic-fast-jobs-flow" class="header">Basic fast jobs flow</a></li>
+    <li><a href="../fastandslowjobs/index.html#with-slow-job" class="header">With Slow job</a></li>
+    <li><a href="../fastandslowjobs/index.html#with-sperated" class="header">With sperated</a></li>
+    <li><a href="../fastandslowjobs/index.html#split-workflow" class="header">Split workflow</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#issues" name="issues" class="anchor"><span class="anchor-link"></span></a>Issues</h1>
-<div class="toc ">
-<ul>
-  <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
-  <li><a href="../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
-  <li><a href="../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
-  <li><a href="../issues/playui/index.html" class="page">Play UI cache issue</a></li>
-  <li><a href="../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
-  <li><a href="../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
-</ul>
-</div>
+<h1><a href="#fast-and-slow-jobs" name="fast-and-slow-jobs" class="anchor"><span class="anchor-link"></span></a>Fast and slow jobs</h1>
+<h2><a href="#basic-fast-jobs-flow" name="basic-fast-jobs-flow" class="anchor"><span class="anchor-link"></span></a>Basic fast jobs flow</h2>
+<p>Fist think a workflow contains 4 jobs, each job cost 5 minutes to finish The parallel job number is 4 The second job can only run 2 at same time </p>
+<p><img src="./pic/basic.png" alt="basic" /></p>
+<h2><a href="#with-slow-job" name="with-slow-job" class="anchor"><span class="anchor-link"></span></a>With Slow job</h2>
+<p>And at same condition, the first 4 job&rsquo;s second job is slow job</p>
+<p><img src="./pic/slowjob.png" alt="Slow job" /></p>
+<h2><a href="#with-sperated" name="with-sperated" class="anchor"><span class="anchor-link"></span></a>With sperated</h2>
+<p>If we split the slow job to sperated job queue</p>
+<p><img src="./pic/splitslow.png" alt="Split slow" /></p>
+<h2><a href="#split-workflow" name="split-workflow" class="anchor"><span class="anchor-link"></span></a>Split workflow</h2>
+<p>If we split slow and fast workflow with 2 fast channel and 2 slow channel</p>
+<p><img src="./pic/2slowjob.png" alt="2slow" /></p>
+<p>With 3 fast channel and 1 slow channel</p>
+<p><img src="./pic/1slowjob.png" alt="1slow" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fastandslowjobs/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -287,7 +320,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../python/enclosure/index.html" title="Speed up python by remove enclosure" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../design/dependency/index.html" title="Dependency" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -296,21 +329,8 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Speed up python by remove enclosure
+Dependency
 </span>
-</div>
-</a>
-<a href="../issues/filereader/index.html" title="Read Excel will modify" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Read Excel will modify
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
