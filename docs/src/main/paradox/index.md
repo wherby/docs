@@ -74,4 +74,5 @@ This is the introduction for doradilla library.
 * [Python](python/enclosure/index.md)
 * [Issues](issues/index.md)
 * [Design](design/index.md)
+* [Fast and slow jobs](fastandslowjobs/index.md)
 @@@
