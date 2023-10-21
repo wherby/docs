@@ -237,6 +237,7 @@ wherby/docs
     <li><a href="../design/dependency/index.html" class="page">Dependency</a></li>
   </ul></li>
   <li><a href="../fastandslowjobs/index.html" class="active page">Fast and slow jobs</a></li>
+  <li><a href="../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
@@ -245,7 +246,6 @@ wherby/docs
   <ul>
     <li><a href="../fastandslowjobs/index.html#basic-fast-jobs-flow" class="header">Basic fast jobs flow</a></li>
     <li><a href="../fastandslowjobs/index.html#with-slow-job" class="header">With Slow job</a></li>
-    <li><a href="../fastandslowjobs/index.html#with-sperated" class="header">With sperated</a></li>
     <li><a href="../fastandslowjobs/index.html#split-workflow" class="header">Split workflow</a></li>
   </ul></li>
 </ul>
@@ -272,7 +272,6 @@ wherby/docs
   <ul>
     <li><a href="../fastandslowjobs/index.html#basic-fast-jobs-flow" class="header">Basic fast jobs flow</a></li>
     <li><a href="../fastandslowjobs/index.html#with-slow-job" class="header">With Slow job</a></li>
-    <li><a href="../fastandslowjobs/index.html#with-sperated" class="header">With sperated</a></li>
     <li><a href="../fastandslowjobs/index.html#split-workflow" class="header">Split workflow</a></li>
   </ul></li>
 </ul>
@@ -286,19 +285,18 @@ wherby/docs
 <div class="md-content__searchable">
 <h1><a href="#fast-and-slow-jobs" name="fast-and-slow-jobs" class="anchor"><span class="anchor-link"></span></a>Fast and slow jobs</h1>
 <h2><a href="#basic-fast-jobs-flow" name="basic-fast-jobs-flow" class="anchor"><span class="anchor-link"></span></a>Basic fast jobs flow</h2>
-<p>Fist think a workflow contains 4 jobs, each job cost 5 minutes to finish The parallel job number is 4 The second job can only run 2 at same time </p>
-<p><img src="./pic/basic.png" alt="basic" /></p>
+<p>Fist think a workflow contains 4 jobs, each job cost 5 minutes to finish</p>
+<p>The parallel job number is 4</p>
+<p>The second job can only run 2 at same time </p>
+<p><img src="./pic/fastjobs.png" alt="basic" /></p>
 <h2><a href="#with-slow-job" name="with-slow-job" class="anchor"><span class="anchor-link"></span></a>With Slow job</h2>
-<p>And at same condition, the first 4 job&rsquo;s second job is slow job</p>
-<p><img src="./pic/slowjob.png" alt="Slow job" /></p>
-<h2><a href="#with-sperated" name="with-sperated" class="anchor"><span class="anchor-link"></span></a>With sperated</h2>
-<p>If we split the slow job to sperated job queue</p>
-<p><img src="./pic/splitslow.png" alt="Split slow" /></p>
+<p>And at same condition, the first 4 workflow&rsquo;s second job is slow job, slow job needs 40 minutes and can only run 1 at same time.</p>
+<p><img src="./pic/fastansslow.png" alt="Slow job" /></p>
 <h2><a href="#split-workflow" name="split-workflow" class="anchor"><span class="anchor-link"></span></a>Split workflow</h2>
 <p>If we split slow and fast workflow with 2 fast channel and 2 slow channel</p>
-<p><img src="./pic/2slowjob.png" alt="2slow" /></p>
+<p><img src="./pic/2slow.png" alt="2slow" /></p>
 <p>With 3 fast channel and 1 slow channel</p>
-<p><img src="./pic/1slowjob.png" alt="1slow" /></p>
+<p><img src="./pic/1slow.png" alt="1slow" /></p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fastandslowjobs/index.md" title="Edit this page" class="md-source-file md-edit">
@@ -336,6 +334,19 @@ Previous
 </span>
 Dependency
 </span>
+</div>
+</a>
+<a href="../fastandslowjobs/index2.html" title="Fast and slow job(2)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Fast and slow job(2)
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>

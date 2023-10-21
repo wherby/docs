@@ -75,4 +75,5 @@ This is the introduction for doradilla library.
 * [Issues](issues/index.md)
 * [Design](design/index.md)
 * [Fast and slow jobs](fastandslowjobs/index.md)
+* [Fast and slow jobs](fastandslowjobs/index2.md)
 @@@
