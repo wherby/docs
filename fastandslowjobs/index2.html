@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>React web render · Docs</title>
+<title>Fast and slow job(2) · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-React web render
+Fast and slow job(2)
 </span>
 </div>
 </div>
@@ -172,7 +172,7 @@ wherby/docs
   <li><a href="../lockless/index.html" class="page">Lockless design</a></li>
   <li><a href="../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
   <li><a href="../dbinsert/index.html" class="page">DB bulk insert</a></li>
-  <li><a href="../react/index.html" class="active page">React web render</a></li>
+  <li><a href="../react/index.html" class="page">React web render</a></li>
   <li><a href="../oom/index.html" class="page">Out of memory for batch job</a></li>
   <li><a href="../purefunction/index.html" class="page">Pure function design</a></li>
   <li><a href="../codeissue/index.html" class="page">Code issue</a></li>
@@ -237,15 +237,17 @@ wherby/docs
     <li><a href="../design/dependency/index.html" class="page">Dependency</a></li>
   </ul></li>
   <li><a href="../fastandslowjobs/index.html" class="page">Fast and slow jobs</a></li>
-  <li><a href="../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
+  <li><a href="../fastandslowjobs/index2.html" class="active page">Fast and slow job(2)</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../react/index.html#react-web-render" class="header">React web render</a>
+  <li><a href="../fastandslowjobs/index2.html#fast-and-slow-job-2-" class="header">Fast and slow job(2)</a>
   <ul>
-    <li><a href="../react/index.html#the-null-element-after-refresh" class="header">The null element after refresh</a></li>
-    <li><a href="../react/index.html#fix-" class="header">Fix:</a></li>
+    <li><a href="../fastandslowjobs/index2.html#fast-job-work-flow" class="header">Fast job work flow</a></li>
+    <li><a href="../fastandslowjobs/index2.html#add-slow-job" class="header">Add slow job</a></li>
+    <li><a href="../fastandslowjobs/index2.html#seperate-the-fast-job-and-slow-job" class="header">Seperate the fast job and slow job</a></li>
+    <li><a href="../fastandslowjobs/index2.html#2-fast-and-1-slow-worker" class="header">2 fast and 1 slow worker</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -267,10 +269,12 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../react/index.html#react-web-render" class="header">React web render</a>
+  <li><a href="../fastandslowjobs/index2.html#fast-and-slow-job-2-" class="header">Fast and slow job(2)</a>
   <ul>
-    <li><a href="../react/index.html#the-null-element-after-refresh" class="header">The null element after refresh</a></li>
-    <li><a href="../react/index.html#fix-" class="header">Fix:</a></li>
+    <li><a href="../fastandslowjobs/index2.html#fast-job-work-flow" class="header">Fast job work flow</a></li>
+    <li><a href="../fastandslowjobs/index2.html#add-slow-job" class="header">Add slow job</a></li>
+    <li><a href="../fastandslowjobs/index2.html#seperate-the-fast-job-and-slow-job" class="header">Seperate the fast job and slow job</a></li>
+    <li><a href="../fastandslowjobs/index2.html#2-fast-and-1-slow-worker" class="header">2 fast and 1 slow worker</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -281,87 +285,30 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#react-web-render" name="react-web-render" class="anchor"><span class="anchor-link"></span></a>React web render</h1>
-<h2><a href="#the-null-element-after-refresh" name="the-null-element-after-refresh" class="anchor"><span class="anchor-link"></span></a>The null element after refresh</h2>
-<p>In AWM the when click the fist tab and go to second tab, every thing goes well</p>
-<p>First Tab: <img src="./pic/fisttab.png" alt="First tab" /></p>
-<p>Second Tab: <img src="./pic/secondtab.png" alt="Second tab" /></p>
-<p>When refresh page on second tab, the &ldquo;Audit Period End&rdquo; field is missing&quot;</p>
-<p><img src="./pic/nullafterrefresh.png" alt="Missing field after refresh" /></p>
-<p>Let&rsquo;s see how the &ldquo;Audit Period End&rdquo; field is rendered:</p>
-<dl>
-  <dt>In validation component</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/code/parent.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx">renderUploadGSP = () =&gt; {
-  if (this.state.operationType == &quot;uploadGSP&quot;) {
-    return &lt;UploadGSPOutputList id={this.props.id} engagementId={this.props.engagementId}
-    fundName={this.props.fundName} auditPeriodEnd={this.props.auditPeriodEnd} /&gt;
-  } else return null
-}
-render() {
-  return (
-    &lt;div className=&quot;valuations-container&quot;&gt;
-      {this.renderUploadGSP()}
-    &lt;/div&gt;
-  )
-}</code></pre></dd>
-  <dt>In GSP component</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/code/child.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx"> priceGroupColumn: EditableColumnProps&lt;SecurityPriceInfo&gt; = {
-   title: &lt;div style={{display: &quot;flex&quot;}}&gt;
-     &lt;p&gt;Audit Period End &lt;/p&gt;
-     &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-     ...
-   &lt;/div&gt;,
-   ...
-
-render() {
-   let columns = []
-   columns=[...columns, this.statusColumn, this.securityCategoryColumn, this.securityNameFundAdminColumn, this.ISINColumn, this.currencyColumn, this.exchangeColumn, this.priceGroupColumn]
-   return (
-     &lt;div&gt;
-       ...
-       &lt;div id=&quot;securityEditableTable&quot; className=&quot;security-price-editable-table&quot;&gt;
-         &lt;EditableTable
-           columns={columns}
-           dataSource={this.state.data}
-           //dataSource={fakeData}
-           controlData={true}
-           loading={this.state.loading}
-           onModify={this.onModify}
-           enableAdd={false}
-           pagination={false}
-           rowKey=&quot;id&quot;
-           showControls={false}
-         /&gt;
-       &lt;/div&gt;
-       ..
-     &lt;/div&gt;
-   )
- }</code></pre></dd>
-</dl>
-<p>And the field is controlled by {this.props.auditPeriodEnd} in validation component, if the page is refreshed,</p>
-<p>first the props value will be: <img src="./pic/props1strender.png" alt="First refresh" /></p>
-<p>and the props will be updated by its parent component: <img src="./pic/propslastrender.png" alt="Last status" /></p>
-<p>the updated props value is not applied to the GSP component.</p>
-<h2><a href="#fix-" name="fix-" class="anchor"><span class="anchor-link"></span></a>Fix:</h2>
-<p>Change the code from </p>
-<pre><code>    title: &lt;div style={{display: &quot;flex&quot;}}&gt;
-      &lt;p&gt;Audit Period End &lt;/p&gt;
-      &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-      ...
-    &lt;/div&gt;,
+<h1><a href="#fast-and-slow-job-2-" name="fast-and-slow-job-2-" class="anchor"><span class="anchor-link"></span></a>Fast and slow job(2)</h1>
+<h2><a href="#fast-job-work-flow" name="fast-job-work-flow" class="anchor"><span class="anchor-link"></span></a>Fast job work flow</h2>
+<p>Let&rsquo;s have 8 job work flows</p>
+<pre><code>1. each work flow contains 4 job needs to executed in sequence
+2. each job is fast job which takes 5 minutes to finish
+3. the second job is resource limited job and 
+   there is only one resource be available, 
+   which means there will only one second job could be executed
+4. the parallel number is 3, 
+   there will be A,B,C worker finish the job
 </code></pre>
-<p>to</p>
-<pre><code>    title: ()=&gt; &lt;div style={{display: &quot;flex&quot;}}&gt;
-      &lt;p&gt;Audit Period End &lt;/p&gt;
-      &lt;p style={{color: &quot;#e03220&quot;, fontWeight: &quot;bold&quot;}}&gt;&amp;nbsp;(Price as of {new Date(Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[0]), Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[1])-1, Number(this.props.auditPeriodEnd.split(&quot;-&quot;)[2])).toString().split(&quot; &quot;)[1] + &quot; &quot;
-      ...
-    &lt;/div&gt;,
-</code></pre>
+<p><img src="./pic2/fastjob.drawio.png" alt="Fast job" /></p>
+<h2><a href="#add-slow-job" name="add-slow-job" class="anchor"><span class="anchor-link"></span></a>Add slow job</h2>
+<p>If some work flow the second job is slow job, and which needs 100 minutes and needs another resource</p>
+<p><img src="./pic2/fastansslow.png" alt="Fast and Slow job" /></p>
+<h2><a href="#seperate-the-fast-job-and-slow-job" name="seperate-the-fast-job-and-slow-job" class="anchor"><span class="anchor-link"></span></a>Seperate the fast job and slow job</h2>
+<p>Let&rsquo;s ask different workers work with different type of workflow: </p>
+<h3><a href="#1-fast-and-2-slow-worker" name="1-fast-and-2-slow-worker" class="anchor"><span class="anchor-link"></span></a>1 fast and 2 slow worker</h3>
+<p><img src="./pic2/1fast.png" alt="1 fast job" /></p>
+<h2><a href="#2-fast-and-1-slow-worker" name="2-fast-and-1-slow-worker" class="anchor"><span class="anchor-link"></span></a>2 fast and 1 slow worker</h2>
+<p><img src="./pic2/2fast.png" alt="2 fast job" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/react/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/fastandslowjobs/index2.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -385,7 +332,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../dbinsert/index.html" title="DB bulk insert" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../fastandslowjobs/index.html" title="Fast and slow jobs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -394,21 +341,8 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-DB bulk insert
+Fast and slow jobs
 </span>
-</div>
-</a>
-<a href="../oom/index.html" title="Out of memory for batch job" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Out of memory for batch job
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
