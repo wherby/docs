@@ -20,6 +20,9 @@ New version
 
 ![Python docs new version](./pic/newversion.png)
 
+Fail on specified version
+![Failed on specified verison](./pic/failedOnSepcifiedVersion.png)
+
 
 ## How to fix
 
