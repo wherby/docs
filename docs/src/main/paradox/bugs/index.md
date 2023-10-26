@@ -40,4 +40,5 @@
 * [MySQL task faile](sqlfailed/index.md)
 * [Wrong finacial data saved](wrongUpdated/index.md)
 * [Python lib](pythonlib/index.md)
+* [Cancel task issue](canceltaskissue/index.md)
 @@@
