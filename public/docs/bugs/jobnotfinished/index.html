@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>UI crash · Docs</title>
+<title>Job not finished · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-UI crash
+Job not finished
 </span>
 </div>
 </div>
@@ -200,7 +200,7 @@ wherby/docs
     <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
     <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
     <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
-    <li><a href="../../bugs/uicrash/index.html" class="active page">UI crash</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
     <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
     <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
     <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
@@ -210,7 +210,7 @@ wherby/docs
     <li><a href="../../bugs/wrongUpdated/index.html" class="page">Wrong finacial data updated</a></li>
     <li><a href="../../bugs/pythonlib/index.html" class="page">Python build with different version of lib</a></li>
     <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
-    <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html" class="active page">Job not finished</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -244,10 +244,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/uicrash/index.html#ui-crash" class="header">UI crash</a>
+  <li><a href="../../bugs/jobnotfinished/index.html#job-not-finished" class="header">Job not finished</a>
   <ul>
-    <li><a href="../../bugs/uicrash/index.html#issue-1" class="header">Issue 1</a></li>
-    <li><a href="../../bugs/uicrash/index.html#issue-2" class="header">Issue 2</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html#issue" class="header">issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html#" class="header"><a href="https://github.com/wherby/dora/commit/0e673e43fbec66f8ce1ddaadf892646a38c628ac">Fix</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -269,10 +269,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/uicrash/index.html#ui-crash" class="header">UI crash</a>
+  <li><a href="../../bugs/jobnotfinished/index.html#job-not-finished" class="header">Job not finished</a>
   <ul>
-    <li><a href="../../bugs/uicrash/index.html#issue-1" class="header">Issue 1</a></li>
-    <li><a href="../../bugs/uicrash/index.html#issue-2" class="header">Issue 2</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html#issue" class="header">issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html#" class="header"><a href="https://github.com/wherby/dora/commit/0e673e43fbec66f8ce1ddaadf892646a38c628ac">Fix</a></a></li>
   </ul></li>
 </ul>
 </nav>
@@ -283,121 +283,49 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#ui-crash" name="ui-crash" class="anchor"><span class="anchor-link"></span></a>UI crash</h1>
-<h2><a href="#issue-1" name="issue-1" class="anchor"><span class="anchor-link"></span></a>Issue 1</h2>
-<p>When user is assigned to specified engagement, then user can&rsquo;t login to the system</p>
-<p><img src="pic/engagementname.png" alt="engagement" /></p>
-<p><img src="pic/cantlogin.png" alt="Cantlogin" /></p>
-<p>The fund name is &ldquo;Bosheng China Special Value – Fund 2021&rdquo;</p>
-<p>But &ldquo;–&rdquo; is different from &ldquo;-&rdquo;</p>
-<p><img src="pic/ascii.png" alt="ascii" /></p>
-<p>The code for the issue is </p>
-<pre class="prettyprint"><code class="language-javascript">    try{
-        var userResponse = await axios.get(`/user`, {headers:userInfo})
-        if(userResponse.data){
-          let privilege = userResponse.data ? userResponse.data.userInfoFront.privilege : &quot;&quot;
-          //window.sessionStorage.setItem(&quot;userInfo&quot;,btoa(JSON.stringify(userResponse.data)))
-          store.dispatch(setPrivilege(privilege))
-          var loginValue = this.email || &quot;my account&quot;;
-          this.props.login(loginValue);
-          let state = this.props.location.state || {};
-          window.location.href = state.from || &#39;/&#39;;
-        }
-        else {
-          this.setState({
-            ishiddenrerror: false
-          });
-        }
+<h1><a href="#job-not-finished" name="job-not-finished" class="anchor"><span class="anchor-link"></span></a>Job not finished</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>issue</h2>
+<p>When job does finish in good status, then there will have the dead letter as below:</p>
+<pre class="prettyprint"><code class="language-log">2023-10-31 17:03:56,443 [INFO] from akka.actor.LocalActorRef in default-akka.actor.default-dispatcher-10 - akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuture9c1718d6-bb6f-4141-9c4c-90bca2d30e7a Message [scala.Enumeration$Val] from Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuture9c1718d6-bb6f-4141-9c4c-90bca2d30e7a#-2019376894] to Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuture9c1718d6-bb6f-4141-9c4c-90bca2d30e7a#-2019376894] was not delivered. [8] dead letters encountered. If this is not an expected behavior then Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuture9c1718d6-bb6f-4141-9c4c-90bca2d30e7a#-2019376894] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings &#39;akka.log-dead-letters&#39; and &#39;akka.log-dead-letters-during-shutdown&#39;.
+</code></pre>
+<p>And then all job will timeout, the dead letter will be:</p>
+<pre class="prettyprint"><code class="language-log">2023-10-31 19:32:35,719 [INFO] from akka.actor.LocalActorRef in default-akka.actor.default-dispatcher-11 - akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuturef84aa674-5b1f-4962-a3d8-1091385a152d Message [doracore.core.msg.Job$JobResult] from Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/queueActorc6d42113-fdb3-46ee-a19b-4c81a08ac337#928142608] to Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuturef84aa674-5b1f-4962-a3d8-1091385a152d#1446614358] was not delivered. [9] dead letters encountered. If this is not an expected behavior then Actor[akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/SimpleProcessFuturef84aa674-5b1f-4962-a3d8-1091385a152d#1446614358] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings &#39;akka.log-dead-letters&#39; and &#39;akka.log-dead-letters-during-shutdown&#39;.
+</code></pre>
+<p>And we find the job is started</p>
+<pre class="prettyprint"><code class="language-log">2023-10-31 17:03:41,923 [INFO] from doracore.core.fsm.FsmActor in default-akka.actor.default-dispatcher-13 - akka://default/user/driver5feb3022-a5ca-4540-a324-7416f80c988a/fsmActorbb55be19-7f74-4fbc-b923-70746ba7d29c {Some(JobMeta(TableDetectionProcessorPROJ_11326_slowJob_1698771754363))} is started in fsm worker, and will be handled by {Actor[akka://default/user/defaultProcessTranActordb78414b-eb41-4553-90a3-5d14608e581f#252787697]}
+</code></pre>
+<p>while there is job end message</p>
+<h2><a href="#" name="" class="anchor"><span class="anchor-link"></span></a><a href="https://github.com/wherby/dora/commit/0e673e43fbec66f8ce1ddaadf892646a38c628ac">Fix</a></h2>
+<p>The PoisonPill will kill the actor immediately, when the actor is killed, can&rsquo;t reset the fsm to take another job.</p>
+<pre class="prettyprint"><code class="language-scala ">  def getResult(receiveActor: ActorRef, timeout: Timeout): Future[JobResult] = {
+    implicit val ex: ExecutionContext = getBlockDispatcher()
+    implicit val timeoutValue: Timeout = timeout
+    var result = JobResult(JobStatus.Unknown, &quot;Unkonwn&quot;).asInstanceOf[Any]
+    (receiveActor ? FetchResult())
+      .map { resultT =&gt;
+        resultT.asInstanceOf[JobResult]
       }
-      catch (e) {
-        this.setState({
-          ishiddenrerror: false
-        })
+      .recover {
+        case ex: Throwable =&gt;
+          val tName = Thread.currentThread.getName
+          Logger
+            .apply(this.getClass.getName)
+            .error(s&quot;$tName=&gt; Job timeout after $timeout&quot;)
+          result =
+            JobResult(JobStatus.TimeOut, ProcessResult(JobStatus.Failed, ex))
+          receiveActor ! ProxyControlMsg(JobStatus.Canceled)
+          //receiveActor ! PoisonPill
+          result.asInstanceOf[JobResult]
+      }
+      .map { result =&gt;
+        receiveActor ! ProxyControlMsg(PoisonPill)
+        receiveActor ! PoisonPill
+        result
       }
 </code></pre>
-<p>The btoa will throw exception,while catch will not print anything about this exception.</p>
-<h2><a href="#issue-2" name="issue-2" class="anchor"><span class="anchor-link"></span></a>Issue 2</h2>
-<p>User report some financial data can&rsquo;t be load in frontend. <img src="pic/datacantload.png" alt="Data dont load" /></p>
-<p>The &ldquo;capitalgain&rdquo; gain field is not correct in the json string</p>
-<dl>
-  <dt>The code for the update ordinary earning operation</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/code/ordinaryearning.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.collection.immutable.ListMap
-import scala.collection.mutable.ListBuffer
-
-def extractProfitLossSheetFromExcel(frontEndFinancialData:FinancialdataGetFromFrontend, workbook:Workbook) = {
-  //get profit loss data list from uploaded excel
-  var rowKey_profit_loss: ListMap[String, String] = RowKeys.rowKeys_ProfitLoss.map(key_val =&gt; (key_val._2.toLowerCase, key_val._1))
-  val profitLossSheet = workbook.getSheet(&quot;P&amp;L&quot;)
-  val (profitLossStartRow: Int, profitLossStartColumn: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(profitLossSheet, &quot;Net Sales&quot;, true)
-  val (profitLossEndRow: Int, _: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(profitLossSheet, &quot;Net Income&quot;, true)
-  var profitLossDataList = new ListBuffer[ProfitLossCol]()
-
-  var netProfitLoss = &quot;0&quot;;
-  var capitalGain = &quot;0&quot;
-  for (rowNum &lt;- profitLossStartRow to profitLossEndRow) {
-    val row = profitLossSheet.getRow(rowNum)
-    val excelEnglishKey = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn).getOrElse(&quot;&quot;).toLowerCase;
-    val keyOpt = rowKey_profit_loss.get(excelEnglishKey)
-    if (keyOpt.isDefined) {
-      profitLossDataList += ProfitLossCol(keyOpt.get, ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;&quot;))
-
-      //set oridinary earnings
-      if (keyOpt.get.equals(&quot;net_income&quot;)) {
-        netProfitLoss = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;0&quot;)
-      }
-      else if (keyOpt.get.equals(&quot;including_realized_gain_on_disposal_of_assets_held_for_more_than_one_year&quot;)) {
-        capitalGain = ExcelReader.getCellValueAsStringOption(row, profitLossStartColumn + 1).getOrElse(&quot;0&quot;)
-      }
-    }
-  }
-  var ordianaryOptionFromFrontEnd = Json.parse(frontEndFinancialData.ordinaryearningsandgain.getOrElse(companyfinancialdataServiceRead.ordinaryearningsandgain)).as[OrdinaryEarningsAndGainOption]
-  val ordinaryearningsandgain = &quot;{\&quot;netprofitloss\&quot;:&quot; + netProfitLoss + &quot;,\&quot;capitalgain\&quot;:&quot; + capitalGain + &quot;,\&quot;currency\&quot;:&quot; + ordianaryOptionFromFrontEnd.currency.getOrElse(&quot;1&quot;) + &quot;}&quot;
-  (profitLossDataList, ordinaryearningsandgain)
-}</code></pre></dd>
-  <dt>The code for Excel Reader</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/code/ExcelReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">/**
- * get cell value as string base on cell type
- * @param row
- * @param index
- * @return
- */
-def getCellValueAsStringOption(row: Row,index: Int):Option[String] = {
-  getCellOption(row, index).flatMap(cell =&gt; {
-    var cellStyle = cell.getCellType
-    cellStyle match {
-      case CellType.NUMERIC =&gt; {
-        Option(cell.getNumericCellValue.toString.trim)
-      }
-      case CellType.STRING =&gt; {
-        Option(cell.getStringCellValue.trim)
-      }
-      case CellType.BOOLEAN =&gt; {
-        Option(cell.getBooleanCellValue.toString.trim)
-      }
-      case CellType.FORMULA =&gt; {
-        cell.getCachedFormulaResultType match {
-          case CellType.NUMERIC =&gt;
-            Option(cell.getNumericCellValue.toString.trim)
-          case CellType.STRING  =&gt;
-            Option(cell.getStringCellValue.trim)
-          case _=&gt;
-            Option(cell.getCellFormula)
-        }
-      }
-      case _ =&gt; {
-        None
-      }
-    }
-  })
-}</code></pre></dd>
-</dl>
-<p>When excel has a field of &ldquo; &rdquo;, then the filed set in json will be missing.</p>
-<p>The key point is always using class instead of man-made string format.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uicrash/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/jobnotfinished/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -421,7 +349,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/statusUpdate/index.html" title="project status update issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/canceltaskissue/index.html" title="Cancel task issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -430,17 +358,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-project status update issue
+Cancel task issue
 </span>
 </div>
 </a>
-<a href="../../bugs/uitest/index.html" title="UI test" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-UI test
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

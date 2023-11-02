@@ -41,4 +41,5 @@
 * [Wrong finacial data saved](wrongUpdated/index.md)
 * [Python lib](pythonlib/index.md)
 * [Cancel task issue](canceltaskissue/index.md)
+* [Job not finished](jobnotfinished/index.md)
 @@@
