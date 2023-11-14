@@ -35,6 +35,15 @@ Then use the authorized token to change the access token:
 
 ![Access token](./pic/accesstoken.png)
 
+More clear about the body
+
+``` 
+ code=qqBjWVysrKBqckPcI-Mm9mdV2JM&redirect_uri=https%3A%2F%2Fassetmanagementintel.uat.asia.pwcinternal.com%2Flogin&grant_type=authorization_code&client_id=urn%3Aamic&client_secret=hVcsYO5O66iuTJrggekk
+```
+
+![Access Token](./pic/getaccesstoken.png)
+
+
 
 #### Get user information
 
