@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Statistics load issue · Docs</title>
+<title>Issue · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Statistics load issue
+Issue
 </span>
 </div>
 </div>
@@ -202,7 +202,7 @@ wherby/docs
     <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
     <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
     <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
-    <li><a href="../../bugs/loadIssue2/index.html" class="active page">Statistics load issue</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
     <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
     <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
     <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
@@ -211,7 +211,7 @@ wherby/docs
     <li><a href="../../bugs/pythonlib/index.html" class="page">Python build with different version of lib</a></li>
     <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
     <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
-    <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
+    <li><a href="../../bugs/timeindocker/index.html" class="active page">Issue</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -243,13 +243,6 @@ wherby/docs
   <li><a href="../../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../bugs/loadIssue2/index.html#statistics-load-issue" class="header">Statistics load issue</a>
-  <ul>
-    <li><a href="../../bugs/loadIssue2/index.html#load-slow-issue" class="header">Load slow issue</a></li>
-  </ul></li>
-</ul>
 </nav>
 
 </nav>
@@ -263,165 +256,20 @@ wherby/docs
 </div>
 </div>
 </div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../bugs/loadIssue2/index.html#statistics-load-issue" class="header">Statistics load issue</a>
-  <ul>
-    <li><a href="../../bugs/loadIssue2/index.html#load-slow-issue" class="header">Load slow issue</a></li>
-  </ul></li>
-</ul>
-</nav>
-
-</div>
-</div>
-</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#statistics-load-issue" name="statistics-load-issue" class="anchor"><span class="anchor-link"></span></a>Statistics load issue</h1>
-<h2><a href="#load-slow-issue" name="load-slow-issue" class="anchor"><span class="anchor-link"></span></a>Load slow issue</h2>
-<p>The statistics api engagementCompletion will take long time to load,</p>
-<p><img src="pic/downloadslow.png" alt="load slow" /></p>
-<p>While the code as below:</p>
-<dl>
-  <dt>Controller</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadIssue2/code/controller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>def lookupEngagementsCompletion() = deadbolt.SubjectPresent()(parse.anyContent) {
-  implicit authRequest =&gt;
-  {
-    val engagementIdsJsArray = authRequest.body.asJson
-    engagementIdsJsArray match {
-      case Some(array) =&gt; {
-        val engagementIds = array.as[Seq[String]]
-        getCompletionRatioByEngagementIds(engagementIds).map(res =&gt; {
-          Ok(Json.toJson(res))
-        })
-      }
-      case _ =&gt; {
-        val emptyMap: Map[String, Double] = Map()
-        Future(Ok(Json.toJson(emptyMap)))
-      }
-    }
-  }
-}
-
-def getCompletionRatioByEngagementIds(engagementIds: Seq[String]) = {
-  val engagementIdRatioMap = engagementIds.map(engagementId =&gt; {
-    val result = for {
-      fundEngagements &lt;- logTime(&quot;&quot;) { fundEngagementRead.queryByEngagmentId(engagementId) }
-      reportRatios    &lt;- logTime(&quot;&quot;) { getReportCompletionRatioByEngagementId(engagementId) }
-    } yield {
-      val fundEngagementIds = fundEngagements.map(_.id)
-      for {
-        egaData &lt;- logTime(&quot;&quot;) { egaRead.lookupByFundEngagementIds(fundEngagementIds) }
-        feId_UploadAndAccountNamesMap &lt;-
-          logTime(&quot;&quot;) {
-            fundEngagementReportTypeSelectionRead
-              .getUploadConfirmationDividedByDataFormat_WithAccountNameList(fundEngagementIds)
-          }
-        //confirmationRatios &lt;- getConfirmationCompletionRatioByEngagement(engagementId)
-        fundAccountsWithFEId &lt;- logTime(&quot;&quot;) {
-          fundAccountRead.lookupByFundEngagementIds(fundEngagementIds)
-        }
-        singleEGARatios &lt;- logTime(&quot;&quot;) {
-          getSingleEGACompletionRatioByEngagementId(fundEngagementIds)
-        } //ok
-      } yield {
-        logTime(&quot;TEST: CALCULATE RATIOS&quot;) {
-          val feId_fundId = reportRatios.map(r =&gt; (r.fundEngagementId, r.fundId))
-          val confirmationRatios = getConfirmationCompletionRatioByFundEngagementIds(
-            fundEngagementIds,
-            fundAccountsWithFEId,
-            feId_fundId,
-            feId_UploadAndAccountNamesMap
-          )
-          val valuationRatios = getValuationCompletionRatioByEngagementId(egaData) //ok
-          val fundEngagementsRatios = fundEngagementIds
-            .map(fundEngagementId =&gt; {
-              val maybeReportRatio =
-                reportRatios.filter(_.fundEngagementId == fundEngagementId).headOption
-              val maybeConfirmationRatio =
-                confirmationRatios.get(fundEngagementId)
-              val maybeValuationRatio = valuationRatios.get(fundEngagementId)
-              val maybeSingleEGARatio = singleEGARatios.get(fundEngagementId)
-              val reportRatio = maybeReportRatio match {
-                case Some(value) =&gt; {
-                  if (value.definedReportTypeNumber &gt; 0) {
-                    0.5 * value.reportUploadedNumber / value.definedReportTypeNumber
-                  } else {
-                    0
-                  }
-                }
-                case _ =&gt; 0
-              }
-              val confirmationRatio = maybeConfirmationRatio match {
-                case Some(value) =&gt; {
-                  if (value.total &gt; 0) {
-                    0.17 * value.finished / value.total
-                  } else {
-                    0
-                  }
-                }
-                case _ =&gt; 0
-              }
-              val valuationRatio = maybeValuationRatio match {
-                case Some(value) =&gt; {
-                  if (value._1 == true &amp;&amp; value._2 == true) {
-                    0.16
-                  } else if (value._1 == false &amp;&amp; value._2 == false) {
-                    0
-                  } else {
-                    0.08
-                  }
-                }
-                case _ =&gt; 0
-              }
-              val singleEGARatio = maybeSingleEGARatio match {
-                case Some(value) =&gt; {
-                  if (value &gt; 0) {
-                    0.17
-                  } else {
-                    0
-                  }
-                }
-                case _ =&gt; 0
-              }
-              reportRatio + confirmationRatio + valuationRatio + singleEGARatio
-            })
-          val engagementRatio = if (fundEngagementsRatios.length &gt; 0) {
-            fundEngagementsRatios.reduce(_ + _) / fundEngagementsRatios.length
-          } else {
-            0
-          }
-          (engagementId, (engagementRatio, fundEngagementsRatios.length))
-        }
-      }
-    }
-    result.flatten
-  })
-  Future.sequence(engagementIdRatioMap).map(_.toMap)
-}</code></pre></dd>
-  <dt>FundEngagementDAO</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadIssue2/code/FundEngagementDAO.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def queryByEngagementId(
-                                  engagementId: String
-                                ): Future[Seq[FundEngagementData]] = {
-  val f: Future[Seq[FundEngagementRow]] =
-    db.run(
-      FundEngagement
-        .filter(x =&gt; x.engagementid === engagementId)
-        .result
-    )
-  f.map { maybeRows =&gt; maybeRows.map(item =&gt; rowToData(item)) }
-}</code></pre></dd>
-</dl>
+<p>Time in docker is not syned </p>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>User reports the issue:</p>
+<p><img src="./pic/issue.png" alt="Issue" /></p>
+<p>and restart the server, the issue is fixed</p>
+<p>and the check the logs </p>
+<p><img src="./pic/logs.png" alt="logs" /></p>
+<p>Fix <a href="https://juejin.cn/s/docker%20%E5%AE%B9%E5%99%A8%E6%97%B6%E9%97%B4%E4%B8%8D%E5%90%8C%E6%AD%A5">the timer in docer</a> <img src="./pic/sync.png" alt="Fix" /></p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadIssue2/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/timeindocker/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -445,7 +293,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/uitest/index.html" title="UI test" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/jobnotfinished/index.html" title="Job not finished" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -454,17 +302,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-UI test
+Job not finished
 </span>
 </div>
 </a>
-<a href="../../bugs/initialCrash/index.html" title="Initial crash" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Initial crash
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
