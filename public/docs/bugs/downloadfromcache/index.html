@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Notification desgin · Docs</title>
+<title>Download from cache · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Notification desgin
+Download from cache
 </span>
 </div>
 </div>
@@ -212,11 +212,11 @@ wherby/docs
     <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
     <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
     <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
-    <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html" class="active page">Download from cache</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
-    <li><a href="../../codedesign/notification/index.html" class="active page">Notification desgin</a></li>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
     <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
     <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
     <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
@@ -246,10 +246,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../codedesign/notification/index.html#notification-desgin" class="header">Notification desgin</a>
+  <li><a href="../../bugs/downloadfromcache/index.html#download-from-cache" class="header">Download from cache</a>
   <ul>
-    <li><a href="../../codedesign/notification/index.html#notification-workflow" class="header">Notification workflow</a></li>
-    <li><a href="../../codedesign/notification/index.html#design-code" class="header">Design code</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -271,10 +270,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../codedesign/notification/index.html#notification-desgin" class="header">Notification desgin</a>
+  <li><a href="../../bugs/downloadfromcache/index.html#download-from-cache" class="header">Download from cache</a>
   <ul>
-    <li><a href="../../codedesign/notification/index.html#notification-workflow" class="header">Notification workflow</a></li>
-    <li><a href="../../codedesign/notification/index.html#design-code" class="header">Design code</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -285,144 +283,17 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#notification-desgin" name="notification-desgin" class="anchor"><span class="anchor-link"></span></a>Notification desgin</h1>
-<h2><a href="#notification-workflow" name="notification-workflow" class="anchor"><span class="anchor-link"></span></a>Notification workflow</h2>
-<p>In PFIC ,external investment notifications will be generated and cleared when data reaches a specific state (as shown in following diagram)</p>
-<p><img src="pic/external-investment-notification-flow.png" alt="Notification" /></p>
-<p>It&rsquo;s very complex workflow and also not want this notification flow design will impact the business logic.</p>
-<h2><a href="#design-code" name="design-code" class="anchor"><span class="anchor-link"></span></a>Design code</h2>
-<dl>
-  <dt>Controller</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.{Await, Future}
-
-def upload(companyId: String, year: Int, operationType: String) = deadbolt.Pattern(value = &quot;(v_pwc)|(v_mycompany)&quot;, patternType = PatternType.REGEX)(parse.multipartFormData(maxLength = 1024*1024))  { implicit request =&gt;
-  request.body.file(&quot;file&quot;).map { file =&gt;
-    try{
-      ...
-        companyfinancialdataServiceWrite.updateFinancialData(request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;), request.subject, financialData).map(res =&gt; {Ok(&quot;success&quot;)})
-    }
-}</code></pre></dd>
-  <dt>Service</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataServiceWriteImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/><br/>override def updateFinancialData(currentUserEmail: String,
-                                 subject: Option[Subject],
-                                 financialData: FinancialdataGetFromFrontend): Future[Unit] = {
-  validateUserUtil.validateExternalUserPermissionForCompany(subject, financialData.companyId, financialData.year).map(_ =&gt; {
-    ...
-    var newFinancedata = waitForUpdateFinancialDataAndGenerateNotification(currentUserEmail, subject, financialData, companyuser)
-    ...
-  })
-}
-
-private def waitForUpdateFinancialDataAndGenerateNotification(userEmail: String,
-                                                              subject: Option[Subject],
-                                                              financialData: FinancialdataGetFromFrontend,
-                                                              companyuser: Option[Companyuser]) = {
-  val currentUserPrivileges = subject.map(s =&gt; s.permissions.mkString(&quot;,&quot;)).getOrElse(&quot;&quot;)
-  val newFinancedataAndNotification = checkPermissionThenGetFiDataAndNotification(financialData, userEmail, currentUserPrivileges, companyuser)
-  val newFinancedata = newFinancedataAndNotification.financialData
-  val newNotifications = newFinancedataAndNotification.notification
-  val futureUpdateFinancialdata = update(newFinancedata)
-  var resultUpdateFinancialdata = &quot;failed&quot;
-  futureUpdateFinancialdata onComplete {
-    case util.Success(value) =&gt; {
-      resultUpdateFinancialdata = &quot;success&quot;
-      waitForClearNotifations(newFinancedata.companyId, newFinancedata.year, financialData.operationType)
-      notificationWrite.waitForCreateNotifications(newNotifications)
-    }
-    case scala.util.Failure(exception) =&gt; throw new Exception(exception.toString)
-  }
-  Await.result(futureUpdateFinancialdata, Duration.apply(10.toLong, duration.SECONDS))
-  newFinancedata
-}</code></pre></dd>
-  <dt>WorkflowUtil</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/FinancialDataWorkflowUtil.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Timestamp
-
-override def checkPermissionThenGetFiDataAndNotification(dataFrontEnd: FinancialdataGetFromFrontend,
-                                                         email: String,
-                                                         privilege: String,
-                                                         companyuser: Option[Companyuser]) = {
-  val currentFinancialData: Financialdata = companyfinancialdataServiceRead.waitForLookupWithDefaultValues(dataFrontEnd.companyId, dataFrontEnd.year) match {
-    case Some(data) =&gt; data
-    case None =&gt; throw new Exception(&quot;Financial data doesn&#39;t exist&quot;)
-  }
-  FinancialDataWorkflowUtils.checkRolePermissionThenGetFiDataAndNotification(dataFrontEnd, currentFinancialData, email, privilege, companyuser)
-}
-
-def checkRolePermissionThenGetFiDataAndNotification(dataFrontEnd:FinancialdataGetFromFrontend,
-                                                    currentFinancialData:Financialdata,
-                                                    user:String,
-                                                    privilege:String,
-                                                    companyuser:Option[Companyuser]):NextFinancialDataAndNotification= {
-  val now = TimeService.currentTime
-  val companyuserName = companyuser.map(_.name).getOrElse(&quot;&quot;)
-  val workflowState = WorkflowState(currentFinancialData.internalState, currentFinancialData.externalState,currentFinancialData.modifiedByExternal, currentFinancialData.uploadFilesByExternal)
-  OperationTypes.withName(dataFrontEnd.operationType.toUpperCase) match {
-    case OperationTypes.external_data_save =&gt;      externalSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.external_file_save =&gt;      externalFileSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.external_data_finalize =&gt;  externalFinalize(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.external_data_approve =&gt;   externalApprove(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.file_save =&gt;               internalFileSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.data_save =&gt; {
-      if(currentFinancialData.modifiedByExternal.getOrElse(false) &amp;&amp; !StatusHelper.isInternalApproved(workflowState) &amp;&amp; !( workflowState.externalState.getOrElse(None) == ExternalState.ApprovedOnlyFiles))
-        sentBack(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-      else
-        internalSave(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    }
-    case OperationTypes.external_data_agree =&gt;               agree(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.external_data_disagree =&gt;         disagree(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.data_finalize =&gt;          internalFinalize(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.data_signOff =&gt;            internalSignOff(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case OperationTypes.data_approve =&gt;            internalApprove(dataFrontEnd,currentFinancialData,user, privilege, now,companyuserName)
-    case _ =&gt; throw UnAuthorizationException(&quot;Operation type doesn&#39;t exists&quot;)
-  }
-}
-
-def externalSave(dataFrontEnd:FinancialdataGetFromFrontend,
-                 currentFinancialData:
-                 Financialdata,
-                 user:String,
-                 privilege:String,
-                 now: Timestamp,
-                 companyuserName:String) = {
-  val workflowState = WorkflowState(currentFinancialData.internalState,currentFinancialData.externalState,currentFinancialData.modifiedByExternal, currentFinancialData.uploadFilesByExternal)
-  var modifiedByExternal = getModifiedByExternal(dataFrontEnd, currentFinancialData)
-
-  if(actionsValidator.validateExternalSave(privilege,workflowState))
-  {
-    val newfdata = currentFinancialData.copy(currencyId = dataFrontEnd.currencyId,assetdata = dataFrontEnd.assetdata,
-      liabilitydata = dataFrontEnd.liabilitydata, profitlossdata = dataFrontEnd.profitlossdata,
-      fmvdata = dataFrontEnd.fmvdata, ordinaryearningsandgain = dataFrontEnd.ordinaryearningsandgain,
-
-      modifiedByExternal = modifiedByExternal)
-    val noti = Nil
-    NextFinancialDataAndNotification(newfdata,noti)
-  }
-  else
-    throw UnAuthorizationException()
-}
-
-</code></pre></dd>
-  <dt>DataStructure</dt>
-  <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/dataStructure.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class FinancialdataGetFromFrontend(id: Long, year: Int, companyId: String,currencyId: String, assetdata: Option[String] = None,
-                                        liabilitydata: Option[String] = None, profitlossdata: Option[String] = None, fmvdata: Option[String] = None, ordinaryearningsandgain: Option[String] = None,
-                                        operationType:String, //The operation type will find the
-                                        msg:Option[String], owAssetdata: Option[String] = None, owLiabilitydata: Option[String] = None,
-                                        owProfitlossdata: Option[String] = None,incorporationdate: Option[String] = None,  uploadFilesByExternal: Option[Boolean] = None)
-
-
-case class NextFinancialDataAndNotification(financialData:Financialdata,notification:Seq[Notification])
-
-case class Notification(var id: String, notificationType: NotificationType.NotificationType, notificationDataType: NotificationDataType.NotificationDataType,
-                        description: Option[NotificationDescription], status: Boolean, entityname: Option[String],
-                        link: String, year: Int, triggerAt: java.sql.Timestamp, triggerBy: Option[String])</code></pre></dd>
-</dl>
+<h1><a href="#download-from-cache" name="download-from-cache" class="anchor"><span class="anchor-link"></span></a>Download from cache</h1>
+<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
+<p>User download a file and can&rsquo;t get the latest version,</p>
+<p><img src="./pic/frombrowser.png" alt="Get content from cache" /></p>
+<p>and when user click download, the result is from browser cache not from backend.</p>
+<p>The frontend code:</p>
+<p><img src="./pic/code.png" alt="Code" /></p>
+<p>The download action is not triggering ajax call, but open a web url which return a cached value by browser&rsquo;s default behavior.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/downloadfromcache/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -446,7 +317,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 </script>
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/timeindocker/index.html" title="Issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -455,17 +326,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Code design
+Issue
 </span>
 </div>
 </a>
-<a href="../../codedesign/imsprocessor/index.html" title="IMS processor" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-IMS processor
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
