@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>Cancel task issue · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+Cancel task issue
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
+    <li><a href="../../bugs/wrongUpdated/index.html" class="page">Wrong finacial data updated</a></li>
+    <li><a href="../../bugs/pythonlib/index.html" class="page">Python build with different version of lib</a></li>
+    <li><a href="../../bugs/canceltaskissue/index.html" class="active page">Cancel task issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
+    <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
+    <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
+    <li><a href="../../issues/datefield/index.html" class="page">Date time different issue</a></li>
+  </ul></li>
+  <li><a href="../../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+  <li><a href="../../fastandslowjobs/index.html" class="page">Fast and slow jobs</a></li>
+  <li><a href="../../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/canceltaskissue/index.html#cancel-task-issue" class="header">Cancel task issue</a>
+  <ul>
+    <li><a href="../../bugs/canceltaskissue/index.html#remove-the-cancel-job-in-fsm-and-queue" class="header">Remove the cancel job in fsm and queue</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/canceltaskissue/index.html#cancel-task-issue" class="header">Cancel task issue</a>
+  <ul>
+    <li><a href="../../bugs/canceltaskissue/index.html#remove-the-cancel-job-in-fsm-and-queue" class="header">Remove the cancel job in fsm and queue</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#cancel-task-issue" name="cancel-task-issue" class="anchor"><span class="anchor-link"></span></a>Cancel task issue</h1>
+<p>## </p>
+<p>From log, there is only task start log :</p>
+<pre class="prettyprint"><code class="language-log">02:42:57.590 [default-akka.actor.default-dispatcher-6] [[37minfo[0m] d.c.f.FsmActor akka://default/user/driver7c6baa49-ab9a-406c-80a1-f620e7732fee/fsmActor782c0df9-b3f8-4948-a294-5ef39dadb69c - {Some(JobMeta(TableDetectionProcessor))} is started in fsm worker, and will be handled by {Actor[akka://default/user/defaultProcessTranActor0302425b-0f73-4bff-a9c8-4ebd1815a9bf#-1692441311]}
+
+
+</code></pre>
+<p>we can&rsquo;t find task end log like</p>
+<pre class="prettyprint"><code class="language-log">06:07:39.059 [default-akka.actor.default-dispatcher-18] [[37minfo[0m] d.c.f.FsmActor akka://default/user/driver7c6baa49-ab9a-406c-80a1-f620e7732fee/fsmActor782c0df9-b3f8-4948-a294-5ef39dadb69c - Some(JobMeta(TableDetectionProcessor)) is end
+</code></pre>
+<p>Which means the task is send to driver and not start or end in normal way as:</p>
+<pre class="prettyprint"><code class="language-scala">  when(Active) {
+    case Event(jobEnd: JobEnd, task: Task) =&gt;
+      if (jobEnd.requestMsg.jobMetaOpt == jobMetaOpt) {
+        log.log(Logging.InfoLevel,s&quot;$jobMetaOpt is end&quot;)
+        goto(Idle) using (Uninitialized)
+      } else {
+        stay()
+      }
+</code></pre>
+<p>The issue happend after timeout </p>
+<pre class="prettyprint"><code class="language-log">05:13:16.240 [default-akka.actor.default-dispatcher-8] [[31merror[0m] d.b.BackendServer$  - default-akka.actor.default-dispatcher-8=&gt; Job timeout after Timeout(9000 seconds)
+05:13:16.244 [default-akka.actor.default-dispatcher-21] [[37minfo[0m] a.a.DeadLetterActorRef akka://default/deadLetters - Message [doracore.core.msg.Job$JobResult] from Actor[akka://default/user/Receive926e10d4-f58d-4f24-8ae4-4f58d4397322#-1243994010] to Actor[akka://default/deadLetters] was not delivered. [3] dead letters encountered. If this is not an expected behavior then Actor[akka://default/deadLetters] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings &#39;akka.log-dead-letters&#39; and &#39;akka.log-dead-letters-during-shutdown&#39;.
+05:13:16.341 [processor-pool-thread--1] [[31merror[0m] c.p.d.c.e.c.JobInstance  - processor failed, akka.pattern.AskTimeoutException: Ask timed out on [Actor[akka://default/user/Receive926e10d4-f58d-4f24-8ae4-4f58d4397322#-1243994010]] after [9000000 ms]. Message of type [doracore.tool.receive.ReceiveActor$FetchResult]. A typical reason for `AskTimeoutException` is that the recipient actor didn&#39;t send a reply.
+</code></pre>
+<p>There is <a href="https://github.com/wherby/dora/blob/35033b3ce1c6ca4a36eb30ccc38259e462792571/dora/src/main/scala/doracore/api/AskProcessResult.scala">a bug</a> handling time out:</p>
+<pre class="prettyprint"><code class="language-scala">  def getResult(receiveActor: ActorRef, timeout: Timeout): Future[JobResult] = {
+    implicit val ex: ExecutionContext  = getBlockDispatcher()
+    implicit val timeoutValue: Timeout = timeout
+    var result                         = JobResult(JobStatus.Unknown, &quot;Unkonwn&quot;).asInstanceOf[Any]
+    (receiveActor ? FetchResult())
+      .map { resultT =&gt;
+        resultT.asInstanceOf[JobResult]
+      }
+      .recover { case ex: Throwable =&gt;
+        val tName = Thread.currentThread.getName
+        Logger.apply(this.getClass.getName).error(s&quot;$tName=&gt; Job timeout after $timeout&quot;)
+        result = JobResult(JobStatus.TimeOut, ProcessResult(JobStatus.Failed, ex))
+        receiveActor ! ProxyControlMsg(result)
+        Thread.sleep(100)
+        result.asInstanceOf[JobResult]
+      }
+      .map { result =&gt;
+        receiveActor ! ProxyControlMsg(PoisonPill)
+        receiveActor ! PoisonPill
+        result
+      }
+  }
+</code></pre>
+<p>when Job timeout, the timeout result will send to proxyActor to stop FSM, but if the job not send to FSM, the Result message will not remove the task and may remove another samename(by jobmeta) task.</p>
+<pre class="prettyprint"><code class="language-scala">  def finishTask() = {
+    fsmActorOpt.map { fsmActor =&gt;
+      fsmActor ! JobEnd(requestMsgBk)
+    }
+  }
+
+  override def receive: Receive = {
+    case jobRequest: JobRequest =&gt;
+      handleJobRequest(jobRequest)
+    case jobResult: JobResult =&gt;
+      result = Some(jobResult.result)
+      replyTo ! jobResult
+      self ! JobStatus.Finished
+    case JobStatus.Scheduled =&gt;
+      fsmActorOpt = Some(sender())
+      status = JobStatus.Scheduled
+    case JobStatus.Finished | JobStatus.Failed | JobStatus.TimeOut =&gt;
+      finishTask()
+</code></pre>
+<p>if the timeout job remove another job, which will let another job stop silently, and keep client waiting for result.</p>
+<p>The below is a test case, job1 is a blocking job which will cause timeout, job2 is a regular job, if we remove all &ldquo;Thread.sleep(3000)&rdquo;, the result will be timeout for job2. Because, multiple job1 will timeout at same time, and only one job which is in fsm will be removed, after job1 timeout, there will still have job1 runing in fsm, job2 can&rsquo;t be executed.</p>
+<pre class="prettyprint"><code class="language-scala">    &quot;Name Job with Meta&quot; must {
+      &quot;run job in sequece the sleep operation will not block following operation and time out will go&quot; in {
+        val job1 = TestVars.sleepProcessJob
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        //BackendServer.runNamedProcessCommand(job1, &quot;job13&quot;,metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),timeout=ConstVars.timeout1S  )
+        //BackendServer.runNamedProcessCommand(job1, &quot;job13&quot;,metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),timeout=ConstVars.timeout1S  )
+        Thread.sleep(3000)
+        val job2 = TestVars.processJob
+        BackendServer.runNamedProcessCommand(
+          job2,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob2&quot;))
+        )
+        //Thread.sleep(3000)
+        Thread.sleep(3000)
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        Thread.sleep(3000)
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        Thread.sleep(3000)
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        Thread.sleep(3000)
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        Thread.sleep(3000)
+        BackendServer.runNamedProcessCommand(
+          job1,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob1&quot;)),
+          timeout = ConstVars.timeout1S
+        )
+        Thread.sleep(3000)
+        val resultFuture = BackendServer.runNamedProcessCommand(
+          job2,
+          &quot;job13&quot;,
+          metaOpt = Some(JobMeta(&quot;NewNameJob2&quot;))
+        )
+        val result =
+          try {
+            Await.ready(resultFuture, timeout)
+          } catch {
+            case _: Throwable =&gt; Future(&quot;TimeOutError&quot;)
+          }
+
+        println(&quot;s&quot;)
+        println(result)
+        println(&quot;XX&quot;)
+
+        Thread.sleep(2000)
+      }
+    }
+</code></pre>
+<p>If we add sleep in each timeout, and make sure cancelled job in fsm, then the job2 will be success finished.</p>
+<h2><a href="#remove-the-cancel-job-in-fsm-and-queue" name="remove-the-cancel-job-in-fsm-and-queue" class="anchor"><span class="anchor-link"></span></a>Remove the cancel job in fsm and queue</h2>
+<p><a href="https://github.com/wherby/dora/commit/8efb35bde986496911b462b86a543e71ab0ad7e3">The fix</a> to issue is remove the cancelled task both in queue and fsm.</p>
+<pre class="prettyprint"><code class="language-scala"><br/>dora/src/main/scala/doracore/api/AskProcessResult.scala
+...
+  def getResult(receiveActor: ActorRef, timeout: Timeout): Future[JobResult] = {
+    implicit val ex: ExecutionContext = getBlockDispatcher()
+    implicit val timeoutValue: Timeout = timeout
+    var result = JobResult(JobStatus.Unknown, &quot;Unkonwn&quot;).asInstanceOf[Any]
+    (receiveActor ? FetchResult())
+      .map { resultT =&gt;
+        resultT.asInstanceOf[JobResult]
+      }
+      .recover {
+        case ex: Throwable =&gt;
+          val tName = Thread.currentThread.getName
+          Logger
+            .apply(this.getClass.getName)
+            .error(s&quot;$tName=&gt; Job timeout after $timeout&quot;)
+          result =
+            JobResult(JobStatus.TimeOut, ProcessResult(JobStatus.Failed, ex))
+          receiveActor ! ProxyControlMsg(JobStatus.Canceled)
+          //receiveActor ! PoisonPill
+          result.asInstanceOf[JobResult]
+      }
+      .map { result =&gt;
+        receiveActor ! ProxyControlMsg(PoisonPill)
+        receiveActor ! PoisonPill
+        result
+      }
+
+dora/src/main/scala/doracore/core/queue/QueueActor.scala
+...
+  def handleRemove(jobRequest: JobRequest) = {
+    log.info(s&quot;Job: $jobRequest  which is canceled by user.&quot;)
+    val eleToRemove = taskQueue.snap().filter(_.jobMetaOpt ==jobRequest.jobMetaOpt)
+    eleToRemove.headOption match {
+      case Some(eleFind)=&gt;
+        val removedJob = taskQueue.removeEle(eleFind)
+        log.info(s&quot;there is a job to be removed $removedJob&quot;)
+        removedJob.map { job =&gt;
+          job.replyTo ! JobResult(JobStatus.Canceled, s&quot;Job: $job  which is canceled by user.&quot;)
+        }
+      case _=&gt;
+
+
+
+dora/src/main/scala/doracore/core/proxy/ProxyActor.scala
+...
+
+  def cancelJob()={
+      queueActor ! RemoveJob(requestMsgBk)
+      fsmActorOpt.map { fsmActor =&gt;
+        fsmActor ! JobEnd(requestMsgBk)
+      }
+  }
+
+  override def receive: Receive = {
+    case jobRequest: JobRequest =&gt;
+      handleJobRequest(jobRequest)
+  class ProxyActor(queueActor: ActorRef) extends BaseActor {
+      status = JobStatus.Scheduled
+    case JobStatus.Finished | JobStatus.Failed | JobStatus.TimeOut =&gt;
+      finishTask()
+    case JobStatus.Canceled =&gt;
+      cancelJob()
+
+
+</code></pre>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/canceltaskissue/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVLRXPE9ZP"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-LVLRXPE9ZP');
+</script>
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../bugs/pythonlib/index.html" title="Python build with different version of lib" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Python build with different version of lib
+</span>
+</div>
+</a>
+<a href="../../bugs/jobnotfinished/index.html" title="Job not finished" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Job not finished
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+</body>
+</html>
