@@ -40,4 +40,8 @@
 * [MySQL task faile](sqlfailed/index.md)
 * [Wrong finacial data saved](wrongUpdated/index.md)
 * [Python lib](pythonlib/index.md)
+* [Cancel task issue](canceltaskissue/index.md)
+* [Job not finished](jobnotfinished/index.md)
+* [Time in docker](timeindocker/index.md)
+* [Down load from cache](downloadfromcache/index.md)
 @@@

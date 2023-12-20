@@ -209,6 +209,10 @@ wherby/docs
     <li><a href="../../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
     <li><a href="../../bugs/wrongUpdated/index.html" class="page">Wrong finacial data updated</a></li>
     <li><a href="../../bugs/pythonlib/index.html" class="active page">Python build with different version of lib</a></li>
+    <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
+    <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -296,6 +300,7 @@ wherby/docs
 <p><img src="./pic/oldversion.png" alt="Python docs old version" /></p>
 <p>New version</p>
 <p><img src="./pic/newversion.png" alt="Python docs new version" /></p>
+<p>Fail on specified version <img src="./pic/failedOnSepcifiedVersion.png" alt="Failed on specified verison" /></p>
 <h2><a href="#how-to-fix" name="how-to-fix" class="anchor"><span class="anchor-link"></span></a>How to fix</h2>
 <p>From the log, the python-docs is inderect-dependency of openpyxl, if the python-docs version is set in requirement file, the issue will not be happened. But the root cause is the python lib install happened in each build, if the lib install finished in base image, there will have no different afterward.</p>
 </div>
@@ -337,13 +342,13 @@ Wrong finacial data updated
 </span>
 </div>
 </a>
-<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../bugs/canceltaskissue/index.html" title="Cancel task issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Code design
+Cancel task issue
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
