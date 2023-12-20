@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "f99f08ca-2a69-45f9-953b-82403ad23de2",
+		"name": "fdict",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4040822"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/wordrecord/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"wordrecord",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Request-Time",
+							"value": "17"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "connect-src 'self' ws://localhost:9000"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "master-only"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 10:35:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "204"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"namespace\": \"default\",\n    \"word\": \"abundunt\",\n    \"content\": {\n        \"sourceRecords\": [\n            {\n                \"source\": \"google\",\n                \"record\": \"abundunt 11\"\n            },\n            {\n                \"source\": \"baidu2\",\n                \"record\": \"abundunt 3\"\n            },\n            {\n                \"source\": \"baidu\",\n                \"record\": \"abundunt 3\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "addwordrecord",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "PLAY_SESSION",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImNzcmZUb2tlbiI6IjljOTM5MThhYTNlYTVjZWM5ZDgzMWZlNjU5NDYzYjg2MjRlMzQ0ZmEtMTY1MzQ0OTQwMzU2Ni01ZDk2MTI2Mjg3NGYzZGU4YTMwZmQ0MzMifSwibmJmIjoxNjUzNDQ5NDAzLCJpYXQiOjE2NTM0NDk0MDN9.OKHfSknZt6BWDHmtAQBIYRFIsQIA5lSc5v2qJZX2pNE;",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Schat_Token",
+						"value": "e33f1ee1dc7e7bf7f7e8d3679c11c7726ac9ac38-1702728658429-06bc918229a863f7e6f0e0f5",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Cookie",
+						"value": "PLAY_SESSION=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImNzcmZUb2tlbiI6IjljOTM5MThhYTNlYTVjZWM5ZDgzMWZlNjU5NDYzYjg2MjRlMzQ0ZmEtMTY1MzQ0OTQwMzU2Ni01ZDk2MTI2Mjg3NGYzZGU4YTMwZmQ0MzMifSwibmJmIjoxNjUzNDQ5NDAzLCJpYXQiOjE2NTM0NDk0MDN9.OKHfSknZt6BWDHmtAQBIYRFIsQIA5lSc5v2qJZX2pNE; Schat_Token=e33f1ee1dc7e7bf7f7e8d3679c11c7726ac9ac38-1702728658429-06bc918229a863f7e6f0e0f5",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Pragma",
+						"value": "no-cache",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"wordRecordDB\":{\r\n        \"id\":0,\r\n        \"namespace\":\"default\",\r\n        \"word\":\"abundunt\",\r\n        \"content\":\"{}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}",
+					"host": [
+						"{{baseurl}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "v1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "PLAY_SESSION",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImNzcmZUb2tlbiI6IjljOTM5MThhYTNlYTVjZWM5ZDgzMWZlNjU5NDYzYjg2MjRlMzQ0ZmEtMTY1MzQ0OTQwMzU2Ni01ZDk2MTI2Mjg3NGYzZGU4YTMwZmQ0MzMifSwibmJmIjoxNjUzNDQ5NDAzLCJpYXQiOjE2NTM0NDk0MDN9.OKHfSknZt6BWDHmtAQBIYRFIsQIA5lSc5v2qJZX2pNE;",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Schat_Token",
+								"value": "e33f1ee1dc7e7bf7f7e8d3679c11c7726ac9ac38-1702728658429-06bc918229a863f7e6f0e0f5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "PLAY_SESSION=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImNzcmZUb2tlbiI6IjljOTM5MThhYTNlYTVjZWM5ZDgzMWZlNjU5NDYzYjg2MjRlMzQ0ZmEtMTY1MzQ0OTQwMzU2Ni01ZDk2MTI2Mjg3NGYzZGU4YTMwZmQ0MzMifSwibmJmIjoxNjUzNDQ5NDAzLCJpYXQiOjE2NTM0NDk0MDN9.OKHfSknZt6BWDHmtAQBIYRFIsQIA5lSc5v2qJZX2pNE; Schat_Token=e33f1ee1dc7e7bf7f7e8d3679c11c7726ac9ac38-1702728658429-06bc918229a863f7e6f0e0f5",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Pragma",
+								"value": "no-cache",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"wordRecordDB\":{\r\n        \"id\":0,\r\n        \"namespace\":\"default\",\r\n        \"word\":\"abundunt\",\r\n        \"content\":\"{}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/wordrecord",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"wordrecord"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Request-Time",
+							"value": "422"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "connect-src 'self' ws://localhost:9000"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "master-only"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 08:18:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14"
+						}
+					],
+					"cookie": [],
+					"body": "1 record added"
+				}
+			]
+		},
+		{
+			"name": "AddResource",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"namespace\":\"default\",\r\n    \"word\":\"abundunt\",\r\n    \"sourceRecord\":{\r\n        \"source\":\"baidu\",\r\n        \"record\":\"abundunt 3\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/source",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"source"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "v1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namespace\":\"default\",\r\n    \"word\":\"abundunt\",\r\n    \"sourceRecord\":{\r\n        \"source\":\"baidu\",\r\n        \"record\":\"abundunt 3\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/wordrecord/source",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"wordrecord",
+								"source"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Request-Time",
+							"value": "14"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "connect-src 'self' ws://localhost:9000"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "master-only"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 10:35:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12"
+						}
+					],
+					"cookie": [],
+					"body": "Record added"
+				}
+			]
+		},
+		{
+			"name": "{{baseurl}}/ids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ids\":[1,2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/ids",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"ids"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "v1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\":[1,2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/wordrecord/ids",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"wordrecord",
+								"ids"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Request-Time",
+							"value": "14"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "connect-src 'self' ws://localhost:9000"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "master-only"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 10:39:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "134"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"namespace\": \"default\",\n            \"word\": \"abundunt\",\n            \"content\": \"{\\\"sources\\\":[[\\\"google\\\",1],[\\\"baidu2\\\",2],[\\\"baidu\\\",3]]}\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "{{baseurl}}/namespace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"namespace\":\"default\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/namespace",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"namespace"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "v1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"namespace\":\"default\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/wordrecord/namespace",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"wordrecord",
+								"namespace"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Request-Time",
+							"value": "58"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin-when-cross-origin, strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "connect-src 'self' ws://localhost:9000"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "master-only"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 10:41:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "134"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"namespace\": \"default\",\n            \"word\": \"abundunt\",\n            \"content\": \"{\\\"sources\\\":[[\\\"google\\\",1],[\\\"baidu2\\\",2],[\\\"baidu\\\",3]]}\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
