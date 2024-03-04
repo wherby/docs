@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Mysql Issue for Hikari: Failed to validate connection because connection is closed · Docs</title>
+<title>UI refreshing issue · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Mysql Issue for Hikari: Failed to validate connection because connection is closed
+UI refreshing issue
 </span>
 </div>
 </div>
@@ -214,7 +214,7 @@ wherby/docs
     <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
     <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
     <li><a href="../../bugs/intellijbug/index.html" class="page">Intellij bug for scala</a></li>
-    <li><a href="../../bugs/uirefresh/index.html" class="page">UI refreshing issue</a></li>
+    <li><a href="../../bugs/uirefresh/index.html" class="active page">UI refreshing issue</a></li>
   </ul></li>
   <li><a href="../../codedesign/index.html" class="page">Code design</a>
   <ul>
@@ -235,7 +235,7 @@ wherby/docs
     <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
     <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
     <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
-    <li><a href="../../issues/dbsavefail/index.html" class="active page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
+    <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
     <li><a href="../../issues/datefield/index.html" class="page">Date time different issue</a></li>
   </ul></li>
   <li><a href="../../design/index.html" class="page">Design</a>
@@ -252,11 +252,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/dbsavefail/index.html#mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" class="header">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a>
+  <li><a href="../../bugs/uirefresh/index.html#ui-refreshing-issue" class="header">UI refreshing issue</a>
   <ul>
-    <li><a href="../../issues/dbsavefail/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../issues/dbsavefail/index.html#real-issue" class="header">Real issue</a></li>
-    <li><a href="../../issues/dbsavefail/index.html#why-mysql-connnection-has-issue" class="header">Why Mysql connnection has issue</a></li>
+    <li><a href="../../bugs/uirefresh/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -278,11 +276,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/dbsavefail/index.html#mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" class="header">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a>
+  <li><a href="../../bugs/uirefresh/index.html#ui-refreshing-issue" class="header">UI refreshing issue</a>
   <ul>
-    <li><a href="../../issues/dbsavefail/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../issues/dbsavefail/index.html#real-issue" class="header">Real issue</a></li>
-    <li><a href="../../issues/dbsavefail/index.html#why-mysql-connnection-has-issue" class="header">Why Mysql connnection has issue</a></li>
+    <li><a href="../../bugs/uirefresh/index.html#issue" class="header">Issue</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -293,32 +289,134 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" name="mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" class="anchor"><span class="anchor-link"></span></a>Mysql Issue for Hikari: Failed to validate connection because connection is closed</h1>
+<h1><a href="#ui-refreshing-issue" name="ui-refreshing-issue" class="anchor"><span class="anchor-link"></span></a>UI refreshing issue</h1>
 <h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
-<p>When upload more than 10M excel in fundsAI, the upload will be failed <img src="./pic/uploadfail.png" alt="Upload fail" /></p>
-<p>When check the application log, the below warning of mysql connect &ldquo;Failed to validate connection <a href="mailto:&#99;&#111;&#x6d;&#x2e;&#x6d;&#x79;&#115;&#x71;&#108;.&#x63;&#x6a;&#x2e;&#106;db&#x63;.&#67;&#111;nn&#101;&#x63;&#x74;&#x69;&#x6f;&#110;&#73;&#x6d;&#x70;&#x6c;&#x40;&#x34;4&#100;&#x34;&#x64;&#53;&#101;&#x62;">&#99;&#111;&#x6d;&#x2e;&#x6d;&#x79;&#115;&#x71;&#108;.&#x63;&#x6a;&#x2e;&#106;db&#x63;.&#67;&#111;nn&#101;&#x63;&#x74;&#x69;&#x6f;&#110;&#73;&#x6d;&#x70;&#x6c;&#x40;&#x34;4&#100;&#x34;&#x64;&#53;&#101;&#x62;</a> (No operations allowed after connection closed.). &rdquo; will be found.</p>
-<p><img src="./pic/applicationlog.png" alt="Application log" /></p>
-<p>And check the warning message, will find some link as <a href="https://techgry.com/concepts/02-maxLifetime">https://techgry.com/concepts/02-maxLifetime</a> </p>
-<p><img src="./pic/hikaripool.png" alt="Hikari pool" /></p>
-<p>It shows the server setting of maxlife time is not match the client side.</p>
-<p>Check with the production environment mysql setting:</p>
-<p><img src="./pic/prodsetting.png" alt="Mysql Prod setting" /></p>
-<p>is 180 (seconds).</p>
-<p>And if we change the value to &ldquo;18000&rdquo; , the db connection warning is dispeared, but the upload is not working as same.</p>
-<h2><a href="#real-issue" name="real-issue" class="anchor"><span class="anchor-link"></span></a>Real issue</h2>
-<p>The upload failed is a post call with 422 error code, which is handledby application <img src="./pic/apifailed.png" alt="Api failed" /></p>
-<p>And debug the error find POI read issue: <img src="./pic/poiread.png" alt="POI" /></p>
-<p>And follow the instuctions to fix poi read error: <img src="./pic/codefix.png" alt="Fix poi" /></p>
-<p><a href="https://stackoverflow.com/questions/74517091/reading-large-size-excel-using-apache-poi">https://stackoverflow.com/questions/74517091/reading-large-size-excel-using-apache-poi</a></p>
-<h2><a href="#why-mysql-connnection-has-issue" name="why-mysql-connnection-has-issue" class="anchor"><span class="anchor-link"></span></a>Why Mysql connnection has issue</h2>
-<p>From the processor the work flow as below:</p>
-<pre><code> upload file -&gt; file read -&gt; file process -&gt; store to database 
+<p>User report UI is extramly slow: <img src="pic/issue.png" alt="User report" /></p>
+<p>When user edit financial data: <img src="pic/edit.png" alt="Edit" /></p>
+<p>Then the UI will continuely loading: <img src="pic/error.png" alt="Eror" /></p>
+<p>The issue is caused by code:</p>
+<p><img src="pic/code.png" alt="Code" /></p>
+<dl>
+  <dt>The function code</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uirefresh/code/getFinancialDataAndSetState.js" target="_blank" title="Go to snippet source"></a><code class="language-js">getFinancialDataAndSetState = (companyId, year, refreshedByAuto?: boolean) =&gt; {
+    this.setState({loading:true})
+    let promiseFDataCurrentYear = getFinancialData(companyId, year)
+    let promiseFDataLastYear = getFinancialData(companyId, parseInt(year) - 1)
+    let promisePficTestData = this.props.dataService.getPficTestData(companyId, year)
+    let promiseCurrencyList = getCurrenciesList(year)
+    Promise.all([promiseFDataCurrentYear, promiseFDataLastYear, promisePficTestData, promiseCurrencyList]).then(
+        ([result, resultLastYear, pficTestData, currencyList]) =&gt; {
+            if (Object.keys(result).length &gt; 0) {
+                var financialData: FinancialData = {
+                    assetData: JSON.parse(result.assetdata),
+                    liabilityData: JSON.parse(result.liabilitydata),
+                    profitLossData: JSON.parse(result.profitlossdata),
+                    fmvData: JSON.parse(result.fmvdata),
+                    ordinaryEarningsAndGain: JSON.parse(result.ordinaryearningsandgain),
+                    owAssetData: JSON.parse(result.owAssetdata),
+                    owLiabilityData: JSON.parse(result.owLiabilitydata),
+                    owProfitLossData: JSON.parse(result.owProfitlossdata),
+                    dataKeys: JSON.parse(result.dataKeys)
+                }
+                let financialData_LastYear = {} as FinancialData
+                let haveData_LastYear = false
+                if (Object.keys(resultLastYear).length &gt; 0) {
+                    financialData_LastYear = {
+                        assetData: JSON.parse(resultLastYear.assetdata),
+                        liabilityData: JSON.parse(resultLastYear.liabilitydata),
+                        profitLossData: JSON.parse(resultLastYear.profitlossdata),
+                        fmvData: JSON.parse(resultLastYear.fmvdata),
+                        ordinaryEarningsAndGain: JSON.parse(resultLastYear.ordinaryearningsandgain),
+                        owAssetData: JSON.parse(resultLastYear.owAssetdata),
+                        owLiabilityData: JSON.parse(resultLastYear.owLiabilitydata),
+                        owProfitLossData: JSON.parse(resultLastYear.owProfitlossdata)
+                    }
+                    haveData_LastYear = true
+                }
+                var pficTest = {} as any
+                if (pficTestData &amp;&amp; pficTestData.testresult &amp;&amp; currencyList) {
+                    pficTest = {
+                        currencyName: this.getCurrencyName(result.currencyId, currencyList),
+                        isPfic: pficTestData.ispfic,
+                        testResult: JSON.parse(pficTestData.testresult),
+                        parentCompanyIsPfic: pficTestData.parentCompanyIsPfic
+                    }
+                    this.setRowKeyDisplay(pficTest.testResult.incomeTestData)
+                    this.setRowKeyDisplay(pficTest.testResult.assetTestCostData)
+                    this.setRowKeyDisplay(pficTest.testResult.assetTestFMVData)
+                    this.setRowKeyDisplay(pficTest.testResult.assetTestFMVDataQuarterly)
+                    this.setRowKeyDisplay(pficTest.testResult.publicAssetTestFMVData)
+                    setRowDisplayCurrencyForPublicAssetTest(pficTest.testResult.publicAssetTestFMVData, this.getCurrencyName(financialData.fmvData.stock_price_currency_id, currencyList), pficTest.currencyName)
+                }
+                let newWorkflowState = {
+                    modifiedByExternal: result.modifiedByExternal === true,
+                    uploadFilesByExternal: result.uploadFilesByExternal === true,
+                    internalState: result.internalState,
+                    externalState: result.externalState,
+                    stateDetail: result.stateDetail,
+                    stateChangeLog: [] as StateChangeLog[]
+                }
+                this.setNonEditableRows(financialData.assetData, BalanceSheetDataRows_asset_subtotal, BalanceSheetDataRows_asset_subtitle);
+                this.setNonEditableRows(financialData.liabilityData, BalanceSheetDataRows_liability_subtotal, BalanceSheetDataRows_liability_subtitle);
+                this.setNonEditableRows(financialData.profitLossData, ProfitLossDataRows_subtotal, ProfitLossDataRows_subtitle);
+                this.setPercentFormatRows(financialData.fmvData.fmv_valuation_and_interest_by_quarter, FMVQuarterlyRows_PercentRow)
+                this.setRowKeyDisplay(financialData.assetData)
+                this.setRowKeyDisplay(financialData.liabilityData)
+                this.setRowKeyDisplay(financialData.profitLossData)
+                this.setRowKeyDisplay(financialData.fmvData.stock_price_data)
+                this.setRowKeyDisplay(financialData.fmvData.fmv_valuation_and_interest_by_quarter)
+                if (refreshedByAuto) {
+                    // if the function is triggered by auto save, only update pficTest data
+                    this.setState({
+                        pficTest: pficTest
+                    })
+                } else {
+                    this.setState({
+                        id: result.id,
+                        currencyId: result.currencyId,
+                        financialData: calculateTotals(financialData),
+                        financialData_LastYear: financialData_LastYear,
+                        pficTest: pficTest,
+                        currencyList: currencyList,
+                        incorporationdate: result.incorporationdate,
+                        workflowState: newWorkflowState,
+                        loading: false,
+                        haveData: true,
+                        haveData_LastYear: haveData_LastYear,
+                        approveButtonEnabled: canInternalApproverEdit(newWorkflowState) &amp;&amp; !isInternalApproved(newWorkflowState) &amp;&amp; (!isModifiedOrUploadByExternal(newWorkflowState) || (isModifiedOrUploadByExternal(newWorkflowState) &amp;&amp; (isExternalApproved(newWorkflowState) || isExternalApprovedOnlyFiles(newWorkflowState) || isExternalAgreed(newWorkflowState)))),
+                        financialDataAvailable: result.financialDataAvailable
+                    })
+                    this.switchFilterType(this.state.balanceSheetInputType, this.state.appendCategory, (isDataConsideredAsFinalized(this.state.workflowState) || this.state.balanceSheetInputType === &quot;append&quot;))
+                }
+            } else {
+                this.setState({
+                    loading: false,
+                    haveData: false
+                })
+            }
+        }
+    ).catch((error) =&gt; {
+        PopErrors(error.response.data)
+        this.setState({
+            loading: false,
+            haveData: false
+        })
+    });
+}</code></pre></dd>
+</dl>
+<p>the issue:</p>
+<pre class="prettyprint"><code class="language-javascript">if (refreshedByAuto) {
+    // if the function is triggered by auto save, only update pficTest data
+    this.setState({
+        pficTest: pficTest
+    })
+}
 </code></pre>
-<p>The error happend in &ldquo;file read &rdquo; step, but mysql connection issue was thrown. It doesn&rsquo;t make sense if we think as step by step process. </p>
-<p>What maybe </p>
+<p>How to handle the status code updating in long function?</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/dbsavefail/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/uirefresh/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -345,7 +443,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../issues/cacheforslowquery/index.html" title="Cache for slow query" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../bugs/intellijbug/index.html" title="Intellij bug for scala" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -354,17 +452,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Cache for slow query
+Intellij bug for scala
 </span>
 </div>
 </a>
-<a href="../../issues/datefield/index.html" title="Date time different issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Date time different issue
+Code design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
