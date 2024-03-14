@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>Flow issue · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+Flow issue
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
+    <li><a href="../../bugs/wrongUpdated/index.html" class="page">Wrong finacial data updated</a></li>
+    <li><a href="../../bugs/pythonlib/index.html" class="page">Python build with different version of lib</a></li>
+    <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
+    <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
+    <li><a href="../../bugs/intellijbug/index.html" class="page">Intellij bug for scala</a></li>
+    <li><a href="../../bugs/uirefresh/index.html" class="page">UI refreshing issue</a></li>
+    <li><a href="../../bugs/flowissue/index.html" class="active page">Flow issue</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
+    <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
+    <li><a href="../../issues/datefield/index.html" class="page">Date time different issue</a></li>
+    <li><a href="../../issues/nginxHeaders/index.html" class="page">Nginx handle request with underscore headers</a></li>
+  </ul></li>
+  <li><a href="../../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+  <li><a href="../../fastandslowjobs/index.html" class="page">Fast and slow jobs</a></li>
+  <li><a href="../../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
+  <li><a href="../../tools/index.html" class="page">Tools</a>
+  <ul>
+    <li><a href="../../tools/postman/index.html" class="page">Postman Doc API</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/flowissue/index.html#flow-issue" class="header">Flow issue</a>
+  <ul>
+    <li><a href="../../bugs/flowissue/index.html#flow-not-running" class="header">Flow not running</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../bugs/flowissue/index.html#flow-issue" class="header">Flow issue</a>
+  <ul>
+    <li><a href="../../bugs/flowissue/index.html#flow-not-running" class="header">Flow not running</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#flow-issue" name="flow-issue" class="anchor"><span class="anchor-link"></span></a>Flow issue</h1>
+<h2><a href="#flow-not-running" name="flow-not-running" class="anchor"><span class="anchor-link"></span></a>Flow not running</h2>
+<p>When using flow as a job manager is not a good idea, the code as blow, in a week, flow graph failed and flow not running occurs.</p>
+<p>Code as below</p>
+<dl>
+  <dt>LogConsumer</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/flowissue/code/LogConsumer.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.cidr.event
+
+import akka.actor.ActorSystem
+import akka.stream.ClosedShape
+import akka.stream.scaladsl.{Broadcast, Concat, Flow, GraphDSL, RunnableGraph, Sink, Source, ZipWith}
+import cats.implicits._
+import com.pwc.ds.cidr.db._
+import com.pwc.ds.cidr.db.impl.DbTables
+import com.pwc.ds.cidr.models.{BaseQuery, FilterItem}
+import org.slf4j.LoggerFactory
+import play.api.libs.json.Json
+import slick.jdbc.JdbcBackend.Database
+
+import java.sql.Date
+import java.text.SimpleDateFormat
+import javax.inject.Inject
+import scala.collection.immutable
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{ExecutionContext, Future}
+
+abstract class LogConsumer(db: Database)(implicit ec: ExecutionContext, actorSystem: ActorSystem)
+  extends DbTables {
+
+  import profile.api._
+
+  trait Processor {
+    def process(pre: Option[AuditLogRow], cur: AuditLogRow): Future[Boolean]
+  }
+
+  protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[Seq[AuditLogRow]] =
+    db.run(sql&quot;select * from audit_log where id &gt; ${offset} limit ${batchSize}&quot;.as[AuditLogRow]).map(_.toSeq)
+      .recover[Seq[AuditLogRow]] {
+        case _: Throwable =&gt; Seq.empty
+      }
+
+  private def checkPointRowGenerator(businessName: String): Future[Option[CheckPointRow]] =
+    db.run(sql&quot;select * from check_point where `group` = ${businessName}&quot;.as[CheckPointRow]).map(_.headOption)
+      .recover[Option[CheckPointRow]] {
+        case _: Throwable =&gt; None
+      }
+
+  //  def consume[PT](businessName: String, batchSize: Int): Future[(Option[CheckPointRow], immutable.Seq[AuditLogRow])] = Future {
+  //    (None, immutable.Seq.empty[AuditLogRow])
+  //  }
+
+  private def commit(businessName: String, offset: Long) =
+    db.run(
+        sqlu&quot;&quot;&quot;
+                 INSERT INTO check_point (`group`, snapshot, offset, create_at, modify_at) VALUES ($businessName, &quot;{}&quot;, $offset, CURTIME(), CURTIME())
+                 ON DUPLICATE KEY UPDATE offset = $offset, modify_at = CURTIME();
+    &quot;&quot;&quot;)
+      .recover[Int] {
+        case _: Throwable =&gt; 0
+      }
+
+  def logFilter: AuditLogRow =&gt; Boolean
+
+  def businessName: String
+
+  def processor: Processor
+
+  final protected def getDate(timestamp: java.sql.Timestamp) = new Date(timestamp.getTime)
+
+  //  implicit  val actorsystem: ActorSystem
+  private def toRun() = {
+    val runnable = RunnableGraph.fromGraph(GraphDSL.create() { implicit b =&gt;
+      import GraphDSL.Implicits._
+      var lastOffset = 0L
+      var lastRow: Option[AuditLogRow] = None
+
+      // get the previous record
+      def getLast(offset: Long, maxRetry: Int = 100): Future[Option[AuditLogRow]] = {
+        if (maxRetry == 0) {
+          LoggerFactory.getLogger(this.getClass).warn(&quot;getLast row error, pls fix by manual, info: &quot; + businessName)
+          return Future.successful(None)
+        }
+        if (offset &lt;= 0) Future.successful(None)
+        else auditLogRowGenerator(offset, 1).flatMap {
+          rows =&gt; if (rows.isEmpty) getLast(offset - 1, maxRetry - 1) else Future.successful(rows.headOption)
+        }
+      }
+
+      val initOffsetSource = Source.future(checkPointRowGenerator(businessName))
+        .map(_.map(_.offset))
+        .map(_.getOrElse(0L))
+        .map { s =&gt; lastOffset = s; s }
+        .mapAsync(1)(s =&gt; getLast(s - 1).map { res =&gt; lastRow = res; s })
+      val concat = b.add(Concat[Long]())
+      val bcast = b.add(Broadcast[Long](2))
+      val auditLogRowsFlow = Flow[Long].mapAsync(1)(offset =&gt; auditLogRowGenerator(offset, 100))
+        .throttle(1000, 60.seconds, ele =&gt; if (ele.isEmpty) 1000 else 1)
+      //        .map { s =&gt; println(s&quot;${s.headOption} -- ${s.length} --- ${s.headOption.map(_.id)}&quot;); s }
+      val processFlow = Flow[Seq[AuditLogRow]]
+        .mapAsync(1) { auditLogRows =&gt;
+          //          println(s&quot;occur1 -&gt; $auditLogRows&quot;)
+          val sinker = Sink.ignore
+          RunnableGraph.fromGraph(GraphDSL.createGraph(sinker) { implicit b =&gt;
+            sinker =&gt;
+              import GraphDSL.Implicits._
+              val zip = b.add(ZipWith[Option[AuditLogRow], AuditLogRow, (Option[AuditLogRow], AuditLogRow)]((pre, cur) =&gt; (pre, cur)))
+              val flow = Flow[(Option[AuditLogRow], AuditLogRow)]
+                //                .map { s =&gt; println(s&quot;occur preprocess -&gt; $s&quot;); s }
+                .mapAsync(1) {
+                  case (pre, cur) =&gt;
+                    processor.process(pre, cur)
+                      .map(_ =&gt; cur)
+                }.log(&quot;process flow error: &quot;)
+              val concat = b.add(Concat[Option[AuditLogRow]](2))
+              val bcast = b.add(Broadcast[AuditLogRow](2))
+              Source.single(lastRow) ~&gt; concat ~&gt; zip.in0
+              Source(auditLogRows.toList) ~&gt; Flow[AuditLogRow].filter(logFilter) ~&gt; zip.in1
+              zip.out ~&gt; flow ~&gt; bcast
+              concat &lt;~ Flow[AuditLogRow].map(Some(_)) &lt;~ bcast
+              bcast ~&gt; Flow[AuditLogRow].map { s =&gt; lastRow = Some(s); s } ~&gt; sinker
+              ClosedShape
+          }).run().map(_ =&gt; auditLogRows.map(_.id).lastOption)
+        }.mapAsync(1) {
+          maybeOffset =&gt;
+            maybeOffset.foreach(commit(businessName, _))
+            maybeOffset.foreach(lastOffset = _)
+            Future.successful(lastOffset)
+        }
+
+      initOffsetSource ~&gt; concat ~&gt; auditLogRowsFlow.async ~&gt; processFlow ~&gt; bcast ~&gt; Sink.ignore
+      concat &lt;~ bcast
+      ClosedShape
+    })
+
+    runnable.run()
+  }
+
+  println(&quot;starting to consume, occur -----&quot;)
+  toRun()
+
+}
+
+object LogConsumer {
+
+  class ProjectCreate @Inject()(db: Database, statisticsDao: StatisticsDao)(implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+    override def businessName: String = &quot;project_create_committer&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;CREATE PROJECT&quot;
+
+    val item: String = StatisticsIndices.PROJECT_CREATED.replace(&#39; &#39;, &#39;_&#39;)
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def processor: Processor = new Processor {
+
+      override def process(pre: Option[AuditLogRow], cur: AuditLogRow): Future[Boolean] = {
+        //        println(s&quot;${pre.map(_.event)} occur. \t offset: ${pre.map(_.id)}&quot;)
+        //        println(s&quot;${cur.event} occur. \t offset: ${cur.id}&quot;)
+        //        println(&quot;-------------------------------------------------&quot;)
+        val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+        val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+
+        if (maybePreCreateAt.isEmpty) {
+          for {
+            _ &lt;- statisticsDao.insertIgnore(s&quot;${item}_MIN&quot;, curCreateAt.getTime, cur.id, curCreateAt, businessName)
+            _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+          } yield true
+        } else if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) {
+          for {
+            snap &lt;- statisticsDao.findByKey(itemAgg)
+            _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+              statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+            }
+            _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+          } yield true
+        } else {
+          for {
+            _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+          } yield true
+        }
+      }
+    }
+  }
+
+  class ProjectDelete @Inject()(db: Database, statisticsDao: StatisticsDao)(implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;DELETE PROJECT&quot;
+
+    override def businessName: String = &quot;project_delete_committer&quot;
+
+    val item: String = StatisticsIndices.PROJECT_DELETED.replace(&#39; &#39;, &#39;_&#39;)
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      if (maybePreCreateAt.isEmpty) {
+        for {
+          _ &lt;- statisticsDao.insertIgnore(s&quot;${item}_MIN&quot;, curCreateAt.getTime, cur.id, curCreateAt, businessName)
+          _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+        } yield true
+      } else if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) {
+        for {
+          snap &lt;- statisticsDao.findByKey(itemAgg)
+          _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+            statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          }
+          _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+        } yield true
+      } else {
+        for {
+          _ &lt;- statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+        } yield true
+      }
+    }
+  }
+
+  class ProjectProcessComplete @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao)
+                                        (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    val item: String = StatisticsIndices.PROJECT_PROCESS_COMPLETED.replace(&#39; &#39;, &#39;_&#39;)
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;COMPLETE PROCESSING PROJECT&quot;
+
+    override def businessName: String = &quot;project_complete_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) {
+        for {
+          snap &lt;- statisticsDao.findByKey(itemAgg)
+          _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+            statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          }
+          nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+          _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+        } yield true
+      } else {
+        for {
+          nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+          _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+        } yield true
+      }
+    }
+  }
+
+  class ProjectProofread @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao)
+                                  (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    val item: String = StatisticsIndices.PROJECT_PROOFREAD
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;RETRIEVED REVIEW DATA&quot;
+
+    override def businessName: String = &quot;project_proofread_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+
+      def insertSnapshot = for {
+        snap &lt;- statisticsDao.findByKey(itemAgg)
+        _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+          statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+        }
+      } yield true
+
+      def aggregate = for {
+        nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+        _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+      } yield true
+
+      for {
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; maybePreCreateAt.get.toString != curCreateAt.toString) insertSnapshot else Future(true)
+        _ &lt;- aggregate
+      } yield true
+    }
+  }
+
+  class ProjectExport @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao)
+                               (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    val item: String = StatisticsIndices.PROJECT_EXPORT.replace(&#39; &#39;, &#39;_&#39;)
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;CHANGE PROJECT STATUS&quot; &amp;&amp; row.message.contains(&quot;Export&quot;)
+
+    override def businessName: String = &quot;project_export_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) {
+        for {
+          snap &lt;- statisticsDao.findByKey(itemAgg)
+          _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+            statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          }
+          nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+          _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+        } yield true
+      } else {
+        for {
+          nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+          _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+        } yield true
+      }
+    }
+  }
+
+
+  class ProjectDownloadLabor @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao)
+                                      (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    val item: String = StatisticsIndices.PROJECT_DOWNLOAD
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;DOWNLOAD LABOUR&quot;
+
+    override def businessName: String = &quot;project_download_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+
+      def insertSnapshot = for {
+        snap &lt;- statisticsDao.findByKey(itemAgg)
+        _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+          statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+        }
+      } yield true
+
+      def aggregate = for {
+        nums &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${cur.projectId}&quot;, None, cur.id)
+        _ &lt;- if (nums &gt; 0) statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName) else Future(0)
+      } yield true
+
+      for {
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; maybePreCreateAt.get.toString != curCreateAt.toString) insertSnapshot else Future(true)
+        _ &lt;- aggregate
+      } yield true
+    }
+  }
+
+  // combine FILE_PROCESSED with ENGAGEMENT_FILE_PROCESSED
+  class FileProcessed @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao, auditLogDAO: AuditLogDAO)
+                               (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    import profile.api._
+
+    val item: String = StatisticsIndices.FILE_PROCESSED.replace(&#39; &#39;, &#39;_&#39;)
+    val itemAgg: String = item + &quot;_AGG&quot;
+    val itemFileUpload = &quot;UPLOAD_FILE&quot;
+
+    val engProjItem: String = StatisticsIndices.ENGAGEMENT_PROJECT.replace(&#39; &#39;, &#39;_&#39;)
+
+    def itemEngFileAgg(teid: String) = StatisticsIndices.ENGAGEMENT_FILE_PROCESSED + s&quot;_AGG_$teid&quot;
+
+    def itemEngFileAcc(teid: String) = StatisticsIndices.ENGAGEMENT_FILE_PROCESSED + s&quot;_ACC_$teid&quot;
+
+    def itemEngFileSnapshot(teid: String) = StatisticsIndices.ENGAGEMENT_FILE_PROCESSED + s&quot;_SS_$teid&quot;
+
+    val tagEngFileAcc = StatisticsIndices.ENGAGEMENT_FILE_PROCESSED + &quot;_ACC_&quot;
+
+    // depend on `EngagementProject` task
+    override protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[immutable.Seq[AuditLogRow]] =
+      db.run(sql&quot;select * from audit_log where id &gt; $offset and id &lt;= (select offset from check_point where `group` = &#39;engagement_project_committer&#39;) limit $batchSize&quot;.as[AuditLogRow]).map(_.toSeq)
+
+
+    override def logFilter: AuditLogRow =&gt; Boolean =
+      row =&gt; row.event == &quot;UPLOAD FILE&quot; || row.event == &quot;DELETE FILE&quot; || row.event == &quot;COMPLETE PROCESSING PROJECT&quot;
+
+    override def businessName: String = &quot;file-process-committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+
+      def insertSnapshot = for {
+        snap &lt;- statisticsDao.findByKey(itemAgg)
+        _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+          statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+        }
+      } yield true
+
+      def insertSnapshotEngFile = for {
+        tenantEngIds &lt;- statisticsKVDao.getKeysByKeyLike(tagEngFileAcc).map(_.map(_.replace(tagEngFileAcc, &quot;&quot;)))
+        _ &lt;- Future.traverse(tenantEngIds) { id =&gt;
+          for {
+            agg &lt;- statisticsDao.findByKey(itemEngFileAgg(id)).map(_.getOrElse(throw new Exception(&quot;must have one, if not, there is one bug&quot;)))
+            _ &lt;- statisticsDao.insertIgnore(itemEngFileSnapshot(id) + &quot;_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          } yield true
+        }
+        _ &lt;- statisticsKVDao.deleteByKeyLike(tagEngFileAcc)
+      } yield true
+
+      def aggregate: Future[Boolean] = cur.event match {
+        case &quot;UPLOAD FILE&quot; =&gt;
+          for {
+            v &lt;- statisticsKVDao.upsert(s&quot;${itemFileUpload}_${cur.projectId}&quot;, 1, cur.id)
+          } yield true
+        case &quot;DELETE FILE&quot; =&gt;
+          for {
+            v &lt;- statisticsKVDao.upsert(s&quot;${itemFileUpload}_${cur.projectId}&quot;, -1, cur.id)
+          } yield true
+        case &quot;COMPLETE PROCESSING PROJECT&quot; =&gt;
+          for {
+            maybeRow &lt;- statisticsKVDao.getByKey(s&quot;${itemFileUpload}_${cur.projectId}&quot;)
+            _ &lt;- maybeRow.traverse { data =&gt;
+              println(s&quot;project id ${cur.projectId}, value ${data.value.get}&quot;)
+              statisticsDao.upsert(itemAgg, Math.max(0L, data.value.get.toLong), cur.id, curCreateAt, businessName)
+            }
+          } yield true
+      }
+
+
+      def aggregateEngFileProcessed = {
+        def fallbackTryToAchieveTenantEngagementId(projectId: Long): Future[Option[String]] = {
+          auditLogDAO.list(BaseQuery(Seq(FilterItem(&quot;projectId&quot;, projectId.toString, dataType = FilterItem.DATATYPE_LONG), FilterItem(&quot;event&quot;, &quot;CHANGE PROJECT STATUS&quot;), FilterItem(&quot;entityType&quot;, &quot;class com.pwc.ds.cidr.db.ProjectData&quot;))))
+            .map(_.items.headOption).map(_.flatMap(_.newData).map(Json.parse).map(_ \ &quot;tenantEngagementId&quot;).map(_.as[String]))
+        }
+
+        cur.event match {
+          case &quot;COMPLETE PROCESSING PROJECT&quot; =&gt;
+            val projectId = cur.projectId
+            for {
+              maybeRow &lt;- statisticsKVDao.getByKey(s&quot;${itemFileUpload}_${cur.projectId}&quot;)
+              maybeData &lt;- statisticsKVDao.getByKey(s&quot;${engProjItem /*ENG_PROJ*/}_PID_$projectId&quot;)
+              maybeTenantEngagementId &lt;- {
+                val s: Option[String] = maybeData.flatMap(_.value)
+                //              if (s.isEmpty) LoggerFactory.getLogger(this.getClass).warn(s&quot;&quot;&quot;lack of &quot;CREATE PROJECT&quot; event for projectId[$projectId], try to fix log by hand&quot;&quot;&quot;)
+                if (s.isEmpty) fallbackTryToAchieveTenantEngagementId(projectId)
+                  .map { t =&gt;
+                    if (t.isEmpty) {
+                      println(s&quot;fallback but can&#39;t get tenantEngagementId for project $projectId, count: ${maybeRow.flatMap(_.value).getOrElse(&quot;0&quot;)}&quot;);
+                      // break is better than continue
+                      throw new Exception(s&quot;fallback but can&#39;t get tenantEngagementId for project $projectId, count: ${maybeRow.flatMap(_.value).getOrElse(&quot;0&quot;)}&quot;)
+                    } else {
+                      println(s&quot;get fallback value $t&quot;);
+                    }
+                    t
+                  }
+                else Future.successful(s)
+              }
+              _ &lt;- maybeRow.traverse { data =&gt;
+                maybeTenantEngagementId.traverse(teid =&gt; {
+                  statisticsDao.upsert(itemEngFileAgg(teid), Math.max(0L, data.value.get.toLong), cur.id, curCreateAt, businessName)
+                    .flatMap(_ =&gt; statisticsKVDao.insertIgnore(itemEngFileAcc(teid), None, cur.id))
+                })
+              }
+            } yield true
+          case _ =&gt;
+            Future.successful(true)
+        }
+      }
+
+      for {
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) insertSnapshot else Future(true)
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; curCreateAt.toString != maybePreCreateAt.get.toString) insertSnapshotEngFile else Future(true)
+        _ &lt;- aggregate
+        _ &lt;- aggregateEngFileProcessed
+      } yield true
+    }
+  }
+
+  class EngagementProject @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao, auraDAO: AuraDAO)
+                                   (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+    val _item: String = StatisticsIndices.ENGAGEMENT_PROJECT.replace(&#39; &#39;, &#39;_&#39;)
+    val _itemCreate: String = s&quot;${_item}_CREATE&quot;
+    val _itemDelete: String = s&quot;${_item}_DELETE&quot;
+    val _itemDownload: String = s&quot;${_item}_DOWNLOAD&quot;
+
+    def itemCreateAcc(id: String): String = s&quot;${_itemCreate}_ACC_${id}&quot;
+
+    def itemCreateAgg(id: String): String = s&quot;${_itemCreate}_AGG_${id}&quot;
+
+    def itemCreateSnapshot(id: String): String = s&quot;${_itemCreate}_SS_${id}&quot;
+
+
+    def itemDeleteAcc(id: String): String = s&quot;${_itemDelete}_ACC_${id}&quot;
+
+    def itemDeleteAgg(id: String): String = s&quot;${_itemDelete}_AGG_${id}&quot;
+
+    def itemDeleteSnapshot(id: String): String = s&quot;${_itemDelete}_SS_${id}&quot;
+
+
+    def itemDownloadAcc(id: String): String = s&quot;${_itemDownload}_ACC_${id}&quot;
+
+    def itemDownloadAgg(id: String): String = s&quot;${_itemDownload}_AGG_${id}&quot;
+
+    def itemDownloadSnapshot(id: String): String = s&quot;${_itemDownload}_SS_${id}&quot;
+
+    override def logFilter: AuditLogRow =&gt; Boolean =
+      row =&gt; row.event == &quot;CREATE PROJECT&quot; || row.event == &quot;DELETE PROJECT&quot; || row.event == &quot;DOWNLOAD LABOUR&quot;
+
+    override def businessName: String = &quot;engagement_project_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      val tagCreateAcc: String = s&quot;${_itemCreate}_ACC_&quot;
+
+      def insertSnapshotCreate = for {
+        tenantEngIds &lt;- statisticsKVDao.getKeysByKeyLike(tagCreateAcc).map(_.map(_.replace(tagCreateAcc, &quot;&quot;)))
+        _ &lt;- Future.traverse(tenantEngIds) { id =&gt;
+          for {
+            agg &lt;- statisticsDao.findByKey(itemCreateAgg(id)).map(_.getOrElse(throw new Exception(&quot;must have one, if not, there is one bug&quot;)))
+            _ &lt;- statisticsDao.insertIgnore(itemCreateSnapshot(id) + &quot;_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          } yield true
+        }
+        _ &lt;- statisticsKVDao.deleteByKeyLike(tagCreateAcc)
+      } yield true
+
+      val tagDeleteAcc: String = s&quot;${_itemDelete}_ACC_&quot;
+
+      def insertSnapshotDelete = for {
+        tenantEngIds &lt;- statisticsKVDao.getKeysByKeyLike(tagDeleteAcc).map(_.map(_.replace(tagDeleteAcc, &quot;&quot;)))
+        _ &lt;- Future.traverse(tenantEngIds) { id =&gt;
+          for {
+            agg &lt;- statisticsDao.findByKey(itemDeleteAgg(id)).map(_.getOrElse(throw new Exception(&quot;must have one, if not, there is one bug&quot;)))
+            _ &lt;- statisticsDao.insertIgnore(itemDeleteSnapshot(id) + &quot;_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          } yield true
+        }
+        _ &lt;- statisticsKVDao.deleteByKeyLike(tagDeleteAcc)
+      } yield true
+
+      val tagDownloadAcc: String = s&quot;${_itemDownload}_ACC_&quot;
+
+      def insertSnapshotDownload = for {
+        tenantEngIds &lt;- statisticsKVDao.getKeysByKeyLike(tagDownloadAcc).map(_.map(_.replace(tagDownloadAcc, &quot;&quot;)))
+        _ &lt;- Future.traverse(tenantEngIds) { id =&gt;
+          for {
+            agg &lt;- statisticsDao.findByKey(itemDownloadAgg(id)).map(_.getOrElse(throw new Exception(&quot;must have one, if not, there is one bug&quot;)))
+            _ &lt;- statisticsDao.insertIgnore(itemDownloadSnapshot(id) + &quot;_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+          } yield true
+        }
+        _ &lt;- statisticsKVDao.deleteByKeyLike(tagDownloadAcc)
+      } yield true
+
+      def insertSnapshot = for {
+        _ &lt;- insertSnapshotCreate
+        _ &lt;- insertSnapshotDelete
+        _ &lt;- insertSnapshotDownload
+      } yield true
+
+      def aggregate: Future[Boolean] = cur.event match {
+        case &quot;CREATE PROJECT&quot; =&gt;
+          val maybeEngagementId: Option[String] = cur.newData.map { newData =&gt; (Json.parse(newData) \ &quot;tenantEngagementId&quot;).as[String] }
+          val tenantEngagementId: String = maybeEngagementId.getOrElse(throw new Exception(&quot;invalid log data, try to fix by hand&quot;))
+          val projectId = cur.projectId
+
+          for {
+            _ &lt;- statisticsDao.upsert(itemCreateAgg(tenantEngagementId), 1, cur.id, curCreateAt, businessName)
+            _ &lt;- statisticsKVDao.insertIgnore(itemCreateAcc(tenantEngagementId), None, cur.id)
+            _ &lt;- statisticsKVDao.insertIgnore(s&quot;${_item}_PID_$projectId&quot;, Some(tenantEngagementId), cur.id)
+          } yield true
+        case &quot;DELETE PROJECT&quot; =&gt;
+          val projectId = cur.projectId
+
+          for {
+            maybeData &lt;- statisticsKVDao.getByKey(s&quot;${_item}_PID_$projectId&quot;)
+            maybeTenantEngagementId &lt;- Future.successful {
+              val s: Option[String] = maybeData.flatMap(_.value)
+              if (s.isEmpty) LoggerFactory.getLogger(this.getClass).warn(s&quot;&quot;&quot;lack of &quot;CREATE PROJECT&quot; event for projectId[$projectId], try to fix log by hand&quot;&quot;&quot;)
+              s
+            }
+            _ &lt;- maybeTenantEngagementId.traverse(tenantEngagementId =&gt; statisticsDao.upsert(itemDeleteAgg(tenantEngagementId), 1, cur.id, curCreateAt, businessName))
+            _ &lt;- maybeTenantEngagementId.traverse(tenantEngagementId =&gt; statisticsKVDao.insertIgnore(itemDeleteAcc(tenantEngagementId), None, cur.id))
+          } yield true
+        case &quot;DOWNLOAD LABOUR&quot; =&gt;
+          val projectId = cur.projectId
+
+          for {
+            maybeData &lt;- statisticsKVDao.getByKey(s&quot;${_item}_PID_$projectId&quot;)
+            maybeTenantEngagementId &lt;- Future.successful {
+              val s: Option[String] = maybeData.flatMap(_.value)
+              if (s.isEmpty) LoggerFactory.getLogger(this.getClass).warn(s&quot;&quot;&quot;lack of &quot;CREATE PROJECT&quot; event for projectId[$projectId], try to fix log by hand&quot;&quot;&quot;)
+              s
+            }
+            _ &lt;- maybeTenantEngagementId.traverse(tenantEngagementId =&gt; statisticsDao.upsert(itemDownloadAgg(tenantEngagementId), 1, cur.id, curCreateAt, businessName))
+            _ &lt;- maybeTenantEngagementId.traverse(tenantEngagementId =&gt; statisticsKVDao.insertIgnore(itemDownloadAcc(tenantEngagementId), None, cur.id))
+          } yield true
+      }
+
+      for {
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; maybePreCreateAt.get.toString != curCreateAt.toString) insertSnapshot else Future(true)
+        _ &lt;- aggregate
+      } yield true
+    }
+  }
+
+  class EngagementCreate @Inject()(db: Database, statisticsDao: StatisticsDao, statisticsKVDao: StatisticsKVDao, auraDAO: AuraDAO)
+                                  (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    import profile.api._
+
+    val item: String = StatisticsIndices.ENGAGEMENT_CREATE
+
+    val itemAgg: String = item + &quot;_AGG&quot;
+
+    var preOffset: Option[Long] = None
+
+    final def adapter(row: TenantEngagementRow) =
+      AuditLogRow(row.createAt.get.getTime, &quot;ENGAGEMENT CREATE&quot;, -1, &quot;-1&quot;, &quot;&quot;, &quot;&quot;, message = Some(row.id), createAt = row.createAt)
+
+    override protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[Seq[AuditLogRow]] = {
+      //      println(s&quot;TenantEngagement generate data $offset, batchSize $batchSize&quot;)
+      val sql = TenantEngagement.filter(_.createAt &gt; new java.sql.Timestamp(offset)).sortBy(_.createAt.asc) /* no limit */.result.map(_.toSeq)
+      db.run(sql).map(_.map(adapter))
+    }
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;ENGAGEMENT CREATE&quot;
+
+    override def businessName: String = &quot;engagement_create_committer&quot;
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+
+      val tenantEngagementId: String = cur.message.get
+      val formatter = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;)
+
+
+      def insertEngSnapshot = for {
+        maybeAuraEngagement &lt;- auraDAO.lookupByTenantEngagementId(tenantEngagementId)
+        _ &lt;- maybeAuraEngagement.flatMap(_.name).traverse(name =&gt; statisticsKVDao.insertIgnore(s&quot;${item}_TEID_$tenantEngagementId&quot;, Some(name), cur.id))
+        _ &lt;- maybeAuraEngagement.flatMap(_.clientName).traverse(clientName =&gt; statisticsKVDao.insertIgnore(s&quot;${item}_TEID_CN_$tenantEngagementId&quot;, Some(clientName), cur.id))
+      } yield true
+
+      def insertItems = for {
+        archiveDate &lt;- auraDAO.queryArchiveDate(tenantEngagementId).map(_.map(formatter.format))
+        _ &lt;- statisticsKVDao.insertIgnore(s&quot;${item}_${curCreateAt}_$tenantEngagementId&quot;, archiveDate, cur.id)
+      } yield true
+
+      val maybePreCreateAt = pre.flatMap(_.createAt.map(getDate))
+
+      def insertSnapshot = for {
+        snap &lt;- statisticsDao.findByKey(itemAgg)
+        _ &lt;- Future.traverse(snap.toSeq) { agg =&gt;
+          statisticsDao.insertIgnore(item + &quot;_SS_&quot; + agg.computeBefore, agg.result.getOrElse(-1L), cur.id, agg.computeBefore, businessName)
+        }
+      } yield true
+
+      def aggregate = for {
+        _ &lt;- if (preOffset.nonEmpty &amp;&amp; preOffset.get &gt;= cur.id) {
+          statisticsDao.upsert(itemAgg, 1, preOffset.get + 1, curCreateAt, businessName)
+            .map { _ =&gt; preOffset = Some(preOffset.get + 1); true }
+        } else {
+          statisticsDao.upsert(itemAgg, 1, cur.id, curCreateAt, businessName)
+            .map { _ =&gt; preOffset = Some(cur.id); true }
+        }
+      } yield true
+
+
+      for {
+        _ &lt;- insertItems
+        // agg func
+        _ &lt;- if (maybePreCreateAt.nonEmpty &amp;&amp; maybePreCreateAt.get.toString != curCreateAt.toString) insertSnapshot else Future(true)
+        _ &lt;- aggregate
+        // snapshot engagement name and client name
+        _ &lt;- insertEngSnapshot
+      } yield true
+    }
+  }
+
+  class UserActive @Inject()(db: Database, statisticsKVDao: StatisticsKVDao)
+                            (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.createBy.nonEmpty
+
+    override def businessName: String = &quot;user_active_committer&quot;
+
+    val item = StatisticsIndices.USER_ACTIVE
+
+    var cache = Map[String, Option[String]]()
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      val key = s&quot;${item}_${curCreateAt}_${cur.createBy}&quot;
+      for {
+        _ &lt;- if (!cache.contains(key)) statisticsKVDao.insertIgnore(key, None, cur.id).map { s =&gt; cache += (key -&gt; None); s } else Future.successful(0)
+      } yield true
+    }
+  }
+
+
+  class ContractActive @Inject()(db: Database,
+                                 statisticsKVDao: StatisticsKVDao,
+                                 packageDao: PackageDao,
+                                 contractDao: ContractDao,
+                                )
+                                (implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+    import profile.api._
+
+    // depend on `EngagementProject` task
+    override protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[Seq[AuditLogRow]] =
+      db.run(sql&quot;select * from audit_log where id &gt; $offset and id &lt;= (select offset from check_point where `group` = &#39;engagement_project_committer&#39;) limit $batchSize&quot;.as[AuditLogRow]).map(_.toSeq)
+
+    override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == &quot;START PROCESSING PROJECT&quot;
+
+    override def businessName: String = &quot;contract_active_committer&quot;
+
+    val item = StatisticsIndices.CONTRACT_ACTIVE
+
+    val engProjItem: String = StatisticsIndices.ENGAGEMENT_PROJECT
+
+    override def processor: Processor = (pre: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+      val curCreateAt: Date = cur.createAt.map(getDate).getOrElse(throw new Exception(&quot;audit log has no date, which is necessary&quot;))
+      val projectId = cur.projectId
+      for {
+        packageRow &lt;- packageDao.getByProjectId(projectId)
+        maybeTeid &lt;- statisticsKVDao.getByKey(s&quot;${engProjItem}_PID_$projectId&quot;).map(_.flatMap(_.value))
+        tmpIds &lt;- packageRow.traverse(pkg =&gt; contractDao.shallowList(BaseQuery(Seq(FilterItem(&quot;packageId&quot;, pkg.id.toString))))).map(_.toSeq.flatten).map(_.map(_.contractTemplateId))
+        _ &lt;- maybeTeid.traverse(teid =&gt; {
+          Future.traverse(tmpIds) { tmpId =&gt;
+            statisticsKVDao.insertIgnore(s&quot;${item}_${curCreateAt}_${teid}_$tmpId&quot;, None, cur.id)
+          }
+        })
+      } yield true
+    }
+  }
+}
+
+
+object StatisticsIndices {
+  // MUSTN&#39;T CHANGE
+  val PROJECT_CREATED = &quot;CREATE_PROJECT&quot;
+  val PROJECT_DELETED = &quot;DELETE_PROJECT&quot;
+  val PROJECT_PROCESS_COMPLETED = &quot;COMPLETE_PROCESSING_PROJECT&quot;
+  val PROJECT_PROOFREAD = &quot;PROJECT_PROOFREAD&quot;
+  val PROJECT_EXPORT = &quot;PROJECT_EXPORT&quot;
+  val PROJECT_DOWNLOAD = &quot;PROJECT_DOWNLOAD&quot;
+
+  val FILE_PROCESSED = &quot;FILE_PROCESSED&quot;
+
+  val ENGAGEMENT_PROJECT = &quot;ENG_PROJ&quot;
+  val ENGAGEMENT_FILE_PROCESSED = &quot;ENG_FILE_PROCESSED&quot;
+
+  val ENGAGEMENT_CREATE = &quot;ENGAGEMENT_CREATE&quot;
+
+  val USER_ACTIVE = &quot;USER_ACTIVE&quot;
+
+  val CONTRACT_ACTIVE = &quot;CONTRACT_ACTIVE&quot;
+}</code></pre></dd>
+  <dt>VenderLogConsumer</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/flowissue/code/VendorTaskLogConsumer.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.cidr.event
+
+import akka.actor.ActorSystem
+import com.pwc.ds.cidr.client.{FileOperator}
+import com.pwc.ds.cidr.db.{VendorTaskDao, VendorTaskResultDao, VendorTaskResultDaoCreateIn}
+import com.pwc.ds.cidr.engine.api.JobFactory
+import com.pwc.ds.cidr.engine.core.{JobRunner, JobRunnerImpl}
+import com.pwc.ds.cidr.engine.io.{FileEngine, FileValue}
+import com.pwc.ds.cidr.event.VendorBusinessUtils.{ExtractKey, NumberValueTitleRegex}
+import com.pwc.ds.cidr.event.VendorBusinessUtils.TitleCell.{TitleCellKey, TitleCellValue}
+import com.pwc.ds.cidr.event.VendorCommon.Key
+import com.pwc.ds.cidr.project.creditreview.processors.OcrResultAndPageInfoJasonValues.DocumentInfo
+import com.pwc.ds.cidr.project.creditreview.processors.{DocumentDTO, DocumentInfoDTO}
+import org.apache.poi.ss.usermodel.{CellType, Sheet, WorkbookFactory}
+import org.json4s.jackson.Serialization
+import org.json4s.jackson.Serialization.read
+import org.json4s.{Formats, NoTypeHints}
+import org.slf4j.LoggerFactory
+import play.api.Configuration
+import play.api.libs.json.{Format, Json}
+import slick.jdbc.JdbcBackend.Database
+
+import java.io.ByteArrayOutputStream
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
+import java.sql.Timestamp
+import javax.inject.Inject
+import scala.annotation.tailrec
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.io.BufferedSource
+import scala.util.{Random, Try}
+
+class VendorTaskPreLogConsumer @Inject()(vendorTaskDao: VendorTaskDao,
+                                         vendorTaskResultDao: VendorTaskResultDao,
+                                         db: Database,
+                                         config: Configuration,
+                                        )(implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+  import profile.api._
+
+  private def adapter(taskRow: VendorTaskRow) = AuditLogRow(taskRow.key, taskRow.status, -1, taskRow.uuid, taskRow.name, taskRow.createBy, Some(taskRow.location), createAt = Some(taskRow.createAt))
+
+  override protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[Seq[AuditLogRow]] = {
+    val sql = VendorTask.filter(_.key &gt; offset).filter(_.isdeleted === false)
+      .take(batchSize).result
+    Future.successful(Await.result(db.run(sql), 2.seconds).map(adapter))
+      .recover[Seq[AuditLogRow]] {
+        case _: Throwable =&gt; Seq.empty
+      }
+  }
+
+  override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == VendorTaskDao.Status.CREATED || row.event == VendorTaskDao.Status.VENDOR_PREPROCESSING
+
+  override def businessName: String = &quot;log_committer_vendor_task_preprocess&quot;
+
+  override def processor: Processor = (_: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+    implicit val key: Key = Key(cur.id)
+    val status = cur.event
+    val id = cur.entityId // uuid
+    val name = cur.entityType
+    val location = cur.message.getOrElse(&quot;error dsri&quot;)
+    try {
+      status match {
+        case VendorTaskDao.Status.CREATED =&gt;
+          Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PREPROCESSING), 2.seconds)
+        case _ =&gt;
+      }
+      val fileValue = FileValue(location, name)
+      val response = Await.result(Future.successful(submit(VendorCommon.workingDir, fileValue)), 10.minutes)
+      Await.result(vendorTaskResultDao.create(VendorTaskResultDaoCreateIn(id, s&quot;${name.split(&quot;\\.&quot;).headOption.getOrElse(s&quot;$name-e&quot;)}-document.json&quot;, response.dsri, VendorTaskResultDaoCreateIn.Type.DOCUMENT)), 2.seconds)
+      Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PREPROCESSED), 2.seconds)
+      Await.result(vendorTaskDao.updateExpireAt(id, new Timestamp(org.joda.time.DateTime.now().plusDays(1).toDate.getTime)), 2.seconds)
+    } catch {
+      case ex: Throwable =&gt;
+        LoggerFactory.getLogger(this.getClass).error(&quot;vendor preprocess failed: &quot; + ex.getMessage + &quot; --- &quot; + ex.getStackTrace.mkString(&quot;---&quot;))
+        try Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PREPROCESS_FAILED), 2.seconds)
+        catch {
+          case _: Throwable =&gt; LoggerFactory.getLogger(this.getClass).error(&quot;database timeout Exception&quot; + ex.getMessage + &quot; --- &quot; + ex.getStackTrace.mkString(&quot;---&quot;))
+        }
+    }
+    Future.successful(true)
+  }
+
+  val jobRunner: JobRunner = new JobRunnerImpl
+
+  def submit(workingDir: String, fileValue: FileValue): FileValue = {
+
+    val engagementSetting = Map(&quot;engagementSetting&quot; -&gt; Map(
+      &quot;ocr&quot; -&gt; Map(&quot;method&quot; -&gt; &quot;paoding&quot;)
+    ))
+    val documentJob = JobFactory.makeDocumentOutputJob(DocumentDTO(id = 1, fileList = Seq(fileValue), documentType = &quot;any&quot;, metaData = Some(Json.stringify(Json.toJson(engagementSetting)))))
+    Await.result(jobRunner.doAJob(documentJob, workingDir)
+      .map(output =&gt; {
+        val documentInfoObj = output(&quot;last&quot;).asInstanceOf[DocumentInfoDTO]
+        //        val documentInfo: DocumentInfo = read[DocumentInfo](scala.io.Source.fromFile(documentInfoObj.filepath).mkString)
+        //        Json.fromJson[DocumentInfo](Json.parse(documentInfoObj.filepath))(Json.reads)
+        documentInfoObj.file
+      }), 10.minutes)
+  }
+}
+
+object VendorCommon {
+  case class Key(data: Long)
+
+  def workingDir(implicit key: Key) = s&quot;VENDOR_${key.data}&quot;
+}
+
+class VendorTaskLogConsumer @Inject()(
+                                       vendorTaskDao: VendorTaskDao,
+                                       vendorTaskResultDao: VendorTaskResultDao,
+                                       fileOperator: FileOperator,
+                                       config: Configuration,
+                                       db: Database,
+                                     )(implicit ec: ExecutionContext, actorSystem: ActorSystem) extends LogConsumer(db) {
+
+  import profile.api._
+
+  private def adapter(taskRow: VendorTaskRow) = AuditLogRow(taskRow.key, taskRow.status, -1, taskRow.uuid, taskRow.name, taskRow.createBy, Some(taskRow.location), createAt = Some(taskRow.createAt))
+
+  override protected def auditLogRowGenerator(offset: Long, batchSize: Int): Future[Seq[AuditLogRow]] = {
+    val sql = VendorTask.filter(_.key &gt; offset).filter(_.isdeleted === false)
+      .filter(x =&gt; x.status === VendorTaskDao.Status.VENDOR_PREPROCESSED || x.status === VendorTaskDao.Status.VENDOR_PROCESSING)
+      .take(batchSize).result
+    Future.successful(Await.result(db.run(sql), 2.seconds).map(adapter))
+      .recover[Seq[AuditLogRow]] {
+        case _: Throwable =&gt; Seq.empty
+      }
+  }
+
+  override def logFilter: AuditLogRow =&gt; Boolean = row =&gt; row.event == VendorTaskDao.Status.VENDOR_PREPROCESSED || row.event == VendorTaskDao.Status.VENDOR_PROCESSING
+
+  override def businessName: String = &quot;log_committer_vendor_task&quot;
+
+  //  private var processingCount = 0
+  //  private val maxProcessingCount = 1
+
+  override def processor: Processor = (_: Option[AuditLogRow], cur: AuditLogRow) =&gt; {
+    implicit val key: Key = Key(cur.id)
+    val defaultNumberValueTitleRegex = &quot;.*金额.*|.*余额.*|.*发生额.*&quot;
+
+    implicit def numberValueTitleRegex: NumberValueTitleRegex =
+      NumberValueTitleRegex(config.getOptional[String](&quot;idr.numberValueTitleRegex&quot;).getOrElse(defaultNumberValueTitleRegex));
+    val status = cur.event
+    val id = cur.entityId // uuid
+    val name = cur.entityType
+    val location = cur.message.getOrElse(&quot;error dsri&quot;)
+    var paodingResponse = &quot;&quot;
+    Try {
+      status match {
+        case VendorTaskDao.Status.VENDOR_PREPROCESSED =&gt;
+          Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PROCESSING), 2.seconds)
+        case _ =&gt;
+      }
+      val fileValue = FileValue(location, name)
+      val documentRecord = Await.result(vendorTaskResultDao.get(id, VendorTaskResultDaoCreateIn.Type.DOCUMENT), 2.seconds).getOrElse(throw new RuntimeException(&quot;should have the document result but not&quot;))
+      val contentLines = VendorBusinessUtils.documentToLines(FileValue(documentRecord.location, documentRecord.name))
+      contentLines.map(_.text_content).take(5).foreach(println)
+      val keys = Seq(ExtractKey(&quot;客户名称&quot;, &quot;户名|集团名称|客户名称|单位名称|姓名|账户名称|A/C name|本方户名&quot;),
+        ExtractKey(&quot;账户名称&quot;, &quot;户名|集团名称|客户名称|单位名称|姓名|账户名称|A/C name|本方户名&quot;),
+        ExtractKey(&quot;银行账号&quot;, &quot;银行账号|账号|账户号|户口号|A/C No&quot;),
+        ExtractKey(&quot;币种&quot;, &quot;币种|币别|货币&quot;),
+        ExtractKey(&quot;开户行&quot;, &quot;银行名称|开户银行|开户行|支行名称|开户机构|客户行|行名&quot;))
+      val info = VendorBusinessUtils.extract(contentLines, keys)
+      info.foreach(println)
+      val response: Response[String] = Await.result(Future.successful(submit(fileValue)), 10.hours)
+      paodingResponse = response.result
+      val paodingTable = VendorBusinessUtils.deserializerPaodingTable(paodingResponse)
+      val (wbByteArray, bsOutputJsonString) = VendorBusinessUtils.prependInfo(paodingTable, info)
+      val resultFileValue = FileEngine.createNewFile(VendorCommon.workingDir, &quot;result&quot;, id)
+      fileOperator.save(wbByteArray, resultFileValue)
+      Await.result(vendorTaskResultDao.create(VendorTaskResultDaoCreateIn(id, s&quot;${name.split(&quot;\\.&quot;).headOption.getOrElse(s&quot;$name-e&quot;)}-result.xlsx&quot;, resultFileValue.dsri, VendorTaskResultDaoCreateIn.Type.FINAL)), 2.seconds)
+      val jsonFileValue = FileEngine.createNewFile(VendorCommon.workingDir, &quot;result&quot;, id+&quot;_json&quot;)
+      fileOperator.save(bsOutputJsonString.getBytes(), jsonFileValue)
+      Await.result(vendorTaskResultDao.create(VendorTaskResultDaoCreateIn(id, s&quot;${name.split(&quot;\\.&quot;).headOption.getOrElse(s&quot;$name-e&quot;)}-result.json&quot;, jsonFileValue.dsri, VendorTaskResultDaoCreateIn.Type.JSON)), 2.seconds)
+      Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PROCESSED), 2.seconds)
+      Await.result(vendorTaskDao.updateExpireAt(id, new Timestamp(org.joda.time.DateTime.now().plusDays(1).toDate.getTime)), 2.seconds)
+    } fold(ex =&gt; {
+      LoggerFactory.getLogger(this.getClass).error(&quot;vendor process failed: &quot; + ex.getMessage + &quot; --- &quot; + ex.getStackTrace.mkString(&quot;---&quot;) + &quot;paodingResponse:&quot; + paodingResponse)
+      try Await.result(vendorTaskDao.updateStatus(id, VendorTaskDao.Status.VENDOR_PROCESS_FAILED), 2.seconds)
+      catch {
+        case _: Throwable =&gt; LoggerFactory.getLogger(this.getClass).error(&quot;database timeout Exception&quot; + ex.getMessage + &quot; --- &quot; + ex.getStackTrace.mkString(&quot;---&quot;))
+      }
+    }, _ =&gt; ())
+    Future.successful(true)
+  }
+
+  final protected def submit(fileValue: FileValue): Response[String] = {
+    val uuid = VendorPaodingClient.upload_file(fileValue.contentFile)
+    VendorPaodingClient.wait_file_parsed(uuid, sys.env.getOrElse(&quot;VENDOR_TASK_MAX_RETRY&quot;, &quot;60&quot;).toInt)
+    //    val res: Array[Byte] = VendorPaodingClient.get_document_excel(uuid)
+    val json: String = VendorPaodingClient.get_pdf_tables(uuid)
+
+    // get_pdf_tables(uuid)
+    // get_document_html(uuid)
+
+    Response(json)
+  }
+
+  final protected def submit2(fileValue: FileValue): Response[Array[Byte]] = {
+    val uuid = VendorPaodingClient.upload_file(fileValue.contentFile)
+    VendorPaodingClient.wait_file_parsed(uuid, sys.env.getOrElse(&quot;VENDOR_TASK_MAX_RETRY&quot;, &quot;60&quot;).toInt)
+    val res = VendorPaodingClient.get_document_excel(uuid)
+    Response(res)
+  }
+
+  case class Response[T](result: T)
+}
+
+object VendorPaodingClient {
+  private val app_id: String = sys.env.getOrElse(&quot;PAI_APP_ID&quot;, &quot;pdflux&quot;)
+  private val secret_key: String = sys.env.getOrElse(&quot;PAI_SECRET_KEY&quot;, &quot;aiYuVeeM4Ai4cheu&quot;)
+  private val rootUrls: Seq[String] = sys.env.getOrElse(&quot;PAI_ROOT_URL&quot;, &quot;http://10.158.15.46:31507/api/v1/saas&quot;).split(&quot;,&quot;).toSeq
+  private val root_url: String = Random.shuffle(rootUrls).headOption.getOrElse(throw new RuntimeException(&quot;no root url for `PAI_ROOT_URL`&quot;))
+  private val user: String = sys.env.getOrElse(&quot;PAI_USER&quot;, &quot;pwcds&quot;)
+
+
+  import sttp.client4.quick
+  import sttp.client4.quick._
+
+  private def timeNow: Long = System.currentTimeMillis() / 1000
+
+  private def generateToken(url: String, timeSeconds: Long): String = {
+    val source = s&quot;$url#$app_id#$secret_key#$timeSeconds&quot;
+    println(&quot;source -&gt; &quot; + source)
+    val res = MessageDigest.getInstance(&quot;SHA-256&quot;).digest(source.getBytes(StandardCharsets.UTF_8))
+      .map(&quot;%02x&quot;.format(_)).mkString
+    println(&quot;after digest -&gt; &quot; + res)
+    res
+  }
+
+  def upload_file(file: java.io.File): String = {
+    val timestamp = timeNow
+    val url = uri&quot;$root_url/upload?file_type=BS&amp;force_update=true&amp;user=$user&quot;
+    val token = generateToken(url.toString, timestamp)
+    val finalUrl = uri&quot;$url&amp;_token=$token&amp;_timestamp=$timestamp&quot;
+    println(&quot;finalUrl: &quot; + finalUrl)
+    println(file)
+    val response = quickRequest
+      .multipartBody(multipartFile(&quot;file&quot;, file))
+      .post(finalUrl)
+      .send()
+
+    println(&quot;get response &quot; + response)
+    if (!response.isSuccess) throw new RuntimeException(s&quot;upload_file response code ${response.code}, which is error code&quot;)
+
+    val uuid: String = ujson.read(response.body)(&quot;data&quot;)(&quot;uuid&quot;).str
+
+    println(&quot;get response uuid&quot; + uuid)
+    uuid
+  }
+
+
+  trait FileStatus
+
+  object Error extends FileStatus
+
+  object Pending extends FileStatus
+
+  object Parsing extends FileStatus
+
+  object Done extends FileStatus
+
+  def get_file_status(uuid: String): FileStatus = {
+    val timestamp = timeNow
+    val url = uri&quot;$root_url/document/$uuid?user=$user&quot;
+    val token = generateToken(url.toString, timestamp)
+    val finalUrl = uri&quot;$url&amp;_token=$token&amp;_timestamp=$timestamp&quot;
+    val response = quickRequest.get(finalUrl)
+      .send()
+    println(&quot;get_file_status response &quot; + response)
+    if (!response.isSuccess) throw new RuntimeException(s&quot;get_file_status response code ${response.code}, which is error code&quot;)
+    val result: Int = ujson.read(response.body)(&quot;data&quot;)(&quot;parsed&quot;).num.toInt
+    println(&quot;get_file_status result: &quot; + result)
+    result match {
+      case -1 =&gt; Error
+      case 0 =&gt; Pending
+      case 1 =&gt; Parsing
+      case 2 =&gt; Done
+      case _ =&gt; Error
+    }
+  }
+
+  @tailrec
+  def wait_file_parsed(uuid: String, maxRetry: Int): Unit = {
+    if (maxRetry == 0) throw new RuntimeException(&quot;exceed max retry times!&quot;)
+    println(s&quot;polling $uuid ...... remains: $maxRetry&quot;)
+    get_file_status(uuid) match {
+      case Error =&gt; throw new RuntimeException(&quot;errors from vendor&quot;)
+      case Pending | Parsing =&gt; Thread.sleep(1000 * 10); wait_file_parsed(uuid, maxRetry - 1)
+      case Done =&gt; ()
+    }
+  }
+
+  def get_pdf_tables(uuid: String): String = {
+    val timestamp = timeNow
+    val url = uri&quot;$root_url/document/$uuid/pdftables?user=$user&quot;
+    val token = generateToken(url.toString, timestamp)
+    val finalUrl = uri&quot;$url&amp;_token=$token&amp;_timestamp=$timestamp&quot;
+    val response = quickRequest.get(finalUrl)
+      .send()
+    println(&quot;get_pdf_tables response &quot; + &quot;response&quot;)
+    if (!response.isSuccess) throw new RuntimeException(s&quot;get_pdf_tables response code ${response.code}, which is error code&quot;)
+    println(&quot;get_pdf_tables response body &quot; + &quot;response.body&quot;)
+    response.body
+  }
+
+  def get_document_html(uuid: String): String = {
+    val timestamp = timeNow
+    val url = uri&quot;$root_url/document/$uuid/html?user=$user&quot;
+    val token = generateToken(url.toString, timestamp)
+    val finalUrl = uri&quot;$url&amp;_token=$token&amp;_timestamp=$timestamp&quot;
+    val response = quickRequest.get(finalUrl)
+      .send()
+    println(&quot;get_document_html response &quot; + response)
+    if (!response.isSuccess) throw new RuntimeException(s&quot;get_document_html response code ${response.code}, which is error code&quot;)
+    println(&quot;get_document_html response body &quot; + response.body)
+    response.body
+  }
+
+  def get_document_excel(uuid: String): Array[Byte] = {
+    val timestamp = timeNow
+    val url = uri&quot;$root_url/document/$uuid/excel?user=$user&quot;
+    val token = generateToken(url.toString, timestamp)
+    val finalUrl = uri&quot;$url&amp;_token=$token&amp;_timestamp=$timestamp&quot;
+    val response = quickRequest.response(quick.asByteArrayAlways)
+      .get(finalUrl)
+      .send()
+    println(&quot;get_document_excel response &quot; + response)
+    if (!response.isSuccess) throw new RuntimeException(s&quot;get_document_excel response code ${response.code}, which is error code&quot;)
+    println(&quot;get_document_excel response body &quot; + response.body)
+    response.body
+  }
+
+}
+
+object VendorBusinessUtils {
+  case class ExtractKey(name: String, pattern: String)
+
+  case class Sentence(page_id: Option[Int], text_content: String)
+
+  case class MetaPage(begin: Option[Int], end: Option[Int])
+
+  case class ExtractedResult(page_id: Option[Int], result: String)
+
+  object ExtractedResult {
+    implicit val format: Format[ExtractedResult] = Json.format[ExtractedResult]
+  }
+
+  def deserializerPaodingTable(json: String): PaodingTable = Json.fromJson[PaodingTable](Json.parse(json))
+    .fold(invalid =&gt; throw new RuntimeException(invalid.mkString(&quot;---&quot;)), identity)
+
+  def documentToLines(fileValue: FileValue): Seq[Sentence] = {
+    implicit val formats: Formats = Serialization.formats(NoTypeHints)
+    var source: BufferedSource = null
+    try {
+      source = scala.io.Source.fromInputStream(fileValue.fileInputStream)
+      val documentInfo: DocumentInfo = read[DocumentInfo](source.mkString)
+      documentInfo.document.doc_units.flatMap(docUnit =&gt; docUnit.document_content.sentences).map(x =&gt; Sentence(x.page_id, x.text_content))
+    } catch {
+      case ex: Exception =&gt; {
+        LoggerFactory.getLogger(this.getClass).warn(&quot;vendor process documentToLines failed: &quot; + ex.getMessage + &quot; --- &quot; + ex.getStackTrace.mkString(&quot;---&quot;))
+        val res:Seq[Sentence] = Seq()
+        res
+      }
+    } finally {
+      if (source != null) source.close()
+    }
+  }
+
+  def extract(text: Seq[Sentence], keys: Seq[ExtractKey]): Map[String, Seq[ExtractedResult]] = {
+    var res: Map[String, Seq[ExtractedResult]] = keys.map {
+      case ExtractKey(name, _) =&gt;
+        (name, Seq.empty[ExtractedResult])
+    }.toMap
+    val sentenceIterator = text.reverseIterator
+    var endPageId: Option[Int] = None
+    var prev: Option[Sentence] = None
+    while (sentenceIterator.hasNext) {
+      val sentence = sentenceIterator.next()
+      if (prev.flatMap(_.page_id).nonEmpty &amp;&amp; sentence.page_id.nonEmpty &amp;&amp; prev.flatMap(_.page_id).get != sentence.page_id.get) {
+        endPageId = prev.flatMap(_.page_id)
+      }
+      prev = Some(sentence)
+      val pageId = sentence.page_id
+      val trimedSentence = sentence.text_content.replace(&quot; &quot;, &quot;&quot;)
+      //      println(&quot;trimedSentence: &quot; + trimedSentence)
+      val splitedSentence = trimedSentence.split(&quot;&quot;&quot;[\t:：]&quot;&quot;&quot;)
+      //      println(&quot;splitedSentence: &quot; + splitedSentence.mkString(&quot;---&quot;))
+      val iterator = splitedSentence.iterator
+      while (iterator.hasNext) {
+        val slice = iterator.next()
+        val keySeq = keys.filter { case ExtractKey(_, pattern) =&gt; slice.matches(pattern) }
+        if (keySeq.nonEmpty &amp;&amp; iterator.hasNext) {
+          val value = iterator.next()
+          keySeq.foreach {
+            case ExtractKey(name, _) =&gt;
+              res = res + (name -&gt; (res(name) ++ Seq(ExtractedResult(pageId, value))))
+          }
+        }
+      }
+    }
+    res
+  }
+
+  case class CellValue(value: String)
+
+  object CellValue {
+    implicit val format: Format[CellValue] = Json.format[CellValue]
+  }
+
+  case class TitleCell(key: TitleCellKey, value: Seq[TitleCellValue])
+
+  object TitleCell {
+    case class TitleCellKey(text: String)
+
+    object TitleCellKey {
+      implicit val format: Format[TitleCellKey] = Json.format[TitleCellKey]
+    }
+
+    case class TitleCellValue(text: String)
+
+    object TitleCellValue {
+      implicit val format: Format[TitleCellValue] = Json.format[TitleCellValue]
+    }
+
+    implicit val format: Format[TitleCell] = Json.format[TitleCell]
+  }
+
+  case class BSOutput(header: Option[Map[String, Seq[ExtractedResult]]], tables: Option[Seq[BStable]])
+
+  object BSOutput {
+    implicit val format: Format[BSOutput] = Json.format[BSOutput]
+  }
+  case class BStable(page_id: Option[Int], result: Option[Map[String, Seq[TitleCellValue]]])
+  object BStable {
+    implicit val format: Format[BStable] = Json.format[BStable]
+  }
+  case class Element(cells: Option[Map[String, CellValue]], title_cells: Option[Seq[TitleCell]])
+
+  object Element {
+    implicit val format: Format[Element] = Json.format[Element]
+  }
+
+  case class PdfElement(page: Int, elements: Seq[Element])
+
+  object PdfElement {
+    implicit val format: Format[PdfElement] = Json.format[PdfElement]
+  }
+
+  case class PaodingTable(pdf_elements: Seq[PdfElement])
+
+  object PaodingTable {
+    implicit val format: Format[PaodingTable] = Json.format[PaodingTable]
+  }
+
+  case class TablePageRange(begin: Option[Int], end: Option[Int])
+
+  def getTablePageRange(paodingTable: PaodingTable): Seq[TablePageRange] = {
+    val pdfElementIterator = paodingTable.pdf_elements.reverseIterator
+    var res = Seq.empty[TablePageRange]
+    var prev: Option[Int] = None
+    while (pdfElementIterator.hasNext) {
+      val curPdfElement = pdfElementIterator.next()
+      val pageId = curPdfElement.page
+      if (prev.isEmpty || (prev.nonEmpty &amp;&amp; prev.get != pageId)) {
+        res = res :+ TablePageRange(Some(pageId), prev)
+      }
+      prev = Some(pageId)
+    }
+    res
+  }
+
+  private def rebasePageId(pageId: Int) = pageId + 1
+
+  case class NumberValueTitleRegex(regex: String)
+
+  def prependInfo(paodingTable: PaodingTable, info: Map[String, Seq[ExtractedResult]])(implicit numberValueTitleRegex: NumberValueTitleRegex): (Array[Byte],String) = {
+    import com.pwc.ds.cidr.engine.util.PoiUtils._
+
+    LoggerFactory.getLogger(this.getClass).info(&quot;numberValueTitleRegex is &quot; + numberValueTitleRegex)
+
+    val tableRangeSeq: Seq[TablePageRange] = getTablePageRange(paodingTable)
+    //    println(&quot;tableRangeSeq: &quot; + tableRangeSeq)
+    val workbook = WorkbookFactory.create(true)
+
+    var bsOutputJsonString = &quot;&quot;
+    var bsTables: Seq[BStable]=Seq()
+    val pdfElementIterator = paodingTable.pdf_elements.iterator
+    var rowBase = info.size + 1
+    while (pdfElementIterator.hasNext) {
+      val curPdfElement = pdfElementIterator.next()
+      val elementIterator = curPdfElement.elements.iterator
+      val pageId = curPdfElement.page
+      val TablePageRange(pageBegin, pageEnd) = tableRangeSeq.find(_.begin.get == pageId).get
+      while (elementIterator.hasNext) {
+        val curElement = elementIterator.next()
+        var curSheet = workbook.getSheet(s&quot;page ${rebasePageId(pageId)}&quot;)
+        if (workbook.getSheet(s&quot;page ${rebasePageId(pageId)}&quot;) == null){
+          curSheet = workbook.createSheet(s&quot;page ${rebasePageId(pageId)}&quot;)
+        }else{
+          val lastRows = curSheet.getLastRowNum()
+          rowBase = lastRows + 2
+        }
+        // first write paoding results
+        var tableCols: Map[String, Seq[TitleCellValue]]= Map()
+        def writePaodingResult = {
+          if (curElement.cells.nonEmpty) {
+            val allCells = curElement.cells.get.map { case (key, cellValue) =&gt;
+              val row_col = key.split(&quot;_&quot;).toSeq
+              val row = row_col.head.toInt + rowBase
+              val col = row_col(1).toInt
+              (row, col, cellValue.value)
+            }.toSeq
+            allCells.groupBy(_._2).mapValues(_.sorted)
+              .values.foreach(colSeq =&gt; {
+                var lastRow = rowBase
+                val colSeqIterator = colSeq.iterator
+                if (colSeqIterator.hasNext) {
+                  val (row, col, title) = colSeqIterator.next()
+                  var currentTitleCellValueSeq: Seq[TitleCellValue]=Seq()
+                  var toBeFilledRowLength = row - lastRow
+                  while (toBeFilledRowLength &gt; 0) {
+                    currentTitleCellValueSeq :+= TitleCellValue(&quot;&quot;)
+                    toBeFilledRowLength -= 1
+                  }
+                  currentTitleCellValueSeq :+= TitleCellValue(title)
+                  lastRow = row
+                  val titleMatched = title.split(&#39;\n&#39;).map(_.trim.filter(_ &gt;= &#39; &#39;)).mkString.matches(numberValueTitleRegex.regex)
+                  LoggerFactory.getLogger(this.getClass).info(&quot;match title1: &quot; + title + &quot;; matched: &quot; + titleMatched)
+                  curSheet.getRowOrCreateNew(row).createCell(col).setCellValue(title)
+                  while (colSeqIterator.hasNext) {
+                    try {
+                      val (row, col, value) = colSeqIterator.next()
+                      var toBeFilledRowLength = row - lastRow
+                      while (toBeFilledRowLength &gt; 1) {
+                        currentTitleCellValueSeq :+= TitleCellValue(&quot;&quot;)
+                        toBeFilledRowLength -= 1
+                      }
+                      currentTitleCellValueSeq :+= TitleCellValue(value)
+                      lastRow=row
+                      val cell = curSheet.getRowOrCreateNew(row).createCell(col)
+                      if (titleMatched) cell.writeValue(value) else cell.setCellValue(value)
+                    }
+                    catch {
+                      case _: Throwable =&gt;
+                    }
+                  }
+                  tableCols += (col.toString-&gt; currentTitleCellValueSeq)
+                }
+              })
+            bsTables :+= BStable(Some(pageId),Some(tableCols))
+          } else if (curElement.title_cells.nonEmpty) {
+            val titleCellIterator = curElement.title_cells.get.iterator
+            var col = 0
+            while (titleCellIterator.hasNext) {
+              var row = rowBase
+              val TitleCell(key, value) = titleCellIterator.next()
+              val currentTitleCellValueSeq = TitleCellValue(key.text) +: value
+              tableCols += (col.toString-&gt; currentTitleCellValueSeq)
+              curSheet.getRowOrCreateNew(row).createCell(col).setCellValue(key.text)
+              val titleMatched = key.text.split(&#39;\n&#39;).map(_.trim.filter(_ &gt;= &#39; &#39;)).mkString.matches(numberValueTitleRegex.regex)
+              LoggerFactory.getLogger(this.getClass).info(&quot;match title: &quot; + key + &quot;; matched: &quot; + titleMatched)
+              row += 1
+              val valueIterator = value.iterator
+              while (valueIterator.hasNext) {
+                val TitleCellValue(curValue) = valueIterator.next()
+                val cell = curSheet.getRowOrCreateNew(row).createCell(col)
+                if (titleMatched) cell.writeValue(curValue) else cell.setCellValue(curValue)
+                row += 1
+              }
+              col += 1
+            }
+            bsTables :+= BStable(Some(pageId),Some(tableCols))
+          } else {
+            throw new RuntimeException(s&quot;broken json from paoding: $paodingTable&quot;)
+          }
+        }
+
+        writePaodingResult
+
+        // second, write extracted table headers
+        def writeExtractTableHeaders = {
+          var row = 0
+          val infoEntryIterator = info.iterator
+          while (infoEntryIterator.hasNext) {
+            val curRow = curSheet.getRowOrCreateNew(row)
+            val (key, value) = infoEntryIterator.next()
+            var curCell = curRow.createCell(0, CellType.STRING)
+            curCell.setCellValue(key)
+            curCell = curRow.createCell(1, CellType.STRING)
+            curCell.setCellValue(value.filter(x =&gt; x.page_id.get &gt;= pageBegin.get &amp;&amp; (pageEnd.isEmpty || x.page_id.get &lt; pageEnd.get)).map(_.result).reverse.headOption.getOrElse(&quot;&quot;))
+            row += 1
+          }
+        }
+
+        writeExtractTableHeaders
+      }
+    }
+    val bsOutput = BSOutput(Some(info), Some(bsTables))
+    bsOutputJsonString = Json.toJson(bsOutput).toString()
+    val result = new ByteArrayOutputStream()
+    try {
+      workbook.write(result)
+    }
+    finally {
+      result.close()
+    }
+    (result.toByteArray,bsOutputJsonString)
+  }
+
+  // it doesn&#39;t work: shiftRows will throw exception
+  //  def prependInfo(byteArray: Array[Byte], info: Map[String, Seq[ExtractedResult]]): Array[Byte] = {
+  //    ???
+  //    val inputStream = new ByteArrayInputStream(byteArray)
+  //    val excel: Workbook = WorkbookFactory.create(inputStream)
+  //    val curSheet = excel.getSheetAt(0)
+  //    curSheet.shiftRows(2, curSheet.getLastRowNum, 1)
+  //    //    val row = curSheet.createRow(1)
+  //
+  //    //    val sheetIterator = excel.sheetIterator()
+  //    //    while (sheetIterator.hasNext) {
+  //    //      val curSheet = sheetIterator.next()
+  //    //      curSheet.shiftRows(curSheet.getFirstRowNum, curSheet.getLastRowNum, 1)
+  //    ////      var rowIterator = curSheet.rowIterator()
+  //    //      //      var pre: Row = null
+  //    //      //      var cur: Row = null
+  //    //      //      while (rowIterator.hasNext) {
+  //    //      //        cur = rowIterator.next()
+  //    //      //        curSheet.shiftRows()
+  //    //      //      }
+  //    //      //      rowIterator = curSheet.rowIterator()
+  //    //
+  //    //    val row = curSheet.createRow(0)
+  //    ////      if (rowIterator.hasNext) {
+  //    ////        val firstRow = rowIterator.next()
+  //    ////        val infoEntryIterator = info.iterator
+  //    ////        var col = 0
+  //    ////        while (infoEntryIterator.hasNext) {
+  //    ////          val (key, value) = infoEntryIterator.next()
+  //    ////          var curCell = firstRow.createCell(col, CellType.STRING)
+  //    ////          curCell.setCellValue(key)
+  //    ////          col += 1
+  //    ////          curCell = firstRow.createCell(col, CellType.STRING)
+  //    ////          curCell.setCellValue(value.head)
+  //    ////          col += 2
+  //    ////        }
+  //    ////      }
+  //    //    }
+  //    val result = new ByteArrayOutputStream()
+  //    try {
+  //      excel.write(result)
+  //    }
+  //    finally {
+  //      result.close()
+  //    }
+  //    result.toByteArray
+  //  }
+
+}</code></pre></dd>
+</dl>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/flowissue/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVLRXPE9ZP"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-LVLRXPE9ZP');
+</script>
+
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../bugs/uirefresh/index.html" title="UI refreshing issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+UI refreshing issue
+</span>
+</div>
+</a>
+<a href="../../codedesign/index.html" title="Code design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Code design
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+</body>
+</html>
