@@ -13,4 +13,6 @@
 * [Date time filed](datefield/index.md)
 * [Nginx headers with undersocore](nginxHeaders/index.md)
 * [Play html source refresh](playhtmlrefresh/index.md)
+* [Memory and DB](memAndDb/index.md)
+* [Play disable setting](playdisablesetting/index.md)
 @@@
