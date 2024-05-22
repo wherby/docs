@@ -15,4 +15,6 @@
 * [Play html source refresh](playhtmlrefresh/index.md)
 * [Memory and DB](memAndDB/index.md)
 * [Play disable setting](playdisablesetting/index.md)
+* [Mysql batch update issue](mysqlBatchIssue/index.md)
+* [Play timeout issue](playTimeoutIssue/index.md)
 @@@
