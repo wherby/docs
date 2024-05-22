@@ -316,25 +316,28 @@ wherby/docs
 <h2><a href="#code-for-timeout" name="code-for-timeout" class="anchor"><span class="anchor-link"></span></a>Code for timeout</h2>
 <p>The origin code as below:</p>
 <p>The code is sync call, while there is no need to sync call of sync service.</p>
-<p>```scala  def sync_all() = deadbolt.Pattern(value = &ldquo;(sys_admin)|(app_admin)|(client_admin)&rdquo;, patternType = PatternType.REGEX)(parse.default) { implicit request =&gt;  val subject = request.subject.get</p>
-<pre><code>val client = HttpClients.createDefault()
-try {
-  val url =   s&quot;http://localhost:5001/sync_all&quot;
-  val post: HttpPost = new HttpPost(url)
-  post.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;)
-  client.execute(post)
-  searchController.syncLocalAdminUsers  // if meilisearch is available, trigger update
-  Future.successful {
-    Ok({
-      Json.obj(&quot;success&quot; -&gt; true)
-    })
+<pre class="prettyprint"><code class="language-scala">  def sync_all() = deadbolt.Pattern(value = &quot;(sys_admin)|(app_admin)|(client_admin)&quot;, patternType = PatternType.REGEX)(parse.default) { implicit request =&gt;
+    val subject = request.subject.get
+
+    val client = HttpClients.createDefault()
+    try {
+      val url =   s&quot;http://localhost:5001/sync_all&quot;
+      val post: HttpPost = new HttpPost(url)
+      post.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;)
+      client.execute(post)
+      searchController.syncLocalAdminUsers  // if meilisearch is available, trigger update
+      Future.successful {
+        Ok({
+          Json.obj(&quot;success&quot; -&gt; true)
+        })
+      }
+    }
+    finally {
+      client.close()
+    }
+
   }
-}
-finally {
-  client.close()
-}
 </code></pre>
-<p>}  ```</p>
 <p>The operation &ldquo;client.execute(post)&rdquo; is a async call, why the this code is sync. Because &ldquo; client.close()&rdquo; will be waiting operation finished.</p>
 <p>We just use async call will fix the timeout issue</p>
 <p><img src="pic/async.png" alt="Async" /></p>

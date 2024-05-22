@@ -12,6 +12,8 @@ When we check log, find user did a update on 3/13/2024.
 
 When we check the mysql table,  only currency name table has user's update record is updated and currencies table doesn't have user's update.
 
+```
+
 MySQL [pfic]> SELECT * FROM pfic.currencies;
 +--------------------------------------+--------------------------------------+--------------+--------------+------+----------------------------------------------------------------------+--------------+--------------+--------------+
 | id                                   | currency_id                          | q4_rate      | average_rate | year | description                                                          | q1_rate      | q2_rate      | q3_rate      |
@@ -86,11 +88,13 @@ MySQL [pfic]> SELECT * FROM pfic.currency_name;
 +--------------------------------------+----------+--------------------------------------------------------------------+
 11 rows in set (0.003 sec)
 
+```
 
 The date is 5/20/2024, are the changes missing for currencies table?
 
 When user did a single row change for the currencies. There is a "new record" appears :"updated by robert.c.tao@cn.pwc.com at Wed Mar 13 06:41:12 UTC 2024 " , the data is updated as user's change today 5/20/2024, but the modify record is 3/13/2024.
 
+```
 
 MySQL [pfic]> SELECT * FROM pfic.currencies;
 +--------------------------------------+--------------------------------------+--------------+--------------+------+----------------------------------------------------------------------+--------------+--------------+--------------+
@@ -148,10 +152,12 @@ MySQL [pfic]> SELECT * FROM pfic.currencies;
 +--------------------------------------+--------------------------------------+--------------+--------------+------+----------------------------------------------------------------------+--------------+--------------+--------------+
 49 rows in set (0.003 sec)
 
+```
 
 When user update all records again, 
 The currencies table value updated, but change log is 3/13/2024, and one of previous log is 5/20/2024.
 
+```
 
 MySQL [pfic]> SELECT * FROM pfic.currencies;
 +--------------------------------------+--------------------------------------+--------------+--------------+------+----------------------------------------------------------------------+--------------+--------------+--------------+
@@ -227,7 +233,7 @@ MySQL [pfic]> SELECT * FROM pfic.currency_name;
 +--------------------------------------+----------+--------------------------------------------------------------------+
 
 
-
+```
 
 ## What's happened?
 
@@ -263,6 +269,18 @@ def insertOrUpdate() = deadbolt.Pattern(value = "b_admin", patternType = Pattern
       }
     }
   }
+  }
+
+```
+
+``` scala
+
+  override def insertOrUpdate(currencys: Seq[Currency]): Future[Unit] = {
+    var inserts = for (currency <- currencys) yield {
+      val currencyRow = currencyToCurrencyRow(currency)
+      Currencies.insertOrUpdate(currencyRow)
+    }
+    db.run(DBIO.seq(inserts: _*))
   }
 
 ```

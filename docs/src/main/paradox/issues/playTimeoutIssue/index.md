@@ -33,7 +33,7 @@ The origin code as below:
 
 The code is sync call, while there is no need to sync call of sync service.
 
-```scala
+``` scala
   def sync_all() = deadbolt.Pattern(value = "(sys_admin)|(app_admin)|(client_admin)", patternType = PatternType.REGEX)(parse.default) { implicit request =>
     val subject = request.subject.get
 
@@ -55,7 +55,7 @@ The code is sync call, while there is no need to sync call of sync service.
     }
 
   }
-  ```
+```
 
 
   The operation "client.execute(post)" is a async call, why the this code is sync. Because " client.close()" will be waiting operation finished.
