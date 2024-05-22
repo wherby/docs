@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="Description for doradilla library.">
+<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+
+<meta name="lang:clipboard.copy" content="Copy to clipboard">
+<meta name="lang:clipboard.copied" content="Copied to clipboard">
+<meta name="lang:search.language" content="">
+<meta name="lang:search.pipeline.stopwords" content="true">
+<meta name="lang:search.pipeline.trimmer" content="true">
+<meta name="lang:search.result.none" content="No matching documents">
+<meta name="lang:search.result.one" content="1 matching document">
+<meta name="lang:search.result.other" content="# matching documents">
+<meta name="lang:search.tokenizer" content="[\s\-]+">
+
+
+<meta name="description" content="Description for doradilla library.">
+<link rel="shortcut icon" href="../../assets/images/favicon.png">
+<title>MySql batch update issue · Docs</title>
+<link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+<link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
+<link rel="stylesheet" href="../../lib/prettify/prettify.css">
+<script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+<style>
+body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
+</style>
+<link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+<link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+<link rel="stylesheet" href="../../assets/stylesheets/paradox-material-theme.css">
+</head>
+<body
+>
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+<header class="md-header" data-md-component="header">
+<nav class="md-header-nav md-grid">
+<div class="md-flex">
+<div class="md-flex__cell md-flex__cell--shrink">
+<a href="../../index.html" title="Docs" class="md-header-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch">
+<div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+<span class="md-header-nav__topic">
+Docs
+</span>
+<span class="md-header-nav__topic">
+MySql batch update issue
+</span>
+</div>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+<label class="md-icon md-search__icon" for="__search"></label>
+<button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix>
+<div class="md-search-result" data-md-component="result">
+<div class="md-search-result__meta">
+Type to start searching
+</div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<div class="md-header-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="md-container">
+<main class="md-main">
+<div class="md-main__inner md-grid" data-md-component="container">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--primary" data-md-level="0" style="visibility: hidden">
+<label class="md-nav__title md-nav__title--site" for="drawer">
+<a href="../../index.html" title="Docs" class="md-nav__button md-logo">
+<span class="md-nav__button md-logo">
+<i class="md-icon">local_library</i>
+</a>
+<a href="../../index.html" title="Docs">
+Docs
+</a>
+</label>
+<div class="md-nav__source">
+<a href="https://github.com/wherby/docs"
+title="Go to repository"
+class="md-source"
+data-md-source="github">
+<div class="md-source__icon">
+<i class="fa fa-github"></i>
+</div>
+<div class="md-source__repository">
+wherby/docs
+</div>
+</a>
+
+</div>
+<ul>
+  <li><a href="../../singletruthprinciple.html" class="page">Single truth principle</a></li>
+  <li><a href="../../database/index.html" class="page">Database Single truth principle</a>
+  <ul>
+    <li><a href="../../database/dbservice.html" class="page">DB service</a></li>
+  </ul></li>
+  <li><a href="../../fieldnull/index.html" class="page">Database null field error</a>
+  <ul>
+    <li><a href="../../fieldnull/code/index.html" class="page">Database define</a></li>
+  </ul></li>
+  <li><a href="../../engagement/index.html" class="page">Engagement entity add to database</a></li>
+  <li><a href="../../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
+  <li><a href="../../shadowquery/index.html" class="page">Shadow query</a></li>
+  <li><a href="../../inconsistent/index.html" class="page">Inconsistent status</a></li>
+  <li><a href="../../dailyjob/index.html" class="page">Daily schedule job</a></li>
+  <li><a href="../../pac4j/index.html" class="page">Oauth2 client for Pac4j</a></li>
+  <li><a href="../../nio/index.html" class="page">NIO and Akka-Http</a>
+  <ul>
+    <li><a href="../../nio/code/appacheMPMEvent.html" class="page">Apache MPM event</a></li>
+    <li><a href="../../nio/code/scalableIOInJava.html" class="page">Scalable IO in Java</a></li>
+  </ul></li>
+  <li><a href="../../databasewithfile/index.html" class="page">Store file in database</a></li>
+  <li><a href="../../flywayonmysql/index.html" class="page">Flyway clean failed on mysql8</a></li>
+  <li><a href="../../iefrontend/index.html" class="page">IE issues for javascript</a></li>
+  <li><a href="../../apicall/index.html" class="page">Api call failed</a></li>
+  <li><a href="../../systemdesign/index.html" class="page">software architecture</a>
+  <ul>
+    <li><a href="../../systemdesign/sub/reality.html" class="page">What&rsquo;s reality of software development?</a></li>
+    <li><a href="../../systemdesign/sub/issues.html" class="page">What&rsquo;re challenges of software development?</a></li>
+    <li><a href="../../systemdesign/sub/reactive.html" class="page">The reactive manifesto</a></li>
+    <li><a href="../../systemdesign/sub/doradilla.html" class="page">Doradilla design</a></li>
+    <li><a href="../../systemdesign/sub/reference.html" class="page">References</a></li>
+  </ul></li>
+  <li><a href="../../poiexcel/index.html" class="page">Excel reader using POI</a></li>
+  <li><a href="../../future/index.html" class="page">Future value</a></li>
+  <li><a href="../../lockless/index.html" class="page">Lockless design</a></li>
+  <li><a href="../../upgradeissue/index.html" class="page">Upgrade issue for authentication</a></li>
+  <li><a href="../../dbinsert/index.html" class="page">DB bulk insert</a></li>
+  <li><a href="../../react/index.html" class="page">React web render</a></li>
+  <li><a href="../../oom/index.html" class="page">Out of memory for batch job</a></li>
+  <li><a href="../../purefunction/index.html" class="page">Pure function design</a></li>
+  <li><a href="../../codeissue/index.html" class="page">Code issue</a></li>
+  <li><a href="../../timeout/index.html" class="page">Timeout errors and crash</a></li>
+  <li><a href="../../presentationlayer/index.html" class="page">Refactor code for Excel output</a></li>
+  <li><a href="../../coderefineusingfp/index.html" class="page">Refine code with function programming</a></li>
+  <li><a href="../../traps/index.html" class="page">Traps in Scala</a></li>
+  <li><a href="../../alloctMemFail/index.html" class="page">JVM allocate memory failed in docker</a></li>
+  <li><a href="../../extractorDesign/index.html" class="page">How to structure a extractor process.</a></li>
+  <li><a href="../../bugs/index.html" class="page">Bugs</a>
+  <ul>
+    <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
+    <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
+    <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
+    <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
+    <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
+    <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
+    <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
+    <li><a href="../../bugs/regexsearch/index.html" class="page">Regex failed in frontend</a></li>
+    <li><a href="../../bugs/mostAwfulCode/index.html" class="page">Most awful code when use OO</a></li>
+    <li><a href="../../bugs/java/index.html" class="page">Java related</a></li>
+    <li><a href="../../bugs/loadissue/index.html" class="page">Load issue for valuation</a></li>
+    <li><a href="../../bugs/pdfreader/index.html" class="page">Read PDF</a></li>
+    <li><a href="../../bugs/redundantoperation/index.html" class="page">Redundant DB operation</a></li>
+    <li><a href="../../bugs/statusUpdate/index.html" class="page">project status update issue</a></li>
+    <li><a href="../../bugs/uicrash/index.html" class="page">UI crash</a></li>
+    <li><a href="../../bugs/uitest/index.html" class="page">UI test</a></li>
+    <li><a href="../../bugs/loadIssue2/index.html" class="page">Statistics load issue</a></li>
+    <li><a href="../../bugs/initialCrash/index.html" class="page">Initial crash</a></li>
+    <li><a href="../../bugs/debugcidr/index.html" class="page">Debug python processor</a></li>
+    <li><a href="../../bugs/taskFailure/index.html" class="page">Schedule task</a></li>
+    <li><a href="../../bugs/sqlfailed/index.html" class="page">MySQL query failed</a></li>
+    <li><a href="../../bugs/wrongUpdated/index.html" class="page">Wrong finacial data updated</a></li>
+    <li><a href="../../bugs/pythonlib/index.html" class="page">Python build with different version of lib</a></li>
+    <li><a href="../../bugs/canceltaskissue/index.html" class="page">Cancel task issue</a></li>
+    <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
+    <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
+    <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
+    <li><a href="../../bugs/intellijbug/index.html" class="page">Intellij bug for scala</a></li>
+    <li><a href="../../bugs/uirefresh/index.html" class="page">UI refreshing issue</a></li>
+    <li><a href="../../bugs/flowissue/index.html" class="page">Flow issue</a></li>
+    <li><a href="../../bugs/numberoverflow/index.html" class="page">Number overflow</a></li>
+  </ul></li>
+  <li><a href="../../codedesign/index.html" class="page">Code design</a>
+  <ul>
+    <li><a href="../../codedesign/notification/index.html" class="page">Notification desgin</a></li>
+    <li><a href="../../codedesign/imsprocessor/index.html" class="page">IMS processor</a></li>
+    <li><a href="../../codedesign/serviceImpl/index.html" class="page">Service design without interface</a></li>
+    <li><a href="../../codedesign/cacheAPI/index.html" class="page">Cache API design</a></li>
+    <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
+    <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
+  </ul></li>
+  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../issues/index.html" class="page">Issues</a>
+  <ul>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
+    <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
+    <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
+    <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
+    <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
+    <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
+    <li><a href="../../issues/datefield/index.html" class="page">Date time different issue</a></li>
+    <li><a href="../../issues/nginxHeaders/index.html" class="page">Nginx handle request with underscore headers</a></li>
+    <li><a href="../../issues/playhtmlrefresh/index.html" class="page">Play html resource refresh in client side</a></li>
+    <li><a href="../../issues/memAndDB/index.html" class="page">Mem and DB</a></li>
+    <li><a href="../../issues/playdisablesetting/index.html" class="page">Play disable setting</a></li>
+    <li><a href="../../issues/mysqlBatchIssue/index.html" class="active page">MySql batch update issue</a></li>
+    <li><a href="../../issues/playTimeoutIssue/index.html" class="page">Play timeout issue</a></li>
+  </ul></li>
+  <li><a href="../../design/index.html" class="page">Design</a>
+  <ul>
+    <li><a href="../../design/dependency/index.html" class="page">Dependency</a></li>
+  </ul></li>
+  <li><a href="../../fastandslowjobs/index.html" class="page">Fast and slow jobs</a></li>
+  <li><a href="../../fastandslowjobs/index2.html" class="page">Fast and slow job(2)</a></li>
+  <li><a href="../../tools/index.html" class="page">Tools</a>
+  <ul>
+    <li><a href="../../tools/postman/index.html" class="page">Postman Doc API</a></li>
+  </ul></li>
+</ul>
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../issues/mysqlBatchIssue/index.html#mysql-batch-update-issue" class="header">MySql batch update issue</a>
+  <ul>
+    <li><a href="../../issues/mysqlBatchIssue/index.html#users-update-is-not-recorded-" class="header">User&rsquo;s update is not recorded.</a></li>
+    <li><a href="../../issues/mysqlBatchIssue/index.html#whats-happened-" class="header">What&rsquo;s happened?</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</nav>
+<ul style="display: none">
+<li class="md-nav__item md-version" id="project.version">
+<label class="md-nav__link" for="__version">
+<i class="md-icon" title="Version">label_outline</i> 0.1.0*
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../issues/mysqlBatchIssue/index.html#mysql-batch-update-issue" class="header">MySql batch update issue</a>
+  <ul>
+    <li><a href="../../issues/mysqlBatchIssue/index.html#users-update-is-not-recorded-" class="header">User&rsquo;s update is not recorded.</a></li>
+    <li><a href="../../issues/mysqlBatchIssue/index.html#whats-happened-" class="header">What&rsquo;s happened?</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<div class="md-content__searchable">
+<h1><a href="#mysql-batch-update-issue" name="mysql-batch-update-issue" class="anchor"><span class="anchor-link"></span></a>MySql batch update issue</h1>
+<h2><a href="#users-update-is-not-recorded-" name="users-update-is-not-recorded-" class="anchor"><span class="anchor-link"></span></a>User&rsquo;s update is not recorded.</h2>
+<p>User report they changed currency setting but find the changes doesn&rsquo;t be applied. Currency setting UI as below:</p>
+<p><img src="pic/currencies.png" alt="Currency setting" /></p>
+<p>User could add a new currency and update a currency rate. Change will be recorded in currencies and currency name table.</p>
+<p>When we check log, find user did a update on 3/13/2024.</p>
+<p>When we check the mysql table, only currency name table has user&rsquo;s update record is updated and currencies table doesn&rsquo;t have user&rsquo;s update.</p>
+<p>MySQL [pfic]&gt; SELECT * FROM pfic.currencies; +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | id | currency_id | q4_rate | average_rate | year | description | q1_rate | q2_rate | q3_rate | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | 033D34B8-78D2-4AA0-BA35-27CECB347EBE | 1 | 1.000000 | 1.000000 | 2023 | updated by <a href="mailto:&#119;&#101;&#105;&#119;&#x65;&#105;&#46;&#119;&#x77;&#46;&#121;&#x61;&#110;&#x67;&#x40;&#x63;&#x6e;&#46;&#x70;&#119;&#99;.&#99;&#x6f;&#x6d;">&#119;&#101;&#105;&#119;&#x65;&#105;&#46;&#119;&#x77;&#46;&#121;&#x61;&#110;&#x67;&#x40;&#x63;&#x6e;&#46;&#x70;&#119;&#99;.&#99;&#x6f;&#x6d;</a> at Thu Feb 09 06:13:52 UTC 2023 | 1.000000 | 1.000000 | 1.000000 | | 0db6fbc0-7cb6-11eb-8269-8356e4c3b165 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.274196 | 1.341120 | 2020 | This currency is added by <a href="mailto:p&#x65;&#110;&#110;&#121;&#x2e;&#119;.&#x77;&#101;&#105;&#x40;&#99;&#x6e;&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#111;&#109;">p&#x65;&#110;&#110;&#121;&#x2e;&#119;.&#x77;&#101;&#105;&#x40;&#99;&#x6e;&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#111;&#109;</a> | 1.417125 | 1.364241 | 1.336428 | | 1F091F8E-9BCF-4D47-8077-5CE41CBFF673 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.354535 | 1.301664 | 2022 | updated by <a href="mailto:&#112;&#x65;&#x6e;&#110;&#121;.&#x77;.&#119;&#101;i&#x40;&#x63;&#x6e;&#46;&#112;w&#99;&#46;&#x63;o&#109;">&#112;&#x65;&#x6e;&#110;&#121;.&#x77;.&#119;&#101;i&#x40;&#x63;&#x6e;&#46;&#112;w&#99;&#46;&#x63;o&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.250600 | 1.289224 | 1.373988 | | 207DDE20-796B-4582-BE1D-BF8D2251B676 | 3 | 7.808760 | 7.830600 | 2022 | updated by <a href="mailto:&#112;&#101;&#x6e;&#110;y&#46;w.w&#101;&#x69;&#x40;&#x63;n&#x2e;pw&#99;&#46;&#99;&#111;m">&#112;&#101;&#x6e;&#110;y&#46;w.w&#101;&#x69;&#x40;&#x63;n&#x2e;pw&#99;&#46;&#99;&#111;m</a> at Mon Feb 28 01:02:07 UTC 2022 | 7.830562 | 7.846677 | 7.849858 | | 283FE5C0-9B79-4F29-BFCC-19B829CBB5E1 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.377050 | 1.332276 | 2021 | updated by <a href="mailto:&#112;&#101;&#110;&#x6e;&#x79;&#x2e;&#x77;&#46;&#119;e&#x69;&#64;c&#x6e;&#x2e;p&#119;&#99;&#46;c&#111;&#x6d;">&#112;&#101;&#110;&#x6e;&#x79;&#x2e;&#x77;&#46;&#119;e&#x69;&#64;c&#x6e;&#x2e;p&#119;&#99;&#46;c&#111;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.314488 | 1.332124 | 1.386670 | | 3373A1AA-C2E0-48AA-98F1-4C36FD67230C | 2 | 6.968000 | 6.908800 | 2019 | NULL | 6.711900 | 6.866800 | 7.138300 | | 3517E241-E8BA-45D6-9B06-2C5DEDD09E27 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 82.747525 | 78.538552 | 2022 | updated by <a href="mailto:p&#x65;&#x6e;ny.&#x77;&#x2e;&#119;e&#105;&#x40;&#99;&#110;&#x2e;p&#119;&#99;&#x2e;&#x63;o&#109;">p&#x65;&#x6e;ny.&#x77;&#x2e;&#119;e&#105;&#x40;&#99;&#110;&#x2e;p&#119;&#99;&#x2e;&#x63;o&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 75.587429 | 78.828050 | 81.503067 | | 38039DEE-F418-49B1-89C1-1B473BC8778C | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.468020 | NULL | 2023 | updated by <a href="mailto:&#x77;&#101;&#x69;w&#101;i.&#119;&#x77;&#x2e;y&#x61;&#x6e;&#103;&#x40;c&#110;.&#x70;&#119;c.&#99;o&#x6d;">&#x77;&#101;&#x69;w&#101;i.&#119;&#x77;&#x2e;y&#x61;&#x6e;&#103;&#x40;c&#110;.&#x70;&#119;c.&#99;o&#x6d;</a> at Thu Feb 09 06:43:10 UTC 2023 | NULL | NULL | NULL | | 3904633A-EB2B-410C-A0A1-EADC77A5615C | 2 | 6.876400 | 6.614600 | 2018 | NULL | 6.280700 | 6.619800 | 6.868300 | | 3DBD4EF7-002B-4AAB-B3BC-6A7D22C434DA | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.269874 | 1.253744 | 2021 | updated by <a href="mailto:&#112;e&#x6e;&#110;&#x79;&#46;w.we&#x69;&#64;&#99;n&#46;p&#119;&#99;&#x2e;&#99;&#111;&#x6d;">&#112;e&#x6e;&#110;&#x79;&#46;w.we&#x69;&#64;&#99;n&#46;p&#119;&#99;&#x2e;&#99;&#111;&#x6d;</a> at Thu Mar 11 02:41:26 UTC 2021 | 1.259194 | 1.239598 | 1.271062 | | 42347DA9-0354-496A-8B74-7EF4F80FA63C | 2 | 6.898300 | 6.730574 | 2022 | updated by <a href="mailto:&#x70;&#x65;&#110;&#110;&#121;&#46;&#x77;&#46;&#119;&#x65;i&#x40;&#99;n&#x2e;&#x70;&#119;&#x63;&#x2e;&#99;&#111;&#x6d;">&#x70;&#x65;&#110;&#110;&#121;&#46;&#x77;&#46;&#119;&#x65;i&#x40;&#99;n&#x2e;&#x70;&#119;&#x63;&#x2e;&#99;&#111;&#x6d;</a> at Mon Feb 28 01:02:07 UTC 2022 | 6.343092 | 6.697722 | 7.112828 | | 4254 | 1 | 1.000000 | 1.000000 | 2019 | NULL | 1.000000 | 1.000000 | 1.000000 | | 45BF00CD-C43A-4EA5-9E2A-6F5FD94618B5 | 1 | 1.000000 | 1.000000 | 2020 | NULL | 1.000000 | 1.000000 | 1.000000 | | 479dc120-80bc-11eb-9ec1-39b260562b51 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.732596 | 0.779832 | 2020 | NULL | 0.808101 | 0.811219 | 0.776899 | | 4C59C1EE-2E8A-4C98-95A1-413F0632F95E | 3 | 7.808530 | NULL | 2023 | updated by <a href="mailto:w&#101;&#105;&#x77;&#x65;&#x69;&#x2e;&#119;&#x77;&#46;y&#x61;&#x6e;&#x67;&#64;cn&#x2e;p&#119;&#99;.c&#111;&#x6d;">w&#101;&#105;&#x77;&#x65;&#x69;&#x2e;&#119;&#x77;&#46;y&#x61;&#x6e;&#x67;&#64;cn&#x2e;p&#119;&#99;.c&#111;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 4DADBE95-87A0-4561-AACA-7FE11C20CF16 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 83.185800 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;&#x77;&#x2e;y&#97;&#x6e;&#x67;&#64;&#99;&#x6e;&#46;pw&#99;&#x2e;c&#111;&#x6d;">&#x77;&#x65;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;&#x77;&#x2e;y&#97;&#x6e;&#x67;&#64;&#99;&#x6e;&#46;pw&#99;&#x2e;c&#111;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 607EA0C6-26F6-4E05-BBA8-D5201D4A6BAC | 2 | 6.361418 | 6.451791 | 2021 | NULL | 6.556486 | 6.457854 | 6.457995 | | 60B93CEB-CA1B-46CA-9194-273970D227A0 | 3 | 7.797426 | 7.772671 | 2021 | NULL | 7.774402 | 7.765206 | 7.786682 | | 62B0F410-02F1-4979-BA2A-0756327243D2 | 2 | 7.079800 | NULL | 2023 | updated by <a href="mailto:&#119;&#x65;&#x69;&#x77;&#101;i&#46;&#x77;&#x77;&#46;&#x79;an&#103;@&#x63;&#110;&#x2e;&#x70;&#x77;c&#46;c&#x6f;&#x6d;">&#119;&#x65;&#x69;&#x77;&#101;i&#46;&#x77;&#x77;&#46;&#x79;an&#103;@&#x63;&#110;&#x2e;&#x70;&#x77;c&#46;c&#x6f;&#x6d;</a> at Thu Feb 09 06:13:52 UTC 2023 | NULL | NULL | NULL | | 6A26144B-8685-4A99-BA39-B2C05032976B | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.785462 | NULL | 2023 | updated by <a href="mailto:&#119;&#x65;&#105;&#x77;&#x65;&#x69;&#46;w&#119;&#x2e;&#121;&#x61;&#110;g&#x40;&#x63;n&#46;&#112;&#x77;&#99;.c&#x6f;m">&#119;&#x65;&#105;&#x77;&#x65;&#x69;&#46;w&#119;&#x2e;&#121;&#x61;&#110;g&#x40;&#x63;n&#46;&#112;&#x77;&#99;.c&#x6f;m</a> at Thu Feb 09 06:13:52 UTC 2023 | NULL | NULL | NULL | | 6E63098F-AFA2-4414-AF87-AF0033BB04BD | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1294.460000 | NULL | 2023 | updated by <a href="mailto:w&#x65;&#x69;&#119;&#101;i&#46;&#119;w&#x2e;y&#x61;&#x6e;&#103;&#x40;&#x63;&#x6e;.&#x70;&#x77;&#99;&#x2e;c&#111;&#109;">w&#x65;&#x69;&#119;&#101;i&#46;&#119;w&#x2e;y&#x61;&#x6e;&#103;&#x40;&#x63;&#x6e;.&#x70;&#x77;&#99;&#x2e;c&#111;&#109;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 798C3A3A-4684-44F5-98EA-D857D0D1ABAC | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 141.035000 | NULL | 2023 | updated by <a href="mailto:&#119;&#101;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;w&#x2e;&#121;&#97;&#110;&#103;&#x40;&#99;n&#x2e;&#x70;wc&#x2e;&#x63;o&#x6d;">&#119;&#101;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;w&#x2e;&#121;&#97;&#110;&#103;&#x40;&#99;n&#x2e;&#x70;wc&#x2e;&#x63;o&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 7B4A2876-5D75-48F4-AA18-A1F39DDA79D5 | 5f60da64-a053-4a65-8248-4caf05009929 | 0.934274 | 0.951134 | 2022 | updated by <a href="mailto:&#x70;e&#110;&#110;&#121;&#46;&#119;&#x2e;&#119;&#101;&#105;&#64;&#99;&#x6e;&#46;&#x70;&#119;&#99;&#46;c&#x6f;&#x6d;">&#x70;e&#110;&#110;&#121;&#46;&#119;&#x2e;&#119;&#101;&#105;&#64;&#99;&#x6e;&#46;&#x70;&#119;&#99;&#46;c&#x6f;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.899698 | 0.956909 | 1.020572 | | 7b53ce10-d882-11eb-b6eb-51d4970dace9 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.297312 | 1.453330 | 2020 | NULL | 1.628366 | 1.454142 | 1.400468 | | 815D8666-F5BC-4E0F-8FBB-41530876945B | 5f60da64-a053-4a65-8248-4caf05009929 | 0.881594 | 0.845477 | 2021 | updated by <a href="mailto:&#112;&#x65;&#x6e;&#110;&#121;&#x2e;&#x77;.w&#x65;&#x69;@&#x63;&#110;&#x2e;p&#119;&#99;&#46;&#x63;&#111;&#109;">&#112;&#x65;&#x6e;&#110;&#121;&#x2e;&#x77;.w&#x65;&#x69;@&#x63;&#110;&#x2e;p&#119;&#99;&#46;&#x63;&#111;&#109;</a> at Thu Mar 11 02:42:26 UTC 2021 | 0.852680 | 0.841852 | 0.862846 | | 85D8162D-AD61-47EE-A20C-DCBAE26E2EEB | 3 | 7.787600 | 7.835100 | 2019 | NULL | 7.850000 | 7.812900 | 7.839900 | | 85FEF722-161B-4065-80B7-A98D2FAF89A4 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 131.101000 | 131.420982 | 2022 | updated by <a href="mailto:p&#x65;&#x6e;n&#121;&#46;w&#46;w&#101;&#x69;&#64;&#x63;&#110;&#x2e;&#112;&#119;&#99;&#x2e;&#x63;&#111;m">p&#x65;&#x6e;n&#121;&#46;w&#46;w&#101;&#x69;&#64;&#x63;&#110;&#x2e;&#112;&#119;&#99;&#x2e;&#x63;&#111;m</a> at Mon Feb 28 01:04:48 UTC 2022 | 121.829574 | 136.108751 | 144.613376 | | 87F23629-1FF0-4549-B5EB-6186FFFCDFFE | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15560.755000 | 14848.624981 | 2022 | updated by <a href="mailto:&#x77;&#101;&#x69;&#x77;&#x65;&#105;&#x2e;&#119;&#119;&#46;&#x79;&#97;n&#x67;&#64;&#x63;&#x6e;&#x2e;&#x70;w&#x63;&#46;c&#111;&#109;">&#x77;&#101;&#x69;&#x77;&#x65;&#105;&#x2e;&#119;&#119;&#46;&#x79;&#97;n&#x67;&#64;&#x63;&#x6e;&#x2e;&#x70;w&#x63;&#46;c&#111;&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | 14352.489384 | 14915.656412 | 15257.678286 | | 8D0CF578-CE76-49C3-9570-990B4BF3A4CF | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.826638 | 0.811493 | 2022 | updated by <a href="mailto:&#x70;&#101;n&#x6e;&#x79;&#46;&#x77;&#46;&#x77;ei&#x40;&#99;&#x6e;&#46;p&#x77;&#99;&#x2e;&#x63;&#111;&#x6d;">&#x70;&#101;n&#x6e;&#x79;&#46;&#x77;&#46;&#x77;ei&#x40;&#99;&#x6e;&#46;p&#x77;&#99;&#x2e;&#x63;&#111;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.761407 | 0.823256 | 0.898086 | | 9A013112-9DD6-4762-807C-F99B7A2A508C | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.325170 | NULL | 2023 | updated by <a href="mailto:w&#101;&#105;w&#101;&#x69;.&#x77;&#119;.&#x79;&#x61;&#110;&#103;&#x40;&#x63;&#x6e;.&#112;&#119;&#99;.&#x63;&#111;&#x6d;">w&#101;&#105;w&#101;&#x69;.&#x77;&#119;.&#x79;&#x61;&#110;&#103;&#x40;&#x63;&#x6e;.&#112;&#119;&#99;.&#x63;&#111;&#x6d;</a> at Thu Feb 09 06:43:10 UTC 2023 | NULL | NULL | NULL | | 9a921da0-54ab-11eb-ae14-7d806ff58e7a | 5f60da64-a053-4a65-8248-4caf05009929 | 0.815352 | 0.877299 | 2020 | This currency is added by <a href="mailto:&#112;&#101;&#x6e;&#x6e;&#121;&#46;&#x77;&#46;&#119;&#x65;&#105;&#64;&#x63;n&#46;&#112;w&#x63;.&#99;&#111;&#x6d;">&#112;&#101;&#x6e;&#x6e;&#121;&#46;&#x77;&#46;&#119;&#x65;&#105;&#64;&#x63;n&#46;&#112;w&#x63;.&#99;&#111;&#x6d;</a> | 0.909048 | 0.875319 | 0.852905 | | 9f2cea60-80bc-11eb-9ec1-39b260562b51 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 103.166820 | 106.757683 | 2020 | NULL | 108.112670 | 107.786434 | 105.579828 | | A64A66B4-07B8-4759-B6BE-62A01594BD4B | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 115.093029 | 109.817398 | 2021 | This currency is added by <a href="mailto:&#x70;&#101;&#110;&#x6e;&#121;&#x2e;&#x77;&#x2e;&#x77;&#101;&#105;&#x40;&#x63;n&#x2e;&#112;&#119;&#x63;&#46;&#99;o&#109;">&#x70;&#101;&#110;&#x6e;&#121;&#x2e;&#x77;&#x2e;&#x77;&#101;&#105;&#x40;&#x63;n&#x2e;&#112;&#119;&#x63;&#46;&#99;o&#109;</a> | 110.699958 | 110.743952 | 111.708661 | | A91B3C44-38C8-4D30-A4F5-897F83E39512 | 1 | 1.000000 | 1.000000 | 2018 | NULL | 1.000000 | 1.000000 | 1.000000 | | b61182e0-80bc-11eb-9ec1-39b260562b51 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1087.037776 | 1179.713160 | 2020 | NULL | 1220.107854 | 1200.204758 | 1167.585628 | | B6864BCF-8B23-48B1-AC86-102FE7CCA624 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 74.366634 | 73.915199 | 2021 | This currency is added by <a href="mailto:&#x70;&#101;&#x6e;&#110;&#x79;.&#x77;&#x2e;&#119;&#x65;&#x69;&#x40;&#99;&#x6e;&#x2e;&#112;&#x77;&#99;.&#99;o&#x6d;">&#x70;&#101;&#x6e;&#110;&#x79;.&#x77;&#x2e;&#119;&#x65;&#x69;&#x40;&#99;&#x6e;&#x2e;&#112;&#x77;&#99;.&#99;o&#x6d;</a> | 73.297281 | 74.284374 | 74.210652 | | B96F5F81-F40B-49F4-BFF5-369EE1DFB26F | 2 | 6.532645 | 6.901958 | 2020 | NULL | 7.089556 | 7.069729 | 6.803297 | | B999226E-369A-4AB7-9B83-F609BA859DC9 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1189.662014 | 1144.924442 | 2021 | This currency is added by <a href="mailto:&#x70;&#x65;&#110;&#110;&#121;&#46;&#119;&#46;w&#101;&#x69;&#64;&#x63;&#x6e;.&#x70;&#x77;&#x63;&#46;c&#x6f;&#x6d;">&#x70;&#x65;&#110;&#110;&#121;&#46;&#119;&#46;w&#101;&#x69;&#64;&#x63;&#x6e;.&#x70;&#x77;&#x63;&#46;c&#x6f;&#x6d;</a> | 1129.531652 | 1129.622538 | 1184.752844 | | BD4086E2-71BB-47DB-8523-6EA4E59E0D3D | 3 | 7.752704 | 7.756134 | 2020 | NULL | 7.752868 | 7.750375 | 7.750064 | | c9537930-80bc-11eb-9ec1-39b260562b51 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 73.022441 | 73.976030 | 2020 | NULL | 74.810921 | 75.288745 | 73.632718 | | CA0FFE81-2241-42AB-8271-27A9BECE0DE8 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.740082 | 0.727128 | 2021 | This currency is added by <a href="mailto:&#112;&#x65;&#x6e;&#110;&#121;&#x2e;&#x77;&#46;&#119;&#101;i&#x40;&#99;&#x6e;.&#x70;&#x77;&#99;&#46;&#99;&#111;&#x6d;">&#112;&#x65;&#x6e;&#110;&#121;&#x2e;&#x77;&#46;&#119;&#101;i&#x40;&#99;&#x6e;.&#x70;&#x77;&#99;&#46;&#99;&#111;&#x6d;</a> | 0.726399 | 0.722766 | 0.742978 | | df39aec0-f859-11ec-8614-3d66a03153cf | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 14241.948720 | 14309.988302 | 2021 | NULL | 14568.554890 | 14542.391381 | 14317.447779 | | E2908A51-5B02-4EDB-A468-04818A65D2B5 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1261.915000 | 1291.829282 | 2022 | updated by <a href="mailto:&#119;&#x65;&#105;&#x77;&#101;i&#x2e;&#119;&#119;.&#x79;&#x61;&#x6e;&#103;&#64;c&#110;&#x2e;pw&#99;&#x2e;&#99;&#x6f;&#109;">&#119;&#x65;&#105;&#x77;&#101;i&#x2e;&#119;&#119;.&#x79;&#x61;&#x6e;&#103;&#64;c&#110;&#x2e;pw&#99;&#x2e;&#99;&#x6f;&#109;</a> at Thu Feb 09 06:13:52 UTC 2023 | 1212.993563 | 1295.589204 | 1435.442487 | | E3451651-D0CA-4E0E-9231-609FBB325AC6 | 1 | 1.000000 | 1.000000 | 2021 | NULL | 1.000000 | 1.000000 | 1.000000 | | EAD97D41-1DBB-4FF5-8547-689D86793A01 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.466684 | 1.442088 | 2022 | updated by <a href="mailto:&#x77;e&#105;&#119;&#x65;&#x69;&#46;&#x77;&#119;.&#121;&#x61;n&#103;&#x40;&#x63;n&#x2e;&#x70;w&#99;&#46;&#x63;&#111;&#x6d;">&#x77;e&#105;&#119;&#x65;&#x69;&#46;&#x77;&#119;.&#121;&#x61;n&#103;&#x40;&#x63;n&#x2e;&#x70;w&#99;&#46;&#x63;&#111;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | 1.335003 | 1.450957 | 1.547793 | | EBDB14D6-1B08-41AC-8613-8FEBE102CA87 | 1 | 1.000000 | 1.000000 | 2022 | updated by <a href="mailto:&#x70;&#101;&#x6e;&#110;y&#46;&#x77;&#46;&#119;&#x65;i&#x40;&#x63;&#110;&#x2e;&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;m">&#x70;&#101;&#x6e;&#110;y&#46;&#x77;&#46;&#119;&#x65;i&#x40;&#x63;&#110;&#x2e;&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;m</a> at Mon Feb 28 01:02:07 UTC 2022 | 1.000000 | 1.000000 | 1.000000 | | F1D399B9-985B-4032-AC73-C3CCCE1AC13D | 5f60da64-a053-4a65-8248-4caf05009929 | 0.906023 | NULL | 2023 | updated by <a href="mailto:w&#101;&#105;&#x77;&#x65;&#105;&#46;w&#x77;&#46;&#121;&#97;&#x6e;&#103;&#x40;&#x63;n&#x2e;p&#x77;&#x63;&#x2e;c&#x6f;&#109;">w&#101;&#105;&#x77;&#x65;&#105;&#46;w&#x77;&#46;&#121;&#97;&#x6e;&#103;&#x40;&#x63;n&#x2e;p&#x77;&#x63;&#x2e;c&#x6f;&#109;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | F7FEE7F4-1977-4F47-98BA-1C08D82BD645 | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15389.000000 | NULL | 2023 | updated by <a href="mailto:weiwe&#105;&#x2e;&#x77;&#x77;&#46;&#x79;&#x61;&#110;g&#x40;cn&#46;&#112;&#x77;&#x63;&#46;&#99;&#x6f;&#x6d;">weiwe&#105;&#x2e;&#x77;&#x77;&#46;&#x79;&#x61;&#110;g&#x40;cn&#46;&#112;&#x77;&#x63;&#46;&#99;&#x6f;&#x6d;</a> at Thu Feb 09 08:04:37 UTC 2023 | NULL | NULL | NULL | | F9CECB79-3B9F-4DD7-8028-91CD5F6A83ED | 3 | 7.831700 | 7.837500 | 2018 | NULL | 7.849100 | 7.846300 | 7.828700 | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ 49 rows in set (0.003 sec)</p>
+<p>MySQL [pfic]&gt; SELECT * FROM pfic.currency_name; +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ | id | currency | description | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ | 1 | USD | updated by <a href="mailto:&#x72;o&#98;&#101;r&#x74;&#46;&#x63;&#x2e;&#116;&#x61;&#111;@c&#110;&#x2e;&#x70;&#119;&#99;&#x2e;&#99;&#x6f;&#x6d;">&#x72;o&#98;&#101;r&#x74;&#46;&#x63;&#x2e;&#116;&#x61;&#111;@c&#110;&#x2e;&#x70;&#119;&#99;&#x2e;&#99;&#x6f;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | KRW | updated by <a href="mailto:&#x72;&#111;be&#x72;t&#46;&#x63;&#46;&#116;&#x61;&#111;&#64;&#x63;&#x6e;.&#x70;w&#99;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#111;be&#x72;t&#46;&#x63;&#46;&#116;&#x61;&#111;&#64;&#x63;&#x6e;.&#x70;w&#99;&#x2e;&#x63;&#x6f;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | 2 | CNY | updated by <a href="mailto:&#114;&#x6f;&#x62;e&#114;&#x74;&#46;&#99;&#x2e;&#x74;&#x61;&#111;&#x40;&#x63;n&#46;p&#119;&#x63;&#46;&#99;&#x6f;&#x6d;">&#114;&#x6f;&#x62;e&#114;&#x74;&#46;&#99;&#x2e;&#x74;&#x61;&#111;&#x40;&#x63;n&#46;p&#119;&#x63;&#46;&#99;&#x6f;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | 3 | HKD | updated by <a href="mailto:&#x72;&#111;&#98;&#101;&#x72;&#x74;&#x2e;&#99;&#x2e;&#116;a&#111;@cn&#46;&#112;&#119;&#x63;&#x2e;&#x63;o&#x6d;">&#x72;&#111;&#98;&#101;&#x72;&#x74;&#x2e;&#99;&#x2e;&#116;a&#111;@cn&#46;&#112;&#119;&#x63;&#x2e;&#x63;o&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | AUD | updated by <a href="mailto:&#114;&#111;&#x62;&#x65;&#114;t&#46;&#x63;&#46;t&#x61;&#111;&#x40;&#x63;&#110;&#x2e;&#112;&#119;c.c&#x6f;m">&#114;&#111;&#x62;&#x65;&#114;t&#46;&#x63;&#46;t&#x61;&#111;&#x40;&#x63;&#110;&#x2e;&#112;&#119;c.c&#x6f;m</a> at Wed Mar 13 06:41:12 UTC 2024 | | 5f60da64-a053-4a65-8248-4caf05009929 | EUR | updated by <a href="mailto:&#x72;&#111;be&#114;&#116;&#46;c&#46;&#x74;&#x61;&#x6f;&#64;&#99;&#x6e;&#x2e;&#112;&#x77;c&#46;&#x63;o&#x6d;">&#x72;&#111;be&#114;&#116;&#46;c&#46;&#x74;&#x61;&#x6f;&#64;&#99;&#x6e;&#x2e;&#112;&#x77;c&#46;&#x63;o&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | INR | updated by <a href="mailto:&#x72;&#111;&#98;&#101;&#x72;&#116;&#x2e;&#x63;&#x2e;&#116;&#97;&#x6f;&#64;c&#110;&#46;&#x70;&#119;&#x63;&#x2e;&#99;o&#109;">&#x72;&#111;&#98;&#101;&#x72;&#116;&#x2e;&#x63;&#x2e;&#116;&#97;&#x6f;&#64;c&#110;&#46;&#x70;&#119;&#x63;&#x2e;&#99;o&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | JPY | updated by <a href="mailto:&#114;obe&#x72;&#x74;&#x2e;&#99;&#46;&#x74;&#97;&#x6f;&#64;&#x63;&#110;.&#x70;&#x77;&#x63;&#46;&#99;&#x6f;&#109;">&#114;obe&#x72;&#x74;&#x2e;&#99;&#46;&#x74;&#97;&#x6f;&#64;&#x63;&#110;.&#x70;&#x77;&#x63;&#46;&#99;&#x6f;&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | IDR | updated by <a href="mailto:&#x72;&#x6f;&#98;&#x65;&#x72;&#116;&#x2e;&#x63;&#x2e;&#116;&#x61;&#111;&#64;&#99;&#x6e;&#x2e;&#112;&#119;&#x63;&#46;&#99;o&#x6d;">&#x72;&#x6f;&#98;&#x65;&#x72;&#116;&#x2e;&#x63;&#x2e;&#116;&#x61;&#111;&#64;&#99;&#x6e;&#x2e;&#112;&#119;&#x63;&#46;&#99;o&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | GBP | updated by <a href="mailto:r&#x6f;b&#x65;&#x72;t&#46;&#x63;&#46;t&#x61;&#111;&#x40;&#x63;&#110;&#46;p&#x77;&#x63;&#46;&#99;&#x6f;&#109;">r&#x6f;b&#x65;&#x72;t&#46;&#x63;&#46;t&#x61;&#111;&#x40;&#x63;&#110;&#46;p&#x77;&#x63;&#46;&#99;&#x6f;&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | CAD | updated by <a href="mailto:&#x72;&#111;b&#x65;r&#x74;&#x2e;c.&#x74;a&#111;@&#99;&#110;&#46;&#x70;&#x77;&#x63;&#46;&#99;o&#109;">&#x72;&#111;b&#x65;r&#x74;&#x2e;c.&#x74;a&#111;@&#99;&#110;&#46;&#x70;&#x77;&#x63;&#46;&#99;o&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ 11 rows in set (0.003 sec)</p>
+<p>The date is 5/20/2024, are the changes missing for currencies table?</p>
+<p>When user did a single row change for the currencies. There is a &ldquo;new record&rdquo; appears :&ldquo;updated by <a href="mailto:r&#x6f;&#x62;&#x65;r&#116;&#x2e;c.&#116;&#x61;&#111;&#x40;&#99;n&#46;&#112;&#119;&#x63;&#x2e;c&#x6f;m">r&#x6f;&#x62;&#x65;r&#116;&#x2e;c.&#116;&#x61;&#111;&#x40;&#99;n&#46;&#112;&#119;&#x63;&#x2e;c&#x6f;m</a> at Wed Mar 13 06:41:12 UTC 2024 &rdquo; , the data is updated as user&rsquo;s change today 5/20/2024, but the modify record is 3/13/2024.</p>
+<p>MySQL [pfic]&gt; SELECT * FROM pfic.currencies; +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | id | currency_id | q4_rate | average_rate | year | description | q1_rate | q2_rate | q3_rate | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | 033D34B8-78D2-4AA0-BA35-27CECB347EBE | 1 | 1.000000 | 1.000000 | 2023 | updated by <a href="mailto:&#119;e&#x69;&#119;&#x65;i&#x2e;&#x77;&#119;&#46;&#x79;&#97;&#110;&#x67;@&#x63;&#110;.&#112;&#119;&#x63;&#x2e;&#99;&#111;m">&#119;e&#x69;&#119;&#x65;i&#x2e;&#x77;&#119;&#46;&#x79;&#97;&#110;&#x67;@&#x63;&#110;.&#112;&#119;&#x63;&#x2e;&#99;&#111;m</a> at Thu Feb 09 06:13:52 UTC 2023 | 1.000000 | 1.000000 | 1.000000 | | 0db6fbc0-7cb6-11eb-8269-8356e4c3b165 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.274196 | 1.341120 | 2020 | This currency is added by <a href="mailto:&#x70;&#x65;n&#110;y&#x2e;&#119;.&#119;&#101;&#105;&#x40;&#99;&#110;&#x2e;&#x70;&#119;c&#46;&#x63;&#111;m">&#x70;&#x65;n&#110;y&#x2e;&#119;.&#119;&#101;&#105;&#x40;&#99;&#110;&#x2e;&#x70;&#119;c&#46;&#x63;&#111;m</a> | 1.417125 | 1.364241 | 1.336428 | | 1F091F8E-9BCF-4D47-8077-5CE41CBFF673 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.354535 | 1.301664 | 2022 | updated by <a href="mailto:&#x70;&#101;&#x6e;&#110;&#121;&#x2e;&#119;&#x2e;we&#x69;&#x40;&#99;&#110;&#x2e;p&#119;c&#46;&#99;&#x6f;&#109;">&#x70;&#101;&#x6e;&#110;&#121;&#x2e;&#119;&#x2e;we&#x69;&#x40;&#99;&#110;&#x2e;p&#119;c&#46;&#99;&#x6f;&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.250600 | 1.289224 | 1.373988 | | 207DDE20-796B-4582-BE1D-BF8D2251B676 | 3 | 7.808760 | 7.830600 | 2022 | updated by <a href="mailto:p&#x65;&#x6e;&#110;y&#46;&#119;.w&#101;&#x69;&#x40;&#99;n.&#x70;w&#99;&#46;c&#111;&#109;">p&#x65;&#x6e;&#110;y&#46;&#119;.w&#101;&#x69;&#x40;&#99;n.&#x70;w&#99;&#46;c&#111;&#109;</a> at Mon Feb 28 01:02:07 UTC 2022 | 7.830562 | 7.846677 | 7.849858 | | 283FE5C0-9B79-4F29-BFCC-19B829CBB5E1 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.377050 | 1.332276 | 2021 | updated by <a href="mailto:&#x70;e&#x6e;&#x6e;&#x79;&#x2e;&#x77;&#x2e;we&#x69;@&#99;&#110;&#46;&#x70;&#119;&#x63;&#46;c&#111;&#x6d;">&#x70;e&#x6e;&#x6e;&#x79;&#x2e;&#x77;&#x2e;we&#x69;@&#99;&#110;&#46;&#x70;&#119;&#x63;&#46;c&#111;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.314488 | 1.332124 | 1.386670 | | 3373A1AA-C2E0-48AA-98F1-4C36FD67230C | 2 | 6.968000 | 6.908800 | 2019 | NULL | 6.711900 | 6.866800 | 7.138300 | | 3517E241-E8BA-45D6-9B06-2C5DEDD09E27 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 82.747525 | 78.538552 | 2022 | updated by <a href="mailto:&#x70;e&#110;&#x6e;&#121;.&#x77;&#x2e;w&#101;&#x69;@&#x63;&#x6e;&#46;p&#119;c.c&#x6f;&#x6d;">&#x70;e&#110;&#x6e;&#121;.&#x77;&#x2e;w&#101;&#x69;@&#x63;&#x6e;&#46;p&#119;c.c&#x6f;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 75.587429 | 78.828050 | 81.503067 | | 38039DEE-F418-49B1-89C1-1B473BC8778C | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.468020 | NULL | 2023 | updated by <a href="mailto:&#119;&#x65;&#105;&#119;e&#x69;&#46;&#x77;w.&#121;&#97;n&#x67;@&#99;&#x6e;&#46;&#x70;&#119;&#x63;&#46;&#x63;&#111;&#109;">&#119;&#x65;&#105;&#119;e&#x69;&#46;&#x77;w.&#121;&#97;n&#x67;@&#99;&#x6e;&#46;&#x70;&#119;&#x63;&#46;&#x63;&#111;&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | NULL | NULL | NULL | | 3904633A-EB2B-410C-A0A1-EADC77A5615C | 2 | 6.876400 | 6.614600 | 2018 | NULL | 6.280700 | 6.619800 | 6.868300 | | 3DBD4EF7-002B-4AAB-B3BC-6A7D22C434DA | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.269874 | 1.253744 | 2021 | updated by <a href="mailto:&#112;&#x65;&#x6e;&#110;y&#x2e;&#x77;.&#x77;&#101;i&#64;&#x63;&#110;&#46;&#112;&#x77;&#x63;.&#x63;o&#x6d;">&#112;&#x65;&#x6e;&#110;y&#x2e;&#x77;.&#x77;&#101;i&#64;&#x63;&#110;&#46;&#112;&#x77;&#x63;.&#x63;o&#x6d;</a> at Thu Mar 11 02:41:26 UTC 2021 | 1.259194 | 1.239598 | 1.271062 | | 42347DA9-0354-496A-8B74-7EF4F80FA63C | 2 | 6.898300 | 6.730574 | 2022 | updated by <a href="mailto:&#x70;&#101;&#110;&#x6e;y&#46;&#x77;&#x2e;w&#101;&#105;&#x40;&#x63;&#x6e;.p&#119;&#x63;&#x2e;&#99;&#x6f;&#109;">&#x70;&#101;&#110;&#x6e;y&#46;&#x77;&#x2e;w&#101;&#105;&#x40;&#x63;&#x6e;.p&#119;&#x63;&#x2e;&#99;&#x6f;&#109;</a> at Mon Feb 28 01:02:07 UTC 2022 | 6.343092 | 6.697722 | 7.112828 | | 4254 | 1 | 1.000000 | 1.000000 | 2019 | NULL | 1.000000 | 1.000000 | 1.000000 | | 45BF00CD-C43A-4EA5-9E2A-6F5FD94618B5 | 1 | 1.000000 | 1.000000 | 2020 | NULL | 1.000000 | 1.000000 | 1.000000 | | 479dc120-80bc-11eb-9ec1-39b260562b51 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.732596 | 0.779832 | 2020 | NULL | 0.808101 | 0.811219 | 0.776899 | | 4C59C1EE-2E8A-4C98-95A1-413F0632F95E | 3 | 7.808530 | NULL | 2023 | updated by <a href="mailto:&#x77;e&#x69;&#x77;&#101;&#105;&#x2e;&#x77;&#x77;&#46;&#121;&#97;&#110;&#103;@&#99;&#x6e;&#x2e;&#x70;&#x77;c&#x2e;&#99;om">&#x77;e&#x69;&#x77;&#101;&#105;&#x2e;&#x77;&#x77;&#46;&#121;&#97;&#110;&#103;@&#99;&#x6e;&#x2e;&#x70;&#x77;c&#x2e;&#99;om</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 4DADBE95-87A0-4561-AACA-7FE11C20CF16 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 83.185800 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;&#x69;&#x77;&#x65;&#105;&#46;w&#119;&#46;&#121;&#x61;&#110;&#x67;@&#x63;&#x6e;.p&#x77;&#99;&#x2e;com">&#x77;&#x65;&#x69;&#x77;&#x65;&#105;&#46;w&#119;&#46;&#121;&#x61;&#110;&#x67;@&#x63;&#x6e;.p&#x77;&#99;&#x2e;com</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 607EA0C6-26F6-4E05-BBA8-D5201D4A6BAC | 2 | 6.361418 | 6.451791 | 2021 | NULL | 6.556486 | 6.457854 | 6.457995 | | 60B93CEB-CA1B-46CA-9194-273970D227A0 | 3 | 7.797426 | 7.772671 | 2021 | NULL | 7.774402 | 7.765206 | 7.786682 | | 62B0F410-02F1-4979-BA2A-0756327243D2 | 2 | 7.079800 | NULL | 2023 | updated by <a href="mailto:&#x72;&#x6f;&#x62;&#101;&#114;t&#x2e;&#99;&#x2e;t&#x61;&#111;&#x40;c&#110;&#x2e;pw&#x63;&#46;com">&#x72;&#x6f;&#x62;&#101;&#114;t&#x2e;&#99;&#x2e;t&#x61;&#111;&#x40;c&#110;&#x2e;pw&#x63;&#46;com</a> at Wed Mar 13 06:41:12 UTC 2024 | 6.868040 | NULL | NULL | | 6A26144B-8685-4A99-BA39-B2C05032976B | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.785462 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;&#x77;&#x2e;&#x79;a&#x6e;&#x67;&#x40;&#99;n&#46;&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;&#109;">&#x77;&#x65;&#x69;&#119;&#101;&#x69;&#x2e;&#x77;&#x77;&#x2e;&#x79;a&#x6e;&#x67;&#x40;&#99;n&#46;&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;&#109;</a> at Thu Feb 09 06:13:52 UTC 2023 | NULL | NULL | NULL | | 6E63098F-AFA2-4414-AF87-AF0033BB04BD | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1294.460000 | NULL | 2023 | updated by <a href="mailto:&#119;&#x65;&#x69;&#x77;&#x65;&#105;&#46;&#x77;&#x77;&#46;&#121;&#97;&#110;g&#64;&#x63;&#110;&#46;pw&#x63;&#x2e;&#99;&#x6f;&#x6d;">&#119;&#x65;&#x69;&#x77;&#x65;&#105;&#46;&#x77;&#x77;&#46;&#121;&#97;&#110;g&#64;&#x63;&#110;&#46;pw&#x63;&#x2e;&#99;&#x6f;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 798C3A3A-4684-44F5-98EA-D857D0D1ABAC | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 141.035000 | NULL | 2023 | updated by <a href="mailto:&#x77;&#101;&#x69;&#119;&#x65;&#x69;&#46;&#119;&#x77;&#46;y&#x61;&#x6e;&#103;&#x40;&#x63;&#x6e;&#46;p&#119;&#x63;.&#99;&#x6f;&#x6d;">&#x77;&#101;&#x69;&#119;&#x65;&#x69;&#46;&#119;&#x77;&#46;y&#x61;&#x6e;&#103;&#x40;&#x63;&#x6e;&#46;p&#119;&#x63;.&#99;&#x6f;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | 7B4A2876-5D75-48F4-AA18-A1F39DDA79D5 | 5f60da64-a053-4a65-8248-4caf05009929 | 0.934274 | 0.951134 | 2022 | updated by <a href="mailto:&#112;&#101;n&#110;&#121;&#46;&#x77;&#x2e;&#119;&#101;&#x69;&#64;&#x63;&#110;.p&#119;&#x63;&#x2e;co&#x6d;">&#112;&#101;n&#110;&#121;&#46;&#x77;&#x2e;&#119;&#101;&#x69;&#64;&#x63;&#110;.p&#119;&#x63;&#x2e;co&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.899698 | 0.956909 | 1.020572 | | 7b53ce10-d882-11eb-b6eb-51d4970dace9 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.297312 | 1.453330 | 2020 | NULL | 1.628366 | 1.454142 | 1.400468 | | 815D8666-F5BC-4E0F-8FBB-41530876945B | 5f60da64-a053-4a65-8248-4caf05009929 | 0.881594 | 0.845477 | 2021 | updated by <a href="mailto:&#x70;&#x65;&#x6e;&#110;&#121;.&#119;&#x2e;&#119;&#101;&#x69;&#64;&#99;&#x6e;&#46;&#112;&#x77;&#99;&#x2e;&#99;&#x6f;&#109;">&#x70;&#x65;&#x6e;&#110;&#121;.&#119;&#x2e;&#119;&#101;&#x69;&#64;&#99;&#x6e;&#46;&#112;&#x77;&#99;&#x2e;&#99;&#x6f;&#109;</a> at Thu Mar 11 02:42:26 UTC 2021 | 0.852680 | 0.841852 | 0.862846 | | 85D8162D-AD61-47EE-A20C-DCBAE26E2EEB | 3 | 7.787600 | 7.835100 | 2019 | NULL | 7.850000 | 7.812900 | 7.839900 | | 85FEF722-161B-4065-80B7-A98D2FAF89A4 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 131.101000 | 131.420982 | 2022 | updated by <a href="mailto:&#x70;&#x65;&#x6e;n&#x79;&#x2e;w.w&#x65;&#x69;&#x40;&#x63;&#110;&#46;&#112;&#x77;&#99;&#46;&#99;&#111;m">&#x70;&#x65;&#x6e;n&#x79;&#x2e;w.w&#x65;&#x69;&#x40;&#x63;&#110;&#46;&#112;&#x77;&#99;&#46;&#99;&#111;m</a> at Mon Feb 28 01:04:48 UTC 2022 | 121.829574 | 136.108751 | 144.613376 | | 87F23629-1FF0-4549-B5EB-6186FFFCDFFE | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15560.755000 | 14848.624981 | 2022 | updated by <a href="mailto:&#119;&#x65;&#x69;w&#x65;&#x69;&#46;&#x77;&#119;&#46;y&#97;ng&#x40;&#x63;&#x6e;.&#112;&#x77;c&#46;&#x63;&#111;&#109;">&#119;&#x65;&#x69;w&#x65;&#x69;&#46;&#x77;&#119;&#46;y&#97;ng&#x40;&#x63;&#x6e;.&#112;&#x77;c&#46;&#x63;&#111;&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | 14352.489384 | 14915.656412 | 15257.678286 | | 8D0CF578-CE76-49C3-9570-990B4BF3A4CF | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.826638 | 0.811493 | 2022 | updated by <a href="mailto:&#112;&#101;&#110;n&#x79;&#46;&#x77;&#46;&#119;&#x65;&#x69;&#x40;&#99;&#x6e;.&#112;w&#99;&#x2e;c&#x6f;&#x6d;">&#112;&#101;&#110;n&#x79;&#46;&#x77;&#46;&#119;&#x65;&#x69;&#x40;&#99;&#x6e;.&#112;w&#99;&#x2e;c&#x6f;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.761407 | 0.823256 | 0.898086 | | 9A013112-9DD6-4762-807C-F99B7A2A508C | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.325170 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;&#105;we&#x69;&#46;&#119;w&#x2e;&#x79;&#x61;&#110;&#x67;&#64;&#99;n&#x2e;&#112;wc.&#99;o&#109;">&#x77;&#x65;&#105;we&#x69;&#46;&#119;w&#x2e;&#x79;&#x61;&#110;&#x67;&#64;&#99;n&#x2e;&#112;wc.&#99;o&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | NULL | NULL | NULL | | 9a921da0-54ab-11eb-ae14-7d806ff58e7a | 5f60da64-a053-4a65-8248-4caf05009929 | 0.815352 | 0.877299 | 2020 | This currency is added by <a href="mailto:p&#x65;&#110;&#110;&#x79;.&#119;.&#119;&#101;&#x69;&#64;&#x63;n&#x2e;&#x70;wc&#46;&#99;&#111;&#109;">p&#x65;&#110;&#110;&#x79;.&#119;.&#119;&#101;&#x69;&#64;&#x63;n&#x2e;&#x70;wc&#46;&#99;&#111;&#109;</a> | 0.909048 | 0.875319 | 0.852905 | | 9f2cea60-80bc-11eb-9ec1-39b260562b51 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 103.166820 | 106.757683 | 2020 | NULL | 108.112670 | 107.786434 | 105.579828 | | A64A66B4-07B8-4759-B6BE-62A01594BD4B | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 115.093029 | 109.817398 | 2021 | This currency is added by <a href="mailto:p&#101;n&#110;&#121;&#46;&#x77;.&#x77;&#101;&#x69;&#64;&#x63;&#x6e;&#46;pw&#99;&#x2e;&#99;&#111;&#x6d;">p&#101;n&#110;&#121;&#46;&#x77;.&#x77;&#101;&#x69;&#64;&#x63;&#x6e;&#46;pw&#99;&#x2e;&#99;&#111;&#x6d;</a> | 110.699958 | 110.743952 | 111.708661 | | A91B3C44-38C8-4D30-A4F5-897F83E39512 | 1 | 1.000000 | 1.000000 | 2018 | NULL | 1.000000 | 1.000000 | 1.000000 | | b61182e0-80bc-11eb-9ec1-39b260562b51 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1087.037776 | 1179.713160 | 2020 | NULL | 1220.107854 | 1200.204758 | 1167.585628 | | B6864BCF-8B23-48B1-AC86-102FE7CCA624 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 74.366634 | 73.915199 | 2021 | This currency is added by <a href="mailto:p&#x65;&#110;&#110;y&#46;&#x77;.&#x77;&#x65;i@&#x63;n&#46;p&#x77;&#99;&#x2e;&#x63;om">p&#x65;&#110;&#110;y&#46;&#x77;.&#x77;&#x65;i@&#x63;n&#46;p&#x77;&#99;&#x2e;&#x63;om</a> | 73.297281 | 74.284374 | 74.210652 | | B96F5F81-F40B-49F4-BFF5-369EE1DFB26F | 2 | 6.532645 | 6.901958 | 2020 | NULL | 7.089556 | 7.069729 | 6.803297 | | B999226E-369A-4AB7-9B83-F609BA859DC9 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1189.662014 | 1144.924442 | 2021 | This currency is added by <a href="mailto:p&#x65;&#110;&#110;y&#46;&#x77;&#x2e;&#x77;&#101;&#x69;@&#99;n&#x2e;&#112;&#119;&#x63;&#x2e;c&#111;&#x6d;">p&#x65;&#110;&#110;y&#46;&#x77;&#x2e;&#x77;&#101;&#x69;@&#99;n&#x2e;&#112;&#119;&#x63;&#x2e;c&#111;&#x6d;</a> | 1129.531652 | 1129.622538 | 1184.752844 | | BD4086E2-71BB-47DB-8523-6EA4E59E0D3D | 3 | 7.752704 | 7.756134 | 2020 | NULL | 7.752868 | 7.750375 | 7.750064 | | c9537930-80bc-11eb-9ec1-39b260562b51 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 73.022441 | 73.976030 | 2020 | NULL | 74.810921 | 75.288745 | 73.632718 | | CA0FFE81-2241-42AB-8271-27A9BECE0DE8 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.740082 | 0.727128 | 2021 | This currency is added by <a href="mailto:p&#x65;&#x6e;&#110;&#x79;.&#119;&#46;&#119;&#101;&#105;&#64;&#99;&#x6e;.&#x70;&#x77;c&#x2e;&#99;&#111;&#x6d;">p&#x65;&#x6e;&#110;&#x79;.&#119;&#46;&#119;&#101;&#105;&#64;&#99;&#x6e;.&#x70;&#x77;c&#x2e;&#99;&#111;&#x6d;</a> | 0.726399 | 0.722766 | 0.742978 | | df39aec0-f859-11ec-8614-3d66a03153cf | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 14241.948720 | 14309.988302 | 2021 | NULL | 14568.554890 | 14542.391381 | 14317.447779 | | E2908A51-5B02-4EDB-A468-04818A65D2B5 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1261.915000 | 1291.829282 | 2022 | updated by <a href="mailto:&#119;&#101;&#x69;we&#x69;&#x2e;w&#x77;&#46;&#121;&#97;&#110;&#x67;&#x40;&#99;n&#x2e;&#x70;&#119;&#x63;&#46;&#99;&#x6f;&#x6d;">&#119;&#101;&#x69;we&#x69;&#x2e;w&#x77;&#46;&#121;&#97;&#110;&#x67;&#x40;&#99;n&#x2e;&#x70;&#119;&#x63;&#46;&#99;&#x6f;&#x6d;</a> at Thu Feb 09 06:13:52 UTC 2023 | 1212.993563 | 1295.589204 | 1435.442487 | | E3451651-D0CA-4E0E-9231-609FBB325AC6 | 1 | 1.000000 | 1.000000 | 2021 | NULL | 1.000000 | 1.000000 | 1.000000 | | EAD97D41-1DBB-4FF5-8547-689D86793A01 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.466684 | 1.442088 | 2022 | updated by <a href="mailto:&#119;e&#x69;&#119;e&#x69;&#x2e;&#119;&#x77;&#46;y&#97;ng@&#x63;&#x6e;&#x2e;p&#119;c&#46;&#x63;&#x6f;&#x6d;">&#119;e&#x69;&#119;e&#x69;&#x2e;&#119;&#x77;&#46;y&#97;ng@&#x63;&#x6e;&#x2e;p&#119;c&#46;&#x63;&#x6f;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | 1.335003 | 1.450957 | 1.547793 | | EBDB14D6-1B08-41AC-8613-8FEBE102CA87 | 1 | 1.000000 | 1.000000 | 2022 | updated by <a href="mailto:&#x70;enny&#x2e;&#x77;&#x2e;w&#x65;&#105;&#64;c&#x6e;&#x2e;&#112;&#x77;c&#x2e;&#x63;&#x6f;&#x6d;">&#x70;enny&#x2e;&#x77;&#x2e;w&#x65;&#105;&#64;c&#x6e;&#x2e;&#112;&#x77;c&#x2e;&#x63;&#x6f;&#x6d;</a> at Mon Feb 28 01:02:07 UTC 2022 | 1.000000 | 1.000000 | 1.000000 | | F1D399B9-985B-4032-AC73-C3CCCE1AC13D | 5f60da64-a053-4a65-8248-4caf05009929 | 0.906023 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;&#105;&#119;&#101;&#x69;&#46;&#x77;&#x77;.&#121;a&#110;&#x67;&#64;c&#x6e;&#46;&#x70;&#x77;&#x63;&#x2e;&#99;&#x6f;&#x6d;">&#x77;&#x65;&#105;&#119;&#101;&#x69;&#46;&#x77;&#x77;.&#121;a&#110;&#x67;&#64;c&#x6e;&#46;&#x70;&#x77;&#x63;&#x2e;&#99;&#x6f;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | NULL | NULL | NULL | | F7FEE7F4-1977-4F47-98BA-1C08D82BD645 | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15389.000000 | NULL | 2023 | updated by <a href="mailto:&#119;&#101;&#105;&#119;&#x65;&#x69;&#x2e;w&#119;&#46;&#x79;an&#x67;@&#x63;&#x6e;&#x2e;&#x70;&#x77;&#99;&#46;c&#x6f;&#109;">&#119;&#101;&#105;&#119;&#x65;&#x69;&#x2e;w&#119;&#46;&#x79;an&#x67;@&#x63;&#x6e;&#x2e;&#x70;&#x77;&#99;&#46;c&#x6f;&#109;</a> at Thu Feb 09 08:04:37 UTC 2023 | NULL | NULL | NULL | | F9CECB79-3B9F-4DD7-8028-91CD5F6A83ED | 3 | 7.831700 | 7.837500 | 2018 | NULL | 7.849100 | 7.846300 | 7.828700 | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ 49 rows in set (0.003 sec)</p>
+<p>When user update all records again, The currencies table value updated, but change log is 3/13/2024, and one of previous log is 5/20/2024.</p>
+<p>MySQL [pfic]&gt; SELECT * FROM pfic.currencies; +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | id | currency_id | q4_rate | average_rate | year | description | q1_rate | q2_rate | q3_rate | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ | 033D34B8-78D2-4AA0-BA35-27CECB347EBE | 1 | 1.000000 | 1.000000 | 2023 | updated by <a href="mailto:&#x77;&#101;&#105;&#119;e&#105;.&#x77;&#119;.&#121;a&#x6e;&#103;&#64;cn&#x2e;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#x6d;">&#x77;&#101;&#105;&#119;e&#105;.&#x77;&#119;.&#121;a&#x6e;&#103;&#64;cn&#x2e;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#x6d;</a> at Thu Feb 09 06:13:52 UTC 2023 | 1.000000 | 1.000000 | 1.000000 | | 0db6fbc0-7cb6-11eb-8269-8356e4c3b165 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.274196 | 1.341120 | 2020 | This currency is added by <a href="mailto:&#x70;e&#110;ny&#x2e;&#x77;.w&#x65;i&#64;&#x63;&#x6e;&#x2e;&#112;&#x77;&#x63;&#x2e;&#99;&#111;&#109;">&#x70;e&#110;ny&#x2e;&#x77;.w&#x65;i&#64;&#x63;&#x6e;&#x2e;&#112;&#x77;&#x63;&#x2e;&#99;&#111;&#109;</a> | 1.417125 | 1.364241 | 1.336428 | | 1F091F8E-9BCF-4D47-8077-5CE41CBFF673 | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.354535 | 1.301664 | 2022 | updated by <a href="mailto:&#112;e&#x6e;ny&#x2e;&#119;.&#119;e&#105;&#x40;&#99;&#x6e;&#x2e;&#112;&#x77;c.&#x63;o&#109;">&#112;e&#x6e;ny&#x2e;&#119;.&#119;e&#105;&#x40;&#99;&#x6e;&#x2e;&#112;&#x77;c.&#x63;o&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.250600 | 1.289224 | 1.373988 | | 207DDE20-796B-4582-BE1D-BF8D2251B676 | 3 | 7.808760 | 7.830600 | 2022 | updated by <a href="mailto:pe&#x6e;&#110;&#x79;.&#119;&#46;&#x77;&#x65;&#105;&#x40;c&#110;&#46;&#112;&#x77;c&#46;&#x63;&#111;&#x6d;">pe&#x6e;&#110;&#x79;.&#119;&#46;&#x77;&#x65;&#105;&#x40;c&#110;&#46;&#112;&#x77;c&#46;&#x63;&#111;&#x6d;</a> at Mon Feb 28 01:02:07 UTC 2022 | 7.830562 | 7.846677 | 7.849858 | | 283FE5C0-9B79-4F29-BFCC-19B829CBB5E1 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.377050 | 1.332276 | 2021 | updated by <a href="mailto:&#x70;&#x65;&#110;&#110;&#121;.w&#46;w&#101;&#x69;&#x40;&#x63;&#110;&#x2e;&#112;&#119;&#99;&#x2e;&#99;om">&#x70;&#x65;&#110;&#110;&#121;.w&#46;w&#101;&#x69;&#x40;&#x63;&#110;&#x2e;&#112;&#119;&#99;&#x2e;&#99;om</a> at Mon Feb 28 01:04:48 UTC 2022 | 1.314488 | 1.332124 | 1.386670 | | 3373A1AA-C2E0-48AA-98F1-4C36FD67230C | 2 | 6.968000 | 6.908800 | 2019 | NULL | 6.711900 | 6.866800 | 7.138300 | | 3517E241-E8BA-45D6-9B06-2C5DEDD09E27 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 82.747525 | 78.538552 | 2022 | updated by <a href="mailto:&#x70;e&#110;&#110;&#x79;&#46;w&#x2e;w&#101;&#105;@&#99;n&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#x6d;">&#x70;e&#110;&#110;&#x79;&#46;w&#x2e;w&#101;&#105;@&#99;n&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 75.587429 | 78.828050 | 81.503067 | | 38039DEE-F418-49B1-89C1-1B473BC8778C | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.468020 | NULL | 2023 | updated by <a href="mailto:&#119;&#101;&#105;&#119;&#101;&#x69;&#x2e;&#119;w&#x2e;&#121;&#x61;&#x6e;g&#x40;&#99;&#x6e;.&#x70;&#119;&#99;&#46;c&#x6f;&#109;">&#119;&#101;&#105;&#119;&#101;&#x69;&#x2e;&#119;w&#x2e;&#121;&#x61;&#x6e;g&#x40;&#99;&#x6e;.&#x70;&#119;&#99;&#46;c&#x6f;&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | NULL | NULL | NULL | | 3904633A-EB2B-410C-A0A1-EADC77A5615C | 2 | 6.876400 | 6.614600 | 2018 | NULL | 6.280700 | 6.619800 | 6.868300 | | 3DBD4EF7-002B-4AAB-B3BC-6A7D22C434DA | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.269874 | 1.253744 | 2021 | updated by <a href="mailto:&#112;&#101;&#x6e;&#110;&#121;&#x2e;&#119;&#x2e;w&#x65;&#105;&#x40;&#x63;&#110;&#46;&#x70;&#119;&#x63;.&#x63;&#111;m">&#112;&#101;&#x6e;&#110;&#121;&#x2e;&#119;&#x2e;w&#x65;&#105;&#x40;&#x63;&#110;&#46;&#x70;&#119;&#x63;.&#x63;&#111;m</a> at Thu Mar 11 02:41:26 UTC 2021 | 1.259194 | 1.239598 | 1.271062 | | 42347DA9-0354-496A-8B74-7EF4F80FA63C | 2 | 6.898300 | 6.730574 | 2022 | updated by <a href="mailto:&#x70;e&#x6e;&#x6e;&#121;&#x2e;w&#x2e;&#119;&#x65;&#105;&#x40;cn&#x2e;&#112;w&#99;.&#x63;&#111;&#x6d;">&#x70;e&#x6e;&#x6e;&#121;&#x2e;w&#x2e;&#119;&#x65;&#105;&#x40;cn&#x2e;&#112;w&#99;.&#x63;&#111;&#x6d;</a> at Mon Feb 28 01:02:07 UTC 2022 | 6.343092 | 6.697722 | 7.112828 | | 4254 | 1 | 1.000000 | 1.000000 | 2019 | NULL | 1.000000 | 1.000000 | 1.000000 | | 45BF00CD-C43A-4EA5-9E2A-6F5FD94618B5 | 1 | 1.000000 | 1.000000 | 2020 | NULL | 1.000000 | 1.000000 | 1.000000 | | 479dc120-80bc-11eb-9ec1-39b260562b51 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.732596 | 0.779832 | 2020 | NULL | 0.808101 | 0.811219 | 0.776899 | | 4C59C1EE-2E8A-4C98-95A1-413F0632F95E | 3 | 7.808530 | 7.828750 | 2023 | updated by <a href="mailto:&#x72;&#x6f;b&#x65;&#x72;&#116;.c&#x2e;&#x74;&#97;&#111;&#x40;&#x63;&#x6e;&#x2e;&#x70;wc&#x2e;c&#111;&#109;">&#x72;&#x6f;b&#x65;&#x72;&#116;.c&#x2e;&#x74;&#97;&#111;&#x40;&#x63;&#x6e;&#x2e;&#x70;wc&#x2e;c&#111;&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | 7.849830 | 7.836140 | 7.831450 | | 4DADBE95-87A0-4561-AACA-7FE11C20CF16 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 83.185800 | 82.576900 | 2023 | updated by <a href="mailto:&#x72;ob&#x65;r&#x74;&#46;&#99;&#46;&#116;&#97;&#111;&#64;c&#110;.&#x70;w&#x63;.&#99;&#111;&#x6d;">&#x72;ob&#x65;r&#x74;&#46;&#99;&#46;&#116;&#97;&#111;&#64;c&#110;.&#x70;w&#x63;.&#99;&#111;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | 82.164200 | 82.067700 | 83.180200 | | 607EA0C6-26F6-4E05-BBA8-D5201D4A6BAC | 2 | 6.361418 | 6.451791 | 2021 | NULL | 6.556486 | 6.457854 | 6.457995 | | 60B93CEB-CA1B-46CA-9194-273970D227A0 | 3 | 7.797426 | 7.772671 | 2021 | NULL | 7.774402 | 7.765206 | 7.786682 | | 62B0F410-02F1-4979-BA2A-0756327243D2 | 2 | 7.079800 | 7.074790 | 2023 | updated by <a href="mailto:&#x72;&#111;&#98;e&#114;&#116;.&#99;&#x2e;&#x74;&#x61;&#x6f;&#x40;&#99;n.&#112;&#x77;c&#x2e;&#99;&#111;m">&#x72;&#111;&#98;e&#114;&#116;.&#99;&#x2e;&#x74;&#x61;&#x6f;&#x40;&#99;n.&#112;&#x77;c&#x2e;&#99;&#111;m</a> at Mon May 20 08:34:05 UTC 2024 | 6.868040 | 7.255550 | 7.295200 | | 6A26144B-8685-4A99-BA39-B2C05032976B | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.785462 | 0.804367 | 2023 | updated by <a href="mailto:&#114;&#111;&#x62;&#x65;r&#x74;.&#99;&#x2e;t&#97;&#111;@&#99;&#110;.&#x70;&#119;&#x63;&#x2e;&#99;&#111;&#x6d;">&#114;&#111;&#x62;&#x65;r&#x74;.&#99;&#x2e;t&#97;&#111;@&#99;&#110;.&#x70;&#119;&#x63;&#x2e;&#99;&#111;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | 0.808534 | 0.789724 | 0.819394 | | 6E63098F-AFA2-4414-AF87-AF0033BB04BD | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1294.460000 | 1306.460000 | 2023 | updated by <a href="mailto:&#114;&#111;&#x62;&#x65;&#114;&#116;&#46;&#x63;.&#x74;&#97;&#x6f;&#x40;&#x63;&#110;&#46;&#112;wc&#46;&#x63;&#x6f;&#x6d;">&#114;&#111;&#x62;&#x65;&#114;&#116;&#46;&#x63;.&#x74;&#97;&#x6f;&#x40;&#x63;&#110;&#46;&#112;wc&#46;&#x63;&#x6f;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | 1302.320000 | 1318.860000 | 1352.920000 | | 798C3A3A-4684-44F5-98EA-D857D0D1ABAC | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 141.035000 | 140.526000 | 2023 | updated by <a href="mailto:&#x72;&#111;&#98;&#x65;&#x72;&#116;&#x2e;&#99;.&#x74;&#x61;&#111;&#64;&#x63;&#x6e;&#x2e;&#x70;&#x77;&#99;&#46;&#x63;o&#109;">&#x72;&#111;&#98;&#x65;&#x72;&#116;&#x2e;&#99;.&#x74;&#x61;&#111;&#64;&#x63;&#x6e;&#x2e;&#x70;&#x77;&#99;&#46;&#x63;o&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | 132.998000 | 144.562000 | 149.368000 | | 7B4A2876-5D75-48F4-AA18-A1F39DDA79D5 | 5f60da64-a053-4a65-8248-4caf05009929 | 0.934274 | 0.951134 | 2022 | updated by <a href="mailto:&#x70;e&#110;&#x6e;&#x79;&#x2e;&#119;&#46;&#x77;&#101;&#105;@&#x63;&#x6e;&#46;&#x70;&#x77;&#99;&#x2e;&#99;o&#109;">&#x70;e&#110;&#x6e;&#x79;&#x2e;&#119;&#46;&#x77;&#101;&#105;@&#x63;&#x6e;&#46;&#x70;&#x77;&#99;&#x2e;&#99;o&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.899698 | 0.956909 | 1.020572 | | 7b53ce10-d882-11eb-b6eb-51d4970dace9 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.297312 | 1.453330 | 2020 | NULL | 1.628366 | 1.454142 | 1.400468 | | 815D8666-F5BC-4E0F-8FBB-41530876945B | 5f60da64-a053-4a65-8248-4caf05009929 | 0.881594 | 0.845477 | 2021 | updated by <a href="mailto:&#x70;&#101;&#x6e;&#x6e;y&#x2e;&#119;&#x2e;&#x77;&#101;i@&#99;&#x6e;&#46;&#x70;&#x77;&#99;&#46;&#99;&#x6f;&#x6d;">&#x70;&#101;&#x6e;&#x6e;y&#x2e;&#119;&#x2e;&#x77;&#101;i@&#99;&#x6e;&#46;&#x70;&#x77;&#99;&#46;&#99;&#x6f;&#x6d;</a> at Thu Mar 11 02:42:26 UTC 2021 | 0.852680 | 0.841852 | 0.862846 | | 85D8162D-AD61-47EE-A20C-DCBAE26E2EEB | 3 | 7.787600 | 7.835100 | 2019 | NULL | 7.850000 | 7.812900 | 7.839900 | | 85FEF722-161B-4065-80B7-A98D2FAF89A4 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 131.101000 | 131.420982 | 2022 | updated by <a href="mailto:&#x70;&#x65;&#x6e;&#x6e;y&#x2e;&#119;&#46;&#x77;&#x65;i&#64;&#x63;&#110;&#46;&#x70;&#119;&#x63;&#46;&#x63;&#x6f;&#109;">&#x70;&#x65;&#x6e;&#x6e;y&#x2e;&#119;&#46;&#x77;&#x65;i&#64;&#x63;&#110;&#46;&#x70;&#119;&#x63;&#46;&#x63;&#x6f;&#109;</a> at Mon Feb 28 01:04:48 UTC 2022 | 121.829574 | 136.108751 | 144.613376 | | 87F23629-1FF0-4549-B5EB-6186FFFCDFFE | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15560.755000 | 14848.624981 | 2022 | updated by <a href="mailto:&#x77;&#x65;&#105;&#119;&#101;&#105;&#x2e;ww&#46;&#x79;&#x61;&#x6e;g&#x40;&#99;&#x6e;.&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;&#109;">&#x77;&#x65;&#105;&#119;&#101;&#105;&#x2e;ww&#46;&#x79;&#x61;&#x6e;g&#x40;&#99;&#x6e;.&#x70;&#x77;&#x63;&#46;&#x63;&#x6f;&#109;</a> at Thu Feb 09 06:43:10 UTC 2023 | 14352.489384 | 14915.656412 | 15257.678286 | | 8D0CF578-CE76-49C3-9570-990B4BF3A4CF | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.826638 | 0.811493 | 2022 | updated by <a href="mailto:&#112;e&#x6e;n&#121;&#x2e;&#119;&#46;&#x77;&#x65;&#105;&#x40;&#x63;n&#46;&#112;w&#x63;.&#x63;&#111;&#x6d;">&#112;e&#x6e;n&#121;&#x2e;&#119;&#46;&#x77;&#x65;&#105;&#x40;&#x63;n&#46;&#112;w&#x63;.&#x63;&#111;&#x6d;</a> at Mon Feb 28 01:04:48 UTC 2022 | 0.761407 | 0.823256 | 0.898086 | | 9A013112-9DD6-4762-807C-F99B7A2A508C | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | 1.325170 | 1.349510 | 2023 | updated by <a href="mailto:r&#111;&#98;&#101;&#x72;&#x74;&#x2e;&#x63;.&#116;&#x61;&#111;&#64;&#x63;&#110;&#x2e;&#x70;&#119;&#x63;&#46;&#99;&#111;&#109;">r&#111;&#98;&#101;&#x72;&#x74;&#x2e;&#x63;.&#116;&#x61;&#111;&#64;&#x63;&#110;&#x2e;&#x70;&#119;&#x63;&#46;&#99;&#111;&#109;</a> at Wed Mar 13 06:41:12 UTC 2024 | 1.353070 | 1.324920 | 1.358020 | | 9a921da0-54ab-11eb-ae14-7d806ff58e7a | 5f60da64-a053-4a65-8248-4caf05009929 | 0.815352 | 0.877299 | 2020 | This currency is added by <a href="mailto:&#x70;&#101;&#x6e;n&#121;&#x2e;&#119;&#x2e;&#x77;&#101;&#x69;&#64;&#x63;n.p&#x77;c&#46;&#99;&#111;&#109;">&#x70;&#101;&#x6e;n&#121;&#x2e;&#119;&#x2e;&#x77;&#101;&#x69;&#64;&#x63;n.p&#x77;c&#46;&#99;&#111;&#109;</a> | 0.909048 | 0.875319 | 0.852905 | | 9f2cea60-80bc-11eb-9ec1-39b260562b51 | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 103.166820 | 106.757683 | 2020 | NULL | 108.112670 | 107.786434 | 105.579828 | | A64A66B4-07B8-4759-B6BE-62A01594BD4B | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | 115.093029 | 109.817398 | 2021 | This currency is added by <a href="mailto:&#x70;en&#110;&#121;&#46;w&#46;&#119;e&#x69;&#64;c&#x6e;&#46;&#x70;&#119;&#x63;&#46;&#x63;o&#109;">&#x70;en&#110;&#121;&#46;w&#46;&#119;e&#x69;&#64;c&#x6e;&#46;&#x70;&#119;&#x63;&#46;&#x63;o&#109;</a> | 110.699958 | 110.743952 | 111.708661 | | A91B3C44-38C8-4D30-A4F5-897F83E39512 | 1 | 1.000000 | 1.000000 | 2018 | NULL | 1.000000 | 1.000000 | 1.000000 | | b61182e0-80bc-11eb-9ec1-39b260562b51 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1087.037776 | 1179.713160 | 2020 | NULL | 1220.107854 | 1200.204758 | 1167.585628 | | B6864BCF-8B23-48B1-AC86-102FE7CCA624 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 74.366634 | 73.915199 | 2021 | This currency is added by <a href="mailto:&#112;&#x65;&#x6e;&#110;y&#x2e;&#119;&#x2e;&#119;&#101;i&#x40;&#99;&#x6e;&#x2e;&#x70;&#x77;c&#46;c&#x6f;&#109;">&#112;&#x65;&#x6e;&#110;y&#x2e;&#119;&#x2e;&#119;&#101;i&#x40;&#99;&#x6e;&#x2e;&#x70;&#x77;c&#46;c&#x6f;&#109;</a> | 73.297281 | 74.284374 | 74.210652 | | B96F5F81-F40B-49F4-BFF5-369EE1DFB26F | 2 | 6.532645 | 6.901958 | 2020 | NULL | 7.089556 | 7.069729 | 6.803297 | | B999226E-369A-4AB7-9B83-F609BA859DC9 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1189.662014 | 1144.924442 | 2021 | This currency is added by <a href="mailto:pe&#110;n&#x79;&#x2e;&#119;&#x2e;&#x77;&#x65;i&#64;&#99;&#110;&#46;&#112;wc&#46;&#x63;&#x6f;&#109;">pe&#110;n&#x79;&#x2e;&#119;&#x2e;&#x77;&#x65;i&#64;&#99;&#110;&#46;&#112;wc&#46;&#x63;&#x6f;&#109;</a> | 1129.531652 | 1129.622538 | 1184.752844 | | BD4086E2-71BB-47DB-8523-6EA4E59E0D3D | 3 | 7.752704 | 7.756134 | 2020 | NULL | 7.752868 | 7.750375 | 7.750064 | | c9537930-80bc-11eb-9ec1-39b260562b51 | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | 73.022441 | 73.976030 | 2020 | NULL | 74.810921 | 75.288745 | 73.632718 | | CA0FFE81-2241-42AB-8271-27A9BECE0DE8 | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | 0.740082 | 0.727128 | 2021 | This currency is added by <a href="mailto:&#112;&#x65;&#x6e;&#x6e;&#x79;&#46;&#119;.w&#x65;&#105;&#x40;&#99;&#x6e;&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#109;">&#112;&#x65;&#x6e;&#x6e;&#x79;&#46;&#119;.w&#x65;&#105;&#x40;&#99;&#x6e;&#46;&#112;&#119;&#x63;&#x2e;&#x63;&#x6f;&#109;</a> | 0.726399 | 0.722766 | 0.742978 | | df39aec0-f859-11ec-8614-3d66a03153cf | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 14241.948720 | 14309.988302 | 2021 | NULL | 14568.554890 | 14542.391381 | 14317.447779 | | E2908A51-5B02-4EDB-A468-04818A65D2B5 | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | 1261.915000 | 1291.829282 | 2022 | updated by <a href="mailto:&#x77;&#101;&#105;w&#x65;&#x69;.&#x77;w&#x2e;&#x79;an&#103;&#x40;c&#x6e;&#46;&#112;&#119;&#99;&#x2e;&#x63;&#x6f;&#x6d;">&#x77;&#101;&#105;w&#x65;&#x69;.&#x77;w&#x2e;&#x79;an&#103;&#x40;c&#x6e;&#46;&#112;&#119;&#99;&#x2e;&#x63;&#x6f;&#x6d;</a> at Thu Feb 09 06:13:52 UTC 2023 | 1212.993563 | 1295.589204 | 1435.442487 | | E3451651-D0CA-4E0E-9231-609FBB325AC6 | 1 | 1.000000 | 1.000000 | 2021 | NULL | 1.000000 | 1.000000 | 1.000000 | | EAD97D41-1DBB-4FF5-8547-689D86793A01 | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | 1.466684 | 1.442088 | 2022 | updated by <a href="mailto:&#x77;&#101;i&#x77;&#101;&#105;&#x2e;w&#119;&#46;&#x79;&#x61;&#110;&#x67;@c&#110;&#46;p&#x77;&#99;&#46;&#99;&#111;&#x6d;">&#x77;&#101;i&#x77;&#101;&#105;&#x2e;w&#119;&#46;&#x79;&#x61;&#110;&#x67;@c&#110;&#46;p&#x77;&#99;&#46;&#99;&#111;&#x6d;</a> at Thu Feb 09 06:34:55 UTC 2023 | 1.335003 | 1.450957 | 1.547793 | | EBDB14D6-1B08-41AC-8613-8FEBE102CA87 | 1 | 1.000000 | 1.000000 | 2022 | updated by <a href="mailto:&#x70;&#x65;&#x6e;&#110;&#x79;&#x2e;&#119;&#46;&#x77;&#x65;&#x69;&#x40;&#x63;&#110;.&#112;&#119;&#99;&#x2e;c&#x6f;&#109;">&#x70;&#x65;&#x6e;&#110;&#x79;&#x2e;&#119;&#46;&#x77;&#x65;&#x69;&#x40;&#x63;&#110;.&#112;&#119;&#99;&#x2e;c&#x6f;&#109;</a> at Mon Feb 28 01:02:07 UTC 2022 | 1.000000 | 1.000000 | 1.000000 | | F1D399B9-985B-4032-AC73-C3CCCE1AC13D | 5f60da64-a053-4a65-8248-4caf05009929 | 0.906023 | 0.924802 | 2023 | updated by <a href="mailto:&#x72;o&#x62;&#101;&#114;t&#46;&#99;&#46;&#116;a&#x6f;@&#99;n&#46;p&#119;&#x63;&#x2e;&#99;&#x6f;m">&#x72;o&#x62;&#101;&#114;t&#46;&#99;&#46;&#116;a&#x6f;@&#99;n&#46;p&#119;&#x63;&#x2e;&#99;&#x6f;m</a> at Wed Mar 13 06:41:12 UTC 2024 | 0.919298 | 0.918668 | 0.945680 | | F7FEE7F4-1977-4F47-98BA-1C08D82BD645 | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | 15389.000000 | NULL | 2023 | updated by <a href="mailto:&#x77;&#x65;i&#119;&#101;i&#x2e;&#x77;w&#46;&#x79;&#97;&#110;g@&#99;&#x6e;&#46;&#112;&#x77;c.&#x63;&#x6f;&#x6d;">&#x77;&#x65;i&#119;&#101;i&#x2e;&#x77;w&#46;&#x79;&#97;&#110;g@&#99;&#x6e;&#46;&#112;&#x77;c.&#x63;&#x6f;&#x6d;</a> at Thu Feb 09 08:04:37 UTC 2023 | NULL | NULL | NULL | | F9CECB79-3B9F-4DD7-8028-91CD5F6A83ED | 3 | 7.831700 | 7.837500 | 2018 | NULL | 7.849100 | 7.846300 | 7.828700 | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&ndash;+ 49 rows in set (0.003 sec)</p>
+<p>MySQL [pfic]&gt; SELECT * FROM pfic.currency_name; +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ | id | currency | description | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ | 1 | USD | updated by <a href="mailto:&#x72;&#111;&#x62;&#x65;&#x72;&#x74;.&#99;&#x2e;&#x74;&#x61;&#111;&#x40;&#x63;n&#x2e;&#x70;&#x77;&#x63;&#x2e;&#99;&#111;&#x6d;">&#x72;&#111;&#x62;&#x65;&#x72;&#x74;.&#99;&#x2e;&#x74;&#x61;&#111;&#x40;&#x63;n&#x2e;&#x70;&#x77;&#x63;&#x2e;&#99;&#111;&#x6d;</a> at Wed Mar 13 06:41:12 UTC 2024 | | 1540b2c3-75ae-483a-a925-8c1af19f9b14 | KRW | updated by <a href="mailto:&#114;&#111;&#98;&#101;&#114;&#116;&#46;&#99;.&#116;&#97;&#111;&#x40;&#x63;&#110;&#46;&#x70;w&#x63;&#46;&#x63;o&#109;">&#114;&#111;&#98;&#101;&#114;&#116;&#46;&#99;.&#116;&#97;&#111;&#x40;&#x63;&#110;&#46;&#x70;w&#x63;&#46;&#x63;o&#109;</a> at Mon May 20 08:48:51 UTC 2024 | | 2 | CNY | updated by <a href="mailto:&#x72;&#x6f;&#x62;&#x65;&#x72;&#x74;&#x2e;&#x63;&#x2e;&#116;&#x61;&#111;&#64;&#99;&#x6e;&#x2e;&#112;&#x77;&#99;&#46;c&#111;m">&#x72;&#x6f;&#x62;&#x65;&#x72;&#x74;&#x2e;&#x63;&#x2e;&#116;&#x61;&#111;&#64;&#99;&#x6e;&#x2e;&#112;&#x77;&#99;&#46;c&#111;m</a> at Mon May 20 08:46:54 UTC 2024 | | 3 | HKD | updated by <a href="mailto:&#x72;&#111;&#98;&#x65;r&#116;&#x2e;&#x63;&#x2e;&#116;&#x61;o&#64;&#x63;&#x6e;&#46;pwc&#x2e;&#x63;o&#x6d;">&#x72;&#111;&#98;&#x65;r&#116;&#x2e;&#x63;&#x2e;&#116;&#x61;o&#64;&#x63;&#x6e;&#46;pwc&#x2e;&#x63;o&#x6d;</a> at Mon May 20 08:49:34 UTC 2024 | | 4be482d6-4fc2-41e1-8e24-2f1b6d690160 | AUD | updated by <a href="mailto:&#114;o&#x62;&#101;&#x72;&#x74;&#x2e;&#99;&#46;&#116;a&#111;&#x40;&#x63;&#110;&#x2e;&#x70;&#119;&#x63;&#x2e;&#x63;o&#109;">&#114;o&#x62;&#101;&#x72;&#x74;&#x2e;&#99;&#46;&#116;a&#111;&#x40;&#x63;&#110;&#x2e;&#x70;&#119;&#x63;&#x2e;&#x63;o&#109;</a> at Mon May 20 08:50:14 UTC 2024 | | 5f60da64-a053-4a65-8248-4caf05009929 | EUR | updated by <a href="mailto:&#114;&#111;&#98;&#101;&#x72;t&#46;&#x63;&#46;&#x74;a&#111;@&#99;&#x6e;&#x2e;&#x70;&#119;c&#x2e;&#x63;o&#x6d;">&#114;&#111;&#98;&#101;&#x72;t&#46;&#x63;&#46;&#x74;a&#111;@&#99;&#x6e;&#x2e;&#x70;&#119;c&#x2e;&#x63;o&#x6d;</a> at Mon May 20 08:48:06 UTC 2024 | | a9d22a28-17e2-4da0-98d1-805c2ee38ab1 | INR | updated by <a href="mailto:&#x72;&#111;&#98;&#x65;&#114;&#116;.c.&#116;&#x61;&#x6f;&#64;&#99;&#110;&#46;&#x70;&#119;&#99;&#x2e;&#99;&#111;&#x6d;">&#x72;&#111;&#98;&#x65;&#114;&#116;.c.&#116;&#x61;&#x6f;&#64;&#99;&#110;&#46;&#x70;&#119;&#99;&#x2e;&#99;&#111;&#x6d;</a> at Mon May 20 08:49:15 UTC 2024 | | ba3b903c-cc7b-429d-9a64-2d9c753dc982 | JPY | updated by <a href="mailto:&#x72;&#x6f;be&#114;&#x74;.c&#46;&#116;&#97;&#111;@&#x63;&#110;&#x2e;&#x70;&#x77;&#99;&#46;&#99;o&#109;">&#x72;&#x6f;be&#114;&#x74;.c&#46;&#116;&#97;&#111;@&#x63;&#110;&#x2e;&#x70;&#x77;&#99;&#46;&#99;o&#109;</a> at Mon May 20 08:48:32 UTC 2024 | | c8afe0ca-b0fc-43e4-afe6-bae65fdcf7b8 | IDR | updated by <a href="mailto:&#x72;&#111;&#98;e&#x72;&#116;.&#x63;&#x2e;&#x74;&#97;&#111;&#64;cn&#46;&#x70;&#119;&#x63;&#x2e;&#x63;&#x6f;m">&#x72;&#111;&#98;e&#x72;&#116;.&#x63;&#x2e;&#x74;&#97;&#111;&#64;cn&#46;&#x70;&#119;&#x63;&#x2e;&#x63;&#x6f;m</a> at Mon May 20 08:50:33 UTC 2024 | | da4623bf-477c-4b9d-8bf3-2e7adce695b7 | GBP | updated by <a href="mailto:r&#111;&#x62;&#101;&#x72;t&#x2e;c&#46;&#x74;&#x61;o&#64;c&#x6e;&#46;&#x70;w&#x63;&#46;&#x63;&#x6f;&#x6d;">r&#111;&#x62;&#101;&#x72;t&#x2e;c&#46;&#x74;&#x61;o&#64;c&#x6e;&#46;&#x70;w&#x63;&#46;&#x63;&#x6f;&#x6d;</a> at Mon May 20 08:47:40 UTC 2024 | | da661bfe-0ba8-406c-8c90-815fb2a1c4a1 | CAD | updated by <a href="mailto:&#114;&#x6f;&#98;&#x65;&#114;&#116;&#46;c&#x2e;&#116;a&#111;&#64;cn&#46;&#112;&#x77;&#99;&#x2e;&#x63;om">&#114;&#x6f;&#98;&#x65;&#114;&#116;&#46;c&#x2e;&#116;a&#111;&#64;cn&#46;&#112;&#x77;&#99;&#x2e;&#x63;om</a> at Mon May 20 08:49:53 UTC 2024 | +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+</p>
+<h2><a href="#whats-happened-" name="whats-happened-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happened?</h2>
+<p>The batchupdate for mysql has bugs, the update of 3/13/2024 is not appied to mysql table (Not writed to disk). And another write will flush the change to disk.</p>
+<p>The scala code of update as below:</p>
+<pre class="prettyprint"><code class="language-scala "><br/>def insertOrUpdate() = deadbolt.Pattern(value = &quot;b_admin&quot;, patternType = PatternType.REGEX)(trim(parse.json)) { implicit request =&gt; {
+    val added = Json.parse(request.body.toString()).as[Seq[Currency]]
+    val email = request.session.get(&quot;email&quot;).get
+    val currencyNameFrontSeq = Json.parse(request.body.toString()).as[Seq[CurrencyNameFront]]
+    val res =Future.sequence( currencyNameFrontSeq.map{
+      cnF =&gt;CurrencyNameClass(cnF.currencyNameId,cnF.currencyName,Some(s&quot;updated by $email at ${Calendar.getInstance().getTime()}&quot;))
+    }.map{
+      cn=&gt; currencyNameWrite.addOrUpdateCurrencyName(cn)
+    })
+    Await.result(res , 1 second)
+    currencyServiceWrite.insertOrUpdate(added).transform {
+      case Success(_) =&gt; Success(Ok(&quot;success&quot;))
+      case Failure(exception) =&gt; exception match {
+        case mysqlException: SQLIntegrityConstraintViolationException =&gt; {
+          SafeLogger.logString(Logger,
+            &quot;Create investor failed with MySQLIntegrityConstraintViolationException&quot;, mysqlException)
+          Success(BadRequest)
+        }
+        case _ =&gt; {
+          SafeLogger.logString(Logger, &quot;Create investor failed with InternalServerError&quot;, exception)
+          Success(InternalServerError(exception.toString))
+        }
+      }
+    }
+  }
+  }
+
+</code></pre>
+</div>
+<div>
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/mysqlBatchIssue/index.md" title="Edit this page" class="md-source-file md-edit">
+Edit this page
+</a>
+</div>
+<div class="print-only">
+<span class="md-source-file md-version">
+0.1.0*
+</span>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVLRXPE9ZP"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-LVLRXPE9ZP');
+</script>
+
+<div class="md-footer-nav">
+<nav class="md-footer-nav__inner md-grid">
+<a href="../../issues/playdisablesetting/index.html" title="Play disable setting" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+</div>
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Previous
+</span>
+Play disable setting
+</span>
+</div>
+</a>
+<a href="../../issues/playTimeoutIssue/index.html" title="Play timeout issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+<span class="md-flex__ellipsis">
+<span class="md-footer-nav__direction">
+Next
+</span>
+Play timeout issue
+</span>
+</div>
+<div class="md-flex__cell md-flex__cell--shrink">
+<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+Powered by
+<a href="https://github.com/lightbend/paradox">Paradox</a>
+and
+<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+
+</div>
+<div class="md-footer-social">
+<a href="https://github.com/wherby" class="md-footer-social__link fa fa-github"></a><a href="https://wherby.github.io" class="md-footer-social__link fa fa-globe"></a>
+</div>
+
+</div>
+</div>
+</footer>
+</div>
+<script src="../../assets/javascripts/application.583bbe55.js"></script>
+<script src="../../assets/javascripts/paradox-material-theme.js"></script>
+<script>app.initialize({version:"0.17",url:{base:"../../."}})</script>
+<script type="text/javascript" src="../../lib/prettify/prettify.js"></script>
+<script type="text/javascript" src="../../lib/prettify/lang-scala.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(event) {
+window.prettyPrint && prettyPrint();
+});
+</script>
+</body>
+</html>
