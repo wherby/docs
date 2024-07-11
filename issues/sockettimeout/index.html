@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Wrong notification · Docs</title>
+<title>Socket timeout 502 · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Wrong notification
+Socket timeout 502
 </span>
 </div>
 </div>
@@ -187,7 +187,7 @@ wherby/docs
     <li><a href="../../bugs/unexpectedvalue/index.html" class="page">Unexpected value show up</a></li>
     <li><a href="../../bugs/pagecantget/index.html" class="page">Page can&rsquo;t retrieve</a></li>
     <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
-    <li><a href="../../bugs/wrongnotification/index.html" class="active page">Wrong notification</a></li>
+    <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
     <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
     <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
@@ -245,7 +245,7 @@ wherby/docs
     <li><a href="../../issues/playdisablesetting/index.html" class="page">Play disable setting</a></li>
     <li><a href="../../issues/mysqlBatchIssue/index.html" class="page">MySql batch update issue</a></li>
     <li><a href="../../issues/playTimeoutIssue/index.html" class="page">Play timeout issue</a></li>
-    <li><a href="../../issues/sockettimeout/index.html" class="page">Socket timeout 502</a></li>
+    <li><a href="../../issues/sockettimeout/index.html" class="active page">Socket timeout 502</a></li>
   </ul></li>
   <li><a href="../../design/index.html" class="page">Design</a>
   <ul>
@@ -261,9 +261,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/wrongnotification/index.html#wrong-notification" class="header">Wrong notification</a>
+  <li><a href="../../issues/sockettimeout/index.html#socket-timeout-502" class="header">Socket timeout 502</a>
   <ul>
-    <li><a href="../../bugs/wrongnotification/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../issues/sockettimeout/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../issues/sockettimeout/index.html#fix" class="header">Fix</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -285,9 +286,10 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/wrongnotification/index.html#wrong-notification" class="header">Wrong notification</a>
+  <li><a href="../../issues/sockettimeout/index.html#socket-timeout-502" class="header">Socket timeout 502</a>
   <ul>
-    <li><a href="../../bugs/wrongnotification/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../issues/sockettimeout/index.html#issue" class="header">Issue</a></li>
+    <li><a href="../../issues/sockettimeout/index.html#fix" class="header">Fix</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -298,111 +300,79 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#wrong-notification" name="wrong-notification" class="anchor"><span class="anchor-link"></span></a>Wrong notification</h1>
+<h1><a href="#socket-timeout-502" name="socket-timeout-502" class="anchor"><span class="anchor-link"></span></a>Socket timeout 502</h1>
 <h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
-<p>The client complains that the notification message is send to some internal user but the user login to system they can&rsquo;t find pending task</p>
-<pre><code>Subject: FW: PFIC system notification
-
-Hi Steven,
-
-Please find below feedback from our team member.  Could you please check if there is any update to email notification since we update the setting to approver of mapping rules?
-
-Best regards,
-Penny
+<p>When a API response is more than 60s, there will have timeout exception </p>
+<pre><code>2024-07-04T10:31:54.074708453+08:00 2024/07/04 02:31:54 [warn] 21#21: *5652 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000225, client: 10.169.58.189, server: cidr-stg.asia.pwcinternal.com, request: &quot;POST /api/v2/vendorTasksCombined HTTP/1.1&quot;, host: &quot;cidr-stg.asia.pwcinternal.com&quot; 2024-07-04T10:32:54.274787919+08:00 2024/07/04 02:32:54 [error] 21#21: *5652 upstream prematurely closed connection while reading response header from upstream, client: 10.169.58.189, server: cidr-stg.asia.pwcinternal.com, request: &quot;POST /api/v2/vendorTasksCombined HTTP/1.1&quot;, upstream: &quot;
+https://10.158.15.151:443/api/v2/vendorTasksCombined
+&quot;, host: &quot;cidr-stg.asia.pwcinternal.com&quot; 2024-07-04T10:32:54.275613423+08:00 10.169.58.189 - - [04/Jul/2024:02:32:54 +0000] &quot;POST /api/v2/vendorTasksCombined HTTP/1.1&quot; 502 56518 &quot;-&quot; &quot;python-requests/2.32.2&quot; &quot;-&quot;
 </code></pre>
-<p>How this bug introduces?</p>
-<p>Internal user (reviewer or approver) could see all notification from all engagements at first. And notification email will send to all internal users.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkByRole.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryForApprover(lastSendTimestampString: String)={
-  var  notificationFilter = Map[String,String]()
-  notificationFilter +=(&quot;notificationType&quot; -&gt; NotificationType.approver.toString)
-  notificationFilter +=(&quot;timestamp&quot; -&gt; lastSendTimestampString)
-  notificationRead.listNotifications(notificationFilter).map{
-    notificationSeq =&gt; if(notificationSeq.length &gt;0){
-      Logger.debug(&quot;Send mail to approver&quot;)
-      sendMailToRole(&quot;PwCApprover&quot;)
-    }
-  }
-}
+<p>If call application server directly, the response time is more than 60s, the response is success. Only if call Nginx endpoint, the exception will appear.</p>
+<p>After add timeout for Nginx, the issue still existed.</p>
+<p>from the link </p>
+<p><a href="https://github.com/unbit/uwsgi/issues/2264">https://github.com/unbit/uwsgi/issues/2264</a></p>
+<pre><code>The option you are searching for is http-timeout that sets the timeout of the http router/proxy (you can see it as the equivalent of nginx upstream timeout). At the end you have 3 timeouts in place: nginx (upstream timeout) -&gt; uwsgi-http-router (http-timeout, 60 seconds) -&gt; uwsgi workers (socket-timeout, 4 seconds, but generally you do not need to touch it unless you do not have a proxy on front).
 
+Relevant option in the code:
 
-def sendMailToRole(roleStr:String)={
-  var  userFilter = Map[String,String]()
-  userFilter +=(&quot;enable&quot; -&gt;&quot;true&quot;)
-  userFilter += (&quot;role&quot;-&gt;roleStr)
-  userRead.userFilterQuery(userFilter).map{
-    seqUser=&gt; val emailSeq = seqUser.map{
-      user =&gt; user.email
-    }
-      emailSeq.map{
-        emailTmp =&gt;
-          val email = mailSender.getTestEmail(Seq(emailTmp))
-          mailSender.sendEmail(email)
-      }
-      println(s&quot;send mail to $emailSeq&quot;)
-  }
-}</code></pre>
-<p>For the internal user notification, the client want to only engagement user could see the notification. The UI part of the filter is enabled:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkNotificationByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
-def listNotification(notificationDataType:Option[NotificationDataType.NotificationDataType],year:Option[Int], entityId:Option[String]) = deadbolt.SubjectPresent()(parse.anyContent) {request =&gt; {
-  ...
-  notificationServiceRead.listNotifications(filterMap).flatMap(notifications =&gt; {
-    if (isPwC || isPwCRE || isPwCAP || isAdmin) {
-      notificationServiceRead.filterInternalNotifications(notifications, request.session.get(&quot;email&quot;).getOrElse(&quot;&quot;))
-    } else Future(notifications)
-  })
-}
+https://github.com/unbit/uwsgi/blob/master/plugins/http/http.c#L35
 
-override def filterInternalNotifications(notifications: Seq[Notification], email: String): Future[Seq[Notification]] = {
-  userRead.getUser(Some(email)).flatMap(usero =&gt; {
-    usero.map(user =&gt; {
-      userFundServiceRead.lookupFundsByUserId(user.id, Map()).map(funds =&gt; {
-        notifications.filter(notification =&gt; {
-          notification.notificationDataType match {
-            case NotificationDataType.fiInvestment | NotificationDataType.agreedFiInvestment | NotificationDataType.disagreedFiInvestment |
-                 NotificationDataType.externalFiInvestment | NotificationDataType.investorInvestment | NotificationDataType.externalInvestorInvestment |
-                 NotificationDataType.agreedInvestorInvestment | NotificationDataType.disagreedInvestorInvestment | NotificationDataType.statementWorkpaper =&gt; {
-              funds.find(_.id == notification.link).nonEmpty
-            }
-            case NotificationDataType.financialData | NotificationDataType.agreedFinancialData | NotificationDataType.disagreedFinancialData | NotificationDataType.externalFinancialData | NotificationDataType.externalFundFinancialFile =&gt; {
-              Await.result(userFundServiceRead.verifyForComapany(email, notification.link, Some(notification.year)), 10 seconds)
-            }
-            case _ =&gt; true
-          }
-        })
-      })
-    }).getOrElse(Future(notifications))
-  })
-}
-}</code></pre>
-<p>While this change applied, only specified user could see the notification, and other user will still get notification by email because email send is using role base.</p>
-<p>How to fix:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/fixByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+Please make a pull request for this page if you want to add a section for timeouts: https://uwsgi-docs.readthedocs.io/en/latest/HTTP.html
 
-def sendMailToRole(roleStr: String, notifications: Seq[Notification]) = {
-  var userFilter = Map[String, String]()
-  userFilter += (&quot;enable&quot; -&gt; &quot;true&quot;)
-  userFilter += (&quot;role&quot; -&gt; roleStr)
-  userRead.userFilterQuery(userFilter).map {
-    seqUser =&gt;
-      val emailSeq = seqUser.map {
-        user =&gt; user.email
-      }
-      Future.sequence(emailSeq.map {
-        emailTmp =&gt;
-          val filterdNotificaionF = notificationServiceRead.filterInternalNotifications(notifications, emailTmp)
-          filterdNotificaionF.map {
-            filterdNotificaion =&gt;
-              if (filterdNotificaion.length &gt; 0) {
-                val email = mailSender.getTestEmail(Seq(emailTmp))
-                mailSender.sendEmail(email)
-              }
-          }
-      })
-  }.flatten
-}</code></pre>
+But please, do not add the http-router if you already have nginx on front, it will hurt performance and will add headaches :)
+
+</code></pre>
+<p>Which seems Nginx is doing &ldquo;uwsgi-http-router (http-timeout, 60 seconds)&rdquo; for the request. And also from link <a href="https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html">https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html</a> </p>
+<p>Why only the api has the issue?</p>
+<dl>
+  <dt>Api Code</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/sockettimeout/code/upload.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def uploadAndGet2: Action[AnyContent] = deadbolt.Pattern(value = &quot;(v_ocr)|(b_ocr)|(v_bs)|(b_bs)&quot;, patternType = PatternType.REGEX)(parse.anyContent) { implicit request =&gt;
+   val currentUser = CurrentUser(request.subject.get.identifier)
+   var resultType:Option[String]=None
+   request.body.asMultipartFormData match {
+     case Some(mfd) =&gt;
+       resultType = mfd.dataParts.get(&quot;resultType&quot;).flatMap(_.headOption)
+     case _ =&gt; {
+       request.body.asFormUrlEncoded match {
+         case Some(data) =&gt; {
+           resultType = data.get(&quot;resultType&quot;).flatMap(_.headOption)
+         }
+         case _ =&gt; BadRequest
+       }
+     }
+   }
+   upload(request).map(uploadRes =&gt; {
+     if (uploadRes.header.status == OK) {
+       var res = &quot;&quot;
+       val materializer = Materializer.matFromSystem(actorSystem)
+       val body: String = Await.result(uploadRes.body.consumeData(materializer), Duration.Inf).utf8String
+       val resTemplateJson = Json.parse(body)
+       val id = (resTemplateJson \ &quot;id&quot;).as[String]
+       while (res != VendorServiceDao.Status.PROCESSED &amp;&amp; res != VendorServiceDao.Status.PROCESS_FAILED) {
+         Thread.sleep(1000)
+         res = Await.result(getVendorTaskStatus(id)(currentUser).map(maybeS =&gt; {
+           maybeS.map(s =&gt; s.status)
+         }), 5.seconds).getOrElse(&quot;&quot;)
+       }
+       Await.result(getRes(id, resultType, currentUser), 100.seconds)
+     }else if(uploadRes.header.status == BAD_REQUEST){
+       uploadRes
+     } else {
+       InternalServerError(&quot;Failed to create task&quot;)
+     }
+   })
+ }</code></pre></dd>
+</dl>
+<h2><a href="#fix" name="fix" class="anchor"><span class="anchor-link"></span></a>Fix</h2>
+<p>Add below setting will fix the timeout issue:</p>
+<p><img src="./pic/image.png" alt="Fix nginx" /></p>
+<p>form <a href="https://nginx.org/en/docs/http/websocket.html#:~:text=By%20default%2C%20the%20connection%20will%20be%20closed%20if,timeout%20can%20be%20increased%20with%20the%20proxy_read_timeout%20directive">Nginx link</a></p>
+<p><img src="./pic/nginx.png" alt="Nginx" /></p>
+<p>Change the api to websocket protocol will resolve the issue.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/sockettimeout/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -429,7 +399,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/addfeature/index.html" title="Add features leads system fail" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../issues/playTimeoutIssue/index.html" title="Play timeout issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -438,17 +408,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Add features leads system fail
+Play timeout issue
 </span>
 </div>
 </a>
-<a href="../../bugs/ieissue/index.html" title="Hosting issue for IE" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../design/index.html" title="Design" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Hosting issue for IE
+Design
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
