@@ -10,6 +10,12 @@ https://10.158.15.151:443/api/v2/vendorTasksCombined
 ``` 
 
 If call application server directly, the response time is more than 60s, the response is success. Only if call Nginx endpoint, the exception will appear.
+If call application server directly, the response time is over 70s, the exception will appaer.
+
+Which means, Nginx will set "timeout" to 60s for the connection, and if no Nginx, the play server will set "timeout" to 70s. And normal timeout setting will not fix the issue from play server ot nginx side.
+
+Nginx reset connection by timeout as below:
+![Nginx reset network](./pic/nginxReset.png)
 
 After add timeout for Nginx, the issue still existed.
 
