@@ -17,4 +17,5 @@
 * [Play disable setting](playdisablesetting/index.md)
 * [Mysql batch update issue](mysqlBatchIssue/index.md)
 * [Play timeout issue](playTimeoutIssue/index.md)
+* [502 timeout](sockettimeout/index.md)
 @@@
