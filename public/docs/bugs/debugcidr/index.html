@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -314,7 +318,7 @@ wherby/docs
 <dl>
   <dt>find the python code</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/extractor.py" target="_blank" title="Go to snippet source"></a><code class="language-py">def __extract_by_paragraph_match(document: dict, pattern: dict, rule_id: str, context: dict):
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/extractor.py" target="_blank" title="Go to snippet source">source</a><code class="language-py">def __extract_by_paragraph_match(document: dict, pattern: dict, rule_id: str, context: dict):
     #print(pattern,rule_id,context)
     result: list = []
     regex = re.compile(pattern.get(&quot;regex&quot;),re.IGNORECASE)
@@ -351,7 +355,7 @@ wherby/docs
     return result</code></pre></dd>
   <dt>set the debug info</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/extractor.debug.py" target="_blank" title="Go to snippet source"></a><code class="language-py">def __extract_by_paragraph_match(document: dict, pattern: dict, rule_id: str, context: dict):
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/extractor.debug.py" target="_blank" title="Go to snippet source">source</a><code class="language-py">def __extract_by_paragraph_match(document: dict, pattern: dict, rule_id: str, context: dict):
     #print(pattern,rule_id,context)
     result: list = []
     regex = re.compile(pattern.get(&quot;regex&quot;),re.IGNORECASE)
@@ -400,7 +404,7 @@ wherby/docs
     return result</code></pre></dd>
   <dt>with the debug message</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/output.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">(myenv2) CN_C02XL3BWJGH5:~ steventzhou$ python3 /Users/steventzhou/software/ds-cidr/processor/creditreview/main.py -pjn aidr -pn extraction_processor -i /tmp/ds-cidr/PROJ_6/processors/b044a71d-9d97-4f67-bace-838a1dc59962/output.json -o /tmp/ds-cidr/PROJ_6/processors/6d6e61c4-471d-4fb2-8bab-ded4acef072e/output.json -ec /tmp/ds-cidr/PROJ_6/d7517139-8898-3e93-b198-0363e24189ce -rules /tmp/ds-cidr/PROJ_6/1fe1df36-b64f-30e7-ab5b-ff85b031660a -v 2.0.0
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/debugcidr/src/output.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">(myenv2) CN_C02XL3BWJGH5:~ steventzhou$ python3 /Users/steventzhou/software/ds-cidr/processor/creditreview/main.py -pjn aidr -pn extraction_processor -i /tmp/ds-cidr/PROJ_6/processors/b044a71d-9d97-4f67-bace-838a1dc59962/output.json -o /tmp/ds-cidr/PROJ_6/processors/6d6e61c4-471d-4fb2-8bab-ded4acef072e/output.json -ec /tmp/ds-cidr/PROJ_6/d7517139-8898-3e93-b198-0363e24189ce -rules /tmp/ds-cidr/PROJ_6/1fe1df36-b64f-30e7-ab5b-ff85b031660a -v 2.0.0
 unknown rule type: None, skip it
 ********************
 {&#39;type&#39;: &#39;PARAGRAPH_MATCH&#39;, &#39;regex&#39;: &#39;Partnership&#39;, &#39;isSkipTitle&#39;: True}
@@ -516,7 +520,7 @@ Schedule task
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

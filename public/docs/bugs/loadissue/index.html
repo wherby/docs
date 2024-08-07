@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -306,7 +310,7 @@ wherby/docs
 <dl>
   <dt>FetchData</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchDataBefore.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx">fetchData = () =&gt; {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchDataBefore.jsx" target="_blank" title="Go to snippet source">source</a><code class="language-jsx">fetchData = () =&gt; {
   this.cancelSingleEGAPolling()
   Promise.all([queryFundsByEngagementIdAndFundAdminType(this.props.engagementId, FrontEndBackEndFundAdminTypeMapping[this.state.fundAccountingType]), queryFundWithStatusByEngagementId(this.props.engagementId), getConfirmationCompletionRatioByEngagementId(this.props.engagementId)])
     .then(([funds, fundsWithStatus, confirmationCompletionRatio]) =&gt; {
@@ -337,7 +341,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>GetValuationService</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchValuationProgress.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx">export const fetchValuationProgress = async (fundsWithStatus: EngamentFundsWithStatus[], setValuationStatus: (fundEngagementWithValuationStatus: FundEngagementWithValuationStatus) =&gt; void) =&gt; {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchValuationProgress.jsx" target="_blank" title="Go to snippet source">source</a><code class="language-jsx">export const fetchValuationProgress = async (fundsWithStatus: EngamentFundsWithStatus[], setValuationStatus: (fundEngagementWithValuationStatus: FundEngagementWithValuationStatus) =&gt; void) =&gt; {
   fundsWithStatus.map(fundsWithStatus =&gt; {
     var fundEngagementId = fundsWithStatus.fundEngagementId.toString()
     var fundId = fundsWithStatus.fundId
@@ -366,7 +370,7 @@ wherby/docs
 <dl>
   <dt>FetchData</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchData.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx">fetchData = () =&gt; {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/fetchData.jsx" target="_blank" title="Go to snippet source">source</a><code class="language-jsx">fetchData = () =&gt; {
   this.cancelSingleEGAPolling()
   Promise.all([queryFundsByEngagementIdAndFundAdminType(this.props.engagementId, FrontEndBackEndFundAdminTypeMapping[this.state.fundAccountingType]), queryFundWithStatusByEngagementId(this.props.engagementId), getConfirmationCompletionRatioByEngagementId(this.props.engagementId)])
     .then(([funds, fundsWithStatus, confirmationCompletionRatio]) =&gt; {
@@ -398,7 +402,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>GetValuation</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/getValuationUploadOrNot.jsx" target="_blank" title="Go to snippet source"></a><code class="language-jsx"></code></pre></dd>
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/loadissue/code/getValuationUploadOrNot.jsx" target="_blank" title="Go to snippet source">source</a><code class="language-jsx"></code></pre></dd>
 </dl>
 </div>
 <div>
@@ -463,7 +467,7 @@ Read PDF
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

@@ -71,7 +71,7 @@ This is the introduction for doradilla library.
 
 * [Code design](codedesign/index.md)
 
-* [Python](python/enclosure/index.md)
+* [Python](python/index.md)
 * [Issues](issues/index.md)
 * [Design](design/index.md)
 * [Fast and slow jobs](fastandslowjobs/index.md)

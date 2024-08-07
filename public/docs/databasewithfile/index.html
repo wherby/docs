@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -312,7 +316,7 @@ wherby/docs
 <p>We just want a simple answer that if the user upload files are processed:</p>
 <p><img src="pic/network.png" alt="Net work" /></p>
 <p>with query result from backend:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/queryresult.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/queryresult.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">[
     {
         &quot;fundEngagementId&quot;: &quot;3ed111d1-5f9a-4afd-bc6a-99286e2de59a&quot;,
         &quot;engagementId&quot;: &quot;asfsaf2&quot;,
@@ -326,7 +330,7 @@ wherby/docs
 <p>so everything looks as expected.</p>
 <h2><a href="#issue-" name="issue-" class="anchor"><span class="anchor-link"></span></a>Issue:</h2>
 <p>But as we look the database query log in backend, we will find:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/logs.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`fund_engagement_id`, x2.`extraction_status`,
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/logs.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">[debug] s.j.J.statement - Preparing statement: select x2.`id`, x2.`fund_engagement_id`, x2.`extraction_status`,
  x2.`upload_file_status`, x2.`upload_file_content`, x2.`selected`, x3.`display`, x4.`display`, x2.`createby`,
   x2.`createdatetime`, x2.`modifyby`, x2.`modifydatetime` from `fund_engagement_report_type_selection` x2,
   `fund_engagement` x5, `funds` x6, `fund_admin` x7, `sheettypes_reporttypes_map` x8, `sheet_types` x3, `report_types`
@@ -334,7 +338,7 @@ wherby/docs
   and (x5.`fundid` = x6.`id`)) and (x6.`fund_admin_id` = x7.`id`)) and (x2.`sheettypes_reporttypes_map_id` = x8.`id`))
   and (x8.`sheettypeid` = x3.`id`)) and (x8.`reporttypeid` = x4.`id`)</code></pre>
 <p>The log shows there will have query for &ldquo;upload_file_content&rdquo;. This field is a blob file:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/report.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">create table `fund_engagement_report_type_selection`(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/report.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">create table `fund_engagement_report_type_selection`(
 	`id` varchar(128) NOT NULL,
     `sheettypes_reporttypes_map_id` varchar(128) NOT NULL,
 ...
@@ -348,7 +352,7 @@ wherby/docs
 <p>In this table, we store the file content in field &ldquo;upload_file_content&rdquo;.</p>
 <h2><a href="#whats-happend-" name="whats-happend-" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happend:</h2>
 <p>There is an existed api to query user&rsquo;s input:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/query.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def lookupSelectionWithDisplay(fundEngagementId: String): Future[Seq[FundEngagementReportTypeSelectionWithName]] = {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/databasewithfile/code/query.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">override def lookupSelectionWithDisplay(fundEngagementId: String): Future[Seq[FundEngagementReportTypeSelectionWithName]] = {
   val sql = for (((((((selection, fundEngagement), funds), fundAdmin), sheetReportMap), sheetTypes), reportTypes)
                    &lt;- FundEngagementReportTypeSelection join FundEngagement on ((left, right) =&gt; left.fundEngagementId === right.id &amp;&amp; left.fundEngagementId === fundEngagementId)
     join Funds on ((left, right) =&gt; left._2.fundid === right.id)
@@ -435,7 +439,7 @@ Flyway clean failed on mysql8
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

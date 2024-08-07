@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -309,7 +313,7 @@ wherby/docs
 <dl>
   <dt>Anonymous processor call</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/PorcessApi.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait ProcessTranApi extends AskProcessResult{
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/PorcessApi.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">trait ProcessTranApi extends AskProcessResult{
   this: SystemApi with DriverApi =&gt;
   val processTranActor = actorSystem.actorOf(ProcessTranActor.processTranActorProps, CNaming.timebasedName( &quot;defaultProcessTranActor&quot;))
 
@@ -322,7 +326,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>Named job call</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/NamedJobApi.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait NamedJobRunner {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/NamedJobApi.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">trait NamedJobRunner {
   this: BackendServer.type =&gt;
 
   def runNamedProcessCommand(processJob: JobMsg,
@@ -337,7 +341,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>Use in AWM</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/AWMcall.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def runProcess(paras : List[Object], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/AWMcall.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def runProcess(paras : List[Object], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
   println(clazzName)
   val msg = ProcessCallMsg(clazzName,methodName,paras.map{_.asInstanceOf[AnyRef]}.toArray)
   val jobMsg = JobMsg(&quot;SimpleProcess&quot;,msg)
@@ -345,7 +349,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>Use in CIDR</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/CIDRcall.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def runProcess(paras : List[AnyRef], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/CIDRcall.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def runProcess(paras : List[AnyRef], clazzName:String, methodName:String, prioritySet: Option[Int] = None) ={
   val setTimeOut:Timeout = 6000 seconds
   val msg = ProcessCallMsg(clazzName,methodName,paras.map{_.asInstanceOf[AnyRef]}.toArray)
   val jobMsg = JobMsg(&quot;SimpleProcessFuture&quot;,msg)
@@ -432,7 +436,7 @@ References
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

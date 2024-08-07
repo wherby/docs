@@ -1,12 +1,11 @@
 
-//val SomeConfig = config("doradilla")
-
 
 lazy val docs = (project in file("docs")).
   //enablePlugins(ParadoxPlugin).
   enablePlugins(ParadoxMaterialThemePlugin).
   settings(
   name  := "document for doradilla",
+  addSbtPlugin("com.lightbend.paradox" % "sbt-paradox" % "0.10.6"),
   //version := "0.1.0",
   //paradoxTheme := Some(builtinParadoxTheme("generic")),
   paradoxIllegalLinkPath := raw".*\\.md".r,
@@ -29,26 +28,3 @@ lazy val docs = (project in file("docs")).
 )
 
 
-
-lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
-  .settings(
-    name := """document""",
-    organization := "io.github.wherby",
-    version := "1.0-SNAPSHOT",
-    scalaVersion := "2.13.3",
-    libraryDependencies ++= Seq(
-      guice,
-      "com.digitaltangible" %% "play-guard" % "2.5.0",
-      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
-      // For async
-      "org.scala-lang.modules" %% "scala-async" % "1.0.1",
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-    ),
-    scalacOptions ++= Seq(
-      "-feature",
-      "-deprecation",
-      "-Xfatal-warnings",
-      "-Xasync",
-    )
-  )

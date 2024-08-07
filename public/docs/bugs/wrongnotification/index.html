@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -312,7 +316,7 @@ Penny
 </code></pre>
 <p>How this bug introduces?</p>
 <p>Internal user (reviewer or approver) could see all notification from all engagements at first. And notification email will send to all internal users.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkByRole.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def queryForApprover(lastSendTimestampString: String)={
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkByRole.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def queryForApprover(lastSendTimestampString: String)={
   var  notificationFilter = Map[String,String]()
   notificationFilter +=(&quot;notificationType&quot; -&gt; NotificationType.approver.toString)
   notificationFilter +=(&quot;timestamp&quot; -&gt; lastSendTimestampString)
@@ -342,7 +346,7 @@ def sendMailToRole(roleStr:String)={
   }
 }</code></pre>
 <p>For the internal user notification, the client want to only engagement user could see the notification. The UI part of the filter is enabled:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkNotificationByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/checkNotificationByUser.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import scala.concurrent.Future
 def listNotification(notificationDataType:Option[NotificationDataType.NotificationDataType],year:Option[Int], entityId:Option[String]) = deadbolt.SubjectPresent()(parse.anyContent) {request =&gt; {
   ...
   notificationServiceRead.listNotifications(filterMap).flatMap(notifications =&gt; {
@@ -376,7 +380,7 @@ override def filterInternalNotifications(notifications: Seq[Notification], email
 }</code></pre>
 <p>While this change applied, only specified user could see the notification, and other user will still get notification by email because email send is using role base.</p>
 <p>How to fix:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/fixByUser.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/wrongnotification/code/fixByUser.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import scala.concurrent.Future
 
 def sendMailToRole(roleStr: String, notifications: Seq[Notification]) = {
   var userFilter = Map[String, String]()
@@ -463,7 +467,7 @@ Hosting issue for IE
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

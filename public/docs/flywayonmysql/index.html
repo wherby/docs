@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -303,7 +307,7 @@ wherby/docs
 <h1><a href="#flyway-clean-failed-on-mysql8" name="flyway-clean-failed-on-mysql8" class="anchor"><span class="anchor-link"></span></a>Flyway clean failed on mysql8</h1>
 <h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
 <p>The command as belpw is used for clean database schema:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/command.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">val cmds = Seq(
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/command.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val cmds = Seq(
   &quot;sbt flyway/flywayClean&quot;,
   &quot;sbt flyway/flywayBaseline&quot;,
   &quot;sbt flyway/flywayMigrate&quot;
@@ -314,7 +318,7 @@ wherby/docs
 <p>While this issue will not occur with mysql 5.7.</p>
 <h2><a href="#how-the-issue-happens-" name="how-the-issue-happens-" class="anchor"><span class="anchor-link"></span></a>How the issue happens?</h2>
 <p>Because there is one database migration file defined as below:</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/procedure.sql" target="_blank" title="Go to snippet source"></a><code class="language-sql">DELIMITER $$
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/flywayonmysql/code/procedure.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">DELIMITER $$
 DROP PROCEDURE IF EXISTS `createUserFundForFund` $$
 CREATE PROCEDURE `createUserFundForFund` (fiId VARCHAR(256))
 BEGIN
@@ -402,7 +406,7 @@ IE issues for javascript
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

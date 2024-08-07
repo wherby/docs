@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -303,7 +307,7 @@ wherby/docs
 <dl>
   <dt>Controller</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/controller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">val hsbcIMSExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/controller.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">val hsbcIMSExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
   Seq(
     &quot;PURCHASE TRANSACTION REPORT&quot;
   ) -&gt; (ReportProcessor, PurchaseTransactionReportConfig.extractorConfig),
@@ -325,7 +329,7 @@ wherby/docs
 )</code></pre></dd>
   <dt>ReportProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/ReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class ReportProcessor {}
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/ReportProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">class ReportProcessor {}
 
 object ReportProcessor extends AbstractProcessor with BaseFileReader {
   def getMemoryOutput(extractorConfig: ExtractorConfig): AbstractReportMemoryOutput = {
@@ -480,7 +484,7 @@ object ReportProcessor extends AbstractProcessor with BaseFileReader {
 }</code></pre></dd>
   <dt>BlockSeparatorImple</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/BlockSeparatorImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">trait BlockSeparatorImpl extends BlockSeparator {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/BlockSeparatorImpl.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">trait BlockSeparatorImpl extends BlockSeparator {
 
   val endOfReport = &quot;END OF REPORT&quot;;
 
@@ -768,7 +772,7 @@ object ReportProcessor extends AbstractProcessor with BaseFileReader {
 }</code></pre></dd>
   <dt>PSRConfig</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/psrconfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object PurchaseTransactionReportConfig {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/psrconfig.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object PurchaseTransactionReportConfig {
   val extractorConfig = ExtractorConfig(
     &quot;PURCHASE TRANSACTION REPORT&quot;,
     Seq(
@@ -985,7 +989,7 @@ object ReportProcessor extends AbstractProcessor with BaseFileReader {
 }</code></pre></dd>
   <dt>SaleConfig</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/salesconfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object SalesTransactionReportConfig {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/code/salesconfig.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object SalesTransactionReportConfig {
   val extractorConfig = ExtractorConfig(
     &quot;SALES TRANSACTION REPORT&quot;,
     Seq(
@@ -1271,7 +1275,7 @@ object ReportProcessor extends AbstractProcessor with BaseFileReader {
 <dl>
   <dt>PSR</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/psr.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>                                                            FIDELITY LTD.                                                                      REF SR9020     PAGE     1
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/psr.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt"><br/>                                                            FIDELITY LTD.                                                                      REF SR9020     PAGE     1
                                                    PURCHASE TRANSACTION REPORT                                                                                  04/01/20
                                                       OPTION : BY TRADE DATE
 
@@ -1302,7 +1306,7 @@ STL DATE SECURITY NAME                  OF SHARES                               
            ISN xx</code></pre></dd>
   <dt>Sale</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/salestransaction.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt"><br/>                                                                                FIDELITY LTD.                                                                                REF SR9020     PAGE     1
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file1/salestransaction.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt"><br/>                                                                                FIDELITY LTD.                                                                                REF SR9020     PAGE     1
                                                                           SALES TRANSACTION REPORT                                                                                            04/01/19
                                                                           OPTION : BY TRADE DATE
 
@@ -1341,7 +1345,7 @@ NUMBER OF SHARES :           33,084
 <dl>
   <dt>PSR</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/psr.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">                                 HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                            REF SR9020     PAGE     1
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/psr.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">                                 HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                            REF SR9020     PAGE     1
                                                    PURCHASE TRANSACTION REPORT                                                                                  13/05/21
                                                       OPTION : BY TRADE DATE
 CSSB 00843367                                        FROM  1/01/20 TO 31/12/20
@@ -1366,7 +1370,7 @@ STL DATE SECURITY NAME                  OF SHARES                               
          GROUP CO LTD A SHS ORD CNY1</code></pre></dd>
   <dt>Sale</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/salestransaction.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">                                                     HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                                      REF SR9020     PAGE     1
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/imsprocessor/file2/salestransaction.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">                                                     HSBC INSTITUTIONAL TRUST SERVICES (ASIA) LIMITED - CORPORATE TRUST                                                      REF SR9020     PAGE     1
                                                                           SALES TRANSACTION REPORT                                                                                            13/05/21
                                                                           OPTION : BY TRADE DATE
 CSFF 00843847                                                            FROM  1/01/20 TO 31/12/20
@@ -1472,7 +1476,7 @@ Service design without interface
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">
