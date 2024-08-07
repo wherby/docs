@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title> · Docs</title>
+<title>Python recursion · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,6 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
+Python recursion
 </span>
 </div>
 </div>
@@ -229,7 +230,7 @@ wherby/docs
   <li><a href="../../python/index.html" class="page">Python</a>
   <ul>
     <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
-    <li><a href="../../python/recursion/index.html" class="active page">python/recursion/index.html</a></li>
+    <li><a href="../../python/recursion/index.html" class="active page">Python recursion</a></li>
   </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
@@ -262,6 +263,13 @@ wherby/docs
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../python/recursion/index.html#python-recursion" class="header">Python recursion</a>
+  <ul>
+    <li><a href="../../python/recursion/index.html#recursion-issue" class="header">Recursion issue</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -275,9 +283,47 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../../python/recursion/index.html#python-recursion" class="header">Python recursion</a>
+  <ul>
+    <li><a href="../../python/recursion/index.html#recursion-issue" class="header">Recursion issue</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
+<h1><a href="#python-recursion" name="python-recursion" class="anchor"><span class="anchor-link"></span></a>Python recursion</h1>
+<h2><a href="#recursion-issue" name="recursion-issue" class="anchor"><span class="anchor-link"></span></a>Recursion issue</h2>
+<p>The error &ldquo;RecursionError: maximum recursion depth exceeded in comparison&rdquo; will throw if not set recursion limit in python. Python&rsquo;s default recursion number is 1000.</p>
+<pre><code>  File &quot;/Users/tao/software/code/algorithm/OMOTQuestions/find-all-possible-stable-binary-arrays-ii/dpCompressOT.py&quot;, line 31, in dfs
+    return (dfs(i,j-1,0) + dfs(i,j-1,1) - dfs(i,j-limit-1,0)) %mod 
+                           ^^^^^^^^^^^^
+  File &quot;/Users/tao/software/code/algorithm/OMOTQuestions/find-all-possible-stable-binary-arrays-ii/dpCompressOT.py&quot;, line 31, in dfs
+    return (dfs(i,j-1,0) + dfs(i,j-1,1) - dfs(i,j-limit-1,0)) %mod 
+                           ^^^^^^^^^^^^
+  [Previous line repeated 36 more times]
+  File &quot;/Users/tao/software/code/algorithm/OMOTQuestions/find-all-possible-stable-binary-arrays-ii/dpCompressOT.py&quot;, line 29, in dfs
+    return (dfs(i-1,j,0) + dfs(i-1,j,1) - dfs(i-limit-1,j,1))%mod 
+            ^^^^^^^^^^^^
+RecursionError: maximum recursion depth exceeded
+</code></pre>
+<p>When set the reursion limit, the code will pass in python 3.9 on MacOS M1:</p>
+<pre class="prettyprint"><code class="language-python">import sys
+sys.setrecursionlimit(10000000)
+</code></pre>
+<p><img src="pic/py3.9.png" alt="Python 3.9" /></p>
+<p>While the setting will not be used in python3.12 on Mac:</p>
+<p><img src="pic/py3.12.png" alt="Python 3.12" /></p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/recursion/index.md" title="Edit this page" class="md-source-file md-edit">
