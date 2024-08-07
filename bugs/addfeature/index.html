@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -312,7 +316,7 @@ wherby/docs
 <dl>
   <dt>Controller</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/listInvestor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/listInvestor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import scala.concurrent.Future
 
 def queryPage(page: Int, pageSize: Int, name: Option[String], country: Option[String], city: Option[String], sorterfield: Option[String], sorterorder: Option[String], investorType: Option[String], includeInActive: Option[Boolean]) =
   deadbolt.Pattern(value = &quot;(v_pwc)|(v_myfi)&quot;, patternType = PatternType.REGEX)() { implicit request =&gt; {
@@ -330,7 +334,7 @@ def queryPage(page: Int, pageSize: Int, name: Option[String], country: Option[St
 }</code></pre></dd>
   <dt>InvestorUserDao</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/InvestorUserDao.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.Future
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/InvestorUserDao.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import scala.concurrent.Future
 
 def listPage(pageNum: Int = 0, pageSize: Int = 10, filterMap: Map[String, String], sortField: Option[String], sortOrder: Option[String]): Future[Page[Investoruser]] = {
 
@@ -389,7 +393,7 @@ While in filterMap, the &quot;investorType&quot; value is &quot;&quot;, which is
 <dl>
   <dt>Upload controller</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/uploadController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.{ByteArrayOutputStream, FileInputStream}
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/uploadController.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.io.{ByteArrayOutputStream, FileInputStream}
 import java.nio.file.{Files, Paths}
 import java.util.Calendar
 import java.util.UUID.randomUUID
@@ -431,7 +435,7 @@ var fileRecord = new OriginalFinancialFile(randomUUID().toString, &quot;&quot;, 
 }</code></pre></dd>
   <dt>Code from a new feature</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/extractBalanceSheetFromExcel.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/><br/>def extractBalanceSheetFromExcel(workbook: Workbook) = {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/addfeature/code/extractBalanceSheetFromExcel.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/><br/>def extractBalanceSheetFromExcel(workbook: Workbook) = {
   val balanceSheet = workbook.getSheet(&quot;Balance Sheet&quot;)
   val (assetStartRow: Int, assetStartColumn: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(balanceSheet, &quot;Current assets&quot;, true)
   val (assetEndRow: Int, _: Int) = ExcelReader.findExcelRowAndColumnWithCellValue(balanceSheet, &quot;Total assets&quot;, true)
@@ -503,7 +507,7 @@ Wrong notification
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -309,7 +313,7 @@ wherby/docs
 <dl>
   <dt>Controller</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataController.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import scala.concurrent.{Await, Future}
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataController.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import scala.concurrent.{Await, Future}
 
 def upload(companyId: String, year: Int, operationType: String) = deadbolt.Pattern(value = &quot;(v_pwc)|(v_mycompany)&quot;, patternType = PatternType.REGEX)(parse.multipartFormData(maxLength = 1024*1024))  { implicit request =&gt;
   request.body.file(&quot;file&quot;).map { file =&gt;
@@ -320,7 +324,7 @@ def upload(companyId: String, year: Int, operationType: String) = deadbolt.Patte
 }</code></pre></dd>
   <dt>Service</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataServiceWriteImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/><br/>override def updateFinancialData(currentUserEmail: String,
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/CompanyfinancialdataServiceWriteImpl.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/><br/>override def updateFinancialData(currentUserEmail: String,
                                  subject: Option[Subject],
                                  financialData: FinancialdataGetFromFrontend): Future[Unit] = {
   validateUserUtil.validateExternalUserPermissionForCompany(subject, financialData.companyId, financialData.year).map(_ =&gt; {
@@ -353,7 +357,7 @@ private def waitForUpdateFinancialDataAndGenerateNotification(userEmail: String,
 }</code></pre></dd>
   <dt>WorkflowUtil</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/FinancialDataWorkflowUtil.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Timestamp
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/FinancialDataWorkflowUtil.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.sql.Timestamp
 
 override def checkPermissionThenGetFiDataAndNotification(dataFrontEnd: FinancialdataGetFromFrontend,
                                                          email: String,
@@ -422,7 +426,7 @@ def externalSave(dataFrontEnd:FinancialdataGetFromFrontend,
 </code></pre></dd>
   <dt>DataStructure</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/dataStructure.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class FinancialdataGetFromFrontend(id: Long, year: Int, companyId: String,currencyId: String, assetdata: Option[String] = None,
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/codedesign/notification/code/dataStructure.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">case class FinancialdataGetFromFrontend(id: Long, year: Int, companyId: String,currencyId: String, assetdata: Option[String] = None,
                                         liabilitydata: Option[String] = None, profitlossdata: Option[String] = None, fmvdata: Option[String] = None, ordinaryearningsandgain: Option[String] = None,
                                         operationType:String, //The operation type will find the
                                         msg:Option[String], owAssetdata: Option[String] = None, owLiabilitydata: Option[String] = None,
@@ -498,7 +502,7 @@ IMS processor
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

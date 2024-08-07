@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -313,7 +317,7 @@ wherby/docs
 <dl>
   <dt>Caller method</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/caller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.File
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/caller.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.io.File
 
 val genevaExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
   Seq(&quot;Trial Balance&quot;) -&gt; (new TrialBalanceExcelReportProcessor, TrialBalanceReportConfig.extractorConfig),
@@ -367,7 +371,7 @@ def extractGenevaFileAndStoreDataInDB(content: String, fundEngagement: FundEngag
 <dl>
   <dt>PositionAppraisalReportProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
 
 import java.io.FileOutputStream
 import java.sql.Date
@@ -535,7 +539,7 @@ class PositionAppraisalReportProcessor extends BaseExcelReportProcessor {
 }</code></pre></dd>
   <dt>BaseExcelReportProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseExcelReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseExcelReportProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.pwc.ds.awm.processor.excelReport
 
 import java.io.{File, FileInputStream, FileOutputStream}
 import java.sql.Date
@@ -1054,7 +1058,7 @@ class BaseExcelReportProcessor extends BaseReportProcessor{
 }</code></pre></dd>
   <dt>BaseReportProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseReportProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/BaseReportProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.pwc.ds.awm.processor
 
 import java.io.{File, FileOutputStream, IOException}
 import java.sql.Date
@@ -1453,7 +1457,7 @@ abstract class BaseReportProcessor() extends AbstractProcessor {
 }</code></pre></dd>
   <dt>AbstractProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/AbstractProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/AbstractProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.pwc.ds.awm.processor
 
 import java.sql.Date
 import java.time.LocalDate
@@ -1477,7 +1481,7 @@ trait AbstractProcessor {
 <dl>
   <dt>PositionAppraisalReportConfig</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportConfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>import com.pwc.ds.awm.processor.reportconfigs.extractorschema
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/PositionAppraisalReportConfig.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>import com.pwc.ds.awm.processor.reportconfigs.extractorschema
 import com.pwc.ds.awm.processor.reportconfigs.extractorschema.{ColumnConfig, DataType, TableConfig}
 
 object PositionAppraisalReportConfig {
@@ -1528,7 +1532,7 @@ object PositionAppraisalReportConfig {
         }</code></pre></dd>
   <dt>ExtractorConfig</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/ExtractorConfig.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class ExtractorConfig (reportType: String,
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/geneva/ExtractorConfig.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">case class ExtractorConfig (reportType: String,
                             headerColumns: Seq[Seq[ColumnConfig]] = Seq[Seq[ColumnConfig]](), // report header span config
         tableConfig: TableConfig,
         summaryConfig: Option[TableConfig] = None,
@@ -1542,7 +1546,7 @@ object PositionAppraisalReportConfig {
 <dl>
   <dt>Caller method</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/caller.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">var morganExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/caller.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">var morganExtractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
   Seq(&quot;Trial Balance&quot;) -&gt; (new MorganTBProcessor, ReportFundTrialBalanceReportConfig.extractorConfig),
   Seq(&quot;Position Appraisal&quot;) -&gt; (new MorganPositionProcessor, LongShortPositionAppraisalReportConfig.extractorConfig),
   Seq(&quot;Purchases and Sales&quot;) -&gt; (new MorganPSRProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
@@ -1604,7 +1608,7 @@ def extractFileAndStoreDataInDB(content: String, fundEngagement: FundEngagementD
 <dl>
   <dt>MorganPSRProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganPSRProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Date
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganPSRProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.sql.Date
 import com.pwc.ds.awm.const.ExtractionWarningCode
 import com.pwc.ds.awm.processor.BaseReportProcessor
 import com.pwc.ds.awm.processor.exceptions.ExtractionWarning
@@ -1628,7 +1632,7 @@ class MorganPSRProcessor extends BaseReportProcessor {
 }</code></pre></dd>
   <dt>MorganExcelPSRReader</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganExcelPSRReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package com.pwc.ds.awm.processor.morgan.excelreader
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/morgan/MorganExcelPSRReader.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package com.pwc.ds.awm.processor.morgan.excelreader
 
 import com.pwc.ds.awm.component.excel.{ExcelField, ExcelToArray}
 import com.pwc.ds.awm.const.ExtractionErrorCode
@@ -1701,7 +1705,7 @@ object MorganExcelPSRReader {
 <dl>
   <dt>Read PDF for type1</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readPdf.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>def readPDF(sourceFile:String)={
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readPdf.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>def readPDF(sourceFile:String)={
   extractAllTextFromPdfFile(sourceFile,EmptyConfigForPDF.extractorConfig)
 }
 
@@ -1731,7 +1735,7 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 <dl>
   <dt>Then the reader need be change,</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readRaw.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def readRawPDF(sourceFile:String):String={
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/readRaw.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def readRawPDF(sourceFile:String):String={
   val document = PDDocument.load(new File(sourceFile))
   val striper = new PDFTextStripper()
   striper.setSortByPosition(true)
@@ -1758,7 +1762,7 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 <dl>
   <dt>WorkdayProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayProcessor {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object WorkdayProcessor {
   val extractorMap = Map[Seq[String], (AbstractProcessor, ExtractorConfig)](
     Seq(&quot;TB&quot;) -&gt; (new WorkdayTBProcessor, ReportPurchaseAndSalesConfig.extractorConfig),
     Seq(&quot;GL&quot;) -&gt; (new WorkdayGLProcessor, ReportPurchaseAndSalesConfig.extractorConfig)
@@ -1770,7 +1774,7 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 }</code></pre></dd>
   <dt>TBProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class WorkdayTBProcessor extends BaseReportProcessor {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">class WorkdayTBProcessor extends BaseReportProcessor {
   override def extractToObjectForPeriod(
                                          sourceFilePath: String,
                                          frontEndFundName: String,
@@ -1796,7 +1800,7 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 }</code></pre></dd>
   <dt>TBReader</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBRader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayTBReader {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayTBRader.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object WorkdayTBReader {
   val headerStr =
     &quot;\tLedger Account\tTransaction Currency\tBook Code\tTransaction Balance\tLedger Balance&quot;
   val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(3)
@@ -1821,7 +1825,7 @@ def extractAllTextFromPdfFile(sourceFilePath: String, reportConfig: ExtractorCon
 }</code></pre></dd>
   <dt>GLProcessor</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLProcessor.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.sql.Date
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLProcessor.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.sql.Date
 
 class WorkdayGLProcessor extends BaseReportProcessor {
   override def extractToObjectForPeriod(
@@ -1856,7 +1860,7 @@ class WorkdayGLProcessor extends BaseReportProcessor {
 }</code></pre></dd>
   <dt>GLReader</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLReader.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLReader.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object WorkdayGLReader {
   val headerStr =
     &quot;\tLedger/Budget Period\tJournal\tJournal Source\tTransaction\tAccounting Date\tLedger Account\tBook Code\tTransaction Debit Amount\tTransaction Credit Amount\tTransaction Debit minus Credit\tTransaction Currency\tJournal Line Exchange Rate\tLedger/Budget Debit Amount\tLedger/Budget Credit Amount\tLedger/Budget Debit minus Credit\tLedger Currency\tMemo\tLine Memo\tWorktags&quot;
   val lenthFilter       = BasicExcelReaderHelper.basicRowLengthFilter(20)
@@ -1883,7 +1887,7 @@ class WorkdayGLProcessor extends BaseReportProcessor {
 }</code></pre></dd>
   <dt>GLReader2</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLRead2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object WorkdayGLReader2 {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/WorkdayGLRead2.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object WorkdayGLReader2 {
   val headerStr =
     &quot;Ledger Account\tJournal Entry\tCompany\tJournal Source\tTransaction\tAccounting Date\tMemo\tDebit\tCredit\tBalance\tNet Amount&quot;
   val lengthFilter      = BasicExcelReaderHelper.basicRowLengthFilter(4)
@@ -1931,7 +1935,7 @@ class WorkdayGLProcessor extends BaseReportProcessor {
 }</code></pre></dd>
   <dt>BasicExcelReaderHelper</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicExcelReaderHelper.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object BasicExcelReaderHelper {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicExcelReaderHelper.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object BasicExcelReaderHelper {
   def processFileOnExcelReader(
                                 filePath: String,
                                 fundName: String,
@@ -1977,7 +1981,7 @@ case class BasicExcelReader(
                            )</code></pre></dd>
   <dt>BasicProcessFile</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicProcessFile.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.io.File
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/extractorDesign/code/workday/BasicProcessFile.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.io.File
 import scala.concurrent.Await
 
 object BasicProcessFile {
@@ -2318,7 +2322,7 @@ Bugs
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

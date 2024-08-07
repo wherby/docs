@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Engagement entity add to database · Docs</title>
+<title>Python · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Engagement entity add to database
+Python
 </span>
 </div>
 </div>
@@ -144,7 +144,7 @@ wherby/docs
   <ul>
     <li><a href="../fieldnull/code/index.html" class="page">Database define</a></li>
   </ul></li>
-  <li><a href="../engagement/index.html" class="active page">Engagement entity add to database</a></li>
+  <li><a href="../engagement/index.html" class="page">Engagement entity add to database</a></li>
   <li><a href="../slickqueryfailed/index.html" class="page">Slick query overflow</a></li>
   <li><a href="../shadowquery/index.html" class="page">Shadow query</a></li>
   <li><a href="../inconsistent/index.html" class="page">Inconsistent status</a></li>
@@ -227,7 +227,7 @@ wherby/docs
     <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../python/index.html" class="page">Python</a>
+  <li><a href="../python/index.html" class="active page">Python</a>
   <ul>
     <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
     <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
@@ -263,15 +263,6 @@ wherby/docs
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../engagement/index.html#engagement-entity-add-to-database" class="header">Engagement entity add to database</a>
-  <ul>
-    <li><a href="../engagement/index.html#user-story" class="header">User story</a></li>
-    <li><a href="../engagement/index.html#db-design" class="header">DB design</a></li>
-    <li><a href="../engagement/index.html#question-two" class="header">Question Two</a></li>
-  </ul></li>
-</ul>
 </nav>
 
 </nav>
@@ -285,131 +276,19 @@ wherby/docs
 </div>
 </div>
 </div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../engagement/index.html#engagement-entity-add-to-database" class="header">Engagement entity add to database</a>
-  <ul>
-    <li><a href="../engagement/index.html#user-story" class="header">User story</a></li>
-    <li><a href="../engagement/index.html#db-design" class="header">DB design</a></li>
-    <li><a href="../engagement/index.html#question-two" class="header">Question Two</a></li>
-  </ul></li>
-</ul>
-</nav>
-
-</div>
-</div>
-</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#engagement-entity-add-to-database" name="engagement-entity-add-to-database" class="anchor"><span class="anchor-link"></span></a>Engagement entity add to database</h1>
-<h2><a href="#user-story" name="user-story" class="anchor"><span class="anchor-link"></span></a>User story</h2>
-<p>In PFIC system, PwC internal user could visit all their business information without restriction at beginning.</p><div class="callout note "><div class="callout-title">Business information</div>
-<p>PFIC system has fund, company information. Fund will invest multiple companies. So the business information will includes information for funds and companies. </p></div>
-<p>But client want to introduce engagement concept to restrict PwC internal user to handle engagement&rsquo;s business information.</p><div class="callout note "><div class="callout-title">Engagement</div>
-<p>PwC internal user could be in one or more engagements; One engagement will have multiple funds; One funds will invest multiple companies. </p></div>
-<h3><a href="#question-about-privilege-in-different-engagement" name="question-about-privilege-in-different-engagement" class="anchor"><span class="anchor-link"></span></a>Question about privilege in different engagement</h3>
-<p>One user could be in one or more engagements, but does a same user in different engagements with different roles? </p>
-<p><img src="./code/email.png" alt="Email info" /></p>
-<h2><a href="#db-design" name="db-design" class="anchor"><span class="anchor-link"></span></a>DB design</h2>
-<p>Database as below:</p>
-<dl>
-  <dt>User</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/user.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">create table `users`(
-   `id` varchar(128) NOT NULL,
-   `email` VARCHAR(128) NOT NULL,
-   `role` VARCHAR(128) NOT NULL,
-   `engagementid` TEXT NULL,
-   PRIMARY KEY (`id`),
-   CONSTRAINT `email` UNIQUE (`email`)
-)</code></pre></dd>
-  <dt>Engagement</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagement.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">create table `engagements`(
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-   `funds` TEXT NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-  <dt>Fund-company
-  </dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund_company.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">CREATE TABLE fund_company_investments (
-    id varchar(128) NOT NULL, 
-    fund_id varchar(255) NOT NULL,
-    company_id varchar(128) NOT NULL, 
-    year INT NOT NULL,
-    PRIMARY KEY (id)
-);</code></pre></dd>
-  <dt>Fund</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/fund.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">create table `fund` (
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-  <dt>Company</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/company.sql" target="_blank" title="Go to snippet source">source</a><code class="language-sql">create table `company` (
-   `id` varchar(128) NOT NULL,
-   `name` VARCHAR(128) NOT NULL,
-    PRIMARY KEY (id)
-)</code></pre></dd>
-</dl>
-<h3><a href="#question" name="question" class="anchor"><span class="anchor-link"></span></a>Question</h3>
-<p>How could we check the user&rsquo;s privilege on company and fund?</p>
-<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/code/engagementimpl.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">case class EngagementInfo(id: String, name: String, funds: Seq[String])
-
-case class UserEngagementInfo(userRole: String, engagements: Seq[EngagementInfo],funds: Seq[String])
-
-
-override def verifyForFund(email: String, fundId: String): Future[Boolean] = {
-  getUserEngagementInfoByEmail(email).map {
-    userEngagement =&gt;
-      userEngagement.userRole match {
-        case &quot;Admin&quot; =&gt; true
-        case other if userEngagement.funds.contains(fundId) =&gt; true
-        case _ =&gt; false
-      }
-  }
-}
-
-
-
-override def verifyForComapany(email: String, companyId: String, year: Int): Future[Boolean] = {
-  getUserEngagementInfoByEmail(email).flatMap {
-    userEngagement=&gt;
-      userEngagement.userRole match{
-        case &quot;Admin&quot; =&gt; Future(true)
-        case other =&gt;
-          val fdIds= fiCompanyInvestmentsDAO.queryByCompanyIdAndYear(companyId,year).map{
-            investSeq=&gt;investSeq.map(_.fiId).toSet
-          }
-          val fdIdsInEng = getUserEngagementInfoByEmail(email).map{
-            engs=&gt;engs.funds.toSet
-          }
-          val comsetF= for(s1 &lt;- fdIds;
-                           s2 &lt;- fdIdsInEng)
-            yield {
-              s1 &amp;s2
-            }
-          comsetF.map{
-            comset=&gt; !comset.isEmpty
-          }
-      }
-  }
-}</code></pre>
-<h2><a href="#question-two" name="question-two" class="anchor"><span class="anchor-link"></span></a>Question Two</h2>
-<h3><a href="#1-if-one-user-has-different-privilege-in-different-engagement-how-to-design-the-database-" name="1-if-one-user-has-different-privilege-in-different-engagement-how-to-design-the-database-" class="anchor"><span class="anchor-link"></span></a>1. If one user has different privilege in different engagement, how to design the database?</h3>
-<h3><a href="#2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" name="2-what-will-happen-when-user-binding-to-engagement-table-not-engagement-binging-to-user-table-" class="anchor"><span class="anchor-link"></span></a>2. What will happen when user binding to engagement table not engagement binging to user table?</h3>
+<h1><a href="#python" name="python" class="anchor"><span class="anchor-link"></span></a>Python</h1>
+<div class="toc ">
+<ul>
+  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+</ul>
+</div>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/engagement/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -436,7 +315,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../fieldnull/code/index.html" title="Database define" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../codedesign/deepcopy/index.html" title="Knowledge base establish with deep-copy" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -445,17 +324,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Database define
+Knowledge base establish with deep-copy
 </span>
 </div>
 </a>
-<a href="../slickqueryfailed/index.html" title="Slick query overflow" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../python/enclosure/index.html" title="Speed up python by remove enclosure" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Slick query overflow
+Speed up python by remove enclosure
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

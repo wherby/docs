@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Intellij bug for scala · Docs</title>
+<title> · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,6 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Intellij bug for scala
 </span>
 </div>
 </div>
@@ -213,7 +212,7 @@ wherby/docs
     <li><a href="../../bugs/jobnotfinished/index.html" class="page">Job not finished</a></li>
     <li><a href="../../bugs/timeindocker/index.html" class="page">Issue</a></li>
     <li><a href="../../bugs/downloadfromcache/index.html" class="page">Download from cache</a></li>
-    <li><a href="../../bugs/intellijbug/index.html" class="active page">Intellij bug for scala</a></li>
+    <li><a href="../../bugs/intellijbug/index.html" class="page">Intellij bug for scala</a></li>
     <li><a href="../../bugs/uirefresh/index.html" class="page">UI refreshing issue</a></li>
     <li><a href="../../bugs/flowissue/index.html" class="page">Flow issue</a></li>
     <li><a href="../../bugs/numberoverflow/index.html" class="page">Number overflow</a></li>
@@ -230,7 +229,7 @@ wherby/docs
   <li><a href="../../python/index.html" class="page">Python</a>
   <ul>
     <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
-    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+    <li><a href="../../python/recursion/index.html" class="active page">python/recursion/index.html</a></li>
   </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
@@ -263,14 +262,6 @@ wherby/docs
   </ul></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../bugs/intellijbug/index.html#intellij-bug-for-scala" class="header">Intellij bug for scala</a>
-  <ul>
-    <li><a href="../../bugs/intellijbug/index.html#issues" class="header">Issues</a></li>
-    <li><a href="../../bugs/intellijbug/index.html#whats-happened" class="header">What&rsquo;s happened</a></li>
-  </ul></li>
-</ul>
 </nav>
 
 </nav>
@@ -284,118 +275,12 @@ wherby/docs
 </div>
 </div>
 </div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../bugs/intellijbug/index.html#intellij-bug-for-scala" class="header">Intellij bug for scala</a>
-  <ul>
-    <li><a href="../../bugs/intellijbug/index.html#issues" class="header">Issues</a></li>
-    <li><a href="../../bugs/intellijbug/index.html#whats-happened" class="header">What&rsquo;s happened</a></li>
-  </ul></li>
-</ul>
-</nav>
-
-</div>
-</div>
-</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#intellij-bug-for-scala" name="intellij-bug-for-scala" class="anchor"><span class="anchor-link"></span></a>Intellij bug for scala</h1>
-<h2><a href="#issues" name="issues" class="anchor"><span class="anchor-link"></span></a>Issues</h2>
-<p>In a if &ndash; else branch, when condition is 0 </p>
-<p>then go if branch</p>
-<p><img src="./pic/image002.png" alt="Go 0" /></p>
-<p>but will also go to else branch </p>
-<p><img src="./pic/image001.png" alt="Branch else" /></p>
-<p>In else branch, every variable is lost.</p>
-<p>and console log is :</p>
-<p><img src="./pic/image005.png" alt="log" /></p>
-<p>If changed a bit: Then go to if branch</p>
-<p><img src="./pic/image003.png" alt="Branch if" /></p>
-<p>And bypass else:</p>
-<p><img src="./pic/image004.png" alt="By pass else" /></p>
-<p>and console log is :</p>
-<p><img src="./pic/image006.png" alt="log2" /></p>
-<p>When go to real case:</p>
-<p>If branch</p>
-<p><img src="./pic/image008.png" alt="if branch" /></p>
-<p>go to else branch</p>
-<p><img src="./pic/image007.png" alt="Else branch" /></p>
-<dl>
-  <dt>The code to reproduce</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/intellijbug/code/DownloadService.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>class DownloadService @Inject()(dictionaryService: NewDictionaryService)(implicit ec: ExecutionContext) {
-
-  def evaluateExtractedDataToExcel(standardMappedToExcelList: Seq[StandardMappedToExcel],workbook: XSSFWorkbook):Seq[NotMatchedFormula]={
-    val notMatchedFormulaList=new ListBuffer[NotMatchedFormula]
-    val sheetItemList = new ListBuffer[SheetItemList]
-    standardMappedToExcelList.map(standardMappedToExcel=&gt;{
-      val standardItemList = new ListBuffer[ItemList]
-      val itemAddedList = new ListBuffer[ItemAddList]
-      val sheetType = standardMappedToExcel.sheetType
-      standardMappedToExcel.standardMappedToExcel.foreach(itemListForSingleItem=&gt;{
-        val itemType = itemListForSingleItem.itemType
-        if (itemType != &quot;unmap&quot;){
-          val sheetColExtList = itemListForSingleItem.sheetColExtList
-          val (standardItemForSingleItem, itemAddedForSingleItem)=SubItemHandler.handleSheetSubItem(sheetColExtList)
-          standardItemList+=ItemList(itemType,standardItemForSingleItem)
-          itemAddedList+=ItemAddList(itemType,itemAddedForSingleItem)
-        }
-      })
-      val unmapSheetItems = standardMappedToExcel.standardMappedToExcel.find(item=&gt;{item.itemType == &quot;unmap&quot;}).map(_.sheetColExtList).getOrElse(new ListBuffer[SheetColExt])
-//      if (unmapSheetItems.size == 0) {
-//        sheetItemList += SheetItemList(sheetType, standardItemList, itemAddedList, new ListBuffer[SheetColExt],new ListBuffer[SheetColExt])
-//      } else {
-//        sheetItemList += SheetItemList(sheetType, standardItemList, itemAddedList, new ListBuffer[SheetColExt],unmapSheetItems)
-//      }
-      if (unmapSheetItems.size == 0) {
-        println(&quot;0&quot;)
-      }else {
-        println(&quot;1&quot;)
-      }
-      println(&quot;accc&quot;)
-    })
-    println(sheetItemList.toString())
-    workBookInfoList.foreach(workBookInfoForSingleSheet=&gt;{
-      val sheetType = workBookInfoForSingleSheet.sheetType
-      val workbookName = workBookInfoForSingleSheet.workBookName
-      val itemNameList = workBookInfoForSingleSheet.itemNameList
-      val rowNameList = workBookInfoForSingleSheet.rowNameList
-      val notMatchSheetName = workBookInfoForSingleSheet.notMatchSheetName
-      val standardItemList = sheetItemList.find(item=&gt;{item.sheetType == sheetType}).map(_.standardItemList).getOrElse(new ListBuffer[ItemList])
-      val dataList = standardItemList.filter(item=&gt;itemNameList.contains(item.itemType))
-      val sheetRowKeys = rowKeysList.find(_.sheetType == sheetType).map(_.sheetRowKeys).getOrElse(new ListBuffer[SheetRowKeyInfo])
-      val formulaFromSheet = FinancialDataToExcel.writeSheetToExcel(workbookName, workbook, dataList, rowNameList,sheetRowKeys)
-      val sheetNotMatch =sheetItemList.find(item=&gt;{item.sheetType == sheetType}).map(_.unmapSheetItems).getOrElse(new ListBuffer[SheetColExt])
-      FinancialDataToExcel.writeNotMatchSheetToExcelNotMatch(workbook,sheetNotMatch,notMatchSheetName)
-      val evaluator = new XSSFFormulaEvaluator(workbook)
-      evaluator.evaluateAll()
-      val notMatchedSheet = FinancialDataToExcel.verifySheetToExcel(workbookName,workbook,dataList,rowNameList,sheetRowKeys)
-      val originNotMatchedItem = notMatchedSheet.map(x=&gt;x.head)
-      val sheetAutoCorrector = FormulaCorrector.tryToCorrectSheet(standardItemList.flatMap(_.sheetColExtList),originNotMatchedItem,sheetType)
-      notMatchedFormulaList += NotMatchedFormula(sheetType,notMatchedSheet,sheetAutoCorrector._1,sheetAutoCorrector._2)
-    })
-
-    notMatchedFormulaList
-  }
-}
-</code></pre></dd>
-</dl>
-<p>Intellij:2021.2</p>
-<p><img src="./pic/image009.png" alt="Intellij" /></p>
-<p>Java:OpenJDK 11</p>
-<p><img src="./pic/image010.png" alt="Java" /></p>
-<p>Scala:2.12.6</p>
-<p><img src="./pic/image011.png" alt="Scala" /></p>
-<h2><a href="#whats-happened" name="whats-happened" class="anchor"><span class="anchor-link"></span></a>What&rsquo;s happened</h2>
-<p>The if else block is in the foreach or map funtion, which intellij want to evaluate the return value, then bug happens.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/intellijbug/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/recursion/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -422,7 +307,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/downloadfromcache/index.html" title="Download from cache" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../python/enclosure/index.html" title="Speed up python by remove enclosure" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -431,17 +316,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Download from cache
+Speed up python by remove enclosure
 </span>
 </div>
 </a>
-<a href="../../bugs/uirefresh/index.html" title="UI refreshing issue" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../issues/index.html" title="Issues" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-UI refreshing issue
+Issues
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

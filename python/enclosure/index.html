@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="active page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="active page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -306,7 +310,7 @@ wherby/docs
 <dl>
   <dt>5592 ms code which use cache</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/enclosure/code/q42.py" target="_blank" title="Go to snippet source"></a><code class="language-py"># 同样算法，没有self数组传递，就算加上cache速度慢 20倍 相对于 q44.py https://leetcode-cn.com/problems/make-the-xor-of-all-segments-equal-to-zero/submissions/
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/enclosure/code/q42.py" target="_blank" title="Go to snippet source">source</a><code class="language-py"># 同样算法，没有self数组传递，就算加上cache速度慢 20倍 相对于 q44.py https://leetcode-cn.com/problems/make-the-xor-of-all-segments-equal-to-zero/submissions/
 from collections import defaultdict
 import functools
 class Solution:
@@ -348,7 +352,7 @@ re = Solution().minChanges(nums , k )
 print(re)</code></pre></dd>
   <dt>208 ms code which not use cache</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/enclosure/code/q44.py" target="_blank" title="Go to snippet source"></a><code class="language-py">from collections import defaultdict
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/enclosure/code/q44.py" target="_blank" title="Go to snippet source">source</a><code class="language-py">from collections import defaultdict
 import functools
 class Solution:
     def minChanges(self, nums: list[int], k: int) -&gt; int:
@@ -418,7 +422,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../codedesign/deepcopy/index.html" title="Knowledge base establish with deep-copy" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../python/index.html" title="Python" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -427,17 +431,16 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Knowledge base establish with deep-copy
+Python
 </span>
 </div>
 </a>
-<a href="../../issues/index.html" title="Issues" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../python/recursion/index.html" title="" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Issues
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
@@ -452,7 +455,7 @@ Issues
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

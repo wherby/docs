@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -324,7 +328,7 @@ wherby/docs
 <dl>
   <dt>GetByEngagementName</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/GetEngagementSecurityPrice.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">def getEngagementSecurityPrice() = Action.async(trim(parse.json)) { implicit request =&gt; {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/GetEngagementSecurityPrice.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def getEngagementSecurityPrice() = Action.async(trim(parse.json)) { implicit request =&gt; {
     ...
   egaRead.lookupByFundEngagementId(fundEngagementId).flatMap {
     egaOpt =&gt;
@@ -340,7 +344,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>GetBySecuritypriceAndOrder</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/Getsecuritypriceorder.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>private def getSecrurityPrivceOrderd(isin: String,currency:String,  pricedate: String, securityType: String, priceAndSource: PriceAndSource): Seq[SecurityPrice] = {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/Getsecuritypriceorder.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>private def getSecrurityPrivceOrderd(isin: String,currency:String,  pricedate: String, securityType: String, priceAndSource: PriceAndSource): Seq[SecurityPrice] = {
   var continueQuery = true
   val sourceFrom = securityType match {
     case &quot;Standard&quot; =&gt; priceAndSource.standard
@@ -372,7 +376,7 @@ wherby/docs
 }</code></pre></dd>
   <dt>QeuryData</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryDate.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">private def getByIsinAndDate(isin: String,currency:String,  pricedate: String) = {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryDate.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">private def getByIsinAndDate(isin: String,currency:String,  pricedate: String) = {
   val securityPriceQuery = SecurityPriceQuery(None, None, Some(isin), None, None, None, None,Some(currency), pricedate)
   Await.result(securityPriceRead.query(securityPriceQuery), 1 second)
 }
@@ -386,7 +390,7 @@ case class SecurityPriceQuery(cname: Option[String], gsp: Option[String], isin: 
                               pricetype: Option[String], source: Option[String], exchange: Option[String], currency: Option[String],pricedate: String)</code></pre></dd>
   <dt>QueryInDatabase</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryInDatabase.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">override def query(securityPriceQuery: SecurityPriceQuery): Future[Seq[SecurityPrice]] = {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/systemdesign/code/QueryInDatabase.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">override def query(securityPriceQuery: SecurityPriceQuery): Future[Seq[SecurityPrice]] = {
   val query = Securityprices.filter(securityPrice =&gt; securityPriceQuery.cname.map(cname =&gt; securityPrice.cname === cname).getOrElse(true: Rep[Boolean]))
     .filter(securityPrice =&gt; securityPriceQuery.gsp.map(gsp =&gt; securityPrice.gsp === gsp).getOrElse(true: Rep[Boolean]))
     .filter(securityPrice =&gt; securityPriceQuery.isin.map(isin =&gt; securityPrice.isin === isin).getOrElse(true: Rep[Boolean]))
@@ -464,7 +468,7 @@ The reactive manifesto
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

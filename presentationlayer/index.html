@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -303,7 +307,7 @@ wherby/docs
 <h1><a href="#refactor-code-for-excel-output" name="refactor-code-for-excel-output" class="anchor"><span class="anchor-link"></span></a>Refactor code for Excel output</h1>
 <h2><a href="#presentation-layer-for-excel-output" name="presentation-layer-for-excel-output" class="anchor"><span class="anchor-link"></span></a>Presentation-layer for Excel output</h2>
 <p>We use Apache POI for Excel output in system.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/presentation.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">case class OutPutParam(sheetName: String,
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/presentation.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">case class OutPutParam(sheetName: String,
                        columnList: Seq[ColumnWithType],
                        sheetContent: () =&gt; Seq[Map[String, String]],
                        startWritingRow: Int)
@@ -327,7 +331,7 @@ object ExcelColumnFormat extends Enumeration {
 <dl>
   <dt>GeneralEGAStorage</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GeneralSingleEGAStorage.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.text.SimpleDateFormat
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GeneralSingleEGAStorage.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.text.SimpleDateFormat
 
 import scala.collection.Map
 
@@ -370,7 +374,7 @@ class GeneralSingleEGAStorage {
 }</code></pre></dd>
   <dt>EGAConstMorgenStanley</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/EGAConstMorgenStanley.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>object EGAConstMorganStanley {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/EGAConstMorgenStanley.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>object EGAConstMorganStanley {
   val positionColumnList = EGAConstBase.replaceColumn( EGAConstBase.positionColumnList,&quot;Group1&quot;,ColumnWithType(&quot;Group1&quot;,ExcelColumnFormat.format_formula))
 
   val cashColumnList = EGAConstBase.cashColumnList
@@ -392,7 +396,7 @@ class GeneralSingleEGAStorage {
 <dl>
   <dt>GenericSingleEGAStorage</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GenericSingleEGAStorage.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.text.SimpleDateFormat
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GenericSingleEGAStorage.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.text.SimpleDateFormat
 
 import scala.collection.Map
 
@@ -436,12 +440,12 @@ class GeneralSingleEGAStorage {
 }</code></pre></dd>
   <dt>MorgenSingleEGAStorage</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganSingleEGAStorage.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>class MorganSingleEGAStorage extends GeneralSingleEGAStorage with EGAColConstMorgenStanley{
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganSingleEGAStorage.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>class MorganSingleEGAStorage extends GeneralSingleEGAStorage with EGAColConstMorgenStanley{
 
 }</code></pre></dd>
   <dt>ColConstBase</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/EGAColConstBase.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>trait EGAColConstBase {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/EGAColConstBase.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>trait EGAColConstBase {
   def replaceColumn(orgSeq:Seq[ColumnWithType], columnName:String, newFormat:ColumnWithType)={
     orgSeq.map{
       col =&gt;col.columnName match {
@@ -467,7 +471,7 @@ class GeneralSingleEGAStorage {
 }</code></pre></dd>
   <dt>MorganStanleyConst</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganStanleyConst.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>trait EGAColConstMorgenStanley extends EGAColConstBase {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganStanleyConst.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>trait EGAColConstMorgenStanley extends EGAColConstBase {
   override val positionColumnList = replaceColumn(EGAColConstBase.positionColumnList, &quot;Group1&quot;, ColumnWithType(&quot;Group1&quot;, ExcelColumnFormat.format_formula))
 
   override val GLColumnList = replaceColumn(EGAColConstBase.GLColumnList, &quot;EndingBalanceAmount&quot;, ColumnWithType(&quot;EndingBalanceAmount&quot;, ExcelColumnFormat.format_formula))
@@ -476,7 +480,7 @@ class GeneralSingleEGAStorage {
 </dl>
 <h2><a href="#pitfall-for-refactor-code" name="pitfall-for-refactor-code" class="anchor"><span class="anchor-link"></span></a>Pitfall for refactor code</h2>
 <p>In GeneralSingleEGAStorage, for the ColumList depends on EGAColConstBase implementation.</p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GenericSingleEGAStorage2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">import java.text.SimpleDateFormat
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/GenericSingleEGAStorage2.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.text.SimpleDateFormat
 
 import scala.collection.Map
 
@@ -521,7 +525,7 @@ class GeneralSingleEGAStorage {
 <p>if the **Param is not lazy val,the columnList field will be null, for the initialization order.</p>
 <p><img src="./pic/nullPointerForNotLazy.png" alt="Null pointer for Col const" /></p>
 <p>For MorganStanleyConst implementation, there is some overwrite for base const variables.So the base variables should from object variable. </p>
-<pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganStanleyConst.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala"><br/>trait EGAColConstMorgenStanley extends EGAColConstBase {
+<pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/presentationlayer/code/MorganStanleyConst.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>trait EGAColConstMorgenStanley extends EGAColConstBase {
   override val positionColumnList = replaceColumn(EGAColConstBase.positionColumnList, &quot;Group1&quot;, ColumnWithType(&quot;Group1&quot;, ExcelColumnFormat.format_formula))
 
   override val GLColumnList = replaceColumn(EGAColConstBase.GLColumnList, &quot;EndingBalanceAmount&quot;, ColumnWithType(&quot;EndingBalanceAmount&quot;, ExcelColumnFormat.format_formula))
@@ -592,7 +596,7 @@ Refine code with function programming
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">

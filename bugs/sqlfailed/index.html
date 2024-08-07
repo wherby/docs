@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="description" content="Description for doradilla library.">
-<meta name="generator" content="Paradox, paradox-material-theme=0.6.0, mkdocs-material=3.0.3">
+<meta name="generator" content="Paradox, paradox-material-theme=0.7.0, mkdocs-material=3.0.3">
 
 <meta name="lang:clipboard.copy" content="Copy to clipboard">
 <meta name="lang:clipboard.copied" content="Copied to clipboard">
@@ -227,7 +227,11 @@ wherby/docs
     <li><a href="../../codedesign/processorDesignHandleMultiInput/index.html" class="page">Handle multi input</a></li>
     <li><a href="../../codedesign/deepcopy/index.html" class="page">Knowledge base establish with deep-copy</a></li>
   </ul></li>
-  <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+  <li><a href="../../python/index.html" class="page">Python</a>
+  <ul>
+    <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
+    <li><a href="../../python/recursion/index.html" class="page">python/recursion/index.html</a></li>
+  </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
     <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
@@ -309,7 +313,7 @@ wherby/docs
 <dl>
   <dt>Error</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/txt/error.txt" target="_blank" title="Go to snippet source"></a><code class="language-txt">[warn] c.z.h.p.ProxyConnection - myapp.database - Connection com.mysql.cj.jdbc.ConnectionImpl@7d5dbfc5 marked as broken because of SQLSTATE(08S01), ErrorCode(1159)
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/txt/error.txt" target="_blank" title="Go to snippet source">source</a><code class="language-txt">[warn] c.z.h.p.ProxyConnection - myapp.database - Connection com.mysql.cj.jdbc.ConnectionImpl@7d5dbfc5 marked as broken because of SQLSTATE(08S01), ErrorCode(1159)
 java.sql.SQLNonTransientConnectionException: Got timeout reading communication packets        
 at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)        
 at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)        
@@ -329,7 +333,7 @@ at slick.jdbc.Invoker.first(Invoker.scala:30)
 <dl>
   <dt>StatDao</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/SlickStatDAO.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">@Singleton
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/SlickStatDAO.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">@Singleton
 class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extends StatDAO with Tables {
 
 
@@ -410,7 +414,7 @@ class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extend
 }</code></pre></dd>
   <dt>DropEngagementCommandGenerator</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/DropEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class DropEngagementCommandGenerator @Inject() (ServerEnvironment:String) extends CommandGeneratorByServerEnvironment {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/DropEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">class DropEngagementCommandGenerator @Inject() (ServerEnvironment:String) extends CommandGeneratorByServerEnvironment {
   val profile: JdbcProfile = _root_.slick.jdbc.MySQLProfile
   import profile.api._
   def generate(): SqlAction[Int, NoStream, Effect] = {
@@ -421,7 +425,7 @@ class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extend
 }</code></pre></dd>
   <dt>CreateEngagementCommandGenerator</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/CreateEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class CreateEngagementCommandGenerator @Inject() (ServerEnvironment:String, MySQLuser:String, MySQLpwd:String, MySQLipAdress:String, MySQLport:String) extends CommandGeneratorByServerEnvironment {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/CreateEngagementCommandGenerator.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">class CreateEngagementCommandGenerator @Inject() (ServerEnvironment:String, MySQLuser:String, MySQLpwd:String, MySQLipAdress:String, MySQLport:String) extends CommandGeneratorByServerEnvironment {
   val profile: JdbcProfile = _root_.slick.jdbc.MySQLProfile
   import profile.api._
   def generate(): SqlAction[Int, NoStream, Effect] = {
@@ -466,7 +470,7 @@ class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extend
 <dl>
   <dt>Logback setting</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/logback.xml" target="_blank" title="Go to snippet source"></a><code class="language-xml">&lt;configuration&gt;
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/logback.xml" target="_blank" title="Go to snippet source">source</a><code class="language-xml">&lt;configuration&gt;
 
   &lt;conversionRule conversionWord=&quot;coloredLevel&quot; converterClass=&quot;play.api.libs.logback.ColoredLevel&quot;/&gt;
 
@@ -509,7 +513,7 @@ class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extend
 &lt;/configuration&gt;</code></pre></dd>
   <dt>Job service impl</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/JobServiceImpl.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">class JobServiceImpl @Inject()(statDao: StatDAO) extends JobService {
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/sqlfailed/code/JobServiceImpl.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">class JobServiceImpl @Inject()(statDao: StatDAO) extends JobService {
   var state: JobServiceState = JobServiceState(None, false, false, LocalTime.now(), Some(LocalTime.now()), Nil)
   implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(Executors.newSingleThreadExecutor())
   final val failureLimit = 5
@@ -590,7 +594,7 @@ class SlickStatDAO @Inject()(db: Database)(implicit ec: ExecutionContext) extend
 <dl>
   <dt>s1</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 object SerialFutureMap extends App {
   import scala.concurrent._
   import ExecutionContext.Implicits.global
@@ -624,7 +628,7 @@ Serial result:f1 and f2
  */</code></pre></dd>
   <dt>p1</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 
 object ParallelFutureMap extends App {
@@ -662,7 +666,7 @@ Parallel result:f1 and f2
  */</code></pre></dd>
   <dt>s2</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/SerialFutureMap2.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object SerialFutureMap2 extends App {
   import scala.concurrent._
@@ -702,7 +706,7 @@ Serial result:f1 and f2
 </code></pre></dd>
   <dt>as1</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncSerialMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncSerialMap.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object AsyncSerialMap extends App {
   import scala.concurrent._
@@ -738,7 +742,7 @@ serial result:f1 and f2
 </code></pre></dd>
   <dt>ap1</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncParallelMap.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/AsyncParallelMap.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object AsyncParallelMap extends App {
   import scala.concurrent._
@@ -775,7 +779,7 @@ parallel result:f1 and f2
  */</code></pre></dd>
   <dt>p2</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap2.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap2.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 
 object ParallelFutureMap2 extends App {
@@ -818,7 +822,7 @@ Parallel result:f1 and f2
  */</code></pre></dd>
   <dt>p3</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap3.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap3.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object ParallelFutureMap3 extends App {
   import scala.concurrent._
@@ -861,7 +865,7 @@ Parallel result:f3 and f1 and f2
  */</code></pre></dd>
   <dt>p4</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap4.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap4.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object ParallelFutureMap4 extends App {
   import scala.concurrent._
@@ -903,7 +907,7 @@ Parallel result:f3 and f1 and f2
  */</code></pre></dd>
   <dt>p5</dt>
   <dd>
-  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap5.scala" target="_blank" title="Go to snippet source"></a><code class="language-scala">package modules.forComprehension
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/app/modules/forComprehension/ParallelFutureMap5.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">package modules.forComprehension
 
 object ParallelFutureMap5 extends App {
   import scala.concurrent._
@@ -1008,7 +1012,7 @@ Wrong finacial data updated
 Powered by
 <a href="https://github.com/lightbend/paradox">Paradox</a>
 and
-<a href="https://jonas.github.io/paradox-material-theme/">Paradox Material Theme</a>
+<a href="https://sbt.github.io/sbt-paradox-material-theme/">Paradox Material Theme</a>
 
 </div>
 <div class="md-footer-social">
