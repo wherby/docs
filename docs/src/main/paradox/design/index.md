@@ -3,5 +3,5 @@
 @@@ index
 
 * [Dependency](dependency/index.md)
-
+* [Scala code](scalacode/index.md)
 @@@
