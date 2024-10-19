@@ -45,7 +45,7 @@ if __name__ == "__main__":
     ls = ["8","81","82","829","8299"]
     ls = ls*1000
     #ls.append("82888"*10000)
-    #ls = [a *1000 for a in ls]
+    ls = [a *1000 for a in ls]
     #print(ls)
     a = sortArr(ls)
     print(acc)
