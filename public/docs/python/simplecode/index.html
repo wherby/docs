@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Competitive programming display issue · Docs</title>
+<title>Simple question · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Competitive programming display issue
+Simple question
 </span>
 </div>
 </div>
@@ -231,7 +231,7 @@ wherby/docs
   <ul>
     <li><a href="../../python/enclosure/index.html" class="page">Speed up python by remove enclosure</a></li>
     <li><a href="../../python/recursion/index.html" class="page">Python recursion</a></li>
-    <li><a href="../../python/simplecode/index.html" class="page">Simple question</a></li>
+    <li><a href="../../python/simplecode/index.html" class="active page">Simple question</a></li>
   </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
@@ -239,7 +239,7 @@ wherby/docs
     <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
     <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
     <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
-    <li><a href="../../issues/uidisplay/index.html" class="active page">Competitive programming display issue</a></li>
+    <li><a href="../../issues/uidisplay/index.html" class="page">Competitive programming display issue</a></li>
     <li><a href="../../issues/warningmessage/index.html" class="page">Suppress insecurerequestwarning</a></li>
     <li><a href="../../issues/cacheforslowquery/index.html" class="page">Cache for slow query</a></li>
     <li><a href="../../issues/dbsavefail/index.html" class="page">Mysql Issue for Hikari: Failed to validate connection because connection is closed</a></li>
@@ -273,10 +273,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/uidisplay/index.html#competitive-programming-display-issue" class="header">Competitive programming display issue</a>
+  <li><a href="../../python/simplecode/index.html#simple-question" class="header">Simple question</a>
   <ul>
-    <li><a href="../../issues/uidisplay/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../issues/uidisplay/index.html#fix" class="header">fix</a></li>
+    <li><a href="../../python/simplecode/index.html#question" class="header">Question</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -298,10 +297,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../issues/uidisplay/index.html#competitive-programming-display-issue" class="header">Competitive programming display issue</a>
+  <li><a href="../../python/simplecode/index.html#simple-question" class="header">Simple question</a>
   <ul>
-    <li><a href="../../issues/uidisplay/index.html#issue" class="header">Issue</a></li>
-    <li><a href="../../issues/uidisplay/index.html#fix" class="header">fix</a></li>
+    <li><a href="../../python/simplecode/index.html#question" class="header">Question</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -312,20 +310,28 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#competitive-programming-display-issue" name="competitive-programming-display-issue" class="anchor"><span class="anchor-link"></span></a>Competitive programming display issue</h1>
-<h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
-<p>The CP web display has some issue</p>
-<p><img src="./pic/cpui.png" alt="Displayissue" /></p>
-<p>There is some resource can&rsquo;t be loaded</p>
-<p><img src="./pic/cpui2.png" alt="resouce" /></p>
-<h2><a href="#fix" name="fix" class="anchor"><span class="anchor-link"></span></a>fix</h2>
-<p>Download the source code:</p>
-<p><img src="./pic/code2.png" alt="code" /></p>
-<p>And rebuild the web in local:</p>
-<p><img src="./pic/local.png" alt="Local" /></p>
+<h1><a href="#simple-question" name="simple-question" class="anchor"><span class="anchor-link"></span></a>Simple question</h1>
+<h2><a href="#question" name="question" class="anchor"><span class="anchor-link"></span></a>Question</h2>
+<p>Given an array of strings, return the string formed by concatenating all the strings in the array in the maximum lexicographic order.</p>
+<pre><code>input：
+[&quot;8&quot;,&quot;81&quot;,&quot;82&quot;,&quot;829&quot;]
+</code></pre>
+<p>return &ldquo;88298281&rdquo;</p>
+<pre class="prettyprint"><code class="language-python">from functools import cmp_to_key
+def compare(a,b):
+    if (a+b)==(b+a):return 0
+    return 1 if  (a+b)&gt;(b+a) else -1
+
+def sortArr(ls):
+    ls = sorted(ls,key =cmp_to_key(compare),reverse=True)
+    print(ls)
+    return &quot;&quot;.join(ls)
+</code></pre>
+<p>The trap of implement the compare function see <a href="https://stackoverflow.com/questions/79058530/python-sort-lib-different-behavior-with-different-comparing-functions-some-comp">the link</a></p>
+<p>The following question is &ldquo;Analyze the algorithm&rsquo;s time complexity and suggest potential optimizations to improve its efficiency&rdquo;.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/uidisplay/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/python/simplecode/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -352,7 +358,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../issues/playui/index.html" title="Play UI cache issue" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../python/recursion/index.html" title="Python recursion" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -361,17 +367,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Play UI cache issue
+Python recursion
 </span>
 </div>
 </a>
-<a href="../../issues/warningmessage/index.html" title="Suppress insecurerequestwarning" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../issues/index.html" title="Issues" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Suppress insecurerequestwarning
+Issues
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">
