@@ -78,4 +78,5 @@ This is the introduction for doradilla library.
 * [Fast and slow jobs](fastandslowjobs/index2.md)
 * [Tools](tools/index.md)
 * [Scala](scala/index.md)
+* [DB query](dbq/index.md)
 @@@
