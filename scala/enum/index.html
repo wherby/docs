@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Number add for round up · Docs</title>
+<title>Scala enum · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Number add for round up
+Scala enum
 </span>
 </div>
 </div>
@@ -189,7 +189,7 @@ wherby/docs
     <li><a href="../../bugs/addfeature/index.html" class="page">Add features leads system fail</a></li>
     <li><a href="../../bugs/wrongnotification/index.html" class="page">Wrong notification</a></li>
     <li><a href="../../bugs/ieissue/index.html" class="page">Hosting issue for IE</a></li>
-    <li><a href="../../bugs/numberAdd/index.html" class="active page">Number add for round up</a></li>
+    <li><a href="../../bugs/numberAdd/index.html" class="page">Number add for round up</a></li>
     <li><a href="../../bugs/functionandval/index.html" class="page">Function and Val in code</a></li>
     <li><a href="../../bugs/excelBug/index.html" class="page">Excel formula issue</a></li>
     <li><a href="../../bugs/nginxDomain/index.html" class="page">nginx config for domain</a></li>
@@ -268,17 +268,18 @@ wherby/docs
     <li><a href="../../scala/martin/index.html" class="page">Capabilities of Control</a></li>
     <li><a href="../../scala/fiber/index.html" class="page">How do fibers works?</a></li>
     <li><a href="../../scala/code/index.html" class="page">Scala code</a></li>
-    <li><a href="../../scala/enum/index.html" class="page">Scala enum</a></li>
+    <li><a href="../../scala/enum/index.html" class="active page">Scala enum</a></li>
   </ul></li>
   <li><a href="../../dbq/index.html" class="page">Accelerating query performance with a Shadow DB</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/numberAdd/index.html#number-add-for-round-up" class="header">Number add for round up</a>
+  <li><a href="../../scala/enum/index.html#scala-enum" class="header">Scala enum</a>
   <ul>
-    <li><a href="../../bugs/numberAdd/index.html#issue-found" class="header">Issue found</a></li>
-    <li><a href="../../bugs/numberAdd/index.html#code" class="header">code</a></li>
+    <li><a href="../../scala/enum/index.html#reduced-flexibility-" class="header">Reduced Flexibility:</a></li>
+    <li><a href="../../scala/enum/index.html#increased-complexity-for-extensions-" class="header">Increased Complexity for Extensions:</a></li>
+    <li><a href="../../scala/enum/index.html#in-summary-" class="header">In summary:</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -300,10 +301,11 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../../bugs/numberAdd/index.html#number-add-for-round-up" class="header">Number add for round up</a>
+  <li><a href="../../scala/enum/index.html#scala-enum" class="header">Scala enum</a>
   <ul>
-    <li><a href="../../bugs/numberAdd/index.html#issue-found" class="header">Issue found</a></li>
-    <li><a href="../../bugs/numberAdd/index.html#code" class="header">code</a></li>
+    <li><a href="../../scala/enum/index.html#reduced-flexibility-" class="header">Reduced Flexibility:</a></li>
+    <li><a href="../../scala/enum/index.html#increased-complexity-for-extensions-" class="header">Increased Complexity for Extensions:</a></li>
+    <li><a href="../../scala/enum/index.html#in-summary-" class="header">In summary:</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -314,52 +316,66 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#number-add-for-round-up" name="number-add-for-round-up" class="anchor"><span class="anchor-link"></span></a>Number add for round up</h1>
-<h2><a href="#issue-found" name="issue-found" class="anchor"><span class="anchor-link"></span></a>Issue found</h2>
-<p><img src="pic/issueReport.png" alt="Issue report" /></p>
-<p>The parent company has two types share, and the child company need to display the total of two types share value. For the round up issue, the number is not equal.</p>
-<h2><a href="#code" name="code" class="anchor"><span class="anchor-link"></span></a>code</h2>
+<h1><a href="#scala-enum" name="scala-enum" class="anchor"><span class="anchor-link"></span></a>Scala enum</h1>
+<p>When not using scala enum, the code should be like:</p>
 <dl>
-  <dt>Original code</dt>
+  <dt>Use string variable </dt>
   <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/numberAdd/code/code1.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">if(parentInvesment.companyId == company.id || companyInvestment.data.flatMap(_.valueOfShares).isDefined){ //parentInvestment uses this company id, means this is parentCompany, so show separate value of shares.
-  firstValueOfShares = PficReportCalculator.formatDecimalIntoIntString(Some(investorEndingCommitment * companyInvestment.data.flatMap(_.valueOfShares).getOrElse(BigDecimal(0))), &quot;0&quot;)
-  secondValueOfShares = PficReportCalculator.formatDecimalIntoIntString(Some(investorEndingCommitment * companyInvestment.data.flatMap(_.secondValueOfShares).getOrElse(BigDecimal(0))), &quot;0&quot;)
-}
-else { //it&#39;s child company. both value of shares show seenotes, show proRataShareOfShareholder of total parent valueOfShares in the note.
-  val totalValueOfShares:BigDecimal = parentInvesment.data.flatMap(_.valueOfShares).getOrElse(BigDecimal(0)) + parentInvesment.data.flatMap(_.secondValueOfShares).getOrElse(BigDecimal(0))
-}
-
-
-
-def formatDecimalIntoIntString(number: Option[BigDecimal], noneString: String): String = {
-  number match {
-    case Some(value) =&gt; {
-      roundUpBigDecimal(value)
-    }
-    case _ =&gt; noneString
-  }
-}
-
-def roundUpBigDecimal(value: BigDecimal): String = {
-  val decimalFormat: DecimalFormat = new DecimalFormat(&quot;#,##0&quot;)
-  var roundUp = value.setScale(0, BigDecimal.RoundingMode.HALF_UP)
-  decimalFormat.format(roundUp)
-}</code></pre></dd>
-  <dt>Fix code</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/numberAdd/code/code2.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">if(parentInvesment.companyId == company.id || companyInvestment.data.flatMap(_.valueOfShares).isDefined){ //parentInvestment uses this company id, means this is parentCompany, so show separate value of shares.
-  firstValueOfShares = PficReportCalculator.formatDecimalIntoIntString(Some(investorEndingCommitment * companyInvestment.data.flatMap(_.valueOfShares).getOrElse(BigDecimal(0))), &quot;0&quot;)
-  secondValueOfShares = PficReportCalculator.formatDecimalIntoIntString(Some(investorEndingCommitment * companyInvestment.data.flatMap(_.secondValueOfShares).getOrElse(BigDecimal(0))), &quot;0&quot;)
-}
-else {
-  val totalValueOfShares = (parentInvesment.data.flatMap(_.valueOfShares).getOrElse(BigDecimal(0)) * investorEndingCommitment).setScale(0, BigDecimal.RoundingMode.HALF_UP) +
-    (parentInvesment.data.flatMap(_.secondValueOfShares).getOrElse(BigDecimal(0)) *investorEndingCommitment).setScale(0, BigDecimal.RoundingMode.HALF_UP)
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scala/enum/code/opsString.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Ops {
+  val Update = &quot;update&quot;
+  val Read   = &quot;read&quot;
+  val Delete = &quot;delete&quot;
+  val Remove = &quot;remove&quot;
 }</code></pre></dd>
 </dl>
+<p>And when use Enum:</p>
+<dl>
+  <dt>Json format</dt>
+  <dd>
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scala/enum/code/jsonformat.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala"><br/>...
+  implicit object opsW extends Writes[Ops] {
+    override def writes(o: Ops): JsString = {
+      JsString(Ops.toStr(o))
+    }
+  }
+  implicit object opsReads extends Reads[Ops] {
+    override def reads(json: JsValue): JsResult[Ops] = {
+      json match {
+        case jsString: JsString =&gt; JsSuccess(Ops.fromString(jsString.toString()))
+        case s                  =&gt; JsError(s&quot;Invalid value: $s&quot;)
+      }
+    }
+  }
+...</code></pre></dd>
+  <dt>Enum </dt>
+  <dd>
+  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scala/enum/code/opsEnum.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">object Ops extends Enumeration {
+  type Ops = Value
+  val Update, Read, Delete, Remove, Unknown = Value
+
+  implicit def fromString(op: String): Ops =
+    values.find(_.toString.toLowerCase == op.toLowerCase()).getOrElse(Unknown)
+
+  implicit def toStr(op: Ops): String = op.toString.toLowerCase
+}</code></pre></dd>
+</dl>
+<p>While enums offer type safety and improved code readability within an application, their use in RESTful APIs can present certain trade-offs:</p>
+<h3><a href="#reduced-flexibility-" name="reduced-flexibility-" class="anchor"><span class="anchor-link"></span></a>Reduced Flexibility:</h3>
+<p>Enums inherently define a closed set of values. This can limit the flexibility of the API, especially when dealing with evolving requirements or the need to accommodate unexpected or external data sources.</p>
+<h3><a href="#increased-complexity-for-extensions-" name="increased-complexity-for-extensions-" class="anchor"><span class="anchor-link"></span></a>Increased Complexity for Extensions:</h3>
+<p>Adding new values to an enum often requires modifying existing code, potentially impacting multiple parts of the application. This can increase the complexity of maintaining and evolving the API.</p>
+<p>Focus on Type Safety Over Other API Design Considerations: While type safety is valuable, it&rsquo;s crucial to balance it with other important API design principles, such as:</p>
+<h5><a href="#client-friendliness-" name="client-friendliness-" class="anchor"><span class="anchor-link"></span></a>Client-friendliness:</h5>
+<p>The API should be easy for clients (both human and machine) to understand and use.</p>
+<h5><a href="#versioning-" name="versioning-" class="anchor"><span class="anchor-link"></span></a>Versioning:</h5>
+<p>The API should be designed to accommodate future changes and upgrades without breaking existing clients.</p>
+<h5><a href="#extensibility-" name="extensibility-" class="anchor"><span class="anchor-link"></span></a>Extensibility:</h5>
+<p>The API should be able to accommodate new features and integrations without significant modifications.</p>
+<h3><a href="#in-summary-" name="in-summary-" class="anchor"><span class="anchor-link"></span></a>In summary:</h3>
+<p>Enums can be a valuable tool in certain situations, but their use in RESTful APIs should be carefully considered, weighing the benefits of type safety against the potential drawbacks in terms of flexibility, maintainability, and overall API design.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/bugs/numberAdd/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scala/enum/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -386,7 +402,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../bugs/ieissue/index.html" title="Hosting issue for IE" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../scala/code/index.html" title="Scala code" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -395,17 +411,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Hosting issue for IE
+Scala code
 </span>
 </div>
 </a>
-<a href="../../bugs/functionandval/index.html" title="Function and Val in code" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../../dbq/index.html" title="Accelerating query performance with a Shadow DB" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-Function and Val in code
+Accelerating query performance with a Shadow DB
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

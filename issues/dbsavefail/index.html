@@ -268,6 +268,7 @@ wherby/docs
     <li><a href="../../scala/martin/index.html" class="page">Capabilities of Control</a></li>
     <li><a href="../../scala/fiber/index.html" class="page">How do fibers works?</a></li>
     <li><a href="../../scala/code/index.html" class="page">Scala code</a></li>
+    <li><a href="../../scala/enum/index.html" class="page">Scala enum</a></li>
   </ul></li>
   <li><a href="../../dbq/index.html" class="page">Accelerating query performance with a Shadow DB</a></li>
 </ul>
@@ -318,7 +319,7 @@ wherby/docs
 <h1><a href="#mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" name="mysql-issue-for-hikari-failed-to-validate-connection-because-connection-is-closed" class="anchor"><span class="anchor-link"></span></a>Mysql Issue for Hikari: Failed to validate connection because connection is closed</h1>
 <h2><a href="#issue" name="issue" class="anchor"><span class="anchor-link"></span></a>Issue</h2>
 <p>When upload more than 10M excel in fundsAI, the upload will be failed <img src="./pic/uploadfail.png" alt="Upload fail" /></p>
-<p>When check the application log, the below warning of mysql connect &ldquo;Failed to validate connection <a href="mailto:&#99;o&#109;&#x2e;&#x6d;&#x79;&#x73;&#113;&#x6c;&#x2e;c&#106;&#x2e;&#106;d&#98;&#99;&#46;C&#111;n&#x6e;&#101;&#x63;&#x74;&#105;&#111;n&#x49;&#x6d;p&#108;&#x40;&#x34;&#52;&#100;&#52;&#100;&#53;&#x65;&#x62;">&#99;o&#109;&#x2e;&#x6d;&#x79;&#x73;&#113;&#x6c;&#x2e;c&#106;&#x2e;&#106;d&#98;&#99;&#46;C&#111;n&#x6e;&#101;&#x63;&#x74;&#105;&#111;n&#x49;&#x6d;p&#108;&#x40;&#x34;&#52;&#100;&#52;&#100;&#53;&#x65;&#x62;</a> (No operations allowed after connection closed.). &rdquo; will be found.</p>
+<p>When check the application log, the below warning of mysql connect &ldquo;Failed to validate connection <a href="mailto:&#x63;&#x6f;&#109;&#x2e;&#x6d;&#x79;&#x73;&#113;&#x6c;&#x2e;cj&#46;&#106;&#x64;&#x62;&#99;&#46;C&#x6f;&#110;&#110;&#101;&#x63;&#116;&#x69;&#x6f;n&#x49;m&#x70;&#x6c;&#x40;4&#x34;&#100;4d5eb">&#x63;&#x6f;&#109;&#x2e;&#x6d;&#x79;&#x73;&#113;&#x6c;&#x2e;cj&#46;&#106;&#x64;&#x62;&#99;&#46;C&#x6f;&#110;&#110;&#101;&#x63;&#116;&#x69;&#x6f;n&#x49;m&#x70;&#x6c;&#x40;4&#x34;&#100;4d5eb</a> (No operations allowed after connection closed.). &rdquo; will be found.</p>
 <p><img src="./pic/applicationlog.png" alt="Application log" /></p>
 <p>And check the warning message, will find some link as <a href="https://techgry.com/concepts/02-maxLifetime">https://techgry.com/concepts/02-maxLifetime</a> </p>
 <p><img src="./pic/hikaripool.png" alt="Hikari pool" /></p>
