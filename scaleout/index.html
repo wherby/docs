@@ -274,6 +274,16 @@ wherby/docs
   <li><a href="../scaleout/index.html" class="active page">Scale out in k8s</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../scaleout/index.html#scale-out-in-k8s" class="header">Scale out in k8s</a>
+  <ul>
+    <li><a href="../scaleout/index.html#1-horizontal-pod-autoscaler-hpa-" class="header">1. Horizontal Pod Autoscaler (HPA)</a></li>
+    <li><a href="../scaleout/index.html#2-scaling-behavior-cool-down-velocity-" class="header">2. Scaling Behavior (Cool-down &amp; Velocity)</a></li>
+    <li><a href="../scaleout/index.html#3-vertical-pod-autoscaler-vpa-" class="header">3. Vertical Pod Autoscaler (VPA)</a></li>
+    <li><a href="../scaleout/index.html#4-scala-specific-scale-out-considerations" class="header">4. Scala-Specific Scale-Out Considerations</a></li>
+  </ul></li>
+</ul>
 </nav>
 
 </nav>
@@ -287,131 +297,135 @@ wherby/docs
 </div>
 </div>
 </div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">Table of contents</label>
+<ul>
+  <li><a href="../scaleout/index.html#scale-out-in-k8s" class="header">Scale out in k8s</a>
+  <ul>
+    <li><a href="../scaleout/index.html#1-horizontal-pod-autoscaler-hpa-" class="header">1. Horizontal Pod Autoscaler (HPA)</a></li>
+    <li><a href="../scaleout/index.html#2-scaling-behavior-cool-down-velocity-" class="header">2. Scaling Behavior (Cool-down &amp; Velocity)</a></li>
+    <li><a href="../scaleout/index.html#3-vertical-pod-autoscaler-vpa-" class="header">3. Vertical Pod Autoscaler (VPA)</a></li>
+    <li><a href="../scaleout/index.html#4-scala-specific-scale-out-considerations" class="header">4. Scala-Specific Scale-Out Considerations</a></li>
+  </ul></li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h2><a href="#scale-out-in-k8s" name="scale-out-in-k8s" class="anchor"><span class="anchor-link"></span></a>Scale out in k8s</h2>
-<pre><code>In Kubernetes (k8s), **Scaling Out** (Horizontal Scaling) is the process of adding more Pod instances to handle increased load. For a JVM-based application like **Scala**, this involves both automated mechanisms and specific configuration tuning.
-
-There are three primary ways to manage scale-out settings:
-
----
-
-## 1. Horizontal Pod Autoscaler (HPA)
-
-The HPA is the most common way to scale out. It automatically adjusts the number of replicas in a Deployment based on observed metrics.
-
-### Key Settings in the Manifest:
-
-* **`minReplicas` / `maxReplicas**`: Defines the floor and ceiling for your scaling.
-* **`metrics`**: The triggers for scaling.
-* **Resource Metrics**: Scaling based on CPU or Memory usage (e.g., scale out when average CPU hits 70%).
-* **Custom Metrics**: Scaling based on application-specific data, like the number of messages in a Kafka queue or active Akka actor counts (requires Prometheus Adapter).
-
-
-
----
-
-## 2. Scaling Behavior (Cool-down &amp; Velocity)
-
-Introduced in K8s 1.18+, the `behavior` field allows you to fine-tune how fast your app scales out and how slowly it scales back in.
+<p>In Kubernetes (k8s), <strong>Scaling Out</strong> (Horizontal Scaling) is the process of adding more Pod instances to handle increased load. For a JVM-based application like <strong>Scala</strong>, this involves both automated mechanisms and specific configuration tuning.</p>
+<p>There are three primary ways to manage scale-out settings:</p>
+<hr/>
+<h2><a href="#1-horizontal-pod-autoscaler-hpa-" name="1-horizontal-pod-autoscaler-hpa-" class="anchor"><span class="anchor-link"></span></a>1. Horizontal Pod Autoscaler (HPA)</h2>
+<p>The HPA is the most common way to scale out. It automatically adjusts the number of replicas in a Deployment based on observed metrics.</p>
+<h3><a href="#key-settings-in-the-manifest-" name="key-settings-in-the-manifest-" class="anchor"><span class="anchor-link"></span></a>Key Settings in the Manifest:</h3>
+<ul>
+  <li>**<code>minReplicas</code> / <code>maxReplicas**</code>: Defines the floor and ceiling for your scaling.
+</li>
+  <li><strong><code>metrics</code></strong>: The triggers for scaling.</li>
+  <li><strong>Resource Metrics</strong>: Scaling based on CPU or Memory usage (e.g., scale out when average CPU hits 70%).</li>
+  <li><strong>Custom Metrics</strong>: Scaling based on application-specific data, like the number of messages in a Kafka queue or active Akka actor counts (requires Prometheus Adapter).</li>
+</ul>
+<hr/>
+<h2><a href="#2-scaling-behavior-cool-down-velocity-" name="2-scaling-behavior-cool-down-velocity-" class="anchor"><span class="anchor-link"></span></a>2. Scaling Behavior (Cool-down &amp; Velocity)</h2>
+<p>Introduced in K8s 1.18+, the <code>behavior</code> field allows you to fine-tune how fast your app scales out and how slowly it scales back in.</p>
+<pre class="prettyprint"><code class="language-yaml">behavior:
+scaleUp:
+    stabilizationWindowSeconds: 0 # Scale up immediately
+    policies:
+    - type: Percent
+    value: 100 # Double the number of pods
+    periodSeconds: 15
+scaleDown:
+    stabilizationWindowSeconds: 300 # Wait 5 mins before scaling in (prevents &quot;flapping&quot;)
 
 </code></pre>
-<p>behavior:  scaleUp:  stabilizationWindowSeconds: 0 # Scale up immediately  policies:  - type: Percent  value: 100 # Double the number of pods  periodSeconds: 15  scaleDown:  stabilizationWindowSeconds: 300 # Wait 5 mins before scaling in (prevents &ldquo;flapping&rdquo;)</p>
-<pre><code><br/>---
-
-## 3. Vertical Pod Autoscaler (VPA)
-
-While HPA adds more Pods, the **VPA** increases the CPU and Memory &quot;size&quot; of existing Pods.
-
-* **Recommendation:** Do not use HPA and VPA together on the same metric (like CPU), as they will conflict.
-* **Scala Tip:** VPA is excellent for finding the &quot;sweet spot&quot; for JVM heap memory, which is notoriously difficult to estimate manually.
-
----
-
-## 4. Scala-Specific Scale-Out Considerations
-
-When scaling out Scala applications, the standard K8s settings aren&#39;t enough; you must tune the **JVM** to cooperate with the container:
-
-### A. The &quot;Thundering Herd&quot; Problem
-
-Scala applications (especially those using Akka or ZIO) often have high CPU spikes during startup due to JIT (Just-In-Time) compilation.
-
-* **Setting:** Ensure your `cpu.requests` are high enough. If requests are too low, K8s might &quot;throttle&quot; the Pod during startup, making the scale-out process extremely slow.
-
-### B. Graceful Shutdown
-
-When K8s scales **in** (removes pods), it sends a `SIGTERM`.
-
-* **Setting:** Set `terminationGracePeriodSeconds` in your spec (default is 30s). Scala apps with distributed state (Akka Clusters) often need 60-90s to hand off data safely before the Pod vanishes.
-
-### C. Readiness Probes
-
-In a scale-out event, you don&#39;t want traffic hitting a new Pod while the JVM is still warming up.
-
-* **Setting:** Use a `readinessProbe` that checks a specific `/health` or `/ready` endpoint in your Scala code.
-
----
-</code></pre>
+<hr/>
+<h2><a href="#3-vertical-pod-autoscaler-vpa-" name="3-vertical-pod-autoscaler-vpa-" class="anchor"><span class="anchor-link"></span></a>3. Vertical Pod Autoscaler (VPA)</h2>
+<p>While HPA adds more Pods, the <strong>VPA</strong> increases the CPU and Memory &ldquo;size&rdquo; of existing Pods.</p>
+<ul>
+  <li><strong>Recommendation:</strong> Do not use HPA and VPA together on the same metric (like CPU), as they will conflict.</li>
+  <li><strong>Scala Tip:</strong> VPA is excellent for finding the &ldquo;sweet spot&rdquo; for JVM heap memory, which is notoriously difficult to estimate manually.</li>
+</ul>
+<hr/>
+<h2><a href="#4-scala-specific-scale-out-considerations" name="4-scala-specific-scale-out-considerations" class="anchor"><span class="anchor-link"></span></a>4. Scala-Specific Scale-Out Considerations</h2>
+<p>When scaling out Scala applications, the standard K8s settings aren&rsquo;t enough; you must tune the <strong>JVM</strong> to cooperate with the container:</p>
+<h3><a href="#a-the-problem" name="a-the-problem" class="anchor"><span class="anchor-link"></span></a>A. The &ldquo;Thundering Herd&rdquo; Problem</h3>
+<p>Scala applications (especially those using Akka or ZIO) often have high CPU spikes during startup due to JIT (Just-In-Time) compilation.</p>
+<ul>
+  <li><strong>Setting:</strong> Ensure your <code>cpu.requests</code> are high enough. If requests are too low, K8s might &ldquo;throttle&rdquo; the Pod during startup, making the scale-out process extremely slow.</li>
+</ul>
+<h3><a href="#b-graceful-shutdown" name="b-graceful-shutdown" class="anchor"><span class="anchor-link"></span></a>B. Graceful Shutdown</h3>
+<p>When K8s scales <strong>in</strong> (removes pods), it sends a <code>SIGTERM</code>.</p>
+<ul>
+  <li><strong>Setting:</strong> Set <code>terminationGracePeriodSeconds</code> in your spec (default is 30s). Scala apps with distributed state (Akka Clusters) often need 60-90s to hand off data safely before the Pod vanishes.</li>
+</ul>
+<h3><a href="#c-readiness-probes" name="c-readiness-probes" class="anchor"><span class="anchor-link"></span></a>C. Readiness Probes</h3>
+<p>In a scale-out event, you don&rsquo;t want traffic hitting a new Pod while the JVM is still warming up.</p>
+<ul>
+  <li><strong>Setting:</strong> Use a <code>readinessProbe</code> that checks a specific <code>/health</code> or <code>/ready</code> endpoint in your Scala code.</li>
+</ul>
+<hr/>
 <p>The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.</p>
 <p>If application is need for scale out, then the requests can&rsquo;t handled by one host, then the VPA is not enough. But how about HPA, if pod is handle application directly, then the traffic will increase CPU usage to 100% easily, this is especially dangerous because as CPU load hits 100%, the Garbage Collector (GC) struggles to run, causing &ldquo;Stop-the-World&rdquo; pauses that make the Pod appear to &quot;hang.</p>
 <p>So the application need to split out to rest server and workers, traffic need to be handled in reactive way, the rest server accepted request and queued the requests, and workers take jobs, and monitor scale out workers pods according the queue size.</p>
 <p>From Gemini:</p>
-<pre><code>You have hit on a fundamental architectural truth: **Infrastructure-level scaling (HPA) is often too slow and too &quot;dumb&quot; to handle high-concurrency bursts in monolithic or tightly coupled applications.**
-
-When the JVM hits 100% CPU, it enters a &quot;Death Spiral&quot;: The GC needs CPU to clear memory, but the CPU is busy with requests, so memory fills up, causing more GC, which uses more CPU. The Pod hangs, and by the time HPA spins up a new Pod (which itself takes 30-90s to warm up), your service is already down.
-
-Your proposed solution—the **Producer-Consumer (Reactive) Pattern**—is exactly how high-scale systems (like Uber, LinkedIn, or Netflix) are built.
-
----
-
-### 1. The Architecture: Decoupling via Message Queue
-
-Instead of the REST server doing the heavy lifting, you split the responsibility:
-
-* **The &quot;Front Door&quot; (REST Server):** A lightweight, non-blocking server (e.g., using **Akka HTTP**, **http4s**, or **ZIO HTTP**). Its only job is to validate the request, drop it into a queue (Kafka, RabbitMQ, or AWS SQS), and return a `202 Accepted`.
-* **The &quot;Brain&quot; (Message Queue):** Acts as a massive buffer (shock absorber). If 100,000 requests hit in 1 second, they sit safely in the queue rather than crashing the server.
-* **The &quot;Muscle&quot; (Workers):** Scala worker pods that pull jobs from the queue at their own pace.
-
----
-
-### 2. Why this solves the &quot;Hang&quot; and &quot;GC&quot; issue
-
-1. **Load Shedding:** The REST server stays under 10% CPU because it isn&#39;t &quot;doing&quot; the work. It won&#39;t hang, so it can always accept new traffic.
-2. **Backpressure:** Workers pull only what they can handle. If a worker has 4 cores, it processes 4 jobs. It never hits that 100% &quot;GC Death Spiral&quot; because it controls its own ingestion rate.
-3. **Predictable Scaling:** You don&#39;t scale based on CPU (which is a lagging indicator). You scale based on **Queue Depth**.
-
----
-
-### 3. How to implement HPA based on Queue Size (KEDA)
-
-Standard Kubernetes HPA doesn&#39;t know how many messages are in Kafka or RabbitMQ. To implement your vision, you should use **KEDA (Kubernetes Event-Driven Autoscaling)**.
-
-KEDA is an operator that allows you to scale Pods from 0 to 1000 based on external events.
-
-**Example KEDA Configuration for your Workers:**
-
-</code></pre>
-<p>apiVersion: keda.sh/v1alpha1 kind: ScaledObject metadata:  name: worker-scaler spec:  scaleTargetRef:  name: scala-worker-deployment  minReplicaCount: 1  maxReplicaCount: 50  triggers:  - type: rabbitmq # Or kafka, aws-sqs, etc.  metadata:  queueName: job_queue  value: &ldquo;20&rdquo; # Target: 1 worker for every 20 messages in the queue</p>
-<pre><code><br/>---
-
-### 4. Moving to &quot;Reactive&quot; Scala
-
-To make this work in Scala, you typically move away from synchronous blocks:
-
-* **Standard Way (Dangerous):** `def handle = { val result = computeHeavyJob(); Ok(result) }`
-*(This ties up a thread until the job is done).*
-* **Reactive Way (Safe):** `def handle = { queue.push(request); Future.successful(Accepted) }`
-*(The thread is released instantly).*
-
----
-
-### Summary: Your Insight is Correct
-
-Scaling a &quot;Direct Handle&quot; application is like trying to build a bigger engine while the car is already melting. Your solution—**Decoupling + Buffer + KEDA (Queue-based scaling)**—is the professional standard for &quot;Scale Out.&quot;
-
+<p>You have hit on a fundamental architectural truth: <strong>Infrastructure-level scaling (HPA) is often too slow and too &ldquo;dumb&rdquo; to handle high-concurrency bursts in monolithic or tightly coupled applications.</strong></p>
+<p>When the JVM hits 100% CPU, it enters a &ldquo;Death Spiral&rdquo;: The GC needs CPU to clear memory, but the CPU is busy with requests, so memory fills up, causing more GC, which uses more CPU. The Pod hangs, and by the time HPA spins up a new Pod (which itself takes 30-90s to warm up), your service is already down.</p>
+<p>Your proposed solution—the <strong>Producer-Consumer (Reactive) Pattern</strong>—is exactly how high-scale systems (like Uber, LinkedIn, or Netflix) are built.</p>
+<hr/>
+<h3><a href="#1-the-architecture-decoupling-via-message-queue" name="1-the-architecture-decoupling-via-message-queue" class="anchor"><span class="anchor-link"></span></a>1. The Architecture: Decoupling via Message Queue</h3>
+<p>Instead of the REST server doing the heavy lifting, you split the responsibility:</p>
+<ul>
+  <li><strong>The &ldquo;Front Door&rdquo; (REST Server):</strong> A lightweight, non-blocking server (e.g., using <strong>Akka HTTP</strong>, <strong>http4s</strong>, or <strong>ZIO HTTP</strong>). Its only job is to validate the request, drop it into a queue (Kafka, RabbitMQ, or AWS SQS), and return a <code>202 Accepted</code>.</li>
+  <li><strong>The &ldquo;Brain&rdquo; (Message Queue):</strong> Acts as a massive buffer (shock absorber). If 100,000 requests hit in 1 second, they sit safely in the queue rather than crashing the server.</li>
+  <li><strong>The &ldquo;Muscle&rdquo; (Workers):</strong> Scala worker pods that pull jobs from the queue at their own pace.</li>
+</ul>
+<hr/>
+<h3><a href="#2-why-this-solves-the-and-issue" name="2-why-this-solves-the-and-issue" class="anchor"><span class="anchor-link"></span></a>2. Why this solves the &ldquo;Hang&rdquo; and &ldquo;GC&rdquo; issue</h3>
+<ol>
+  <li><strong>Load Shedding:</strong> The REST server stays under 10% CPU because it isn&rsquo;t &ldquo;doing&rdquo; the work. It won&rsquo;t hang, so it can always accept new traffic.</li>
+  <li><strong>Backpressure:</strong> Workers pull only what they can handle. If a worker has 4 cores, it processes 4 jobs. It never hits that 100% &ldquo;GC Death Spiral&rdquo; because it controls its own ingestion rate.</li>
+  <li><strong>Predictable Scaling:</strong> You don&rsquo;t scale based on CPU (which is a lagging indicator). You scale based on <strong>Queue Depth</strong>.</li>
+</ol>
+<hr/>
+<h3><a href="#3-how-to-implement-hpa-based-on-queue-size-keda-" name="3-how-to-implement-hpa-based-on-queue-size-keda-" class="anchor"><span class="anchor-link"></span></a>3. How to implement HPA based on Queue Size (KEDA)</h3>
+<p>Standard Kubernetes HPA doesn&rsquo;t know how many messages are in Kafka or RabbitMQ. To implement your vision, you should use <strong>KEDA (Kubernetes Event-Driven Autoscaling)</strong>.</p>
+<p>KEDA is an operator that allows you to scale Pods from 0 to 1000 based on external events.</p>
+<p><strong>Example KEDA Configuration for your Workers:</strong></p>
+<pre class="prettyprint"><code class="language-yaml">apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: worker-scaler
+spec:
+  scaleTargetRef:
+    name: scala-worker-deployment
+  minReplicaCount: 1
+  maxReplicaCount: 50
+  triggers:
+  - type: rabbitmq # Or kafka, aws-sqs, etc.
+    metadata:
+      queueName: job_queue
+      value: &quot;20&quot; # Target: 1 worker for every 20 messages in the queue
 
 </code></pre>
+<hr/>
+<h3><a href="#4-moving-to-scala" name="4-moving-to-scala" class="anchor"><span class="anchor-link"></span></a>4. Moving to &ldquo;Reactive&rdquo; Scala</h3>
+<p>To make this work in Scala, you typically move away from synchronous blocks:</p>
+<ul>
+  <li><strong>Standard Way (Dangerous):</strong> <code>def handle = { val result = computeHeavyJob(); Ok(result) }</code> <em>(This ties up a thread until the job is done).</em></li>
+  <li><strong>Reactive Way (Safe):</strong> <code>def handle = { queue.push(request); Future.successful(Accepted) }</code> <em>(The thread is released instantly).</em></li>
+</ul>
+<hr/>
+<h3><a href="#summary-your-insight-is-correct" name="summary-your-insight-is-correct" class="anchor"><span class="anchor-link"></span></a>Summary: Your Insight is Correct</h3>
+<p>Scaling a &ldquo;Direct Handle&rdquo; application is like trying to build a bigger engine while the car is already melting. Your solution—**Decoupling + Buffer + KEDA (Queue-based scaling)**—is the professional standard for &ldquo;Scale Out.&rdquo;</p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scaleout/index.md" title="Edit this page" class="md-source-file md-edit">
