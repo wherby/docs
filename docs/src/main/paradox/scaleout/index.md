@@ -1,8 +1,8 @@
 
 
 ## Scale out in k8s
+   
 
-```
 In Kubernetes (k8s), **Scaling Out** (Horizontal Scaling) is the process of adding more Pod instances to handle increased load. For a JVM-based application like **Scala**, this involves both automated mechanisms and specific configuration tuning.
 
 There are three primary ways to manage scale-out settings:
@@ -30,13 +30,13 @@ Introduced in K8s 1.18+, the `behavior` field allows you to fine-tune how fast y
 
 ```yaml
 behavior:
-  scaleUp:
+scaleUp:
     stabilizationWindowSeconds: 0 # Scale up immediately
     policies:
     - type: Percent
-      value: 100 # Double the number of pods
-      periodSeconds: 15
-  scaleDown:
+    value: 100 # Double the number of pods
+    periodSeconds: 15
+scaleDown:
     stabilizationWindowSeconds: 300 # Wait 5 mins before scaling in (prevents "flapping")
 
 ```
@@ -75,7 +75,7 @@ In a scale-out event, you don't want traffic hitting a new Pod while the JVM is 
 * **Setting:** Use a `readinessProbe` that checks a specific `/health` or `/ready` endpoint in your Scala code.
 
 ---
-```
+
 
 The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.
 
@@ -87,7 +87,7 @@ So the application need to split out to rest server and workers, traffic need to
 
 From Gemini:
 
-```
+
 You have hit on a fundamental architectural truth: **Infrastructure-level scaling (HPA) is often too slow and too "dumb" to handle high-concurrency bursts in monolithic or tightly coupled applications.**
 
 When the JVM hits 100% CPU, it enters a "Death Spiral": The GC needs CPU to clear memory, but the CPU is busy with requests, so memory fills up, causing more GC, which uses more CPU. The Pod hangs, and by the time HPA spins up a new Pod (which itself takes 30-90s to warm up), your service is already down.
@@ -156,6 +156,3 @@ To make this work in Scala, you typically move away from synchronous blocks:
 ### Summary: Your Insight is Correct
 
 Scaling a "Direct Handle" application is like trying to build a bigger engine while the car is already melting. Your solution—**Decoupling + Buffer + KEDA (Queue-based scaling)**—is the professional standard for "Scale Out."
-
-
-```
