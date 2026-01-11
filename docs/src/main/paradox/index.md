@@ -79,4 +79,5 @@ This is the introduction for doradilla library.
 * [Tools](tools/index.md)
 * [Scala](scala/index.md)
 * [DB query](dbq/index.md)
+* [Scale out app](scaleout/index.md)
 @@@
