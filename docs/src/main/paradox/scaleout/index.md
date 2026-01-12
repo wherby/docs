@@ -76,13 +76,14 @@ In a scale-out event, you don't want traffic hitting a new Pod while the JVM is 
 
 ---
 
-
+```
 The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.
 
 If application is need for scale out, then the requests can't handled by one host, then the VPA is not enough.
 But how about HPA, if pod is handle application directly, then the traffic will increase CPU usage to 100% easily, this is especially dangerous because as CPU load hits 100%, the Garbage Collector (GC) struggles to run, causing "Stop-the-World" pauses that make the Pod appear to "hang.
 
 So the application need to split out to rest server and workers, traffic need to be handled in reactive way, the rest server accepted request and queued the requests, and workers take jobs, and monitor scale out workers pods according the queue size.
+```
 
 
 From Gemini:
