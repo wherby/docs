@@ -373,9 +373,13 @@ scaleDown:
   <li><strong>Setting:</strong> Use a <code>readinessProbe</code> that checks a specific <code>/health</code> or <code>/ready</code> endpoint in your Scala code.</li>
 </ul>
 <hr/>
-<p>The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.</p>
-<p>If application is need for scale out, then the requests can&rsquo;t handled by one host, then the VPA is not enough. But how about HPA, if pod is handle application directly, then the traffic will increase CPU usage to 100% easily, this is especially dangerous because as CPU load hits 100%, the Garbage Collector (GC) struggles to run, causing &ldquo;Stop-the-World&rdquo; pauses that make the Pod appear to &quot;hang.</p>
-<p>So the application need to split out to rest server and workers, traffic need to be handled in reactive way, the rest server accepted request and queued the requests, and workers take jobs, and monitor scale out workers pods according the queue size.</p>
+<pre><code>The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.
+
+If application is need for scale out, then the requests can&#39;t handled by one host, then the VPA is not enough.
+But how about HPA, if pod is handle application directly, then the traffic will increase CPU usage to 100% easily, this is especially dangerous because as CPU load hits 100%, the Garbage Collector (GC) struggles to run, causing &quot;Stop-the-World&quot; pauses that make the Pod appear to &quot;hang.
+
+So the application need to split out to rest server and workers, traffic need to be handled in reactive way, the rest server accepted request and queued the requests, and workers take jobs, and monitor scale out workers pods according the queue size.
+</code></pre>
 <p>From Gemini:</p>
 <p>You have hit on a fundamental architectural truth: <strong>Infrastructure-level scaling (HPA) is often too slow and too &ldquo;dumb&rdquo; to handle high-concurrency bursts in monolithic or tightly coupled applications.</strong></p>
 <p>When the JVM hits 100% CPU, it enters a &ldquo;Death Spiral&rdquo;: The GC needs CPU to clear memory, but the CPU is busy with requests, so memory fills up, causing more GC, which uses more CPU. The Pod hangs, and by the time HPA spins up a new Pod (which itself takes 30-90s to warm up), your service is already down.</p>
