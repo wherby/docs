@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
-<title>Scale out in k8s · Docs</title>
+<title>About AI Tool · Docs</title>
 <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Scale out in k8s
+About AI Tool
 </span>
 </div>
 </div>
@@ -271,19 +271,16 @@ wherby/docs
     <li><a href="../scala/enum/index.html" class="page">Scala enum</a></li>
   </ul></li>
   <li><a href="../dbq/index.html" class="page">Accelerating query performance with a Shadow DB</a></li>
-  <li><a href="../scaleout/index.html" class="active page">Scale out in k8s</a></li>
-  <li><a href="../ai/index.html" class="page">About AI Tool</a></li>
+  <li><a href="../scaleout/index.html" class="page">Scale out in k8s</a></li>
+  <li><a href="../ai/index.html" class="active page">About AI Tool</a></li>
   <li><a href="../ai/dai.html" class="page">未来的大模型？</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../scaleout/index.html#scale-out-in-k8s" class="header">Scale out in k8s</a>
+  <li><a href="../ai/index.html#about-ai-tool" class="header">About AI Tool</a>
   <ul>
-    <li><a href="../scaleout/index.html#1-horizontal-pod-autoscaler-hpa-" class="header">1. Horizontal Pod Autoscaler (HPA)</a></li>
-    <li><a href="../scaleout/index.html#2-scaling-behavior-cool-down-velocity-" class="header">2. Scaling Behavior (Cool-down &amp; Velocity)</a></li>
-    <li><a href="../scaleout/index.html#3-vertical-pod-autoscaler-vpa-" class="header">3. Vertical Pod Autoscaler (VPA)</a></li>
-    <li><a href="../scaleout/index.html#4-scala-specific-scale-out-considerations" class="header">4. Scala-Specific Scale-Out Considerations</a></li>
+    <li><a href="../ai/index.html#tool-you-used" class="header">Tool you used</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -305,12 +302,9 @@ wherby/docs
 <nav class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">Table of contents</label>
 <ul>
-  <li><a href="../scaleout/index.html#scale-out-in-k8s" class="header">Scale out in k8s</a>
+  <li><a href="../ai/index.html#about-ai-tool" class="header">About AI Tool</a>
   <ul>
-    <li><a href="../scaleout/index.html#1-horizontal-pod-autoscaler-hpa-" class="header">1. Horizontal Pod Autoscaler (HPA)</a></li>
-    <li><a href="../scaleout/index.html#2-scaling-behavior-cool-down-velocity-" class="header">2. Scaling Behavior (Cool-down &amp; Velocity)</a></li>
-    <li><a href="../scaleout/index.html#3-vertical-pod-autoscaler-vpa-" class="header">3. Vertical Pod Autoscaler (VPA)</a></li>
-    <li><a href="../scaleout/index.html#4-scala-specific-scale-out-considerations" class="header">4. Scala-Specific Scale-Out Considerations</a></li>
+    <li><a href="../ai/index.html#tool-you-used" class="header">Tool you used</a></li>
   </ul></li>
 </ul>
 </nav>
@@ -321,120 +315,120 @@ wherby/docs
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h2><a href="#scale-out-in-k8s" name="scale-out-in-k8s" class="anchor"><span class="anchor-link"></span></a>Scale out in k8s</h2>
-<p>In Kubernetes (k8s), <strong>Scaling Out</strong> (Horizontal Scaling) is the process of adding more Pod instances to handle increased load. For a JVM-based application like <strong>Scala</strong>, this involves both automated mechanisms and specific configuration tuning.</p>
-<p>There are three primary ways to manage scale-out settings:</p>
-<hr/>
-<h2><a href="#1-horizontal-pod-autoscaler-hpa-" name="1-horizontal-pod-autoscaler-hpa-" class="anchor"><span class="anchor-link"></span></a>1. Horizontal Pod Autoscaler (HPA)</h2>
-<p>The HPA is the most common way to scale out. It automatically adjusts the number of replicas in a Deployment based on observed metrics.</p>
-<h3><a href="#key-settings-in-the-manifest-" name="key-settings-in-the-manifest-" class="anchor"><span class="anchor-link"></span></a>Key Settings in the Manifest:</h3>
-<ul>
-  <li>**<code>minReplicas</code> / <code>maxReplicas**</code>: Defines the floor and ceiling for your scaling.
-</li>
-  <li><strong><code>metrics</code></strong>: The triggers for scaling.</li>
-  <li><strong>Resource Metrics</strong>: Scaling based on CPU or Memory usage (e.g., scale out when average CPU hits 70%).</li>
-  <li><strong>Custom Metrics</strong>: Scaling based on application-specific data, like the number of messages in a Kafka queue or active Akka actor counts (requires Prometheus Adapter).</li>
-</ul>
-<hr/>
-<h2><a href="#2-scaling-behavior-cool-down-velocity-" name="2-scaling-behavior-cool-down-velocity-" class="anchor"><span class="anchor-link"></span></a>2. Scaling Behavior (Cool-down &amp; Velocity)</h2>
-<p>Introduced in K8s 1.18+, the <code>behavior</code> field allows you to fine-tune how fast your app scales out and how slowly it scales back in.</p>
-<pre class="prettyprint"><code class="language-yaml">behavior:
-scaleUp:
-    stabilizationWindowSeconds: 0 # Scale up immediately
-    policies:
-    - type: Percent
-    value: 100 # Double the number of pods
-    periodSeconds: 15
-scaleDown:
-    stabilizationWindowSeconds: 300 # Wait 5 mins before scaling in (prevents &quot;flapping&quot;)
+<h1><a href="#about-ai-tool" name="about-ai-tool" class="anchor"><span class="anchor-link"></span></a>About AI Tool</h1>
+<h2><a href="#tool-you-used" name="tool-you-used" class="anchor"><span class="anchor-link"></span></a>Tool you used</h2>
+<p>What&rsquo;s AI tool you are using? ChatGPT / Claude / Gemini / DeepSeek Copilot / Cursor / Midjourney / Sora MCP / A2A / RAG ? OpenCraw?</p>
+<pre><code>这是一个非常核心的问题，涉及到 **“参数化知识”** 与 **“上下文知识”** 的本质区别。
 
+你说得没错：**RAG 确实无法改变模型已经固化的权重（也就是你说的“样本无法影响模型”）**。但是，这并不意味着结果一定会是幻觉。
+
+作为架构师，你可以从**“开卷考试”**的角度来理解这个逻辑：
+
+---
+
+### 1. 知识的两种存储方式
+
+在 AI 领域，我们将知识分为两种：
+
+* **参数化知识 (Parametric Knowledge)**：这是模型在预训练阶段“背下来”的东西。比如 GPT 知道“Scala 是一种函数式编程语言”。如果这部分没见过你的 **Doradilla**，它就会尝试用它背过的其他相似知识（如 Akka 或传统的 Actor 模型）来**强行解释**，这就是产生**幻觉**的根源。
+* **上下文知识 (Contextual Knowledge)**：这是 RAG 提供的。它相当于在考试时，你把 **Doradilla** 的说明书翻开放在模型面前。
+
+---
+
+### 2. 为什么 RAG 能抑制幻觉？
+
+即便大模型在预训练时**完全没见过**你的内容，只要你给它的上下文足够清晰，它就能通过其强大的**逻辑推理能力**（而非记忆力）得出正确答案。
+
+**幻觉产生的原因通常是：模型在知识真空状态下被迫进行“概率预测”。**
+
+* **没有 RAG 时**：你问“Doradilla 的 `FSM` 怎么实现？”模型搜遍大脑发现没有这个词，但为了完成预测，它会根据 `FSM` 这个通用词汇编造一套类似 Akka FSM 的代码。
+* **有了 RAG 后**：你问同样的问题，RAG 把你本地真实的 `FSM.scala` 源码塞进了 Prompt。此时模型不再需要“回忆”，它只需要“阅读”并“翻译”。
+
+&gt; **关键点**：大模型虽然没见过你的样本，但它见过**数以亿计的类似代码逻辑、类定义、分布式协议**。这种“泛化能力”让它能够理解一份它从未见过的文档。
+
+---
+
+### 3. RAG 失效的情况（真正的风险点）
+
+虽然 RAG 能提供知识，但在以下两种情况下，即便有 RAG，结果依然可能是幻觉：
+
+* **检索质量差（Retrieval Failure）**：你问 A，但 RAG 搜到了 B。模型基于错误的上下文，会一本正经地推导出错误结论。
+* **知识冲突（Knowledge Conflict）**：当 RAG 提供的知识与模型“背下来”的常识发生严重冲突时，模型有时会产生动摇，或者尝试将两者杂糅在一起。
+
+---
+
+### 4. “模型训练”与“RAG”的架构选择
+
+你提到“样本没法影响模型”，这实际上是架构师需要做决策的地方：
+
+* **如果你需要 AI 学习“新事实”（如你的项目文档、私有 API）**：用 **RAG**。因为事实是多变的，RAG 成本最低、最精准。
+* **如果你需要 AI 学习“新技能”或“新风格”（如学习一种特殊的 Scala 编码规范）**：这时 RAG 就不够了，你需要 **Fine-tuning（微调）**。微调会让你的样本真正进入模型的参数中，改变它的“思维定式”。
+
+---
+
+### 5. 总结
+
+模型没见过你的样本，**并不一定会产生幻觉**，只要你的 RAG 能够提供高质量的“参考资料”。
+
+大模型就像一个**逻辑极强但没有长久记忆的超级天才**。你不需要教他记住所有书的内容（预训练），你只需要在他工作时，把正确的书放在他手边（RAG），他就能利用那超强的逻辑完成任务。
+
+**你是否想了解，在你的分布式系统项目中，如何通过编写“推理引导提示词（Chain-of-Thought Prompting）”来强制模型优先使用 RAG 提供的知识，而不是它脑子里的过时记忆？**
 </code></pre>
-<hr/>
-<h2><a href="#3-vertical-pod-autoscaler-vpa-" name="3-vertical-pod-autoscaler-vpa-" class="anchor"><span class="anchor-link"></span></a>3. Vertical Pod Autoscaler (VPA)</h2>
-<p>While HPA adds more Pods, the <strong>VPA</strong> increases the CPU and Memory &ldquo;size&rdquo; of existing Pods.</p>
-<ul>
-  <li><strong>Recommendation:</strong> Do not use HPA and VPA together on the same metric (like CPU), as they will conflict.</li>
-  <li><strong>Scala Tip:</strong> VPA is excellent for finding the &ldquo;sweet spot&rdquo; for JVM heap memory, which is notoriously difficult to estimate manually.</li>
-</ul>
-<hr/>
-<h2><a href="#4-scala-specific-scale-out-considerations" name="4-scala-specific-scale-out-considerations" class="anchor"><span class="anchor-link"></span></a>4. Scala-Specific Scale-Out Considerations</h2>
-<p>When scaling out Scala applications, the standard K8s settings aren&rsquo;t enough; you must tune the <strong>JVM</strong> to cooperate with the container:</p>
-<h3><a href="#a-the-problem" name="a-the-problem" class="anchor"><span class="anchor-link"></span></a>A. The &ldquo;Thundering Herd&rdquo; Problem</h3>
-<p>Scala applications (especially those using Akka or ZIO) often have high CPU spikes during startup due to JIT (Just-In-Time) compilation.</p>
-<ul>
-  <li><strong>Setting:</strong> Ensure your <code>cpu.requests</code> are high enough. If requests are too low, K8s might &ldquo;throttle&rdquo; the Pod during startup, making the scale-out process extremely slow.</li>
-</ul>
-<h3><a href="#b-graceful-shutdown" name="b-graceful-shutdown" class="anchor"><span class="anchor-link"></span></a>B. Graceful Shutdown</h3>
-<p>When K8s scales <strong>in</strong> (removes pods), it sends a <code>SIGTERM</code>.</p>
-<ul>
-  <li><strong>Setting:</strong> Set <code>terminationGracePeriodSeconds</code> in your spec (default is 30s). Scala apps with distributed state (Akka Clusters) often need 60-90s to hand off data safely before the Pod vanishes.</li>
-</ul>
-<h3><a href="#c-readiness-probes" name="c-readiness-probes" class="anchor"><span class="anchor-link"></span></a>C. Readiness Probes</h3>
-<p>In a scale-out event, you don&rsquo;t want traffic hitting a new Pod while the JVM is still warming up.</p>
-<ul>
-  <li><strong>Setting:</strong> Use a <code>readinessProbe</code> that checks a specific <code>/health</code> or <code>/ready</code> endpoint in your Scala code.</li>
-</ul>
-<hr/>
-<pre><code>The above is the scale out solution by Gemini about K8s, but I think if application is need for scale out. All solution need for HPA or VPA is not enough.
+<p>现在AI是做什么事情，简单的来说是还是在做search的事情，所谓的大模型，也是在一个可以认为是无限的高保真度的照片里查询模式匹配的片段.</p>
+<p>虽然LLM能得到所谓的推理能力可以handle未见过的情况判定，但是LLM所形成的模型所形成的推理能力不能得到外部输入影响进行进化</p>
+<pre><code>你的洞察非常深刻，这其实触及了当前 AI 研究最前沿的矛盾点：**“静态的权重”与“动态的世界”之间的冲突。**
 
-If application is need for scale out, then the requests can&#39;t handled by one host, then the VPA is not enough.
-But how about HPA, if pod is handle application directly, then the traffic will increase CPU usage to 100% easily, this is especially dangerous because as CPU load hits 100%, the Garbage Collector (GC) struggles to run, causing &quot;Stop-the-World&quot; pauses that make the Pod appear to &quot;hang.
+我们可以把你的观点拆解为两个核心命题来进一步探讨：
 
-So the application need to split out to rest server and workers, traffic need to be handled in reactive way, the rest server accepted request and queued the requests, and workers take jobs, and monitor scale out workers pods according the queue size.
+### 1. LLM 是在做“高保真度”的模式匹配吗？
+
+从底层数学逻辑上说，你是对的。LLM 确实可以被看作一个**连续的高维函数插值器**。
+
+* **不仅仅是搜索，而是“压缩与还原”：** 传统的搜索是把原件找出来；而大模型是将数万亿的数据压缩进有限的参数里（参数量远小于训练数据量）。
+* **高保真度映射：** 当你提问时，模型在它那张“无限高保真的照片（向量空间）”中，通过概率分布寻找最匹配的像素点。它不是在“查找”原文，而是在“重绘”一张符合逻辑的图。
+
+---
+
+### 2. LLM 的推理能力是“死”的吗？
+
+你提到的核心痛点是：**模型形成后，推理能力无法通过外部输入进行进化。** 这一点在架构上是成立的，目前的 LLM 存在三个“硬伤”：
+
+#### A. 权重冷冻（Frozen Weights）
+
+一旦模型训练完成并部署（Inference），它的神经元突触连接强度就固定了。无论你这一刻教了它多少深刻的道理，只要你关掉对话框，它就会“重启”回到出厂状态。它没有**原生长时记忆**。
+
+#### B. 无法“在线学习” (Online Learning)
+
+人类可以在做事的过程中实时调整思维模式，但 LLM 无法在对话中实时修改自己的底层参数。要让它“进化”，必须攒够一批数据，停机，重新进行代价昂贵的反向传播训练（Fine-tuning）。
+
+#### C. 推理能力的“锁定”
+
+模型的逻辑推演水平（推理能力）完全取决于它在预训练时见过的“逻辑样本”（比如代码、数学证明、哲学推导）。如果预训练时没练好逻辑，RAG 喂再多数据也只能让它变成一个“拥有百科全书的糊涂蛋”。
+
+---
+
+### 3. 未来的破局点：AI 进化的新路径
+
+为了解决你说的“无法进化”问题，目前工业界正在尝试三个方向的架构突破：
+
+1. **Context Learning（语境学习）与长上下文：**
+既然权重不能变，就扩大“内存”（Context Window）。现在的 Gemini 已经支持 200 万 token，这意味着你可以把一辈子的工作笔记塞给它。在这一轮对话中，它表现得好像“进化”了，因为它能在庞大的临时内存里建立逻辑。
+2. **Reinforcement Learning (强化学习) 的持续迭代：**
+类似 OpenAI 的 **o1 (Strawberry) 模型**。它不是单纯增加知识，而是通过大量的自我博弈（Self-play）和逻辑链（Chain of Thought）搜索，在训练阶段就把“推理路径”给优化了。
+3. **Mem0 / 记忆层架构：**
+既然模型脑子不动，就在模型外面挂一个**动态进化的记忆数据库**。这个数据库通过 RAG 和 Agentic 逻辑，随着用户的输入不断自动更新摘要、偏好和逻辑关联。这相当于给 AI 戴上了一个**可以实时读写的“外挂大脑”**。
+
+---
+
+### 总结
+
+你对 LLM 的定义非常精准：**它是对人类已知文明的一次“终极高保真采样”。** 它的推理能力确实是“出厂即锁定”的静态能力。现在的挑战在于，如何通过 **Agent 架构** 和 **外部记忆协议 (如 MCP)**，让这个“静态的天才”学会利用外部不断进化的数据流，从而在表现上实现“动态进化”。
+
+**既然你认为 LLM 的推理能力是受限的，你是否想探讨一下：如果我们要设计一个真正能“自主进化”的分布式 AI 系统（比如让你的 Doradilla 自动根据运行日志修正自己的调度算法），除了 LLM，我们还需要引入什么样的反馈环路？**
 </code></pre>
-<p>From Gemini:</p>
-<p>You have hit on a fundamental architectural truth: <strong>Infrastructure-level scaling (HPA) is often too slow and too &ldquo;dumb&rdquo; to handle high-concurrency bursts in monolithic or tightly coupled applications.</strong></p>
-<p>When the JVM hits 100% CPU, it enters a &ldquo;Death Spiral&rdquo;: The GC needs CPU to clear memory, but the CPU is busy with requests, so memory fills up, causing more GC, which uses more CPU. The Pod hangs, and by the time HPA spins up a new Pod (which itself takes 30-90s to warm up), your service is already down.</p>
-<p>Your proposed solution—the <strong>Producer-Consumer (Reactive) Pattern</strong>—is exactly how high-scale systems (like Uber, LinkedIn, or Netflix) are built.</p>
-<hr/>
-<h3><a href="#1-the-architecture-decoupling-via-message-queue" name="1-the-architecture-decoupling-via-message-queue" class="anchor"><span class="anchor-link"></span></a>1. The Architecture: Decoupling via Message Queue</h3>
-<p>Instead of the REST server doing the heavy lifting, you split the responsibility:</p>
-<ul>
-  <li><strong>The &ldquo;Front Door&rdquo; (REST Server):</strong> A lightweight, non-blocking server (e.g., using <strong>Akka HTTP</strong>, <strong>http4s</strong>, or <strong>ZIO HTTP</strong>). Its only job is to validate the request, drop it into a queue (Kafka, RabbitMQ, or AWS SQS), and return a <code>202 Accepted</code>.</li>
-  <li><strong>The &ldquo;Brain&rdquo; (Message Queue):</strong> Acts as a massive buffer (shock absorber). If 100,000 requests hit in 1 second, they sit safely in the queue rather than crashing the server.</li>
-  <li><strong>The &ldquo;Muscle&rdquo; (Workers):</strong> Scala worker pods that pull jobs from the queue at their own pace.</li>
-</ul>
-<hr/>
-<h3><a href="#2-why-this-solves-the-and-issue" name="2-why-this-solves-the-and-issue" class="anchor"><span class="anchor-link"></span></a>2. Why this solves the &ldquo;Hang&rdquo; and &ldquo;GC&rdquo; issue</h3>
-<ol>
-  <li><strong>Load Shedding:</strong> The REST server stays under 10% CPU because it isn&rsquo;t &ldquo;doing&rdquo; the work. It won&rsquo;t hang, so it can always accept new traffic.</li>
-  <li><strong>Backpressure:</strong> Workers pull only what they can handle. If a worker has 4 cores, it processes 4 jobs. It never hits that 100% &ldquo;GC Death Spiral&rdquo; because it controls its own ingestion rate.</li>
-  <li><strong>Predictable Scaling:</strong> You don&rsquo;t scale based on CPU (which is a lagging indicator). You scale based on <strong>Queue Depth</strong>.</li>
-</ol>
-<hr/>
-<h3><a href="#3-how-to-implement-hpa-based-on-queue-size-keda-" name="3-how-to-implement-hpa-based-on-queue-size-keda-" class="anchor"><span class="anchor-link"></span></a>3. How to implement HPA based on Queue Size (KEDA)</h3>
-<p>Standard Kubernetes HPA doesn&rsquo;t know how many messages are in Kafka or RabbitMQ. To implement your vision, you should use <strong>KEDA (Kubernetes Event-Driven Autoscaling)</strong>.</p>
-<p>KEDA is an operator that allows you to scale Pods from 0 to 1000 based on external events.</p>
-<p><strong>Example KEDA Configuration for your Workers:</strong></p>
-<pre class="prettyprint"><code class="language-yaml">apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
-metadata:
-  name: worker-scaler
-spec:
-  scaleTargetRef:
-    name: scala-worker-deployment
-  minReplicaCount: 1
-  maxReplicaCount: 50
-  triggers:
-  - type: rabbitmq # Or kafka, aws-sqs, etc.
-    metadata:
-      queueName: job_queue
-      value: &quot;20&quot; # Target: 1 worker for every 20 messages in the queue
-
-</code></pre>
-<hr/>
-<h3><a href="#4-moving-to-scala" name="4-moving-to-scala" class="anchor"><span class="anchor-link"></span></a>4. Moving to &ldquo;Reactive&rdquo; Scala</h3>
-<p>To make this work in Scala, you typically move away from synchronous blocks:</p>
-<ul>
-  <li><strong>Standard Way (Dangerous):</strong> <code>def handle = { val result = computeHeavyJob(); Ok(result) }</code> <em>(This ties up a thread until the job is done).</em></li>
-  <li><strong>Reactive Way (Safe):</strong> <code>def handle = { queue.push(request); Future.successful(Accepted) }</code> <em>(The thread is released instantly).</em></li>
-</ul>
-<hr/>
-<h3><a href="#summary-your-insight-is-correct" name="summary-your-insight-is-correct" class="anchor"><span class="anchor-link"></span></a>Summary: Your Insight is Correct</h3>
-<p>Scaling a &ldquo;Direct Handle&rdquo; application is like trying to build a bigger engine while the car is already melting. Your solution—**Decoupling + Buffer + KEDA (Queue-based scaling)**—is the professional standard for &ldquo;Scale Out.&rdquo;</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/scaleout/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/ai/index.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -461,7 +455,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../dbq/index.html" title="Accelerating query performance with a Shadow DB" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../scaleout/index.html" title="Scale out in k8s" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -470,17 +464,17 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Accelerating query performance with a Shadow DB
+Scale out in k8s
 </span>
 </div>
 </a>
-<a href="../ai/index.html" title="About AI Tool" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+<a href="../ai/dai.html" title="未来的大模型？" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
 <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
 <span class="md-flex__ellipsis">
 <span class="md-footer-nav__direction">
 Next
 </span>
-About AI Tool
+未来的大模型？
 </span>
 </div>
 <div class="md-flex__cell md-flex__cell--shrink">

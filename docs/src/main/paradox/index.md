@@ -80,4 +80,6 @@ This is the introduction for doradilla library.
 * [Scala](scala/index.md)
 * [DB query](dbq/index.md)
 * [Scale out app](scaleout/index.md)
+* [AI tool](ai/index.md)
+* [Next AI](ai/dai.md)
 @@@
