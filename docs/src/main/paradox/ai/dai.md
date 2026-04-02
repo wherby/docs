@@ -45,3 +45,6 @@ B、KB、MB、GB、TB、PB、EB、ZB、YB
 
 大模型可以提取出一个Common Sense的小模块，此模块用来激活各个Expert模块，并且记录用户的反馈作为新的知识训练集，然后迭代训练各个Expert模块。
 
+[这里视频](https://www.youtube.com/watch?v=wxNniP5CKKk)的后半部分就是类似模型的实现：
+![Gai+Dai](./pic/gaidai.png)
+

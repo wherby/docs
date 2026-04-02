@@ -336,8 +336,11 @@ wherby/docs
 <p>怎么来设计一个可以自己进化的行业知识智能体呢？ 这里有个假设，在任何一个行业知识（Domain knowledge）相对小的，这也是显而易见的。 所以我们可以维护一个行业知识的集合，利用当前集合的知识来训练进化当前的行业知识模型。 而大模型的作用仅在该智能体不能解决的时候使用，并生成新的知识点加入该智能体。</p>
 <p>这样就形成了大模型作为辅助的行业知识智能体进化的整个循环。</p>
 <p>该智能体对于查询，只需要维护相对小的模型体积，而大模型的依赖只会在新的知识点被发现的时候使用。</p>
+<pre><code>就像在web2.0时代的Stack Overflow 和Google， Google就像大模型具有全部网页的知识，然而专业知识在Stack Overflow 会更准确和及时获得。
+</code></pre>
 <h2><a href="#大模型自身的进化" name="大模型自身的进化" class="anchor"><span class="anchor-link"></span></a>大模型自身的进化</h2>
 <p>大模型可以提取出一个Common Sense的小模块，此模块用来激活各个Expert模块，并且记录用户的反馈作为新的知识训练集，然后迭代训练各个Expert模块。</p>
+<p><a href="https://www.youtube.com/watch?v=wxNniP5CKKk">这里视频</a>的后半部分就是类似模型的实现： <img src="./pic/gaidai.png" alt="Gai+Dai" /></p>
 </div>
 <div>
 <a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/ai/dai.md" title="Edit this page" class="md-source-file md-edit">
