@@ -82,4 +82,5 @@ This is the introduction for doradilla library.
 * [Scale out app](scaleout/index.md)
 * [AI tool](ai/index.md)
 * [Next AI](ai/dai.md)
+* [AI tool](ai/aitool/aitooluse.md)
 @@@
