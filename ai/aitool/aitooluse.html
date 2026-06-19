@@ -20,7 +20,7 @@
 
 <meta name="description" content="Description for doradilla library.">
 <link rel="shortcut icon" href="../../assets/images/favicon.png">
-<title>Read Excel will modify · Docs</title>
+<title>Tool · Docs</title>
 <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
 <link rel="stylesheet" href="../../lib/material__tabs/dist/mdc.tabs.min.css">
 <link rel="stylesheet" href="../../lib/prettify/prettify.css">
@@ -56,7 +56,7 @@ code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}
 Docs
 </span>
 <span class="md-header-nav__topic">
-Read Excel will modify
+Tool
 </span>
 </div>
 </div>
@@ -235,7 +235,7 @@ wherby/docs
   </ul></li>
   <li><a href="../../issues/index.html" class="page">Issues</a>
   <ul>
-    <li><a href="../../issues/filereader/index.html" class="active page">Read Excel will modify</a></li>
+    <li><a href="../../issues/filereader/index.html" class="page">Read Excel will modify</a></li>
     <li><a href="../../issues/exceptionhandle/index.html" class="page">Handle verification</a></li>
     <li><a href="../../issues/codeStyle/inde.html" class="page">Code not easy to understand</a></li>
     <li><a href="../../issues/playui/index.html" class="page">Play UI cache issue</a></li>
@@ -274,17 +274,9 @@ wherby/docs
   <li><a href="../../scaleout/index.html" class="page">Scale out in k8s</a></li>
   <li><a href="../../ai/index.html" class="page">About AI Tool</a></li>
   <li><a href="../../ai/dai.html" class="page">未来的大模型？</a></li>
-  <li><a href="../../ai/aitool/aitooluse.html" class="page">Tool</a></li>
+  <li><a href="../../ai/aitool/aitooluse.html" class="active page">Tool</a></li>
 </ul>
 <nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../issues/filereader/index.html#read-excel-will-modify" class="header">Read Excel will modify</a>
-  <ul>
-    <li><a href="../../issues/filereader/index.html#issues" class="header">Issues</a></li>
-    <li><a href="../../issues/filereader/index.html#code" class="header">Code</a></li>
-  </ul></li>
-</ul>
 </nav>
 
 </nav>
@@ -298,61 +290,19 @@ wherby/docs
 </div>
 </div>
 </div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">Table of contents</label>
-<ul>
-  <li><a href="../../issues/filereader/index.html#read-excel-will-modify" class="header">Read Excel will modify</a>
-  <ul>
-    <li><a href="../../issues/filereader/index.html#issues" class="header">Issues</a></li>
-    <li><a href="../../issues/filereader/index.html#code" class="header">Code</a></li>
-  </ul></li>
-</ul>
-</nav>
-
-</div>
-</div>
-</div>
 <div class="md-content">
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
-<h1><a href="#read-excel-will-modify" name="read-excel-will-modify" class="anchor"><span class="anchor-link"></span></a>Read Excel will modify</h1>
-<h2><a href="#issues" name="issues" class="anchor"><span class="anchor-link"></span></a>Issues</h2>
-<p>When read excel file, the excel file will be modified:</p>
-<p><img src="pic/modifyExcel.png" alt="modified" /></p>
-<p>change the reader, then the excel will not be modified:</p>
-<p><img src="pic/notModify.png" alt="NoModify" /></p>
-<h2><a href="#code" name="code" class="anchor"><span class="anchor-link"></span></a>Code</h2>
-<dl>
-  <dt>Read content</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/filereader/code/readFile.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">def areSheetExisted(filePath: String, sheetsName: Seq[String]): Boolean = {
-  val workbook        = AppFileIO.fileToWorkBook(filePath)
-  var allSheetExisted = true
-  try {
-    for (sheetName &lt;- sheetsName) {
-      if (workbook.getSheetIndex(sheetName) &lt; 0) {
-        allSheetExisted = false
-      }
-    }
-    allSheetExisted
-  } finally {
-    workbook.close()
-  }</code></pre></dd>
-  <dt>FileIO</dt>
-  <dd>
-  <pre class="prettyprint"><button class="snippet-button copy-snippet" title="Copy snippet to clipboard">copy</button><a class="snippet-button go-to-source" href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/filereader/code/FileIO.scala" target="_blank" title="Go to snippet source">source</a><code class="language-scala">import java.io.{File, FileInputStream}
-
-object AppFileIO {
-  def fileToWorkBook(filePath: String) = {
-    WorkbookFactory.create(new FileInputStream(new File(filePath)))
-  }</code></pre></dd>
-</dl>
+<h1><a href="#tool" name="tool" class="anchor"><span class="anchor-link"></span></a>Tool</h1>
+<p>There is an AI stock tool which is developed by starriv: <a href="https://github.com/alpacahq/alpaca-skills">worth-buy-stocks</a></p>
+<p>The tool is using stock api published by Alpaca Markets: <a href="https://github.com/alpacahq/alpaca-skills">Alpaca Markets</a></p>
+<p>When you want to use the tool is very simple: <img src="./pic/1.png" alt="use" /> <img src="./pic/2.png" alt="use" /> <img src="./pic/3.png" alt="use" /></p>
+<p>and one question will cost: <img src="./pic/4.png" alt="cost" /></p>
+<p>Alpaca Markets is very complex api tool , use the skill which will help us to use the tool in zero knowledge.</p>
+<p>But if the workflow is good, we could also bypass the AI function.</p>
 </div>
 <div>
-<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/issues/filereader/index.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/wherby/docs/tree/master/docs/src/main/paradox/ai/aitool/aitooluse.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
@@ -379,7 +329,7 @@ gtag('config', 'G-LVLRXPE9ZP');
 
 <div class="md-footer-nav">
 <nav class="md-footer-nav__inner md-grid">
-<a href="../../issues/index.html" title="Issues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+<a href="../../ai/dai.html" title="未来的大模型？" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
 <div class="md-flex__cell md-flex__cell--shrink">
 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
 </div>
@@ -388,21 +338,8 @@ gtag('config', 'G-LVLRXPE9ZP');
 <span class="md-footer-nav__direction">
 Previous
 </span>
-Issues
+未来的大模型？
 </span>
-</div>
-</a>
-<a href="../../issues/exceptionhandle/index.html" title="Handle verification" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-<div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-<span class="md-flex__ellipsis">
-<span class="md-footer-nav__direction">
-Next
-</span>
-Handle verification
-</span>
-</div>
-<div class="md-flex__cell md-flex__cell--shrink">
-<i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
 </div>
 </a>
 </nav>
